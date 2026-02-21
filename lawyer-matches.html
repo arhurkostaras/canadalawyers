@@ -907,27 +907,27 @@ function getDemoData() {
         async function getCPADatabase() {
     try {
         console.log('Fetching verified Lawyers from database...');
-        const response = await fetch('https://lawyer-intelligence-backend-production.up.railway.app/api/cpa/search?verification_status=verified&limit=50');
+        const response = await fetch('https://lawyer-intelligence-backend-production.up.railway.app/api/lawyer/search?verification_status=verified&limit=50');
         
         if (response.ok) {
             const result = await response.json();
             console.log('Retrieved Lawyers:', result);
             
             // Transform database format to match your matching algorithm
-            return result.cpas.map(cpa => ({
-                id: cpa.lawyer_id,
-                name: `${cpa.first_name} ${cpa.last_name}`,
-                firm: cpa.firm_name,
-                location: `${cpa.city}, ${cpa.province}`,
-                email: cpa.email,
-                industrySpecializations: cpa.industries_served || [],
+            return result.lawyers.map(lawyer => ({
+                id: lawyer.lawyer_id,
+                name: `${lawyer.first_name} ${lawyer.last_name}`,
+                firm: lawyer.firm_name,
+                location: `${lawyer.city}, ${lawyer.province}`,
+                email: lawyer.email,
+                industrySpecializations: lawyer.industries_served || [],
                 clientSizeExperience: ['startup', 'small', 'medium'],
-                serviceOfferings: cpa.specializations || [],
-                rateRange: mapRateRange(cpa.hourly_rate_min, cpa.hourly_rate_max),
+                serviceOfferings: lawyer.specializations || [],
+                rateRange: mapRateRange(lawyer.hourly_rate_min, lawyer.hourly_rate_max),
                 availability: 'soon',
-                communicationStyle: cpa.communication_style || 'professional',
-                remoteCapable: cpa.remote_services || false,
-                yearsExperience: cpa.years_experience || 5,
+                communicationStyle: lawyer.communication_style || 'professional',
+                remoteCapable: lawyer.remote_services || false,
+                yearsExperience: lawyer.years_experience || 5,
                 clientCount: Math.floor(Math.random() * 50) + 20
             }));
         }

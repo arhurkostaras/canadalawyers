@@ -18,8 +18,8 @@
     <!-- Auth gate -->
     <script>
         (function() {
-            const token = localStorage.getItem('cpa_token');
-            const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+            const token = localStorage.getItem('lawyer_token');
+            const user = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
             if (!token || user.userType !== 'admin') {
                 window.location.href = '/lawyer-login.html';
             }
@@ -103,12 +103,12 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm text-gray-400 mb-1">Campaign Name</label>
-                        <input id="campName" type="text" placeholder="e.g. BC CPA Outreach Q1" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
+                        <input id="campName" type="text" placeholder="e.g. BC Lawyer Outreach Q1" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
                     </div>
                     <div>
                         <label class="block text-sm text-gray-400 mb-1">Type</label>
                         <select id="campType" onchange="updateTemplateDefaults()" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
-                            <option value="cpa">CPA Acquisition</option>
+                            <option value="cpa">Lawyer Acquisition</option>
                             <option value="sme">SME Acquisition</option>
                         </select>
                     </div>
@@ -127,7 +127,7 @@
                     <div class="md:col-span-2">
                         <label class="block text-sm text-gray-400 mb-1">Body Template (HTML)</label>
                         <textarea id="campBody" rows="8" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm font-mono"></textarea>
-                        <p class="text-xs text-gray-500 mt-1">Variables: {{cpa_name}}, {{city}}, {{province}}, {{sme_count}}, {{active_requests}}, {{business_name}}, {{industry}}, {{cpa_count}}, {{platform_url}}</p>
+                        <p class="text-xs text-gray-500 mt-1">Variables: {{lawyer_name}}, {{city}}, {{province}}, {{sme_count}}, {{active_requests}}, {{business_name}}, {{industry}}, {{lawyer_count}}, {{platform_url}}</p>
                     </div>
                 </div>
                 <div class="flex gap-3 mt-4">
@@ -250,15 +250,15 @@
     <script>
         const API = 'https://canadalawyers-backend-production.up.railway.app';
         const INTEL_API = 'https://lawyer-intelligence-backend-production.up.railway.app';
-        const token = localStorage.getItem('cpa_token');
+        const token = localStorage.getItem('lawyer_token');
         const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
 
-        const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+        const user = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
         document.getElementById('adminEmail').textContent = user.email || '';
 
         function logout() {
-            localStorage.removeItem('cpa_token');
-            localStorage.removeItem('cpa_user');
+            localStorage.removeItem('lawyer_token');
+            localStorage.removeItem('lawyer_user');
             window.location.href = '/lawyer-login.html';
         }
 
@@ -282,16 +282,16 @@
         function pct(n, d) { return d > 0 ? ((n / d) * 100).toFixed(1) + '%' : '0%'; }
 
         // ---- Default templates ----
-        const DEFAULT_CPA_SUBJECT = '{{sme_count}} businesses in {{city}} need a CPA like you';
-        const DEFAULT_CPA_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{cpa_name}},</h2><p>Did you know there are <strong>{{sme_count}} businesses</strong> in {{province}} actively looking for CPA services?</p><p>Right now, <strong>{{active_requests}} business owners</strong> on CanadaLawyers have submitted requests for help with tax planning, bookkeeping, and advisory services.</p><p>The average Canadian SME spends <strong>585 days</strong> searching for the right lawyer. We eliminate that friction completely.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">Why Lawyers join CanadaLawyers:</p><ul style="margin:0;padding-left:20px;"><li>AI-matched leads based on your specialization</li><li>Serve clients anywhere in Canada — remote-friendly matching</li><li>Zero marketing spend — clients come to you</li><li>Verified professional profile with trust badge</li><li>Free to join during launch</li></ul></div><p style="font-size:14px;color:#555;"><strong>Work from anywhere:</strong> Whether you prefer in-person meetings in {{city}} or serving clients remotely across Canada, our AI matching considers your work preferences to connect you with the right clients.</p><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/join-as-lawyer.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Claim Your Free Profile</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras<br>Founder, CanadaLawyers</p></div>`;
+        const DEFAULT_LAWYER_SUBJECT = '{{sme_count}} businesses in {{city}} need a lawyer like you';
+        const DEFAULT_LAWYER_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{lawyer_name}},</h2><p>Did you know there are <strong>{{sme_count}} businesses</strong> in {{province}} actively looking for legal services?</p><p>Right now, <strong>{{active_requests}} business owners</strong> on CanadaLawyers have submitted requests for help with contracts, compliance, and legal advisory services.</p><p>The average Canadian SME spends <strong>months</strong> searching for the right lawyer. We eliminate that friction completely.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">Why Lawyers join CanadaLawyers:</p><ul style="margin:0;padding-left:20px;"><li>AI-matched leads based on your practice areas</li><li>Serve clients anywhere in Canada — remote-friendly matching</li><li>Zero marketing spend — clients come to you</li><li>Verified professional profile with trust badge</li><li>Free to join during launch</li></ul></div><p style="font-size:14px;color:#555;"><strong>Work from anywhere:</strong> Whether you prefer in-person meetings in {{city}} or serving clients remotely across Canada, our AI matching considers your work preferences to connect you with the right clients.</p><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/join-as-lawyer.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Claim Your Free Profile</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras<br>Founder, CanadaLawyers</p></div>`;
 
         const DEFAULT_SME_SUBJECT = 'Stop wasting 585 days finding the right lawyer';
-        const DEFAULT_SME_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{business_name}},</h2><p>Finding the right lawyer for your {{industry}} business shouldn't take <strong>585 days</strong>.</p><p>CanadaLawyers uses AI to match your business with pre-verified Lawyers in {{province}} in <strong>under 24 hours</strong>.</p><p>There are <strong>{{cpa_count}} verified Lawyers</strong> on our platform right now.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">How it works:</p><ol style="margin:0;padding-left:20px;"><li>Tell us about your business needs (2 minutes)</li><li>Our AI matches you with the top 3 Lawyers</li><li>Connect directly — no middleman</li></ol></div><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/find-lawyer.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Find My CPA Match</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras<br>Founder, CanadaLawyers</p></div>`;
+        const DEFAULT_SME_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{business_name}},</h2><p>Finding the right lawyer for your {{industry}} business shouldn't take <strong>585 days</strong>.</p><p>CanadaLawyers uses AI to match your business with pre-verified Lawyers in {{province}} in <strong>under 24 hours</strong>.</p><p>There are <strong>{{lawyer_count}} verified Lawyers</strong> on our platform right now.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">How it works:</p><ol style="margin:0;padding-left:20px;"><li>Tell us about your business needs (2 minutes)</li><li>Our AI matches you with the top 3 Lawyers</li><li>Connect directly — no middleman</li></ol></div><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/find-lawyer.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Find My Lawyer Match</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras<br>Founder, CanadaLawyers</p></div>`;
 
         function updateTemplateDefaults() {
             const type = document.getElementById('campType').value;
-            document.getElementById('campSubject').value = type === 'cpa' ? DEFAULT_CPA_SUBJECT : DEFAULT_SME_SUBJECT;
-            document.getElementById('campBody').value = type === 'cpa' ? DEFAULT_CPA_BODY : DEFAULT_SME_BODY;
+            document.getElementById('campSubject').value = type === 'cpa' ? DEFAULT_LAWYER_SUBJECT : DEFAULT_SME_SUBJECT;
+            document.getElementById('campBody').value = type === 'cpa' ? DEFAULT_LAWYER_BODY : DEFAULT_SME_BODY;
         }
 
         function showCreateForm() {
@@ -316,8 +316,8 @@
                 document.getElementById('statConverted').textContent = s.total_converted;
                 document.getElementById('statConvRate').textContent = `${pct(s.total_converted, s.total_sent)} conversion`;
                 document.getElementById('statBounce').textContent = pct(s.total_bounced, s.total_sent);
-                document.getElementById('statScrapedCpas').textContent = s.total_scraped_cpas;
-                document.getElementById('statCpasEmail').textContent = `${s.cpas_with_email} with email`;
+                document.getElementById('statScrapedCpas').textContent = s.total_scraped_lawyers;
+                document.getElementById('statCpasEmail').textContent = `${s.lawyers_with_email} with email`;
                 document.getElementById('statScrapedSmes').textContent = s.total_scraped_smes;
                 document.getElementById('statSmesEmail').textContent = `${s.smes_with_email} with email`;
                 document.getElementById('statActiveCampaigns').textContent = s.active_campaigns;

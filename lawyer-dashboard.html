@@ -232,7 +232,7 @@
         // Load stats
         async function loadStats() {
             try {
-                const res = await fetch(`${API}/api/cpa/my-stats`, { headers });
+                const res = await fetch(`${API}/api/lawyer/my-stats`, { headers });
                 const data = await res.json();
                 if (!data.success) return;
                 const s = data.stats;
@@ -253,7 +253,7 @@
         // Load leads table
         async function loadLeads() {
             try {
-                const res = await fetch(`${API}/api/cpa/my-matches`, { headers });
+                const res = await fetch(`${API}/api/lawyer/my-matches`, { headers });
                 const data = await res.json();
                 if (!data.success) return;
 
@@ -298,7 +298,7 @@
         // Load profile
         async function loadProfile() {
             try {
-                const res = await fetch(`${API}/api/cpa/my-profile`, { headers });
+                const res = await fetch(`${API}/api/lawyer/my-profile`, { headers });
                 const data = await res.json();
                 if (!data.success || !data.profile) return;
 
@@ -325,7 +325,7 @@
             const specializations = specsStr.split(',').map(s => s.trim()).filter(Boolean);
 
             try {
-                const res = await fetch(`${API}/api/cpa/my-profile`, {
+                const res = await fetch(`${API}/api/lawyer/my-profile`, {
                     method: 'PUT',
                     headers,
                     body: JSON.stringify({

@@ -152,7 +152,7 @@
         .match-score.good { color: #f59e0b; }
         .match-score.poor { color: #ef4444; }
         
-        .cpa-details {
+        .lawyer-details {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
@@ -202,8 +202,8 @@
 <body>
     <script>
         (function() {
-            const token = localStorage.getItem('cpa_token');
-            const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+            const token = localStorage.getItem('lawyer_token');
+            const user = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
             if (!token || user.userType !== 'admin') {
                 window.location.href = '/lawyer-login.html';
             }
@@ -212,7 +212,7 @@
     <div class="container">
         <div class="header">
             <h1>🧠 AI Matching Test</h1>
-            <p>Test your AI-powered CPA matching engine with real business submissions</p>
+            <p>Test your AI-powered Lawyer matching engine with real business submissions</p>
         </div>
         
         <div class="test-section">
@@ -367,13 +367,13 @@ const startTime = Date.now();
             document.getElementById('matchResults').innerHTML = `
                 <div class="loading">
                     <div class="spinner"></div>
-                    <p>AI analyzing business needs and finding perfect CPA matches...</p>
+                    <p>AI analyzing business needs and finding perfect Lawyer matches...</p>
                 </div>
             `;
             
             try {
                 // Call your AI matching endpoint
-                const response = await fetch('https://lawyer-intelligence-backend-production.up.railway.app/api/cpa/test-matching', {
+                const response = await fetch('https://lawyer-intelligence-backend-production.up.railway.app/api/lawyer/test-matching', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -456,7 +456,7 @@ const startTime = Date.now();
                                 </div>
                             </div>
                             
-                            <div class="cpa-details">
+                            <div class="lawyer-details">
                                 <div class="info-item">
                                     <div class="info-label">Specializations</div>
                                     <div class="info-value">${match.lawyer_profile.specializations.join(', ')}</div>
