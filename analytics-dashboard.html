@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XCF2Z737');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SME Intelligence Analytics Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 20px;
+            border: 1px solid #475569;
+        }
+
+        .dashboard-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dashboard-subtitle {
+            font-size: 1.125rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .data-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #991b1b;
+        }
+
+        .summary-number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .summary-label {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .analytics-card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #475569;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-placeholder {
+            text-align: center;
+            color: #64748b;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #374151;
+        }
+
+        .data-table th {
+            background: rgba(15, 23, 42, 0.5);
+            color: #f1f5f9;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .data-table td {
+            color: #e2e8f0;
+            font-size: 0.875rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #374151;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #dc2626, #f97316, #eab308, #22c55e);
+            transition: width 0.3s ease;
+        }
+
+        .insight-card {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            border: 1px solid #059669;
+        }
+
+        .insight-title {
+            font-weight: 700;
+            color: #d1fae5;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .insight-text {
+            color: #a7f3d0;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .trend-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .trend-down {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .trend-stable {
+            background: rgba(148, 163, 184, 0.2);
+            color: #94a3b8;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            background: #374151;
+            border: 1px solid #4b5563;
+            border-radius: 6px;
+            color: #f3f4f6;
+            font-size: 0.875rem;
+        }
+
+        .export-button {
+            background: linear-gradient(135dc dc2626 0%, #b91c1c 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .export-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 12px;
+            }
+            
+            .dashboard-title {
+                font-size: 2rem;
+            }
+            
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">🇨🇦 SME Intelligence Analytics</h1>
+            <p class="dashboard-subtitle">Real-time insights from Canada's most comprehensive business intelligence database</p>
+            
+            <div class="data-summary">
+                <div class="summary-card">
+                    <div class="summary-number" id="totalSubmissions">247</div>
+                    <div class="summary-label">Total Submissions</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-number" id="thisWeek">23</div>
+                    <div class="summary-label">This Week</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-number" id="provinces">8</div>
+                    <div class="summary-label">Provinces Covered</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-number" id="industries">12</div>
+                    <div class="summary-label">Industry Sectors</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <select class="filter-select" id="provinceFilter">
+                <option value="">All Provinces</option>
+                <option value="ON">Ontario</option>
+                <option value="BC">British Columbia</option>
+                <option value="AB">Alberta</option>
+                <option value="QC">Quebec</option>
+            </select>
+            
+            <select class="filter-select" id="industryFilter">
+                <option value="">All Industries</option>
+                <option value="technology">Technology</option>
+                <option value="retail">Retail</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="healthcare">Healthcare</option>
+            </select>
+            
+            <select class="filter-select" id="timeFilter">
+                <option value="7d">Last 7 Days</option>
+                <option value="30d">Last 30 Days</option>
+                <option value="90d">Last 90 Days</option>
+                <option value="all">All Time</option>
+            </select>
+            
+            <button class="export-button" onclick="exportData()">📊 Export Report</button>
+        </div>
+
+        <!-- Analytics Grid -->
+        <div class="analytics-grid">
+            <!-- Industry Distribution -->
+            <div class="analytics-card">
+                <h3 class="card-title">🏭 Industry Distribution</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Industry</th>
+                            <th>Count</th>
+                            <th>% of Total</th>
+                            <th>Trend</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Technology</td>
+                            <td>67</td>
+                            <td>27.1%</td>
+                            <td><span class="trend-indicator trend-up">↗ +15%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Retail</td>
+                            <td>42</td>
+                            <td>17.0%</td>
+                            <td><span class="trend-indicator trend-stable">→ 0%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Manufacturing</td>
+                            <td>38</td>
+                            <td>15.4%</td>
+                            <td><span class="trend-indicator trend-down">↘ -5%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Healthcare</td>
+                            <td>31</td>
+                            <td>12.6%</td>
+                            <td><span class="trend-indicator trend-up">↗ +8%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Construction</td>
+                            <td>25</td>
+                            <td>10.1%</td>
+                            <td><span class="trend-indicator trend-up">↗ +12%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="insight-card">
+                    <div class="insight-title">💡 Key Insight</div>
+                    <div class="insight-text">
+                        Technology sector dominance increasing 15% month-over-month. Construction showing strong growth (+12%) indicating economic recovery.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regional Analysis -->
+            <div class="analytics-card">
+                <h3 class="card-title">🗺️ Regional Distribution</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Province</th>
+                            <th>Submissions</th>
+                            <th>Top Challenge</th>
+                            <th>Peak Season</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ontario</td>
+                            <td>89 (36%)</td>
+                            <td>Cash Flow</td>
+                            <td>Q1 Tax Season</td>
+                        </tr>
+                        <tr>
+                            <td>British Columbia</td>
+                            <td>51 (21%)</td>
+                            <td>Tax Planning</td>
+                            <td>Q4 Year End</td>
+                        </tr>
+                        <tr>
+                            <td>Alberta</td>
+                            <td>43 (17%)</td>
+                            <td>Compliance</td>
+                            <td>Q1 Tax Season</td>
+                        </tr>
+                        <tr>
+                            <td>Quebec</td>
+                            <td>32 (13%)</td>
+                            <td>Regulatory</td>
+                            <td>Q2 Post-Tax</td>
+                        </tr>
+                        <tr>
+                            <td>Other</td>
+                            <td>32 (13%)</td>
+                            <td>Various</td>
+                            <td>Mixed</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="insight-card">
+                    <div class="insight-title">🎯 Regional Insight</div>
+                    <div class="insight-text">
+                        Ontario businesses struggle with cash flow management, while Quebec faces unique regulatory challenges. BC shows more strategic tax planning focus.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pain Points Analysis -->
+            <div class="analytics-card">
+                <h3 class="card-title">🎯 Common Pain Points</h3>
+                <div style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Cash Flow Management</span>
+                        <span>73 mentions</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Tax Planning & Filing</span>
+                        <span>64 mentions</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 74%"></div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Financial Reporting</span>
+                        <span>52 mentions</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Regulatory Compliance</span>
+                        <span>41 mentions</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 47%"></div>
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-title">⚡ Action Item</div>
+                    <div class="insight-text">
+                        85% of businesses cite cash flow as top concern. Prioritize CPAs with cash flow management expertise in matching algorithm.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seasonal Patterns -->
+            <div class="analytics-card">
+                <h3 class="card-title">📅 Seasonal Demand Patterns</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Season</th>
+                            <th>Demand %</th>
+                            <th>Primary Needs</th>
+                            <th>Business Types</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Q1 (Jan-Mar)</td>
+                            <td>42%</td>
+                            <td>Tax Filing, Year-end</td>
+                            <td>All Sectors</td>
+                        </tr>
+                        <tr>
+                            <td>Q4 (Oct-Dec)</td>
+                            <td>28%</td>
+                            <td>Planning, Budgeting</td>
+                            <td>Retail, B2B</td>
+                        </tr>
+                        <tr>
+                            <td>Q2 (Apr-Jun)</td>
+                            <td>18%</td>
+                            <td>Strategic Planning</td>
+                            <td>Growth Companies</td>
+                        </tr>
+                        <tr>
+                            <td>Q3 (Jul-Sep)</td>
+                            <td>12%</td>
+                            <td>Mid-year Review</td>
+                            <td>Established Firms</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="insight-card">
+                    <div class="insight-title">📈 Seasonal Strategy</div>
+                    <div class="insight-text">
+                        Q1 shows 42% demand spike. Prepare CPA capacity management and premium pricing during tax season. Q3 is ideal for CPA recruitment.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Adoption -->
+            <div class="analytics-card">
+                <h3 class="card-title">💻 Technology Stack Analysis</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Software</th>
+                            <th>Usage %</th>
+                            <th>Satisfaction</th>
+                            <th>Growth Stage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>QuickBooks</td>
+                            <td>47%</td>
+                            <td>High</td>
+                            <td>All Stages</td>
+                        </tr>
+                        <tr>
+                            <td>Excel/Spreadsheets</td>
+                            <td>23%</td>
+                            <td>Medium</td>
+                            <td>Early Stage</td>
+                        </tr>
+                        <tr>
+                            <td>Sage</td>
+                            <td>12%</td>
+                            <td>High</td>
+                            <td>Established</td>
+                        </tr>
+                        <tr>
+                            <td>Xero</td>
+                            <td>10%</td>
+                            <td>High</td>
+                            <td>Tech-forward</td>
+                        </tr>
+                        <tr>
+                            <td>None/Other</td>
+                            <td>8%</td>
+                            <td>Low</td>
+                            <td>Very Early</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="insight-card">
+                    <div class="insight-title">🔧 Tech Insight</div>
+                    <div class="insight-text">
+                        QuickBooks dominance (47%) suggests CPA QuickBooks expertise is crucial. 23% still use Excel, indicating digitization opportunity.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Growth Stage Analysis -->
+            <div class="analytics-card">
+                <h3 class="card-title">🚀 Business Growth Stages</h3>
+                <div class="chart-container">
+                    <div style="width: 100%;">
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Scaling Operations</span>
+                                <span>34%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 34%"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Established & Stable</span>
+                                <span>28%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 28%"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Rapid Growth</span>
+                                <span>22%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 22%"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Early Revenue</span>
+                                <span>16%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 16%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insight-card">
+                    <div class="insight-title">📊 Growth Insight</div>
+                    <div class="insight-text">
+                        34% of businesses are scaling - prime market for premium CPA services. Focus recruitment on CPAs experienced with growth-stage challenges.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-time Intelligence Feed -->
+        <div class="analytics-card" style="grid-column: 1 / -1;">
+            <h3 class="card-title">🔄 Live Intelligence Feed</h3>
+            <div id="intelligenceFeed">
+                <div style="padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid #3b82f6;">
+                    <span style="color: #94a3b8; font-size: 0.75rem;">2 minutes ago</span><br>
+                    <span style="color: #e2e8f0;">Technology company in Toronto submitted: Primary challenge - Cash flow management during rapid scaling</span>
+                </div>
+                <div style="padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid #10b981;">
+                    <span style="color: #94a3b8; font-size: 0.75rem;">8 minutes ago</span><br>
+                    <span style="color: #e2e8f0;">Healthcare practice in Vancouver: Seeking compliance expertise for regulatory changes</span>
+                </div>
+                <div style="padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid #f59e0b;">
+                    <span style="color: #94a3b8; font-size: 0.75rem;">15 minutes ago</span><br>
+                    <span style="color: #e2e8f0;">Manufacturing business in Calgary: Year-end preparation needs for Q4 planning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate real-time updates
+        function updateMetrics() {
+            const submissions = document.getElementById('totalSubmissions');
+            const thisWeek = document.getElementById('thisWeek');
+            
+            // Simulate data updates
+            let currentTotal = parseInt(submissions.textContent);
+            let currentWeek = parseInt(thisWeek.textContent);
+            
+            // Random small increases
+            if (Math.random() > 0.8) {
+                currentTotal += 1;
+                currentWeek += Math.random() > 0.5 ? 1 : 0;
+                
+                submissions.textContent = currentTotal;
+                thisWeek.textContent = currentWeek;
+                
+                // Add visual feedback
+                submissions.style.color = '#22c55e';
+                setTimeout(() => submissions.style.color = 'white', 1000);
+            }
+        }
+
+        // Update intelligence feed
+        function addIntelligenceFeedItem() {
+            const feed = document.getElementById('intelligenceFeed');
+            const items = [
+                "Retail business in Montreal: Seeking bilingual CPA for Quebec tax compliance",
+                "Construction company in Edmonton: Project-based accounting needs for new contracts",
+                "Tech startup in Waterloo: Preparing for Series A funding round - need audit-ready books",
+                "Restaurant chain in Halifax: Multi-location accounting consolidation challenges"
+            ];
+            
+            const item = items[Math.floor(Math.random() * items.length)];
+            const newItem = document.createElement('div');
+            newItem.style.cssText = 'padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid #dc2626; opacity: 0; transition: opacity 0.5s;';
+            newItem.innerHTML = `
+                <span style="color: #94a3b8; font-size: 0.75rem;">Just now</span><br>
+                <span style="color: #e2e8f0;">${item}</span>
+            `;
+            
+            feed.insertBefore(newItem, feed.firstChild);
+            setTimeout(() => newItem.style.opacity = '1', 100);
+            
+            // Remove old items (keep only 5)
+            while (feed.children.length > 5) {
+                feed.removeChild(feed.lastChild);
+            }
+        }
+
+        function exportData() {
+            alert('📊 Exporting SME Intelligence Report...\n\nThis would generate a comprehensive PDF report with:\n• Industry trend analysis\n• Regional business patterns\n• Seasonal demand forecasts\n• Technology adoption insights\n• Growth stage distribution\n• Market opportunities');
+        }
+
+        // Start real-time updates
+        setInterval(updateMetrics, 30000); // Update every 30 seconds
+        setInterval(addIntelligenceFeedItem, 60000); // Add feed item every minute
+        
+        // Initial load simulation
+        setTimeout(() => {
+            addIntelligenceFeedItem();
+        }, 5000);
+    </script>
+</body>
+</html>

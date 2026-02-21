@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XCF2Z737');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Confirmed | CanadaAccountants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-primary: #dc2626;
+            --brand-secondary: #1e40af;
+            --brand-accent: #059669;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+        }
+        .checkmark-circle {
+            animation: scaleIn 0.5s ease-out;
+        }
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b-4 border-red-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-maple-leaf text-2xl text-red-600 mr-2"></i>
+                    <span class="font-bold text-xl text-gray-900">CanadaAccountants</span>
+                    <span class="text-red-600 font-bold text-xl">.app</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-2xl mx-auto px-4 py-20 text-center">
+        <!-- Success Icon -->
+        <div class="checkmark-circle inline-flex items-center justify-center w-24 h-24 bg-green-100 rounded-full mb-8">
+            <i class="fas fa-check text-green-600 text-5xl"></i>
+        </div>
+
+        <div class="fade-in">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Subscription Confirmed!</h1>
+            <p class="text-xl text-gray-600 mb-8">
+                Welcome to the CanadaAccountants network. Your algorithm placement is now active.
+            </p>
+
+            <!-- Subscription Details (populated by JS) -->
+            <div id="subscriptionDetails" class="bg-white rounded-2xl shadow-lg p-8 mb-8 text-left" style="display: none;">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Your Subscription</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Plan:</span>
+                        <span id="planName" class="font-semibold text-gray-900">-</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Status:</span>
+                        <span class="font-semibold text-green-600">Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading state -->
+            <div id="loadingState" class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600 mx-auto mb-4"></div>
+                <p class="text-gray-600">Verifying your subscription...</p>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-8 mb-8 text-left">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">What Happens Next</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">1</div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Profile Activation</div>
+                            <div class="text-gray-600 text-sm">Your CPA profile is now active and visible to clients seeking accountants.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">2</div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Algorithm Placement</div>
+                            <div class="text-gray-600 text-sm">Your search position is set based on your tier. Higher tiers get priority placement.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">3</div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Lead Notifications</div>
+                            <div class="text-gray-600 text-sm">You'll receive email notifications when clients are matched to your profile.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="cpa-dashboard.html" class="bg-red-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-red-700 transition-colors inline-flex items-center justify-center">
+                    <i class="fas fa-tachometer-alt mr-2"></i>
+                    Go to Dashboard
+                </a>
+                <a href="tel:6479567290" class="bg-gray-100 text-gray-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-200 transition-colors inline-flex items-center justify-center">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Arthur: (647) 956-7290
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'https://canadaaccountants-backend-production-1d8f.up.railway.app';
+        const params = new URLSearchParams(window.location.search);
+        const sessionId = params.get('session_id');
+
+        // Try to verify subscription status
+        async function checkSubscription() {
+            // Extract email from localStorage or try to get it from session
+            const email = localStorage.getItem('ca_checkout_email');
+            if (!email) {
+                // Hide loading, just show generic success
+                document.getElementById('loadingState').style.display = 'none';
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/stripe/subscription-status?email=${encodeURIComponent(email)}`);
+                const data = await res.json();
+
+                document.getElementById('loadingState').style.display = 'none';
+
+                if (data.subscription) {
+                    const tierNames = {
+                        associate: 'Basic Position ($199/mo)',
+                        professional: 'Premium Position ($299/mo)',
+                        enterprise: 'Founding 500 ($399/mo)'
+                    };
+                    document.getElementById('planName').textContent = tierNames[data.subscription.tier] || data.subscription.tier;
+                    document.getElementById('subscriptionDetails').style.display = 'block';
+                }
+            } catch (err) {
+                document.getElementById('loadingState').style.display = 'none';
+                console.error('Status check error:', err);
+            }
+        }
+
+        // Small delay to let webhook process
+        setTimeout(checkSubscription, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XCF2Z737');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outreach Dashboard - CanadaAccountants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Auth gate -->
+    <script>
+        (function() {
+            const token = localStorage.getItem('cpa_token');
+            const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+            if (!token || user.userType !== 'admin') {
+                window.location.href = '/cpa-login.html';
+            }
+        })();
+    </script>
+
+    <!-- Top nav -->
+    <nav class="bg-gray-800 border-b border-gray-700 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+            <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">CanadaAccountants Admin</span>
+            <a href="/admin-dashboard.html" class="text-sm text-gray-400 hover:text-white ml-4">Dashboard</a>
+            <a href="/admin-outreach.html" class="text-sm text-white ml-2 border-b border-indigo-400">Outreach</a>
+            <a href="/admin-test-matching.html" class="text-sm text-gray-400 hover:text-white ml-2">AI Matching Test</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <span id="adminEmail" class="text-sm text-gray-400"></span>
+            <button onclick="logout()" class="text-sm bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded">Logout</button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+        <!-- Outreach Stats Cards -->
+        <section class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Total Sent</p>
+                <p id="statSent" class="text-3xl font-bold mt-1">--</p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Opened</p>
+                <p id="statOpened" class="text-3xl font-bold mt-1 text-blue-400">--</p>
+                <p id="statOpenRate" class="text-xs text-gray-500 mt-1"></p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Clicked</p>
+                <p id="statClicked" class="text-3xl font-bold mt-1 text-green-400">--</p>
+                <p id="statClickRate" class="text-xs text-gray-500 mt-1"></p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Converted</p>
+                <p id="statConverted" class="text-3xl font-bold mt-1 text-purple-400">--</p>
+                <p id="statConvRate" class="text-xs text-gray-500 mt-1"></p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Bounce Rate</p>
+                <p id="statBounce" class="text-3xl font-bold mt-1 text-red-400">--</p>
+            </div>
+        </section>
+
+        <!-- Scraped Data Stats -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Scraped CPAs</p>
+                <p id="statScrapedCpas" class="text-2xl font-bold mt-1">--</p>
+                <p id="statCpasEmail" class="text-xs text-green-400 mt-1"></p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Scraped SMEs</p>
+                <p id="statScrapedSmes" class="text-2xl font-bold mt-1">--</p>
+                <p id="statSmesEmail" class="text-xs text-green-400 mt-1"></p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Active Campaigns</p>
+                <p id="statActiveCampaigns" class="text-2xl font-bold mt-1">--</p>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
+                <p class="text-gray-400 text-sm">Unsubscribes</p>
+                <p id="statUnsubscribes" class="text-2xl font-bold mt-1">--</p>
+            </div>
+        </section>
+
+        <!-- Campaign Management -->
+        <section class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-semibold">Campaigns</h2>
+                <button onclick="showCreateForm()" class="text-sm bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded">+ New Campaign</button>
+            </div>
+
+            <!-- Create Campaign Form (hidden by default) -->
+            <div id="createForm" class="hidden bg-gray-800 rounded-xl border border-gray-700 p-6 mb-4">
+                <h3 class="text-lg font-semibold mb-4">Create New Campaign</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Campaign Name</label>
+                        <input id="campName" type="text" placeholder="e.g. BC CPA Outreach Q1" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Type</label>
+                        <select id="campType" onchange="updateTemplateDefaults()" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
+                            <option value="cpa">CPA Acquisition</option>
+                            <option value="sme">SME Acquisition</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Target Provinces (comma-separated)</label>
+                        <input id="campProvinces" type="text" placeholder="e.g. BC, ON, QC" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-400 mb-1">Daily Limit</label>
+                        <input id="campDailyLimit" type="number" value="50" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm text-gray-400 mb-1">Subject Template</label>
+                        <input id="campSubject" type="text" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm text-gray-400 mb-1">Body Template (HTML)</label>
+                        <textarea id="campBody" rows="8" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm font-mono"></textarea>
+                        <p class="text-xs text-gray-500 mt-1">Variables: {{cpa_name}}, {{city}}, {{province}}, {{sme_count}}, {{active_requests}}, {{business_name}}, {{industry}}, {{cpa_count}}, {{platform_url}}</p>
+                    </div>
+                </div>
+                <div class="flex gap-3 mt-4">
+                    <button onclick="createCampaign()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm">Create Campaign</button>
+                    <button onclick="hideCreateForm()" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded text-sm">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Campaign list -->
+            <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="text-gray-400 border-b border-gray-700">
+                        <tr>
+                            <th class="text-left px-4 py-3">Name</th>
+                            <th class="text-left px-4 py-3">Type</th>
+                            <th class="text-left px-4 py-3">Status</th>
+                            <th class="text-left px-4 py-3">Sent</th>
+                            <th class="text-left px-4 py-3">Opened</th>
+                            <th class="text-left px-4 py-3">Clicked</th>
+                            <th class="text-left px-4 py-3">Converted</th>
+                            <th class="text-left px-4 py-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="campaignTableBody" class="divide-y divide-gray-700"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Scraped Data Browser -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Scraped Data Browser</h2>
+            <div class="flex gap-4 mb-4">
+                <button onclick="showTab('cpas')" id="tabCpas" class="px-4 py-2 rounded text-sm bg-indigo-600">Scraped CPAs</button>
+                <button onclick="showTab('smes')" id="tabSmes" class="px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600">Scraped SMEs</button>
+            </div>
+
+            <!-- CPAs Tab -->
+            <div id="cpasTab">
+                <div class="flex gap-3 mb-3">
+                    <select id="cpaProvFilter" onchange="loadScrapedCPAs()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                        <option value="">All Provinces</option>
+                        <option value="BC">BC</option><option value="AB">AB</option><option value="SK">SK</option>
+                        <option value="MB">MB</option><option value="ON">ON</option><option value="QC">QC</option>
+                        <option value="NS">NS</option><option value="NB">NB</option><option value="PE">PE</option><option value="NL">NL</option>
+                    </select>
+                    <input id="cpaCityFilter" type="text" placeholder="Filter by city..." onchange="loadScrapedCPAs()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                </div>
+                <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="text-gray-400 border-b border-gray-700">
+                            <tr>
+                                <th class="text-left px-4 py-3">Name</th>
+                                <th class="text-left px-4 py-3">Province</th>
+                                <th class="text-left px-4 py-3">City</th>
+                                <th class="text-left px-4 py-3">Firm</th>
+                                <th class="text-left px-4 py-3">Email</th>
+                                <th class="text-left px-4 py-3">Source</th>
+                                <th class="text-left px-4 py-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scrapedCpasBody" class="divide-y divide-gray-700"></tbody>
+                    </table>
+                </div>
+                <div id="cpaPag" class="flex items-center justify-between mt-3 text-sm text-gray-400"></div>
+            </div>
+
+            <!-- SMEs Tab -->
+            <div id="smesTab" class="hidden">
+                <div class="flex gap-3 mb-3">
+                    <select id="smeProvFilter" onchange="loadScrapedSMEs()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                        <option value="">All Provinces</option>
+                        <option value="BC">BC</option><option value="AB">AB</option><option value="SK">SK</option>
+                        <option value="MB">MB</option><option value="ON">ON</option><option value="QC">QC</option>
+                        <option value="NS">NS</option><option value="NB">NB</option><option value="PE">PE</option><option value="NL">NL</option>
+                    </select>
+                    <input id="smeIndustryFilter" type="text" placeholder="Filter by industry..." onchange="loadScrapedSMEs()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                </div>
+                <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="text-gray-400 border-b border-gray-700">
+                            <tr>
+                                <th class="text-left px-4 py-3">Business Name</th>
+                                <th class="text-left px-4 py-3">Province</th>
+                                <th class="text-left px-4 py-3">Industry</th>
+                                <th class="text-left px-4 py-3">NAICS</th>
+                                <th class="text-left px-4 py-3">Email</th>
+                                <th class="text-left px-4 py-3">Source</th>
+                                <th class="text-left px-4 py-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scrapedSmesBody" class="divide-y divide-gray-700"></tbody>
+                    </table>
+                </div>
+                <div id="smePag" class="flex items-center justify-between mt-3 text-sm text-gray-400"></div>
+            </div>
+        </section>
+
+        <!-- Scrape Job Status -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Recent Scrape Jobs</h2>
+            <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="text-gray-400 border-b border-gray-700">
+                        <tr>
+                            <th class="text-left px-4 py-3">Source</th>
+                            <th class="text-left px-4 py-3">Status</th>
+                            <th class="text-left px-4 py-3">Found</th>
+                            <th class="text-left px-4 py-3">Inserted</th>
+                            <th class="text-left px-4 py-3">Skipped</th>
+                            <th class="text-left px-4 py-3">Started</th>
+                            <th class="text-left px-4 py-3">Completed</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scrapeJobsBody" class="divide-y divide-gray-700"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const API = 'https://canadaaccountants-backend-production-1d8f.up.railway.app';
+        const INTEL_API = 'https://sme-intelligence-backend-production-5185.up.railway.app';
+        const token = localStorage.getItem('cpa_token');
+        const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+
+        const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+        document.getElementById('adminEmail').textContent = user.email || '';
+
+        function logout() {
+            localStorage.removeItem('cpa_token');
+            localStorage.removeItem('cpa_user');
+            window.location.href = '/cpa-login.html';
+        }
+
+        function fmtDate(d) {
+            if (!d) return '--';
+            return new Date(d).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function badge(text, color) {
+            const colors = {
+                green: 'bg-green-900 text-green-300',
+                red: 'bg-red-900 text-red-300',
+                yellow: 'bg-yellow-900 text-yellow-300',
+                blue: 'bg-blue-900 text-blue-300',
+                purple: 'bg-purple-900 text-purple-300',
+                gray: 'bg-gray-700 text-gray-300',
+            };
+            return `<span class="px-2 py-0.5 rounded-full text-xs ${colors[color] || colors.gray}">${text}</span>`;
+        }
+
+        function pct(n, d) { return d > 0 ? ((n / d) * 100).toFixed(1) + '%' : '0%'; }
+
+        // ---- Default templates ----
+        const DEFAULT_CPA_SUBJECT = '{{sme_count}} businesses in {{city}} need a CPA like you';
+        const DEFAULT_CPA_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{cpa_name}},</h2><p>Did you know there are <strong>{{sme_count}} businesses</strong> in {{province}} actively looking for CPA services?</p><p>Right now, <strong>{{active_requests}} business owners</strong> on CanadaAccountants have submitted requests for help with tax planning, bookkeeping, and advisory services.</p><p>The average Canadian SME spends <strong>585 days</strong> searching for the right accountant. We eliminate that friction completely.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">Why CPAs join CanadaAccountants:</p><ul style="margin:0;padding-left:20px;"><li>AI-matched leads based on your specialization</li><li>Serve clients anywhere in Canada — remote-friendly matching</li><li>Zero marketing spend — clients come to you</li><li>Verified professional profile with trust badge</li><li>Free to join during launch</li></ul></div><p style="font-size:14px;color:#555;"><strong>Work from anywhere:</strong> Whether you prefer in-person meetings in {{city}} or serving clients remotely across Canada, our AI matching considers your work preferences to connect you with the right clients.</p><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/join-as-cpa.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Claim Your Free Profile</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras, CPA, CF<br>Founder, CanadaAccountants</p></div>`;
+
+        const DEFAULT_SME_SUBJECT = 'Stop wasting 585 days finding the right CPA';
+        const DEFAULT_SME_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{business_name}},</h2><p>Finding the right CPA for your {{industry}} business shouldn't take <strong>585 days</strong>.</p><p>CanadaAccountants uses AI to match your business with pre-verified CPAs in {{province}} in <strong>under 24 hours</strong>.</p><p>There are <strong>{{cpa_count}} verified CPAs</strong> on our platform right now.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">How it works:</p><ol style="margin:0;padding-left:20px;"><li>Tell us about your business needs (2 minutes)</li><li>Our AI matches you with the top 3 CPAs</li><li>Connect directly — no middleman</li></ol></div><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/find-cpa.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Find My CPA Match</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras, CPA, CF<br>Founder, CanadaAccountants</p></div>`;
+
+        function updateTemplateDefaults() {
+            const type = document.getElementById('campType').value;
+            document.getElementById('campSubject').value = type === 'cpa' ? DEFAULT_CPA_SUBJECT : DEFAULT_SME_SUBJECT;
+            document.getElementById('campBody').value = type === 'cpa' ? DEFAULT_CPA_BODY : DEFAULT_SME_BODY;
+        }
+
+        function showCreateForm() {
+            document.getElementById('createForm').classList.remove('hidden');
+            updateTemplateDefaults();
+        }
+        function hideCreateForm() { document.getElementById('createForm').classList.add('hidden'); }
+
+        // ---- Load stats ----
+        async function loadStats() {
+            try {
+                const res = await fetch(`${API}/api/admin/outreach/stats`, { headers });
+                const data = await res.json();
+                if (!data.success) return;
+                const s = data.stats;
+
+                document.getElementById('statSent').textContent = s.total_sent;
+                document.getElementById('statOpened').textContent = s.total_opened;
+                document.getElementById('statOpenRate').textContent = `${pct(s.total_opened, s.total_delivered)} open rate`;
+                document.getElementById('statClicked').textContent = s.total_clicked;
+                document.getElementById('statClickRate').textContent = `${pct(s.total_clicked, s.total_delivered)} click rate`;
+                document.getElementById('statConverted').textContent = s.total_converted;
+                document.getElementById('statConvRate').textContent = `${pct(s.total_converted, s.total_sent)} conversion`;
+                document.getElementById('statBounce').textContent = pct(s.total_bounced, s.total_sent);
+                document.getElementById('statScrapedCpas').textContent = s.total_scraped_cpas;
+                document.getElementById('statCpasEmail').textContent = `${s.cpas_with_email} with email`;
+                document.getElementById('statScrapedSmes').textContent = s.total_scraped_smes;
+                document.getElementById('statSmesEmail').textContent = `${s.smes_with_email} with email`;
+                document.getElementById('statActiveCampaigns').textContent = s.active_campaigns;
+                document.getElementById('statUnsubscribes').textContent = s.total_unsubscribes;
+            } catch (e) { console.error('Stats error:', e); }
+        }
+
+        // ---- Campaigns ----
+        async function loadCampaigns() {
+            try {
+                const res = await fetch(`${API}/api/admin/outreach/campaigns`, { headers });
+                const data = await res.json();
+                if (!data.success) return;
+
+                const tbody = document.getElementById('campaignTableBody');
+                if (data.campaigns.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="8" class="px-4 py-6 text-center text-gray-500">No campaigns yet</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = data.campaigns.map(c => {
+                    const statusColor = { draft: 'gray', active: 'green', paused: 'yellow', completed: 'blue' };
+                    const typeColor = { cpa: 'purple', sme: 'blue' };
+                    return `
+                        <tr class="hover:bg-gray-750">
+                            <td class="px-4 py-3 font-medium">${c.name}</td>
+                            <td class="px-4 py-3">${badge(c.type.toUpperCase(), typeColor[c.type])}</td>
+                            <td class="px-4 py-3">${badge(c.status, statusColor[c.status])}</td>
+                            <td class="px-4 py-3">${c.total_sent}</td>
+                            <td class="px-4 py-3">${c.total_opened} <span class="text-gray-500 text-xs">(${pct(c.total_opened, c.total_delivered)})</span></td>
+                            <td class="px-4 py-3">${c.total_clicked}</td>
+                            <td class="px-4 py-3">${c.total_converted}</td>
+                            <td class="px-4 py-3">
+                                <div class="flex gap-1">
+                                    ${c.status === 'draft' ? `<button onclick="launchCampaign(${c.id})" class="text-xs px-2 py-1 rounded bg-green-700 hover:bg-green-600">Launch</button>` : ''}
+                                    ${c.status === 'active' ? `<button onclick="pauseCampaign(${c.id})" class="text-xs px-2 py-1 rounded bg-yellow-700 hover:bg-yellow-600">Pause</button>` : ''}
+                                    ${c.status === 'paused' ? `<button onclick="launchCampaign(${c.id})" class="text-xs px-2 py-1 rounded bg-green-700 hover:bg-green-600">Resume</button>` : ''}
+                                    <button onclick="previewCampaign(${c.id})" class="text-xs px-2 py-1 rounded bg-gray-600 hover:bg-gray-500">Preview</button>
+                                    <button onclick="testSendCampaign(${c.id})" class="text-xs px-2 py-1 rounded bg-indigo-700 hover:bg-indigo-600">Test</button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (e) { console.error('Campaigns error:', e); }
+        }
+
+        async function createCampaign() {
+            const provinces = document.getElementById('campProvinces').value.split(',').map(p => p.trim()).filter(Boolean);
+            try {
+                const res = await fetch(`${API}/api/admin/outreach/campaigns`, {
+                    method: 'POST', headers,
+                    body: JSON.stringify({
+                        name: document.getElementById('campName').value,
+                        type: document.getElementById('campType').value,
+                        subjectTemplate: document.getElementById('campSubject').value,
+                        bodyTemplate: document.getElementById('campBody').value,
+                        targetProvinces: provinces.length > 0 ? provinces : null,
+                        dailyLimit: parseInt(document.getElementById('campDailyLimit').value) || 50,
+                    }),
+                });
+                const data = await res.json();
+                if (data.success) {
+                    hideCreateForm();
+                    loadCampaigns();
+                    loadStats();
+                } else {
+                    alert('Error: ' + (data.error || 'Unknown'));
+                }
+            } catch (e) { alert('Failed: ' + e.message); }
+        }
+
+        async function launchCampaign(id) {
+            if (!confirm('Launch this campaign? Emails will start sending.')) return;
+            try {
+                const res = await fetch(`${API}/api/admin/outreach/campaigns/${id}/launch`, { method: 'POST', headers });
+                const data = await res.json();
+                alert(data.success ? `Campaign launched! ${data.queued} emails queued.` : 'Error: ' + data.error);
+                loadCampaigns();
+                loadStats();
+            } catch (e) { alert('Failed: ' + e.message); }
+        }
+
+        async function pauseCampaign(id) {
+            try {
+                await fetch(`${API}/api/admin/outreach/campaigns/${id}/pause`, { method: 'POST', headers });
+                loadCampaigns();
+            } catch (e) { alert('Failed: ' + e.message); }
+        }
+
+        async function previewCampaign(id) {
+            try {
+                const res = await fetch(`${API}/api/admin/outreach/campaigns/${id}/preview`, { method: 'POST', headers });
+                const data = await res.json();
+                if (data.success) {
+                    const w = window.open('', '_blank', 'width=700,height=600');
+                    w.document.write(`<html><head><title>Preview: ${data.preview.subject}</title></head><body><h3>${data.preview.subject}</h3><hr>${data.preview.body}</body></html>`);
+                }
+            } catch (e) { alert('Failed: ' + e.message); }
+        }
+
+        async function testSendCampaign(id) {
+            const email = prompt('Send test email to:', user.email);
+            if (!email) return;
+            try {
+                const res = await fetch(`${API}/api/admin/outreach/campaigns/${id}/test-send`, {
+                    method: 'POST', headers,
+                    body: JSON.stringify({ email }),
+                });
+                const data = await res.json();
+                alert(data.success ? `Test email sent to ${data.sentTo}` : 'Error: ' + data.error);
+            } catch (e) { alert('Failed: ' + e.message); }
+        }
+
+        // ---- Tabs ----
+        function showTab(tab) {
+            document.getElementById('cpasTab').classList.toggle('hidden', tab !== 'cpas');
+            document.getElementById('smesTab').classList.toggle('hidden', tab !== 'smes');
+            document.getElementById('tabCpas').className = tab === 'cpas' ? 'px-4 py-2 rounded text-sm bg-indigo-600' : 'px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600';
+            document.getElementById('tabSmes').className = tab === 'smes' ? 'px-4 py-2 rounded text-sm bg-indigo-600' : 'px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600';
+        }
+
+        // ---- Scraped CPAs ----
+        let cpaPage = 1;
+        async function loadScrapedCPAs(page) {
+            if (page) cpaPage = page;
+            const prov = document.getElementById('cpaProvFilter').value;
+            const city = document.getElementById('cpaCityFilter').value;
+            const qs = `page=${cpaPage}&limit=20${prov ? `&province=${prov}` : ''}${city ? `&city=${city}` : ''}`;
+
+            try {
+                const res = await fetch(`${API}/api/admin/outreach/scraped-cpas?${qs}`, { headers });
+                const data = await res.json();
+                if (!data.success) return;
+
+                const tbody = document.getElementById('scrapedCpasBody');
+                if (data.cpas.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="7" class="px-4 py-6 text-center text-gray-500">No scraped CPAs found</td></tr>';
+                } else {
+                    tbody.innerHTML = data.cpas.map(c => `
+                        <tr class="hover:bg-gray-750">
+                            <td class="px-4 py-3">${c.full_name || `${c.first_name || ''} ${c.last_name || ''}`.trim()}</td>
+                            <td class="px-4 py-3">${c.province || '--'}</td>
+                            <td class="px-4 py-3">${c.city || '--'}</td>
+                            <td class="px-4 py-3 text-gray-400">${c.firm_name || '--'}</td>
+                            <td class="px-4 py-3">${c.enriched_email || c.email || badge('No email', 'gray')}</td>
+                            <td class="px-4 py-3">${badge(c.source, 'blue')}</td>
+                            <td class="px-4 py-3">${badge(c.status, c.status === 'enriched' ? 'green' : c.status === 'contacted' ? 'blue' : 'gray')}</td>
+                        </tr>
+                    `).join('');
+                }
+
+                const totalPages = Math.ceil(data.total / 20);
+                document.getElementById('cpaPag').innerHTML = `
+                    <span>Page ${cpaPage} of ${totalPages} (${data.total} total)</span>
+                    <div class="flex gap-2">
+                        <button onclick="loadScrapedCPAs(${cpaPage - 1})" ${cpaPage <= 1 ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>&larr; Prev</button>
+                        <button onclick="loadScrapedCPAs(${cpaPage + 1})" ${cpaPage >= totalPages ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>Next &rarr;</button>
+                    </div>
+                `;
+            } catch (e) { console.error('Scraped CPAs error:', e); }
+        }
+
+        // ---- Scraped SMEs ----
+        let smePage = 1;
+        async function loadScrapedSMEs(page) {
+            if (page) smePage = page;
+            const prov = document.getElementById('smeProvFilter').value;
+            const industry = document.getElementById('smeIndustryFilter').value;
+            const qs = `page=${smePage}&limit=20${prov ? `&province=${prov}` : ''}${industry ? `&industry=${industry}` : ''}`;
+
+            try {
+                const res = await fetch(`${API}/api/admin/outreach/scraped-smes?${qs}`, { headers });
+                const data = await res.json();
+                if (!data.success) return;
+
+                const tbody = document.getElementById('scrapedSmesBody');
+                if (data.smes.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="7" class="px-4 py-6 text-center text-gray-500">No scraped SMEs found</td></tr>';
+                } else {
+                    tbody.innerHTML = data.smes.map(s => `
+                        <tr class="hover:bg-gray-750">
+                            <td class="px-4 py-3">${s.business_name || '--'}</td>
+                            <td class="px-4 py-3">${s.province || '--'}</td>
+                            <td class="px-4 py-3">${s.industry || '--'}</td>
+                            <td class="px-4 py-3 text-gray-400">${s.naics_code || '--'}</td>
+                            <td class="px-4 py-3">${s.contact_email || badge('No email', 'gray')}</td>
+                            <td class="px-4 py-3">${badge(s.source, 'blue')}</td>
+                            <td class="px-4 py-3">${badge(s.status, s.status === 'contacted' ? 'blue' : 'gray')}</td>
+                        </tr>
+                    `).join('');
+                }
+
+                const totalPages = Math.ceil(data.total / 20);
+                document.getElementById('smePag').innerHTML = `
+                    <span>Page ${smePage} of ${totalPages} (${data.total} total)</span>
+                    <div class="flex gap-2">
+                        <button onclick="loadScrapedSMEs(${smePage - 1})" ${smePage <= 1 ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>&larr; Prev</button>
+                        <button onclick="loadScrapedSMEs(${smePage + 1})" ${smePage >= totalPages ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>Next &rarr;</button>
+                    </div>
+                `;
+            } catch (e) { console.error('Scraped SMEs error:', e); }
+        }
+
+        // ---- Scrape Jobs ----
+        async function loadScrapeJobs() {
+            try {
+                const res = await fetch(`${INTEL_API}/api/scrape/status`);
+                const data = await res.json();
+                if (data.status !== 'success') return;
+
+                const tbody = document.getElementById('scrapeJobsBody');
+                if (!data.jobs || data.jobs.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="7" class="px-4 py-6 text-center text-gray-500">No scrape jobs yet</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = data.jobs.map(j => {
+                    const statusColor = { running: 'yellow', completed: 'green', failed: 'red', partial: 'blue' };
+                    return `
+                        <tr class="hover:bg-gray-750">
+                            <td class="px-4 py-3 font-medium">${j.source}</td>
+                            <td class="px-4 py-3">${badge(j.status, statusColor[j.status])}</td>
+                            <td class="px-4 py-3">${j.records_found || 0}</td>
+                            <td class="px-4 py-3 text-green-400">${j.records_inserted || 0}</td>
+                            <td class="px-4 py-3 text-gray-500">${j.records_skipped || 0}</td>
+                            <td class="px-4 py-3 text-gray-400">${fmtDate(j.started_at)}</td>
+                            <td class="px-4 py-3 text-gray-400">${fmtDate(j.completed_at)}</td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (e) {
+                console.error('Scrape jobs error:', e);
+                document.getElementById('scrapeJobsBody').innerHTML = '<tr><td colspan="7" class="px-4 py-6 text-center text-gray-500">Unable to connect to intelligence backend</td></tr>';
+            }
+        }
+
+        // ---- Init ----
+        loadStats();
+        loadCampaigns();
+        loadScrapedCPAs();
+        loadScrapedSMEs();
+        loadScrapeJobs();
+    </script>
+</body>
+</html>

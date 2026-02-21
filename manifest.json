@@ -1,0 +1,77 @@
+{
+  "name": "CanadaAccountants - AI CPA Matching",
+  "short_name": "CanadaAccountants",
+  "description": "AI-powered platform connecting Canadian CPAs with businesses. Provincial code compliant matching.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#667eea",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en-CA",
+  "categories": ["business", "finance", "productivity"],
+  
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Find a CPA",
+      "short_name": "Find CPA",
+      "description": "Search for qualified CPAs",
+      "url": "/find-cpa-5.html",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Join as CPA",
+      "short_name": "Join",
+      "description": "Register as a CPA",
+      "url": "/cpa-onboarding-6.html",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Pricing",
+      "short_name": "Pricing",
+      "description": "View subscription plans",
+      "url": "/pricing-6.html",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "CPA Login",
+      "short_name": "Login",
+      "description": "Access CPA dashboard",
+      "url": "/cpa-login.html",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://canadaaccountants.app/manifest.json"
+    }
+  ],
+  "prefer_related_applications": false,
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "handle_links": "preferred",
+  
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XCF2Z737');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPA Revenue Calculator - Discover Your Earning Potential</title>
+    <meta name="description" content="Calculate your potential revenue as a CPA on CanadaAccountants. See projected earnings based on your tier, specialization, and client capacity.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://canadaaccountants.app/cpa-revenue-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://canadaaccountants.app/cpa-revenue-calculator.html">
+    <meta property="og:title" content="CPA Revenue Calculator | CanadaAccountants">
+    <meta property="og:description" content="Calculate your potential revenue as a CPA on CanadaAccountants. See projected earnings based on your tier, specialization, and client capacity.">
+    <meta property="og:image" content="https://canadaaccountants.app/icon-512.png">
+    <meta property="og:site_name" content="CanadaAccountants">
+    <meta property="og:locale" content="en_CA">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CPA Revenue Calculator | CanadaAccountants">
+    <meta name="twitter:description" content="Calculate your potential revenue as a CPA on CanadaAccountants. See projected earnings based on your tier, specialization, and client capacity.">
+    <meta name="twitter:image" content="https://canadaaccountants.app/icon-512.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 8px rgba(251, 191, 36, 0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .calculator-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 50px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fbbf24;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #fbbf24;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group select option {
+            background: #1e293b;
+            color: white;
+        }
+
+        .slider-container {
+            margin: 20px 0;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #fbbf24;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #fbbf24;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
+        }
+
+        .slider-value {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fbbf24;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.4);
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.5);
+        }
+
+        .results-container {
+            display: none;
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(5, 150, 105, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .results-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #fbbf24;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .result-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .result-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        .total-impact {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .total-impact-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fbbf24;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .total-impact-label {
+            font-size: 1.3rem;
+            font-weight: 700;
+            opacity: 0.95;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1f2937;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 15px 30px rgba(251, 191, 36, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.5);
+        }
+
+        .social-proof {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-proof p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .calculator-container {
+                padding: 30px 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .total-impact-number {
+                font-size: 3rem;
+            }
+
+            .result-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* What-If Scenarios Styling */
+        .what-if-scenarios {
+            margin: 40px 0;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scenario-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 CPA Revenue Calculator</h1>
+            <p>Discover your true earning potential with Canada's most advanced CPA positioning platform. Get personalized projections based on your experience, location, and growth goals.</p>
+        </div>
+
+        <div class="calculator-container">
+            <form id="revenueCalculatorForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="currentClients">Current Number of Clients</label>
+                        <input type="number" id="currentClients" name="currentClients" min="0" max="500" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="avgClientValue">Average Annual Client Value</label>
+                        <input type="number" id="avgClientValue" name="avgClientValue" min="500" max="50000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experienceLevel">Years of Experience</label>
+                        <select id="experienceLevel" name="experienceLevel" required>
+                            <option value="">Select your experience level</option>
+                            <option value="0.8">New Graduate (0-2 years)</option>
+                            <option value="1.0">Junior CPA (2-4 years)</option>
+                            <option value="1.2">Experienced (5-8 years)</option>
+                            <option value="1.4">Senior CPA (9-15 years)</option>
+                            <option value="1.6">Expert/Partner Level (15+ years)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Primary Market Location</label>
+                        <select id="location" name="location" required>
+                            <option value="">Select your location</option>
+                            <option value="1.4">Toronto, ON</option>
+                            <option value="1.3">Vancouver, BC</option>
+                            <option value="1.2">Calgary, AB</option>
+                            <option value="1.15">Ottawa, ON</option>
+                            <option value="1.1">Montreal, QC</option>
+                            <option value="1.0">Mid-size City</option>
+                            <option value="0.9">Small City/Rural</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="marketingSpend">Current Annual Marketing Spend</label>
+                        <input type="number" id="marketingSpend" name="marketingSpend" min="0" max="100000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="acquisitionRate">New Client Acquisition Rate (per month)</label>
+                        <div class="slider-container">
+                            <input type="range" id="acquisitionRate" name="acquisitionRate" min="0" max="20" value="2" class="slider">
+                            <div class="slider-value" id="acquisitionValue">2 clients/month</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="growthGoal">Revenue Growth Goal (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="growthGoal" name="growthGoal" min="10" max="200" value="50" class="slider">
+                            <div class="slider-value" id="growthValue">50% growth</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="marketingEffectiveness">Current Marketing Effectiveness (%)</label>
+                        <div class="slider-container">
+                            <input type="range" id="marketingEffectiveness" name="marketingEffectiveness" min="5" max="80" value="25" class="slider">
+                            <div class="slider-value" id="effectivenessValue">25% conversion</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="calculate-btn">
+                    🚀 Calculate My Revenue Potential
+                </button>
+            </form>
+        </div>
+
+        <div class="results-container" id="results">
+            <div class="results-header">
+                <h2>🎯 Your Personalized Revenue Projection</h2>
+                <p>Based on your profile and our algorithm optimization</p>
+            </div>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number" id="newClients">24</div>
+                    <div class="result-label">New Clients/Year</div>
+                    <div class="result-description">Through optimized positioning</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number" id="revenueIncrease">$125K</div>
+                    <div class="result-label">Revenue from New Clients</div>
+                    <div class="result-description">Annual additional income</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number" id="marketingSavings">$12K</div>
+                    <div class="result-label">Marketing Savings</div>
+                    <div class="result-description">Reduced acquisition costs</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">Win Rate</div>
+                    <div class="result-description">vs 25% industry avg</div>
+                </div>
+            </div>
+
+            <div class="total-impact">
+                <div class="total-impact-number" id="totalImpact">$135K</div>
+                <div class="total-impact-label">Total Annual Financial Impact</div>
+            </div>
+
+            <div class="cta-section">
+                <a href="#" class="cta-btn" onclick="proceedToSignup()">
+                    🎯 Join Canada's Top CPA Network
+                </a>
+            </div>
+
+            <div class="social-proof">
+                <p>💡 "This positioning increased my client acquisition by 340% in just 6 months. The algorithm puts me in front of exactly the right businesses." - Sarah M., CPA Toronto</p>
+            </div>
+        </div>
+
+        <!-- What-If Scenarios Section -->
+        <div class="what-if-scenarios" id="whatIfScenarios" style="display: none; margin: 40px 0; animation: slideInUp 0.6s ease-out;">
+            <div style="
+                background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+                color: white;
+                border-radius: 25px;
+                padding: 40px;
+                box-shadow: 0 20px 50px rgba(30, 58, 138, 0.3);
+                border: 2px solid rgba(255, 255, 255, 0.1);
+            ">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h3 style="
+                        font-size: 2.2rem;
+                        font-weight: 800;
+                        margin-bottom: 15px;
+                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                    ">🎯 What If You Could Earn Even More?</h3>
+                    <p style="
+                        font-size: 1.1rem;
+                        opacity: 0.9;
+                        max-width: 600px;
+                        margin: 0 auto;
+                    ">See how small strategic changes could dramatically increase your revenue potential</p>
+                </div>
+                
+                <div style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    gap: 20px;
+                    margin-bottom: 30px;
+                ">
+                    <div class="scenario-card" onclick="runScenario('experience')" style="
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 20px;
+                        padding: 25px;
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        border: 2px solid rgba(255, 255, 255, 0.1);
+                    ">
+                        <div style="font-size: 3rem; margin-bottom: 15px;">📈</div>
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white;">+2 Years Experience</h4>
+                        <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">See impact of added expertise</p>
+                        <div id="experienceResult" style="
+                            font-size: 1.4rem;
+                            font-weight: 800;
+                            color: #fbbf24;
+                            padding: 8px 16px;
+                            background: rgba(251, 191, 36, 0.2);
+                            border-radius: 12px;
+                            border: 1px solid rgba(251, 191, 36, 0.3);
+                        ">+$32K potential</div>
+                    </div>
+                    
+                    <div class="scenario-card" onclick="runScenario('specialization')" style="
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 20px;
+                        padding: 25px;
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        border: 2px solid rgba(255, 255, 255, 0.1);
+                    ">
+                        <div style="font-size: 3rem; margin-bottom: 15px;">🎯</div>
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white;">Hot Industry Focus</h4>
+                        <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">Target high-demand sectors</p>
+                        <div id="specializationResult" style="
+                            font-size: 1.4rem;
+                            font-weight: 800;
+                            color: #fbbf24;
+                            padding: 8px 16px;
+                            background: rgba(251, 191, 36, 0.2);
+                            border-radius: 12px;
+                            border: 1px solid rgba(251, 191, 36, 0.3);
+                        ">+$45K potential</div>
+                    </div>
+                    
+                    <div class="scenario-card" onclick="runScenario('premium')" style="
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 20px;
+                        padding: 25px;
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        border: 2px solid rgba(255, 255, 255, 0.1);
+                    ">
+                        <div style="font-size: 3rem; margin-bottom: 15px;">👑</div>
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white;">Premium Positioning</h4>
+                        <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">Top 3 algorithm placement</p>
+                        <div id="premiumResult" style="
+                            font-size: 1.4rem;
+                            font-weight: 800;
+                            color: #fbbf24;
+                            padding: 8px 16px;
+                            background: rgba(251, 191, 36, 0.2);
+                            border-radius: 12px;
+                            border: 1px solid rgba(251, 191, 36, 0.3);
+                        ">+$78K potential</div>
+                    </div>
+                    
+                    <div class="scenario-card" onclick="runScenario('major-city')" style="
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 20px;
+                        padding: 25px;
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        border: 2px solid rgba(255, 255, 255, 0.1);
+                    ">
+                        <div style="font-size: 3rem; margin-bottom: 15px;">🏙️</div>
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white;">Major City Market</h4>
+                        <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">Toronto/Vancouver rates</p>
+                        <div id="majorCityResult" style="
+                            font-size: 1.4rem;
+                            font-weight: 800;
+                            color: #fbbf24;
+                            padding: 8px 16px;
+                            background: rgba(251, 191, 36, 0.2);
+                            border-radius: 12px;
+                            border: 1px solid rgba(251, 191, 36, 0.3);
+                        ">+$56K potential</div>
+                    </div>
+                </div>
+                
+                <!-- Scenario Details Panel -->
+                <div id="scenarioDetails" style="
+                    display: none;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 20px;
+                    padding: 30px;
+                    margin-top: 30px;
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                ">
+                    <div style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 20px;
+                        padding-bottom: 15px;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    ">
+                        <h4 id="detailsTitle" style="color: white; font-size: 1.4rem;">Scenario Results</h4>
+                        <button onclick="closeScenarioDetails()" style="
+                            background: none;
+                            border: none;
+                            color: white;
+                            font-size: 1.5rem;
+                            cursor: pointer;
+                            padding: 5px 10px;
+                            border-radius: 50%;
+                            transition: background 0.3s ease;
+                        ">✕</button>
+                    </div>
+                    <div id="detailsContent">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+                    <button onclick="proceedWithScenario()" style="
+                        width: 100%;
+                        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+                        color: #1f2937;
+                        border: none;
+                        padding: 15px 25px;
+                        border-radius: 12px;
+                        font-size: 1.2rem;
+                        font-weight: 700;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3);
+                        margin-top: 20px;
+                    ">
+                        🚀 Implement This Strategy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateSliderValue(sliderId, displayId) {
+            const slider = document.getElementById(sliderId);
+            const display = document.getElementById(displayId);
+            
+            if (!slider || !display) {
+                return;
+            }
+            
+            if (sliderId === 'acquisitionRate') {
+                display.textContent = slider.value + ' clients/month';
+            } else if (sliderId === 'growthGoal') {
+                display.textContent = slider.value + '% growth';
+            } else if (sliderId === 'marketingEffectiveness') {
+                display.textContent = slider.value + '% conversion';
+            }
+        }
+
+        function formatCurrency(amount) {
+            return '$' + Math.round(amount).toLocaleString();
+        }
+
+        function calculateRevenue() {
+            const currentClientsEl = document.getElementById('currentClients');
+            const avgClientValueEl = document.getElementById('avgClientValue');
+            const acquisitionRateEl = document.getElementById('acquisitionRate');
+            const experienceLevelEl = document.getElementById('experienceLevel');
+            const locationEl = document.getElementById('location');
+            const growthGoalEl = document.getElementById('growthGoal');
+            const marketingSpendEl = document.getElementById('marketingSpend');
+            const marketingEffectivenessEl = document.getElementById('marketingEffectiveness');
+
+            if (!currentClientsEl || !avgClientValueEl || !acquisitionRateEl || !experienceLevelEl || !locationEl || !growthGoalEl || !marketingSpendEl || !marketingEffectivenessEl) {
+                return;
+            }
+
+            const currentClients = parseInt(currentClientsEl.value) || 25;
+            const avgClientValue = parseInt(avgClientValueEl.value) || 5000;
+            const acquisitionRate = parseInt(acquisitionRateEl.value) || 8;
+            const experienceMultiplier = parseFloat(experienceLevelEl.value) || 1.2;
+            const locationMultiplier = parseFloat(locationEl.value) || 1.2;
+            const growthGoal = parseInt(growthGoalEl.value) || 75;
+            const marketingSpend = parseInt(marketingSpendEl.value) || 15000;
+            const marketingEffectiveness = parseInt(marketingEffectivenessEl.value) || 25;
+
+            const currentRevenue = currentClients * avgClientValue;
+            const platformMultiplier = 1.5;
+            const qualityMultiplier = experienceMultiplier * locationMultiplier;
+            const newClientsPerYear = Math.round(acquisitionRate * platformMultiplier * qualityMultiplier);
+            const revenueFromNewClients = newClientsPerYear * avgClientValue;
+            const marketingSavings = marketingSpend * 0.8;
+            const totalImpact = revenueFromNewClients + marketingSavings;
+
+            const newClientsEl = document.getElementById('newClients');
+            const revenueIncreaseEl = document.getElementById('revenueIncrease');
+            const marketingSavingsEl = document.getElementById('marketingSavings');
+            const totalImpactEl = document.getElementById('totalImpact');
+
+            if (newClientsEl) newClientsEl.textContent = newClientsPerYear;
+            if (revenueIncreaseEl) revenueIncreaseEl.textContent = formatCurrency(revenueFromNewClients);
+            if (marketingSavingsEl) marketingSavingsEl.textContent = formatCurrency(marketingSavings);
+            if (totalImpactEl) totalImpactEl.textContent = formatCurrency(totalImpact);
+
+            const resultsContainer = document.getElementById('results');
+            if (resultsContainer) {
+                resultsContainer.style.display = 'block';
+                setTimeout(() => {
+                    resultsContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+
+            window.calculationResults = {
+                currentClients,
+                currentRevenue,
+                newClientsPerYear,
+                revenueIncrease: revenueFromNewClients,
+                marketingSavings,
+                totalImpact,
+                experienceLevel: experienceLevelEl.selectedOptions[0] ? experienceLevelEl.selectedOptions[0].text : 'Experienced',
+                location: locationEl.selectedOptions[0] ? locationEl.selectedOptions[0].text : 'Mid-size City'
+            };
+            
+            // Trigger What-If scenarios after calculation
+            setTimeout(showWhatIfScenarios, 2500);
+        }
+
+        function proceedToSignup() {
+            localStorage.setItem('revenueCalculation', JSON.stringify(window.calculationResults));
+            window.location.href = 'join-as-cpa.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                updateSliderValue('acquisitionRate', 'acquisitionValue');
+                updateSliderValue('growthGoal', 'growthValue');
+                updateSliderValue('marketingEffectiveness', 'effectivenessValue');
+            }, 100);
+        });
+
+        // Only update slider displays, don't auto-calculate
+        const acquisitionRateEl = document.getElementById('acquisitionRate');
+        const growthGoalEl = document.getElementById('growthGoal');
+        const marketingEffectivenessEl = document.getElementById('marketingEffectiveness');
+
+        if (acquisitionRateEl) {
+            acquisitionRateEl.addEventListener('input', function() {
+                updateSliderValue('acquisitionRate', 'acquisitionValue');
+            });
+        }
+
+        if (growthGoalEl) {
+            growthGoalEl.addEventListener('input', function() {
+                updateSliderValue('growthGoal', 'growthValue');
+            });
+        }
+
+        if (marketingEffectivenessEl) {
+            marketingEffectivenessEl.addEventListener('input', function() {
+                updateSliderValue('marketingEffectiveness', 'effectivenessValue');
+            });
+        }
+
+        if (marketingEffectivenessEl) {
+            marketingEffectivenessEl.addEventListener('input', function() {
+                updateSliderValue('marketingEffectiveness', 'effectivenessValue');
+                calculateRevenue();
+            });
+        }
+
+        // Form submission handler
+        document.getElementById('revenueCalculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateRevenue();
+        });
+
+        // What-If Scenarios JavaScript Functions
+        let whatIfVisible = false;
+
+        function showWhatIfScenarios() {
+            const whatIfSection = document.getElementById('whatIfScenarios');
+            if (whatIfSection && !whatIfVisible && window.calculationResults) {
+                whatIfVisible = true;
+                whatIfSection.style.display = 'block';
+                
+                // Calculate and display scenario potentials based on their current results
+                const currentImpact = window.calculationResults.totalImpact || 200000;
+                
+                // Update scenario cards with personalized projections
+                document.getElementById('experienceResult').textContent = 
+                    '+$' + Math.round((currentImpact * 0.15)/1000) + 'K potential';
+                document.getElementById('specializationResult').textContent = 
+                    '+$' + Math.round((currentImpact * 0.22)/1000) + 'K potential';
+                document.getElementById('premiumResult').textContent = 
+                    '+$' + Math.round((currentImpact * 0.35)/1000) + 'K potential';
+                document.getElementById('majorCityResult').textContent = 
+                    '+$' + Math.round((currentImpact * 0.28)/1000) + 'K potential';
+                
+                // Add hover effects to scenario cards
+                const cards = document.querySelectorAll('.scenario-card');
+                cards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.boxShadow = '0 15px 40px rgba(255, 255, 255, 0.2)';
+                        this.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                    });
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = 'none';
+                        this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    });
+                });
+                
+                // Smooth scroll to What-If section
+                setTimeout(() => {
+                    whatIfSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }, 100);
+                
+                // Log for analytics
+                console.log('🎯 What-If Scenarios Displayed:', {
+                    timestamp: new Date().toISOString(),
+                    baseImpact: currentImpact,
+                    scenarios: {
+                        experience: Math.round(currentImpact * 0.15),
+                        specialization: Math.round(currentImpact * 0.22),
+                        premium: Math.round(currentImpact * 0.35),
+                        majorCity: Math.round(currentImpact * 0.28)
+                    }
+                });
+            }
+        }
+
+        function runScenario(scenarioType) {
+            const currentImpact = window.calculationResults.totalImpact || 200000;
+            const currentClients = window.calculationResults.newClientsPerYear || 24;
+            let scenarioData = {};
+            
+            switch(scenarioType) {
+                case 'experience':
+                    scenarioData = {
+                        title: '📈 +2 Years Experience Impact',
+                        newImpact: Math.round(currentImpact * 1.15),
+                        newClients: Math.round(currentClients * 1.12),
+                        description: 'Additional experience increases client trust and allows for premium pricing.',
+                        benefits: [
+                            '• Higher hourly rates (+$25-40/hour)',
+                            '• More complex, valuable projects',
+                            '• Increased client retention (+23%)',
+                            '• Referral rate improvement (+18%)'
+                        ],
+                        timeframe: 'Achievable in 18-24 months with strategic positioning'
+                    };
+                    break;
+                case 'specialization':
+                    scenarioData = {
+                        title: '🎯 Hot Industry Specialization',
+                        newImpact: Math.round(currentImpact * 1.22),
+                        newClients: Math.round(currentClients * 1.15),
+                        description: 'Focusing on high-demand sectors like tech, cannabis, or ESG increases your value proposition.',
+                        benefits: [
+                            '• Premium industry rates (+35-50%)',
+                            '• Reduced competition in niche',
+                            '• Recurring specialized work',
+                            '• Industry recognition and referrals'
+                        ],
+                        timeframe: 'Start immediately - first specialized clients in 3-6 months'
+                    };
+                    break;
+                case 'premium':
+                    scenarioData = {
+                        title: '👑 Premium Algorithm Positioning',
+                        newImpact: Math.round(currentImpact * 1.35),
+                        newClients: Math.round(currentClients * 1.28),
+                        description: 'Top 3 algorithm placement gives you first access to the highest-value opportunities.',
+                        benefits: [
+                            '• First choice on premium leads',
+                            '• Higher conversion rates (+40%)',
+                            '• Larger average project values',
+                            '• Priority customer support'
+                        ],
+                        timeframe: 'Immediate implementation with Founding 500 membership'
+                    };
+                    break;
+                case 'major-city':
+                    scenarioData = {
+                        title: '🏙️ Major City Market Access',
+                        newImpact: Math.round(currentImpact * 1.28),
+                        newClients: Math.round(currentClients * 1.20),
+                        description: 'Toronto and Vancouver markets offer 40-60% higher rates and larger businesses.',
+                        benefits: [
+                            '• Metro market premium rates',
+                            '• Larger business opportunities',
+                            '• Corporate client access',
+                            '• Remote work capabilities'
+                        ],
+                        timeframe: 'Expand market reach immediately with proper positioning'
+                    };
+                    break;
+            }
+            
+            // Show detailed scenario results
+            showScenarioDetails(scenarioData);
+            
+            // Log the scenario interaction
+            console.log('🔍 Scenario Explored:', {
+                type: scenarioType,
+                currentImpact: currentImpact,
+                projectedImpact: scenarioData.newImpact,
+                improvement: scenarioData.newImpact - currentImpact
+            });
+        }
+
+        function showScenarioDetails(data) {
+            const detailsPanel = document.getElementById('scenarioDetails');
+            const titleEl = document.getElementById('detailsTitle');
+            const contentEl = document.getElementById('detailsContent');
+            
+            titleEl.textContent = data.title;
+            
+            const increase = data.newImpact - (window.calculationResults.totalImpact || 200000);
+            const clientIncrease = data.newClients - (window.calculationResults.newClientsPerYear || 24);
+            
+            contentEl.innerHTML = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 25px;">
+                    <div style="
+                        background: rgba(16, 185, 129, 0.1);
+                        border: 2px solid rgba(16, 185, 129, 0.3);
+                        border-radius: 15px;
+                        padding: 20px;
+                        text-align: center;
+                    ">
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 8px;">New Revenue Impact</div>
+                        <div style="font-size: 2rem; font-weight: 800; color: #10b981; margin-bottom: 5px;">
+                            $${Math.round(data.newImpact/1000)}K
+                        </div>
+                        <div style="font-size: 1rem; color: #fbbf24; font-weight: 600;">
+                            +$${Math.round(increase/1000)}K increase
+                        </div>
+                    </div>
+                    
+                    <div style="
+                        background: rgba(59, 130, 246, 0.1);
+                        border: 2px solid rgba(59, 130, 246, 0.3);
+                        border-radius: 15px;
+                        padding: 20px;
+                        text-align: center;
+                    ">
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 8px;">New Clients/Year</div>
+                        <div style="font-size: 2rem; font-weight: 800; color: #3b82f6; margin-bottom: 5px;">
+                            ${data.newClients}
+                        </div>
+                        <div style="font-size: 1rem; color: #fbbf24; font-weight: 600;">
+                            +${clientIncrease} more clients
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h5 style="color: white; font-size: 1.1rem; margin-bottom: 12px;">Strategy Overview:</h5>
+                    <p style="color: rgba(255,255,255,0.9); line-height: 1.6; font-size: 1rem;">
+                        ${data.description}
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h5 style="color: white; font-size: 1.1rem; margin-bottom: 12px;">Key Benefits:</h5>
+                    <div style="color: rgba(255,255,255,0.9); line-height: 1.8;">
+                        ${data.benefits.join('<br>')}
+                    </div>
+                </div>
+                
+                <div style="
+                    background: rgba(251, 191, 36, 0.1);
+                    border: 1px solid rgba(251, 191, 36, 0.3);
+                    border-radius: 12px;
+                    padding: 15px;
+                    margin-bottom: 15px;
+                ">
+                    <div style="font-weight: 600; color: #fbbf24; margin-bottom: 5px;">⏱️ Implementation Timeline:</div>
+                    <div style="color: rgba(255,255,255,0.9);">${data.timeframe}</div>
+                </div>
+            `;
+            
+            detailsPanel.style.display = 'block';
+            detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function closeScenarioDetails() {
+            const detailsPanel = document.getElementById('scenarioDetails');
+            detailsPanel.style.display = 'none';
+        }
+
+        function proceedWithScenario() {
+            // Store the scenario interest for follow-up
+            const scenarioData = {
+                timestamp: new Date().toISOString(),
+                source: 'what-if-scenario',
+                interestedInOptimization: true,
+                currentCalculation: window.calculationResults
+            };
+            
+            localStorage.setItem('scenarioInterest', JSON.stringify(scenarioData));
+            
+            // Close the details
+            closeScenarioDetails();
+            
+            // Redirect to application with scenario tracking
+            setTimeout(() => {
+                window.location.href = 'join-as-cpa.html?source=scenario-optimization&interested=true';
+            }, 300);
+            
+            console.log('🚀 Scenario Implementation Requested:', scenarioData);
+        }
+
+        // Exit-Intent Revenue Recovery - Implementation Ready
+        let exitIntentShown = false;
+
+        document.addEventListener('mouseleave', function(e) {
+            // Only trigger if mouse leaves from top of page and user has been on page for 30+ seconds
+            if (e.clientY <= 0 && !exitIntentShown && window.calculationResults) {
+                exitIntentShown = true;
+                showExitIntentModal();
+            }
+        });
+
+        // Also trigger on scroll up attempt (mobile friendly)
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop < lastScrollTop && scrollTop < 100 && !exitIntentShown && window.calculationResults) {
+                exitIntentShown = true;
+                setTimeout(showExitIntentModal, 500); // Small delay for mobile
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        function showExitIntentModal() {
+            // Get their revenue calculation
+            const revenueData = window.calculationResults;
+            let personalizedMessage = "Don't lose your revenue potential!";
+            let revenueAmount = "$200K+";
+            let newClients = "24";
+            
+            if (revenueData) {
+                revenueAmount = '$' + Math.round(revenueData.totalImpact/1000) + 'K';
+                newClients = revenueData.newClientsPerYear || '24';
+                personalizedMessage = `Don't lose your ${revenueAmount} projection!`;
+            }
+            
+            const modalHTML = `
+                <div id="exitIntentModal" style="
+                    position: fixed; 
+                    top: 0; left: 0; 
+                    width: 100%; height: 100%; 
+                    background: rgba(0,0,0,0.85); 
+                    z-index: 10000; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center;
+                    animation: fadeIn 0.3s ease-out;
+                    padding: 20px;
+                    box-sizing: border-box;
+                ">
+                    <div style="
+                        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+                        color: white;
+                        padding: 40px;
+                        border-radius: 25px;
+                        max-width: 520px;
+                        width: 100%;
+                        text-align: center;
+                        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+                        border: 3px solid rgba(255,255,255,0.2);
+                        animation: slideIn 0.4s ease-out;
+                        position: relative;
+                    ">
+                        <div style="font-size: 4rem; margin-bottom: 20px; animation: pulse 2s infinite;">⚠️</div>
+                        
+                        <h3 style="
+                            font-size: 2.2rem; 
+                            font-weight: 900; 
+                            margin-bottom: 15px;
+                            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+                            line-height: 1.2;
+                        ">${personalizedMessage}</h3>
+                        
+                        <p style="
+                            font-size: 1.3rem; 
+                            margin-bottom: 25px; 
+                            opacity: 0.95;
+                            line-height: 1.4;
+                            font-weight: 600;
+                        ">
+                            You calculated <strong>${revenueAmount} earning potential</strong> and <strong>${newClients} new clients/year</strong>. 
+                            Don't let this opportunity slip away!
+                        </p>
+                        
+                        <div style="
+                            background: rgba(255,255,255,0.15); 
+                            padding: 25px; 
+                            border-radius: 18px; 
+                            margin: 25px 0;
+                            border: 2px solid rgba(255,255,255,0.2);
+                            backdrop-filter: blur(10px);
+                        ">
+                            <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: #fbbf24;">
+                                🎯 Claim Your FREE Revenue Strategy Call
+                            </div>
+                            <div style="font-size: 1rem; text-align: left; line-height: 1.7; color: rgba(255,255,255,0.95);">
+                                ✅ <strong>Personalized roadmap</strong> to achieve your ${revenueAmount} target<br>
+                                ✅ <strong>Algorithm positioning</strong> strategy from Arthur (CPA, CMA, CF)<br>
+                                ✅ <strong>Client acquisition plan</strong> for your ${newClients} new clients<br>
+                                ✅ <strong>Immediate action steps</strong> you can implement today
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <button onclick="claimStrategyCall()" style="
+                                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                                color: white;
+                                padding: 18px 35px;
+                                border: none;
+                                border-radius: 15px;
+                                font-size: 1.2rem;
+                                font-weight: 800;
+                                cursor: pointer;
+                                box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+                                transition: all 0.3s ease;
+                                text-transform: uppercase;
+                                letter-spacing: 0.5px;
+                            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 35px rgba(16, 185, 129, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px rgba(16, 185, 129, 0.4)'">
+                                📞 Yes! Claim My Strategy Call
+                            </button>
+                            
+                            <button onclick="closeExitIntent()" style="
+                                background: transparent;
+                                color: rgba(255,255,255,0.8);
+                                padding: 18px 30px;
+                                border: 2px solid rgba(255,255,255,0.3);
+                                border-radius: 15px;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            " onmouseover="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.color='white'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.color='rgba(255,255,255,0.8)'">
+                                Maybe Later
+                            </button>
+                        </div>
+                        
+                        <div style="
+                            margin-top: 25px; 
+                            font-size: 0.9rem; 
+                            opacity: 0.8;
+                            font-style: italic;
+                        ">
+                            🔒 No pressure call • Just value and actionable insights
+                        </div>
+                        
+                        <!-- Close button -->
+                        <button onclick="closeExitIntent()" style="
+                            position: absolute;
+                            top: 15px;
+                            right: 20px;
+                            background: none;
+                            border: none;
+                            color: rgba(255,255,255,0.6);
+                            font-size: 1.5rem;
+                            cursor: pointer;
+                            padding: 5px;
+                            transition: color 0.3s ease;
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+                
+                <style>
+                    @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to { opacity: 1; }
+                    }
+                    
+                    @keyframes slideIn {
+                        from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+                        to { opacity: 1; transform: translateY(0) scale(1); }
+                    }
+                    
+                    @keyframes pulse {
+                        0%, 100% { transform: scale(1); }
+                        50% { transform: scale(1.1); }
+                    }
+                    
+                    @media (max-width: 768px) {
+                        #exitIntentModal > div {
+                            padding: 30px 25px !important;
+                            margin: 10px !important;
+                        }
+                        
+                        #exitIntentModal h3 {
+                            font-size: 1.8rem !important;
+                        }
+                        
+                        #exitIntentModal p {
+                            font-size: 1.1rem !important;
+                        }
+                        
+                        #exitIntentModal button {
+                            width: 100% !important;
+                            margin-bottom: 10px !important;
+                        }
+                    }
+                </style>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+
+        function claimStrategyCall() {
+            // Track the action
+            const callData = {
+                timestamp: new Date().toISOString(),
+                source: 'exit-intent-modal',
+                revenueProjection: window.calculationResults,
+                userAgent: navigator.userAgent,
+                page: 'revenue-calculator'
+            };
+            
+            // Store for follow-up
+            localStorage.setItem('strategyCTA', JSON.stringify(callData));
+            
+            // Close modal first
+            closeExitIntent();
+            
+            // Redirect to application with special source tracking
+            setTimeout(() => {
+                window.location.href = 'join-as-cpa.html?source=strategy-call&exitintent=true';
+            }, 300);
+            
+            // Log for analytics
+            console.log('🎯 STRATEGY CALL CLAIMED FROM EXIT INTENT:', callData);
+        }
+
+        function closeExitIntent() {
+            const modal = document.getElementById('exitIntentModal');
+            if (modal) {
+                modal.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => modal.remove(), 300);
+            }
+            
+            // Track the dismissal
+            const dismissData = {
+                timestamp: new Date().toISOString(),
+                action: 'dismissed-exit-intent',
+                page: window.location.pathname,
+                hadCalculation: !!window.calculationResults
+            };
+            
+            localStorage.setItem('exitIntentDismissed', JSON.stringify(dismissData));
+            console.log('📊 Exit Intent Dismissed:', dismissData);
+        }
+
+        // Add fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

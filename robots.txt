@@ -1,0 +1,34 @@
+User-agent: *
+Allow: /
+
+# Public pages
+Allow: /index.html
+Allow: /find-cpa.html
+Allow: /join-as-cpa.html
+Allow: /pricing.html
+Allow: /cpa-revenue-calculator.html
+Allow: /contact.html
+Allow: /guarantee.html
+Allow: /why-we-win.html
+Allow: /market-trends-report.html
+Allow: /trust-center.html
+Allow: /privacy-policy.html
+Allow: /terms-of-service.html
+
+# App pages (disallow)
+Disallow: /cpa-dashboard.html
+Disallow: /cpa-login.html
+Disallow: /cpa-onboarding.html
+Disallow: /cpa-matches.html
+Disallow: /admin-test-matching.html
+Disallow: /admin-dashboard.html
+Disallow: /checkout-success.html
+Disallow: /checkout-cancel.html
+Disallow: /register.html
+Disallow: /analytics-dashboard.html
+Disallow: /ai-demo.html
+Disallow: /data-processing-agreement.html
+Disallow: /forgot-password.html
+Disallow: /reset-password.html
+
+Sitemap: https://canadaaccountants.app/sitemap.xml

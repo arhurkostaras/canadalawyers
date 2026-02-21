@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XCF2Z737');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPA Dashboard - CanadaAccountants.app</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Auth gate -->
+    <script>
+        (function() {
+            const token = localStorage.getItem('cpa_token');
+            const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+            if (!token || user.userType !== 'CPA') {
+                window.location.href = '/cpa-login.html';
+            }
+        })();
+    </script>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow border-b-4 border-red-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-maple-leaf text-2xl text-red-600 mr-2"></i>
+                        <span class="font-bold text-xl text-gray-900">CanadaAccountants</span>
+                        <span class="text-red-600 font-bold text-xl">.app</span>
+                    </div>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-gray-600 font-medium">CPA Dashboard</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span id="userEmail" class="text-sm text-gray-500"></span>
+                    <button onclick="logout()" class="text-sm bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-sign-out-alt mr-1"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subscription Status Banner -->
+    <div id="subscriptionBanner" style="display: none;" class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <div id="subStatusIcon" class="w-10 h-10 rounded-full flex items-center justify-center bg-green-100">
+                        <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-gray-900">
+                            <span id="subTierDisplay">-</span>
+                            <span id="subStatusBadge" class="ml-2 text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-800">Active</span>
+                        </div>
+                        <div id="subRenewalDate" class="text-sm text-gray-500"></div>
+                    </div>
+                </div>
+                <button onclick="openBillingPortal()" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm">
+                    <i class="fas fa-cog mr-1"></i> Manage Subscription
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- No Subscription Banner -->
+    <div id="noSubscriptionBanner" style="display: none;" class="bg-yellow-50 border-b border-yellow-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-info-circle text-yellow-600 text-xl"></i>
+                    <span class="text-yellow-800 font-medium">You don't have an active subscription yet. Subscribe to get algorithm placement and start receiving leads.</span>
+                </div>
+                <a href="pricing.html" class="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm whitespace-nowrap">
+                    View Plans
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Welcome & Stats -->
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Welcome back, <span id="cpaName">CPA</span></h1>
+            <p class="text-gray-600">Here's your dashboard overview.</p>
+        </div>
+
+        <!-- Quick Stats Cards -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
+                <p class="text-gray-500 text-sm">Total Leads</p>
+                <p id="statTotalMatches" class="text-3xl font-bold text-gray-900 mt-1">--</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
+                <p class="text-gray-500 text-sm">Contacted</p>
+                <p id="statContacted" class="text-3xl font-bold text-blue-600 mt-1">--</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
+                <p class="text-gray-500 text-sm">Partnerships</p>
+                <p id="statPartnerships" class="text-3xl font-bold text-green-600 mt-1">--</p>
+            </div>
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
+                <p class="text-gray-500 text-sm">Verification</p>
+                <p id="statVerification" class="text-lg font-bold mt-1">--</p>
+            </div>
+        </section>
+
+        <!-- My Leads Table -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">My Leads</h2>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="text-gray-500 border-b border-gray-200 bg-gray-50">
+                        <tr>
+                            <th class="text-left px-4 py-3">Date</th>
+                            <th class="text-left px-4 py-3">Business</th>
+                            <th class="text-left px-4 py-3">Pain Point</th>
+                            <th class="text-left px-4 py-3">Match Score</th>
+                            <th class="text-left px-4 py-3">Contact</th>
+                            <th class="text-left px-4 py-3">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leadsTableBody" class="divide-y divide-gray-100"></tbody>
+                </table>
+            </div>
+            <p id="noLeadsMsg" class="hidden text-gray-500 text-center py-8">No leads yet. Once SMEs are matched with your profile, they'll appear here.</p>
+        </section>
+
+        <!-- My Profile Card -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">My Profile</h2>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <form id="profileForm" class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Firm Name</label>
+                        <input type="text" id="profileFirmName" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Province</label>
+                        <select id="profileProvince" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                            <option value="">Select province</option>
+                            <option value="ON">Ontario</option>
+                            <option value="BC">British Columbia</option>
+                            <option value="AB">Alberta</option>
+                            <option value="QC">Quebec</option>
+                            <option value="MB">Manitoba</option>
+                            <option value="SK">Saskatchewan</option>
+                            <option value="NS">Nova Scotia</option>
+                            <option value="NB">New Brunswick</option>
+                            <option value="NL">Newfoundland</option>
+                            <option value="PE">PEI</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                        <input type="text" id="profileCity" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                        <input type="text" id="profilePhone" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Hourly Rate (CAD)</label>
+                        <input type="number" id="profileHourlyRate" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Specializations (comma-separated)</label>
+                        <input type="text" id="profileSpecializations" placeholder="e.g., Tax Planning, Bookkeeping, CFO Services" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
+                    </div>
+                    <div class="md:col-span-2 flex items-center gap-4">
+                        <button type="submit" class="bg-red-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                            <i class="fas fa-save mr-1"></i> Save Changes
+                        </button>
+                        <span id="profileSaveMsg" class="text-sm text-green-600 hidden">Profile updated!</span>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2025 CanadaAccountants.app. All rights reserved.</p>
+            <p class="text-gray-500 text-xs mt-2">Need help? Call Arthur at <a href="tel:6479567290" class="text-red-400 hover:text-red-300">(647) 956-7290</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const API = 'https://canadaaccountants-backend-production-1d8f.up.railway.app';
+        const token = localStorage.getItem('cpa_token');
+        const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
+        const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+
+        document.getElementById('userEmail').textContent = user.email || '';
+        document.getElementById('cpaName').textContent = user.firstName
+            ? `${user.firstName} ${user.lastName || ''}`
+            : (user.email || 'CPA');
+
+        function logout() {
+            localStorage.removeItem('cpa_token');
+            localStorage.removeItem('cpa_user');
+            window.location.href = '/cpa-login.html';
+        }
+
+        function fmtDate(d) {
+            if (!d) return '--';
+            return new Date(d).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function badge(text, color) {
+            const colors = {
+                green: 'bg-green-100 text-green-800',
+                red: 'bg-red-100 text-red-800',
+                yellow: 'bg-yellow-100 text-yellow-800',
+                blue: 'bg-blue-100 text-blue-800',
+                gray: 'bg-gray-100 text-gray-800',
+            };
+            return `<span class="px-2 py-0.5 rounded-full text-xs font-medium ${colors[color] || colors.gray}">${text}</span>`;
+        }
+
+        // Load stats
+        async function loadStats() {
+            try {
+                const res = await fetch(`${API}/api/cpa/my-stats`, { headers });
+                const data = await res.json();
+                if (!data.success) return;
+                const s = data.stats;
+                document.getElementById('statTotalMatches').textContent = s.totalMatches;
+                document.getElementById('statContacted').textContent = s.contacted;
+                document.getElementById('statPartnerships').textContent = s.partnerships;
+                const verEl = document.getElementById('statVerification');
+                if (s.verificationStatus === 'verified') {
+                    verEl.innerHTML = '<span class="text-green-600"><i class="fas fa-check-circle mr-1"></i>Verified</span>';
+                } else {
+                    verEl.innerHTML = '<span class="text-yellow-600"><i class="fas fa-clock mr-1"></i>Pending</span>';
+                }
+            } catch (e) {
+                console.error('Stats load error:', e);
+            }
+        }
+
+        // Load leads table
+        async function loadLeads() {
+            try {
+                const res = await fetch(`${API}/api/cpa/my-matches`, { headers });
+                const data = await res.json();
+                if (!data.success) return;
+
+                const tbody = document.getElementById('leadsTableBody');
+                if (data.matches.length === 0) {
+                    tbody.innerHTML = '';
+                    document.getElementById('noLeadsMsg').classList.remove('hidden');
+                    return;
+                }
+
+                document.getElementById('noLeadsMsg').classList.add('hidden');
+                tbody.innerHTML = data.matches.map(m => {
+                    const smeContact = typeof m.sme_contact === 'string'
+                        ? JSON.parse(m.sme_contact || '{}')
+                        : (m.sme_contact || {});
+                    const statusColor = m.partnership_formed ? 'green' : (m.status === 'contacted' ? 'blue' : 'gray');
+                    return `
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3 text-gray-500">${fmtDate(m.created_at)}</td>
+                            <td class="px-4 py-3">
+                                <div class="font-medium text-gray-900">${smeContact.company || smeContact.name || m.business_type || '--'}</div>
+                                <div class="text-xs text-gray-500">${m.business_type || ''} - ${m.business_size || ''}</div>
+                            </td>
+                            <td class="px-4 py-3">${badge(m.pain_point || m.friction_expertise || '--', 'yellow')}</td>
+                            <td class="px-4 py-3">
+                                <span class="font-mono font-semibold ${parseFloat(m.match_score) >= 80 ? 'text-green-600' : 'text-blue-600'}">${m.match_score ? parseFloat(m.match_score).toFixed(0) : '--'}%</span>
+                            </td>
+                            <td class="px-4 py-3">
+                                <div class="text-sm">${smeContact.name || '--'}</div>
+                                ${smeContact.email ? `<div class="text-xs text-gray-500">${smeContact.email}</div>` : ''}
+                                ${smeContact.phone ? `<div class="text-xs text-gray-500">${smeContact.phone}</div>` : ''}
+                            </td>
+                            <td class="px-4 py-3">${badge(m.partnership_formed ? 'Partnership' : (m.status || 'presented'), statusColor)}</td>
+                        </tr>
+                    `;
+                }).join('');
+            } catch (e) {
+                console.error('Leads load error:', e);
+            }
+        }
+
+        // Load profile
+        async function loadProfile() {
+            try {
+                const res = await fetch(`${API}/api/cpa/my-profile`, { headers });
+                const data = await res.json();
+                if (!data.success || !data.profile) return;
+
+                const p = data.profile;
+                document.getElementById('profileFirmName').value = p.firm_name || '';
+                document.getElementById('profileProvince').value = p.province || '';
+                document.getElementById('profileCity').value = p.city || '';
+                document.getElementById('profilePhone').value = p.phone || '';
+                document.getElementById('profileHourlyRate').value = p.hourly_rate_min || '';
+
+                const specs = Array.isArray(p.specializations)
+                    ? p.specializations
+                    : (typeof p.specializations === 'string' ? JSON.parse(p.specializations || '[]') : []);
+                document.getElementById('profileSpecializations').value = specs.join(', ');
+            } catch (e) {
+                console.error('Profile load error:', e);
+            }
+        }
+
+        // Save profile
+        document.getElementById('profileForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const specsStr = document.getElementById('profileSpecializations').value;
+            const specializations = specsStr.split(',').map(s => s.trim()).filter(Boolean);
+
+            try {
+                const res = await fetch(`${API}/api/cpa/my-profile`, {
+                    method: 'PUT',
+                    headers,
+                    body: JSON.stringify({
+                        firmName: document.getElementById('profileFirmName').value,
+                        province: document.getElementById('profileProvince').value,
+                        city: document.getElementById('profileCity').value,
+                        phone: document.getElementById('profilePhone').value,
+                        hourlyRate: parseFloat(document.getElementById('profileHourlyRate').value) || null,
+                        specializations: specializations
+                    })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    const msg = document.getElementById('profileSaveMsg');
+                    msg.classList.remove('hidden');
+                    setTimeout(() => msg.classList.add('hidden'), 3000);
+                }
+            } catch (e) {
+                console.error('Profile save error:', e);
+                alert('Failed to save profile. Please try again.');
+            }
+        });
+
+        // Init
+        loadStats();
+        loadLeads();
+        loadProfile();
+    </script>
+
+    <!-- Subscription Management Script -->
+    <script>
+    (function() {
+        const API_BASE_URL = 'https://canadaaccountants-backend-production-1d8f.up.railway.app';
+        const email = localStorage.getItem('ca_checkout_email') || (JSON.parse(localStorage.getItem('cpa_user') || '{}')).email;
+
+        const TIER_NAMES = {
+            associate: 'Basic Position',
+            professional: 'Premium Position',
+            enterprise: 'Founding 500'
+        };
+
+        const STATUS_STYLES = {
+            active:    { bg: 'bg-green-100', text: 'text-green-800', icon: 'fa-check-circle', iconColor: 'text-green-600' },
+            past_due:  { bg: 'bg-red-100',   text: 'text-red-800',   icon: 'fa-exclamation-circle', iconColor: 'text-red-600' },
+            canceled:  { bg: 'bg-gray-100',  text: 'text-gray-800',  icon: 'fa-times-circle', iconColor: 'text-gray-600' },
+            trialing:  { bg: 'bg-blue-100',  text: 'text-blue-800',  icon: 'fa-clock', iconColor: 'text-blue-600' }
+        };
+
+        async function loadSubscription() {
+            if (!email) {
+                document.getElementById('noSubscriptionBanner').style.display = 'block';
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/stripe/subscription-status?email=${encodeURIComponent(email)}`);
+                const data = await res.json();
+
+                if (data.subscription && data.subscription.status !== 'canceled') {
+                    const sub = data.subscription;
+                    const style = STATUS_STYLES[sub.status] || STATUS_STYLES.active;
+
+                    document.getElementById('subTierDisplay').textContent = TIER_NAMES[sub.tier] || sub.tier;
+                    document.getElementById('subStatusBadge').textContent = sub.status.charAt(0).toUpperCase() + sub.status.slice(1);
+                    document.getElementById('subStatusBadge').className = `ml-2 text-xs font-semibold px-2 py-1 rounded-full ${style.bg} ${style.text}`;
+                    document.getElementById('subStatusIcon').innerHTML = `<i class="fas ${style.icon} ${style.iconColor} text-xl"></i>`;
+
+                    if (sub.current_period_end) {
+                        const renewDate = new Date(sub.current_period_end).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+                        document.getElementById('subRenewalDate').textContent = `Renews ${renewDate}`;
+                    }
+
+                    document.getElementById('subscriptionBanner').style.display = 'block';
+                } else {
+                    document.getElementById('noSubscriptionBanner').style.display = 'block';
+                }
+            } catch (err) {
+                console.error('Subscription load error:', err);
+                document.getElementById('noSubscriptionBanner').style.display = 'block';
+            }
+        }
+
+        window.openBillingPortal = async function() {
+            if (!email) {
+                alert('Please log in to manage your subscription.');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/stripe/create-portal-session`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+
+                const data = await res.json();
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    alert('Unable to open billing portal. Please call Arthur at (647) 956-7290.');
+                }
+            } catch (err) {
+                console.error('Portal error:', err);
+                alert('Connection error. Please try again.');
+            }
+        };
+
+        loadSubscription();
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'G-XCF2Z737', {
+        custom_map: {
+          'custom_parameter_1': 'business_type',
+          'custom_parameter_2': 'pain_point',
+          'custom_parameter_3': 'session_id'
+        }
+      });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Matching Test - CanadaAccountants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .test-section {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .business-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #10b981;
+        }
+        
+        .business-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .info-item {
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #374151;
+            font-size: 0.9rem;
+        }
+        
+        .info-value {
+            color: #6b7280;
+            margin-top: 5px;
+        }
+        
+        .match-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .match-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .match-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .results-section {
+            background: #ecfdf5;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            border-left: 5px solid #10b981;
+        }
+        
+        .match-result {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .match-score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-right: 15px;
+        }
+        
+        .match-score.excellent { color: #10b981; }
+        .match-score.good { color: #f59e0b; }
+        .match-score.poor { color: #ef4444; }
+        
+        .cpa-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .success {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        (function() {
+            const token = localStorage.getItem('cpa_token');
+            const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+            if (!token || user.userType !== 'admin') {
+                window.location.href = '/cpa-login.html';
+            }
+        })();
+    </script>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 AI Matching Test</h1>
+            <p>Test your AI-powered CPA matching engine with real business submissions</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>📊 Business Submissions Ready for Matching</h2>
+            <div id="businessList">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading business submissions...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <h2>🎯 AI Matching Results</h2>
+            <div id="matchResults"></div>
+        </div>
+    </div>
+
+    <script>
+        let businessSubmissions = [];
+        
+        // Load business submissions on page load
+        window.addEventListener('load', loadBusinessSubmissions);
+        
+        async function loadBusinessSubmissions() {
+            // Track admin page access
+    gtag('event', 'admin_page_loaded', {
+        'event_category': 'admin_workflow',
+        'event_label': 'test_page_accessed',
+        'value': 1
+    });
+            try {
+                // For now, we'll use the test data since we need to fetch from database
+                // In production, this would fetch from /api/get-business-submissions
+                displayMockBusinessSubmissions();
+                // Track successful data loading
+        gtag('event', 'test_data_loaded', {
+            'event_category': 'admin_workflow',
+            'event_label': 'business_submissions_loaded',
+            'value': businessSubmissions.length
+        });
+            } catch (error) {
+                // Track loading errors
+        gtag('event', 'test_data_load_failed', {
+            'event_category': 'admin_error',
+            'event_label': 'submissions_load_error',
+            'value': 0
+        });
+                console.error('Error loading submissions:', error);
+                document.getElementById('businessList').innerHTML = `
+                    <div class="error">
+                        <strong>Error:</strong> Could not load business submissions. ${error.message}
+                    </div>
+                `;
+            }
+        }
+        function calculateAverageScore(matches) {
+        if (!matches || matches.length === 0) return 0;
+        const totalScore = matches.reduce((sum, match) => sum + match.match_score, 0);
+        return Math.round(totalScore / matches.length);
+    }
+        
+        function displayMockBusinessSubmissions() {
+            // Mock data representing your actual database entries
+            businessSubmissions = [
+                {
+                    request_id: 'req_1754483601416_nx4gc2q1i',
+                    pain_point: 'time-drain',
+                    business_type: 'technology',
+                    business_size: 'small_business',
+                    urgency_level: 'urgent',
+                    services_needed: ['bookkeeping', 'tax_planning'],
+                    budget_range: 'standard',
+                    contact_info: { name: 'Arthur Test', email: 'arthur@test.com' }
+                },
+                {
+                    request_id: 'req_1754995876410_vefkjjq5q',
+                    pain_point: 'tax-stress',
+                    business_type: 'retail',
+                    business_size: 'medium',
+                    urgency_level: 'month',
+                    services_needed: ['bookkeeping', 'financial-analysis', 'cfo-services'],
+                    budget_range: 'budget-2500',
+                    contact_info: { name: 'Test User', email: 'test@example.com' }
+                }
+            ];
+            
+            const businessListHTML = businessSubmissions.map((business, index) => `
+                <div class="business-card">
+                    <h3>Business Request #${index + 1}</h3>
+                    <p><strong>Contact:</strong> ${business.contact_info.name} (${business.contact_info.email})</p>
+                    
+                    <div class="business-info">
+                        <div class="info-item">
+                            <div class="info-label">Pain Point</div>
+                            <div class="info-value">${business.pain_point}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Business Type</div>
+                            <div class="info-value">${business.business_type}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Business Size</div>
+                            <div class="info-value">${business.business_size}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Urgency</div>
+                            <div class="info-value">${business.urgency_level}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Services Needed</div>
+                            <div class="info-value">${business.services_needed.join(', ')}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Budget Range</div>
+                            <div class="info-value">${business.budget_range}</div>
+                        </div>
+                    </div>
+                    
+                    <button class="match-button" onclick="testAIMatching(${index})">
+                        🧠 Find AI Matches for This Business
+                    </button>
+                </div>
+            `).join('');
+            
+            document.getElementById('businessList').innerHTML = businessListHTML;
+        }
+        
+        async function testAIMatching(businessIndex) {
+            const business = businessSubmissions[businessIndex];
+            const button = event.target;
+            // Track matching test initiation
+    gtag('event', 'ai_matching_test_started', {
+        'event_category': 'admin_testing',
+        'event_label': 'matching_algorithm_test',
+        'value': 1,
+        'custom_parameters': {
+            'business_type': business.business_type,
+            'services_count': business.services_needed.length,
+            'urgency_level': business.urgency_level
+        }
+    });
+            
+            // Show loading state
+            button.disabled = true;
+            button.innerHTML = '🔄 Running AI Matching...';
+            // Add timing for performance tracking
+const startTime = Date.now();
+            
+            // Show results section
+            document.getElementById('resultsSection').style.display = 'block';
+            document.getElementById('matchResults').innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>AI analyzing business needs and finding perfect CPA matches...</p>
+                </div>
+            `;
+            
+            try {
+                // Call your AI matching endpoint
+                const response = await fetch('https://sme-intelligence-backend-production-5185.up.railway.app/api/cpa/test-matching', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        client_preferences: {
+                            client_id: business.request_id,
+                            industry: business.business_type,
+                            business_size: business.business_size,
+                            required_services: business.services_needed,
+                            urgency_level: business.urgency_level,
+                            budget_range_min: getBudgetMin(business.budget_range),
+                            budget_range_max: getBudgetMax(business.budget_range),
+                            location_preference: 'Ontario',
+                            remote_acceptable: true
+                        },
+                        limit: 5
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    const processingTime = Date.now() - startTime;
+                     // Track successful matching
+    gtag('event', 'ai_matching_completed', {
+        'event_category': 'admin_testing',
+        'event_label': 'matching_success',
+        'value': data.matches.length,
+        'custom_parameters': {
+            'processing_time_ms': processingTime,
+            'matches_found': data.matches.length,
+            'business_type': business.business_type,
+            'avg_match_score': calculateAverageScore(data.matches)
+        }
+    });
+                    displayMatchResults(business, data.matches);
+                    showSuccess('AI matching completed successfully!');
+                } else {
+                    throw new Error(data.message || 'Matching failed');
+                }
+                
+            } catch (error) {
+                // Track matching failures
+    gtag('event', 'ai_matching_failed', {
+        'event_category': 'admin_error',
+        'event_label': 'matching_algorithm_error',
+        'custom_parameters': {
+            'processing_time_ms': Date.now() - startTime,
+            'error_message': error.message,
+            'business_type': business.business_type
+        }
+    });
+                console.error('Matching error:', error);
+                document.getElementById('matchResults').innerHTML = `
+                    <div class="error">
+                        <strong>Matching Failed:</strong> ${error.message}
+                    </div>
+                `;
+            } finally {
+                button.disabled = false;
+                button.innerHTML = '🧠 Find AI Matches for This Business';
+            }
+        }
+        
+        function displayMatchResults(business, matches) {
+            const resultsHTML = `
+                <h3>🎯 AI Matches for ${business.contact_info.name} (${business.business_type})</h3>
+                <p><strong>Business Needs:</strong> ${business.services_needed.join(', ')} | <strong>Urgency:</strong> ${business.urgency_level}</p>
+                
+                <div style="margin-top: 20px;">
+                    ${matches.map(match => `
+                        <div class="match-result">
+                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <span class="match-score ${getScoreClass(match.match_score)}">${match.match_score}%</span>
+                                <div>
+                                    <h4>${match.cpa_profile.first_name} ${match.cpa_profile.last_name}</h4>
+                                    <p style="color: #6b7280;">${match.cpa_profile.firm_name}</p>
+                                    <p style="color: #10b981; font-weight: 600;">${match.recommendation_level}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="cpa-details">
+                                <div class="info-item">
+                                    <div class="info-label">Specializations</div>
+                                    <div class="info-value">${match.cpa_profile.specializations.join(', ')}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Industries Served</div>
+                                    <div class="info-value">${match.cpa_profile.industries_served.join(', ')}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Firm Size</div>
+                                    <div class="info-value">${match.cpa_profile.firm_size}</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Hourly Rate</div>
+                                    <div class="info-value">$${match.cpa_profile.hourly_rate_min} - $${match.cpa_profile.hourly_rate_max}</div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 8px;">
+                                <h5>🧠 AI Reasoning:</h5>
+                                <p><strong>Specialization Match:</strong> ${(match.match_factors.specialization_score * 100).toFixed(0)}%</p>
+                                <p><strong>Location Compatibility:</strong> ${(match.match_factors.location_score * 100).toFixed(0)}%</p>
+                                <p><strong>Budget Alignment:</strong> ${(match.match_factors.budget_score * 100).toFixed(0)}%</p>
+                                <p><strong>Communication Style:</strong> ${(match.match_factors.communication_score * 100).toFixed(0)}%</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            document.getElementById('matchResults').innerHTML = resultsHTML;
+        }
+        
+        function getScoreClass(score) {
+            if (score >= 80) return 'excellent';
+            if (score >= 60) return 'good';
+            return 'poor';
+        }
+        
+        function getBudgetMin(budgetRange) {
+            const budgetMap = {
+                'standard': 150,
+                'budget-2500': 180,
+                'premium': 200
+            };
+            return budgetMap[budgetRange] || 150;
+        }
+        
+        function getBudgetMax(budgetRange) {
+            const budgetMap = {
+                'standard': 200,
+                'budget-2500': 250,
+                'premium': 300
+            };
+            return budgetMap[budgetRange] || 200;
+        }
+        
+        function showSuccess(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success';
+            successDiv.innerHTML = `<strong>Success!</strong> ${message}`;
+            document.getElementById('resultsSection').appendChild(successDiv);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XCF2Z737');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Center - Security & Compliance | CanadaAccountants</title>
+    <meta name="description" content="Learn about CanadaAccountants' security measures, compliance certifications, and data protection policies. SOC 2, PIPEDA compliance, and Canadian data residency.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://canadaaccountants.app/trust-center.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://canadaaccountants.app/trust-center.html">
+    <meta property="og:title" content="Trust Center | CanadaAccountants">
+    <meta property="og:description" content="Learn about CanadaAccountants' security measures, compliance certifications, and data protection policies. SOC 2, PIPEDA compliance, and Canadian data residency.">
+    <meta property="og:image" content="https://canadaaccountants.app/icon-512.png">
+    <meta property="og:site_name" content="CanadaAccountants">
+    <meta property="og:locale" content="en_CA">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trust Center | CanadaAccountants">
+    <meta name="twitter:description" content="Learn about CanadaAccountants' security measures, compliance certifications, and data protection policies. SOC 2, PIPEDA compliance, and Canadian data residency.">
+    <meta name="twitter:image" content="https://canadaaccountants.app/icon-512.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-primary: #dc2626;
+            --brand-secondary: #1e40af;
+            --brand-accent: #059669;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
+        }
+
+        .trust-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .compliance-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .compliance-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #dc2626, #1e40af, #059669);
+        }
+
+        .compliance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: #059669;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-compliant {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .status-progress {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        .status-planned {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+        }
+
+        .security-metric {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .metric-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .data-flow {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #1e40af 0%, #dc2626 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .contact-card a {
+            color: #fbbf24;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            color: #f59e0b;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b-4 border-red-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-maple-leaf text-2xl text-red-600 mr-2"></i>
+                    <span class="font-bold text-xl text-gray-900">CanadaAccountants</span>
+                    <span class="text-red-600 font-bold text-xl">.app</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium">← Back to Home</a>
+                    <a href="tel:6479567290" class="bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700">
+                        Contact Security Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="trust-badge mb-6">
+                <i class="fas fa-shield-check"></i>
+                Enterprise-Grade Security
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                Trust Center
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
+                Your data security and privacy are our top priorities. Learn about our comprehensive 
+                security measures, compliance certifications, and commitment to protecting Canadian businesses.
+            </p>
+            
+            <!-- Security Metrics -->
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="security-metric">
+                    <div class="metric-number">99.9%</div>
+                    <div class="metric-label">Uptime SLA</div>
+                </div>
+                <div class="security-metric">
+                    <div class="metric-number">256-bit</div>
+                    <div class="metric-label">SSL Encryption</div>
+                </div>
+                <div class="security-metric">
+                    <div class="metric-number">24/7</div>
+                    <div class="metric-label">Security Monitoring</div>
+                </div>
+                <div class="security-metric">
+                    <div class="metric-number">100%</div>
+                    <div class="metric-label">Canadian Data</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Status Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-gray-900 mb-6">
+                    Compliance & Certifications
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We maintain the highest standards of security and compliance to protect your business data and ensure regulatory adherence across Canada.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 mb-16">
+                <!-- SOC 2 Type II -->
+                <div class="compliance-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">SOC 2 Type II</h3>
+                            <div class="status-badge status-progress">IN PROGRESS</div>
+                        </div>
+                        <i class="fas fa-certificate text-4xl text-blue-600"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Currently undergoing SOC 2 Type II audit with expected completion Q2 2025. 
+                        This certification validates our security, availability, and confidentiality controls.
+                    </p>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <p class="text-blue-800 font-semibold">🎯 Audit Status:</p>
+                        <p class="text-blue-700">Phase 2 of 3 - Control Testing in Progress</p>
+                        <p class="text-blue-600 text-sm mt-1">Expected completion: June 2025</p>
+                    </div>
+                </div>
+
+                <!-- PIPEDA Compliance -->
+                <div class="compliance-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">PIPEDA Compliant</h3>
+                            <div class="status-badge status-compliant">COMPLIANT</div>
+                        </div>
+                        <i class="fas fa-flag text-4xl text-red-600"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Fully compliant with Canada's Personal Information Protection and Electronic Documents Act. 
+                        Our privacy practices meet all federal requirements for handling personal information.
+                    </p>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                        <p class="text-green-800 font-semibold">✅ Current Status:</p>
+                        <p class="text-green-700">All PIPEDA requirements implemented</p>
+                        <p class="text-green-600 text-sm mt-1">Last review: January 2025</p>
+                    </div>
+                </div>
+
+                <!-- Provincial Privacy Laws -->
+                <div class="compliance-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Provincial Privacy Laws</h3>
+                            <div class="status-badge status-compliant">COMPLIANT</div>
+                        </div>
+                        <i class="fas fa-map-marker-alt text-4xl text-green-600"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Compliant with provincial privacy legislation across all Canadian provinces and territories, 
+                        including Quebec's Bill 64 and British Columbia's PIPA.
+                    </p>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                        <p class="text-green-800 font-semibold">🍁 Coverage:</p>
+                        <p class="text-green-700">All 10 provinces and 3 territories</p>
+                        <p class="text-green-600 text-sm mt-1">Includes Quebec Bill 64 compliance</p>
+                    </div>
+                </div>
+
+                <!-- ISO 27001 (Planned) -->
+                <div class="compliance-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">ISO 27001</h3>
+                            <div class="status-badge status-planned">PLANNED 2025</div>
+                        </div>
+                        <i class="fas fa-globe text-4xl text-purple-600"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        International standard for information security management systems. 
+                        Certification planned for Q4 2025 to demonstrate global security best practices.
+                    </p>
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                        <p class="text-purple-800 font-semibold">📅 Timeline:</p>
+                        <p class="text-purple-700">Gap analysis: Q2 2025</p>
+                        <p class="text-purple-600 text-sm mt-1">Certification target: Q4 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Security Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-gray-900 mb-6">
+                    Data Security & Protection
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Your sensitive business and financial data is protected with enterprise-grade security measures and Canadian data residency requirements.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <!-- Encryption -->
+                <div class="compliance-card">
+                    <i class="fas fa-lock text-3xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">End-to-End Encryption</h3>
+                    <p class="text-gray-600 mb-4">
+                        All data is encrypted in transit (TLS 1.3) and at rest (AES-256). 
+                        Encryption keys are managed through AWS KMS with automatic rotation.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        • TLS 1.3 for data in transit<br>
+                        • AES-256 for data at rest<br>
+                        • AWS KMS key management
+                    </div>
+                </div>
+
+                <!-- Access Control -->
+                <div class="compliance-card">
+                    <i class="fas fa-user-shield text-3xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Access Control</h3>
+                    <p class="text-gray-600 mb-4">
+                        Role-based access control (RBAC) with multi-factor authentication (MFA) 
+                        required for all administrative access.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        • Multi-factor authentication<br>
+                        • Role-based permissions<br>
+                        • Principle of least privilege
+                    </div>
+                </div>
+
+                <!-- Monitoring -->
+                <div class="compliance-card">
+                    <i class="fas fa-eye text-3xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">24/7 Monitoring</h3>
+                    <p class="text-gray-600 mb-4">
+                        Continuous security monitoring with real-time threat detection, 
+                        automated incident response, and comprehensive audit logging.
+                    </p>
+                    <div class="text-sm text-gray-500">
+                        • Real-time threat detection<br>
+                        • Automated incident response<br>
+                        • Comprehensive audit trails
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Residency -->
+            <div class="data-flow">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">
+                    🍁 Canadian Data Residency
+                </h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Infrastructure</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>🏢 <strong>Railway Platform:</strong> Primary application hosting</li>
+                        <li>🏢 <strong>PostgreSQL:</strong> Managed database service</li>
+                        <li>🏢 <strong>CDN:</strong> Global edge locations including Canada</li>
+                    </ul>
+                </div>
+                    <div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Data Processing</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>✅ Hosted on Railway's secure cloud infrastructure</li>
+                        <li>✅ Canadian users served via regional edge locations</li>
+                        <li>✅ PIPEDA compliant data handling practices</li>
+                    </ul>
+                </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Availability & Performance -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-gray-900 mb-6">
+                    Service Level Agreement
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We guarantee enterprise-grade availability and performance with comprehensive SLA commitments.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Uptime SLA -->
+                <div class="compliance-card">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">99.9% Uptime Guarantee</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Monthly uptime target:</span>
+                            <span class="font-semibold text-green-600">99.9%</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Maximum monthly downtime:</span>
+                            <span class="font-semibold">43.8 minutes</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Planned maintenance window:</span>
+                            <span class="font-semibold">Sundays 2-4 AM EST</span>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+                        <p class="text-green-800 font-semibold">📊 Current Performance:</p>
+                        <p class="text-green-700">99.97% uptime (Last 12 months)</p>
+                    </div>
+                </div>
+
+                <!-- Response Times -->
+                <div class="compliance-card">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Response Time SLA</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Platform response time:</span>
+                            <span class="font-semibold text-blue-600">&lt; 200ms</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">API response time:</span>
+                            <span class="font-semibold">&lt; 100ms</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Database query time:</span>
+                            <span class="font-semibold">&lt; 50ms</span>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                        <p class="text-blue-800 font-semibold">⚡ Current Performance:</p>
+                        <p class="text-blue-700">Average 150ms response time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Contact -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="contact-card">
+                <h2 class="text-3xl font-bold mb-4">Security Contact & Reporting</h2>
+                <p class="text-xl mb-6 opacity-90">
+                    Have security questions or need to report a vulnerability? 
+                    Our security team is available 24/7.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-6 text-left">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2">🔐 Security Team</h3>
+                        <p><a href="mailto:security@canadaaccountants.app">security@canadaaccountants.app</a></p>
+                        <p><a href="tel:6479567290">(647) 956-7290</a></p>
+                        <p class="text-sm opacity-75 mt-1">24/7 emergency response</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2">🛡️ Privacy Officer</h3>
+                        <p><a href="mailto:privacy@canadaaccountants.app">privacy@canadaaccountants.app</a></p>
+                        <p>Arthur Kostaras, CPA, CMA, CF</p>
+                        <p class="text-sm opacity-75 mt-1">PIPEDA compliance inquiries</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-white border-opacity-20">
+                    <h3 class="text-lg font-semibold mb-3">📋 Additional Resources</h3>
+                    <div class="flex flex-wrap gap-4 justify-center">
+                        <a href="/privacy-policy.html" class="text-yellow-300 hover:text-yellow-200">Privacy Policy</a>
+                        <a href="/terms-of-service.html" class="text-yellow-300 hover:text-yellow-200">Terms of Service</a>
+                        <a href="/data-processing-agreement.html" class="text-yellow-300 hover:text-yellow-200">DPA</a>
+                        <a href="/incident-response.html" class="text-yellow-300 hover:text-yellow-200">Incident Response</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center mb-6">
+                <i class="fas fa-maple-leaf text-red-500 text-3xl mr-3"></i>
+                <span class="font-bold text-2xl">CanadaAccountants</span>
+                <span class="text-red-500 font-bold text-2xl">.app</span>
+            </div>
+            <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                Trusted by Canadian businesses and CPAs. Your security and privacy are our commitment.
+            </p>
+            <div class="border-t border-gray-800 pt-6">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2025 CanadaAccountants.app. All rights reserved. | 
+                    <a href="/trust-center.html" class="text-blue-400 hover:text-blue-300">Trust Center</a> | 
+                    <a href="/privacy-policy.html" class="text-blue-400 hover:text-blue-300">Privacy</a> | 
+                    <a href="/terms-of-service.html" class="text-blue-400 hover:text-blue-300">Terms</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔒 Trust Center loaded');
+            console.log('✅ SOC 2 status: In Progress');
+            console.log('✅ PIPEDA compliance: Active');
+            console.log('🍁 Data residency: Canada only');
+        });
+    </script>
+</body>
+</html>

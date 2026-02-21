@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XCF2Z737');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPA Pricing | CanadaAccountants</title>
+    <meta name="description" content="Transparent, performance-based pricing for CPAs. Associate $199/mo, Professional $299/mo, Enterprise $599/mo. Higher tier = higher search visibility. No hidden fees.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://canadaaccountants.app/pricing.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://canadaaccountants.app/pricing.html">
+    <meta property="og:title" content="CPA Pricing | CanadaAccountants">
+    <meta property="og:description" content="Transparent, performance-based pricing for CPAs. Associate $199/mo, Professional $299/mo, Enterprise $599/mo. No hidden fees.">
+    <meta property="og:image" content="https://canadaaccountants.app/icon-512.png">
+    <meta property="og:site_name" content="CanadaAccountants">
+    <meta property="og:locale" content="en_CA">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CPA Pricing | CanadaAccountants">
+    <meta name="twitter:description" content="Transparent, performance-based pricing for CPAs. Associate $199/mo, Professional $299/mo, Enterprise $599/mo. No hidden fees.">
+    <meta name="twitter:image" content="https://canadaaccountants.app/icon-512.png">
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Brand Colors — softer blue palette */
+        :root {
+            --brand-primary: #2563eb;
+            --brand-secondary: #1e40af;
+            --brand-light: #3b82f6;
+            --brand-accent: #059669;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+        }
+
+        .pricing-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+        }
+
+        .roi-calculator {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--brand-accent);
+        }
+
+        /* Pricing toggle */
+        .toggle-container {
+            display: inline-flex;
+            background: #e2e8f0;
+            border-radius: 30px;
+            padding: 4px;
+        }
+        .toggle-option {
+            padding: 10px 24px;
+            border-radius: 26px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            color: #64748b;
+        }
+        .toggle-option.active {
+            background: var(--brand-primary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b-4 border-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-maple-leaf text-2xl text-blue-600 mr-2"></i>
+                    <span class="font-bold text-xl text-gray-900">CanadaAccountants</span>
+                    <span class="text-blue-600 font-bold text-xl">.app</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium hidden sm:block">Home</a>
+                    <a href="join-as-cpa.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
+                        Apply to Join
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <div class="inline-flex items-center bg-white bg-opacity-20 px-6 py-3 rounded-full mb-6">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    Transparent, Performance-Based Pricing
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                    Choose Your Tier.<br>
+                    <span class="text-blue-200">Grow Your Practice.</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed opacity-90">
+                    Higher tiers unlock more client matches, better search visibility, and premium features.
+                    <strong>No setup fees. No contracts. Cancel anytime.</strong>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl">
+                    <div class="text-3xl font-bold text-blue-200">AI-Matched</div>
+                    <div class="text-sm opacity-80">Qualified leads based on your specialization</div>
+                </div>
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl">
+                    <div class="text-3xl font-bold text-blue-200">24-Hour</div>
+                    <div class="text-sm opacity-80">Average time to first client match</div>
+                </div>
+                <div class="bg-white bg-opacity-10 p-6 rounded-xl">
+                    <div class="text-3xl font-bold text-blue-200">0% Commission</div>
+                    <div class="text-sm opacity-80">Keep 100% of what you earn from clients</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
+                    Simple, Transparent Pricing
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+                    Your investment directly impacts your search visibility and client flow.
+                    Every tier includes a professional CPA profile and AI-powered matching.
+                </p>
+
+                <!-- Monthly/Annual Toggle -->
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="toggle-container">
+                        <div class="toggle-option active" id="monthlyToggle" onclick="showMonthly()">Monthly</div>
+                        <div class="toggle-option" id="annualToggle" onclick="showAnnual()">Annual</div>
+                    </div>
+                </div>
+                <p class="text-sm text-blue-600 font-semibold" id="savingsBadge" style="display: none;">Save up to 16% with annual billing</p>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <!-- Associate Plan -->
+                <div class="pricing-card bg-white rounded-2xl shadow-lg border-2 border-gray-200 p-8 relative">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-50 rounded-full mb-4">
+                            <i class="fas fa-user text-blue-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800">Associate</h3>
+                        <p class="text-gray-500">Get started and build your presence</p>
+                    </div>
+
+                    <div class="text-center mb-8">
+                        <div class="text-5xl font-black text-gray-700 mb-1">
+                            <span class="monthly-price">$199</span>
+                            <span class="annual-price" style="display: none;">$1,999</span>
+                        </div>
+                        <div class="text-gray-500"><span class="monthly-label">/month</span><span class="annual-label" style="display: none;">/year</span></div>
+                        <div class="annual-savings text-sm text-blue-600 font-semibold mt-1" style="display: none;">Save $389/year</div>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-400"></i>
+                            <span>Up to 3 active client matches</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-400"></i>
+                            <span>Standard search ranking</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-400"></i>
+                            <span>Professional CPA profile</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-400"></i>
+                            <span>Client lead notifications</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-400"></i>
+                            <span>Email support</span>
+                        </div>
+                    </div>
+
+                    <button onclick="subscribeToPlan('associate', currentInterval)" class="w-full bg-blue-100 text-blue-700 py-4 rounded-xl font-bold hover:bg-blue-200 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="pricing-card bg-white rounded-2xl shadow-xl border-2 border-blue-500 p-8 relative transform lg:scale-105">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                        <div class="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                            MOST POPULAR
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                            <i class="fas fa-crown text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Professional</h3>
+                        <p class="text-gray-600">For serious practice growth</p>
+                    </div>
+
+                    <div class="text-center mb-8">
+                        <div class="text-5xl font-black text-blue-600 mb-1">
+                            <span class="monthly-price">$299</span>
+                            <span class="annual-price" style="display: none;">$2,999</span>
+                        </div>
+                        <div class="text-gray-600"><span class="monthly-label">/month</span><span class="annual-label" style="display: none;">/year</span></div>
+                        <div class="annual-savings text-sm text-blue-600 font-semibold mt-1" style="display: none;">Save $589/year</div>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-600"></i>
+                            <span><strong>Up to 7 active client matches</strong></span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-600"></i>
+                            <span><strong>Enhanced search ranking</strong></span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-600"></i>
+                            <span>Featured profile with specializations</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-600"></i>
+                            <span>Priority lead notifications</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-600"></i>
+                            <span>Advanced dashboard analytics</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-600"></i>
+                            <span>Priority support</span>
+                        </div>
+                    </div>
+
+                    <button onclick="subscribeToPlan('professional', currentInterval)" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card bg-white rounded-2xl shadow-lg border-2 border-gray-200 p-8 relative">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-50 rounded-full mb-4">
+                            <i class="fas fa-building text-blue-800 text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Enterprise</h3>
+                        <p class="text-gray-600">For firms ready to dominate</p>
+                    </div>
+
+                    <div class="text-center mb-8">
+                        <div class="text-5xl font-black text-blue-800 mb-1">
+                            <span class="monthly-price">$599</span>
+                            <span class="annual-price" style="display: none;">$5,999</span>
+                        </div>
+                        <div class="text-gray-600"><span class="monthly-label">/month</span><span class="annual-label" style="display: none;">/year</span></div>
+                        <div class="annual-savings text-sm text-blue-600 font-semibold mt-1" style="display: none;">Save $1,189/year</div>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-800"></i>
+                            <span><strong>Up to 15 active client matches</strong></span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-800"></i>
+                            <span><strong>Premium search ranking (top results)</strong></span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-800"></i>
+                            <span>Showcase profile with case studies</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-800"></i>
+                            <span>Instant lead notifications</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-800"></i>
+                            <span>Dedicated account manager</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-800"></i>
+                            <span>White-glove onboarding</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-blue-800"></i>
+                            <span>Direct Arthur hotline</span>
+                        </div>
+                    </div>
+
+                    <button onclick="subscribeToPlan('enterprise', currentInterval)" class="w-full bg-blue-800 text-white py-4 rounded-xl font-bold hover:bg-blue-900 transition-colors">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+
+            <!-- No Hidden Fees Promise -->
+            <div class="bg-green-50 border-2 border-green-200 rounded-2xl p-8 mb-16">
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                        <i class="fas fa-shield-alt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Our No Hidden Fees Promise</h3>
+                    <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                        <div class="text-center">
+                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
+                            <div class="font-semibold">No Setup Fees</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
+                            <div class="font-semibold">No Commission Fees</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
+                            <div class="font-semibold">No Contract Lock-ins</div>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
+                            <div class="font-semibold">No Success Fees</div>
+                        </div>
+                    </div>
+                    <p class="text-lg text-gray-700 mt-6 max-w-3xl mx-auto">
+                        What you see is what you pay. <strong>Monthly or annual subscription only.</strong> Cancel anytime.
+                        Keep every dollar you earn from your clients.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ROI Calculator -->
+            <div class="roi-calculator mb-16">
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Calculate Your ROI</h3>
+                    <p class="text-gray-600">See how quickly each tier pays for itself</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl text-blue-500 mb-4">Associate ROI</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span>Monthly cost:</span>
+                                <span class="font-bold">$199</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Active matches:</span>
+                                <span class="font-bold">Up to 3</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Avg client value:</span>
+                                <span class="font-bold">$3,200</span>
+                            </div>
+                            <div class="border-t pt-2">
+                                <div class="flex justify-between text-lg">
+                                    <span class="font-bold">ROI:</span>
+                                    <span class="font-bold text-green-600">1,508%</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Pays for itself with 1 client</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-400">
+                        <h4 class="font-bold text-xl text-blue-600 mb-4">Professional ROI</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span>Monthly cost:</span>
+                                <span class="font-bold">$299</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Active matches:</span>
+                                <span class="font-bold">Up to 7</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Avg client value:</span>
+                                <span class="font-bold">$3,200</span>
+                            </div>
+                            <div class="border-t pt-2">
+                                <div class="flex justify-between text-lg">
+                                    <span class="font-bold">ROI:</span>
+                                    <span class="font-bold text-green-600">3,678%</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Pays for itself with 1 client</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h4 class="font-bold text-xl text-blue-800 mb-4">Enterprise ROI</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span>Monthly cost:</span>
+                                <span class="font-bold">$599</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Active matches:</span>
+                                <span class="font-bold">Up to 15</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Avg client value:</span>
+                                <span class="font-bold">$3,200</span>
+                            </div>
+                            <div class="border-t pt-2">
+                                <div class="flex justify-between text-lg">
+                                    <span class="font-bold">ROI:</span>
+                                    <span class="font-bold text-green-600">7,012%</span>
+                                </div>
+                                <div class="text-sm text-gray-600">Pays for itself with 1 client</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
+                <p class="text-xl text-gray-600">From sign-up to your first client match in 24 hours</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                        <span class="text-blue-600 font-black text-2xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Apply & Get Verified</h3>
+                    <p class="text-gray-600">Submit your credentials. We verify your CPA designation, specializations, and professional standing.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                        <span class="text-blue-600 font-black text-2xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Choose Your Tier</h3>
+                    <p class="text-gray-600">Select the plan that fits your growth goals. Higher tiers unlock more matches and better search visibility.</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                        <span class="text-blue-600 font-black text-2xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Receive AI-Matched Leads</h3>
+                    <p class="text-gray-600">Our AI matches you with businesses based on your specialization, location, and capacity. You choose which clients to take.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-black mb-8">
+                Ready to Grow<br>
+                Your <span class="text-blue-200">Practice</span>?
+            </h2>
+            <p class="text-xl mb-12 leading-relaxed opacity-90">
+                Join hundreds of Canadian CPAs who are growing their practices through AI-powered client matching.
+                Every tier pays for itself with a single client.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="join-as-cpa.html" class="bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-colors">
+                    Apply to Join
+                </a>
+                <a href="tel:6479567290" class="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-700 transition-colors">
+                    Call Arthur: (647) 956-7290
+                </a>
+            </div>
+
+            <div class="bg-white bg-opacity-15 p-6 rounded-2xl backdrop-blur-sm">
+                <p class="text-lg leading-relaxed">
+                    "As a CPA myself, I built this platform to solve the client acquisition problem I lived for years.
+                    Every tier is designed to deliver ROI from day one."
+                </p>
+                <div class="mt-4">
+                    <strong>Arthur Kostaras, CPA, CF</strong><br>
+                    <span class="opacity-80">Founder, CanadaAccountants</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center mb-6">
+                <i class="fas fa-maple-leaf text-blue-400 text-3xl mr-3"></i>
+                <span class="font-bold text-2xl">CanadaAccountants</span>
+                <span class="text-blue-400 font-bold text-2xl">.app</span>
+            </div>
+            <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                AI-powered CPA marketplace built by CPAs, for CPAs, exclusively in Canada.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="font-semibold mb-3">Contact</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <div>(647) 956-7290</div>
+                        <div>arthur@negotiateandwin.com</div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Plans</h4>
+                    <div class="space-y-1 text-gray-400 text-sm">
+                        <div>Associate: $199/mo</div>
+                        <div>Professional: $299/mo</div>
+                        <div>Enterprise: $599/mo</div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-3">Promise</h4>
+                    <div class="space-y-1 text-gray-400 text-sm">
+                        <div>No setup fees</div>
+                        <div>No commission fees</div>
+                        <div>Cancel anytime</div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-6 mt-8">
+                <p class="text-gray-500 text-sm">&copy; 2025 CanadaAccountants.app. AI-powered CPA marketplace for Canadian professionals.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ---- Configuration ----
+        const API_BASE_URL = 'https://canadaaccountants-backend-production-1d8f.up.railway.app';
+        let currentInterval = 'monthly';
+
+        // Read URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const userEmail = urlParams.get('email') || '';
+        const profileId = urlParams.get('profileId') || '';
+
+        // Stripe tier mapping
+        const TIER_MAP = {
+            associate:    { monthly: 'associate_monthly',    yearly: 'associate_yearly' },
+            professional: { monthly: 'professional_monthly', yearly: 'professional_yearly' },
+            enterprise:   { monthly: 'enterprise_monthly',   yearly: 'enterprise_yearly' }
+        };
+
+        // ---- Pricing Toggle ----
+        function showMonthly() {
+            currentInterval = 'monthly';
+            document.getElementById('monthlyToggle').classList.add('active');
+            document.getElementById('annualToggle').classList.remove('active');
+            document.querySelectorAll('.monthly-price').forEach(el => el.style.display = '');
+            document.querySelectorAll('.annual-price').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.monthly-label').forEach(el => el.style.display = '');
+            document.querySelectorAll('.annual-label').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.annual-savings').forEach(el => el.style.display = 'none');
+            document.getElementById('savingsBadge').style.display = 'none';
+        }
+
+        function showAnnual() {
+            currentInterval = 'yearly';
+            document.getElementById('annualToggle').classList.add('active');
+            document.getElementById('monthlyToggle').classList.remove('active');
+            document.querySelectorAll('.monthly-price').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.annual-price').forEach(el => el.style.display = '');
+            document.querySelectorAll('.monthly-label').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.annual-label').forEach(el => el.style.display = '');
+            document.querySelectorAll('.annual-savings').forEach(el => el.style.display = '');
+            document.getElementById('savingsBadge').style.display = '';
+        }
+
+        // ---- Subscribe via Stripe Checkout ----
+        async function subscribeToPlan(tier, interval) {
+            const priceKey = TIER_MAP[tier]?.[interval];
+            if (!priceKey) {
+                alert('Invalid plan selection.');
+                return;
+            }
+
+            let email = userEmail;
+            if (!email) {
+                email = prompt('Please enter your professional email to continue:');
+                if (!email || !email.includes('@')) {
+                    alert('A valid email is required to proceed.');
+                    return;
+                }
+            }
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/api/stripe/create-checkout-session`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        priceId: priceKey,
+                        email: email,
+                        profileId: profileId,
+                        tier: tier,
+                        interval: interval
+                    })
+                });
+
+                const data = await res.json();
+
+                if (data.url) {
+                    localStorage.setItem('ca_checkout_email', email);
+                    window.location.href = data.url;
+                } else {
+                    alert('Unable to start checkout. Please try again or call Arthur at (647) 956-7290.');
+                    console.error('Checkout error:', data);
+                }
+            } catch (err) {
+                alert('Connection error. Please try again or call Arthur at (647) 956-7290.');
+                console.error('Checkout fetch error:', err);
+            }
+        }
+    </script>
+</body>
+</html>
