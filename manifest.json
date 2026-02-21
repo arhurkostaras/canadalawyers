@@ -1,7 +1,7 @@
 {
-  "name": "CanadaAccountants - AI CPA Matching",
-  "short_name": "CanadaAccountants",
-  "description": "AI-powered platform connecting Canadian CPAs with businesses. Provincial code compliant matching.",
+  "name": "CanadaLawyers - AI Lawyer Matching",
+  "short_name": "CanadaLawyers",
+  "description": "AI-powered platform connecting Canadian lawyers with businesses. Law society compliant matching.",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#1a1a1a",
@@ -9,8 +9,8 @@
   "orientation": "any",
   "scope": "/",
   "lang": "en-CA",
-  "categories": ["business", "finance", "productivity"],
-  
+  "categories": ["business", "legal", "productivity"],
+
   "icons": [
     {
       "src": "/icon-192.png",
@@ -25,52 +25,52 @@
       "purpose": "any maskable"
     }
   ],
-  
+
   "shortcuts": [
     {
-      "name": "Find a CPA",
-      "short_name": "Find CPA",
-      "description": "Search for qualified CPAs",
-      "url": "/find-cpa-5.html",
+      "name": "Find a Lawyer",
+      "short_name": "Find Lawyer",
+      "description": "Search for qualified lawyers",
+      "url": "/find-lawyer.html",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Join as CPA",
+      "name": "Join as Lawyer",
       "short_name": "Join",
-      "description": "Register as a CPA",
-      "url": "/cpa-onboarding-6.html",
+      "description": "Register as a lawyer",
+      "url": "/join-as-lawyer.html",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Pricing",
       "short_name": "Pricing",
       "description": "View subscription plans",
-      "url": "/pricing-6.html",
+      "url": "/pricing.html",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "CPA Login",
+      "name": "Lawyer Login",
       "short_name": "Login",
-      "description": "Access CPA dashboard",
-      "url": "/cpa-login.html",
+      "description": "Access lawyer dashboard",
+      "url": "/lawyer-login.html",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ],
-  
+
   "related_applications": [
     {
       "platform": "webapp",
-      "url": "https://canadaaccountants.app/manifest.json"
+      "url": "https://canadalawyers.app/manifest.json"
     }
   ],
   "prefer_related_applications": false,
-  
+
   "edge_side_panel": {
     "preferred_width": 400
   },
-  
+
   "handle_links": "preferred",
-  
+
   "launch_handler": {
     "client_mode": "navigate-existing"
   }

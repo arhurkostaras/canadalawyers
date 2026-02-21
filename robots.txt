@@ -3,10 +3,10 @@ Allow: /
 
 # Public pages
 Allow: /index.html
-Allow: /find-cpa.html
-Allow: /join-as-cpa.html
+Allow: /find-lawyer.html
+Allow: /join-as-lawyer.html
 Allow: /pricing.html
-Allow: /cpa-revenue-calculator.html
+Allow: /lawyer-revenue-calculator.html
 Allow: /contact.html
 Allow: /guarantee.html
 Allow: /why-we-win.html
@@ -16,10 +16,10 @@ Allow: /privacy-policy.html
 Allow: /terms-of-service.html
 
 # App pages (disallow)
-Disallow: /cpa-dashboard.html
-Disallow: /cpa-login.html
-Disallow: /cpa-onboarding.html
-Disallow: /cpa-matches.html
+Disallow: /lawyer-dashboard.html
+Disallow: /lawyer-login.html
+Disallow: /lawyer-onboarding.html
+Disallow: /lawyer-matches.html
 Disallow: /admin-test-matching.html
 Disallow: /admin-dashboard.html
 Disallow: /checkout-success.html
@@ -31,4 +31,4 @@ Disallow: /data-processing-agreement.html
 Disallow: /forgot-password.html
 Disallow: /reset-password.html
 
-Sitemap: https://canadaaccountants.app/sitemap.xml
+Sitemap: https://canadalawyers.app/sitemap.xml

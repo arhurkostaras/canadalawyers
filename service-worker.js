@@ -1,9 +1,9 @@
-// CanadaAccountants Service Worker
-// CEO: Arthur Kostaras, CPA, CMA, CF
+// CanadaLawyers Service Worker
+// Founder: Arthur Kostaras
 // Version: 1.0.0
 
-const CACHE_NAME = 'canadaaccountants-v1.0.0';
-const APP_PREFIX = 'canadaaccountants-';
+const CACHE_NAME = 'canadalawyers-v1.0.0';
+const APP_PREFIX = 'canadalawyers-';
 const VERSION = 'v1.0.0';
 const CACHE_KEY = APP_PREFIX + VERSION;
 
@@ -15,31 +15,31 @@ const STATIC_CACHE_URLS = [
 ];
 
 // Dynamic cache for API calls and external resources
-const DYNAMIC_CACHE = 'canadaaccountants-dynamic-v1';
+const DYNAMIC_CACHE = 'canadalawyers-dynamic-v1';
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
-  console.log('CanadaAccountants Service Worker: Installing...');
+  console.log('CanadaLawyers Service Worker: Installing...');
   
   event.waitUntil(
     caches.open(CACHE_KEY)
       .then((cache) => {
-        console.log('CanadaAccountants Service Worker: Caching static files');
+        console.log('CanadaLawyers Service Worker: Caching static files');
         return cache.addAll(STATIC_CACHE_URLS);
       })
       .then(() => {
-        console.log('CanadaAccountants Service Worker: Installation complete');
+        console.log('CanadaLawyers Service Worker: Installation complete');
         return self.skipWaiting();
       })
       .catch((error) => {
-        console.error('CanadaAccountants Service Worker: Installation failed', error);
+        console.error('CanadaLawyers Service Worker: Installation failed', error);
       })
   );
 });
 
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
-  console.log('CanadaAccountants Service Worker: Activating...');
+  console.log('CanadaLawyers Service Worker: Activating...');
   
   event.waitUntil(
     caches.keys()
@@ -47,14 +47,14 @@ self.addEventListener('activate', (event) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
             if (cacheName.indexOf(APP_PREFIX) === 0 && cacheName !== CACHE_KEY) {
-              console.log('CanadaAccountants Service Worker: Deleting old cache:', cacheName);
+              console.log('CanadaLawyers Service Worker: Deleting old cache:', cacheName);
               return caches.delete(cacheName);
             }
           })
         );
       })
       .then(() => {
-        console.log('CanadaAccountants Service Worker: Activation complete');
+        console.log('CanadaLawyers Service Worker: Activation complete');
         return self.clients.claim();
       })
   );
@@ -72,7 +72,7 @@ self.addEventListener('fetch', (event) => {
       .then((cachedResponse) => {
         // Return cached version if available
         if (cachedResponse) {
-          console.log('CanadaAccountants Service Worker: Serving from cache:', event.request.url);
+          console.log('CanadaLawyers Service Worker: Serving from cache:', event.request.url);
           return cachedResponse;
         }
 
@@ -90,14 +90,14 @@ self.addEventListener('fetch', (event) => {
             // Cache dynamic content
             caches.open(DYNAMIC_CACHE)
               .then((cache) => {
-                console.log('CanadaAccountants Service Worker: Caching dynamic content:', event.request.url);
+                console.log('CanadaLawyers Service Worker: Caching dynamic content:', event.request.url);
                 cache.put(event.request, responseToCache);
               });
 
             return response;
           })
           .catch((error) => {
-            console.log('CanadaAccountants Service Worker: Network request failed:', error);
+            console.log('CanadaLawyers Service Worker: Network request failed:', error);
             
             // Serve offline fallback for navigation requests
             if (event.request.mode === 'navigate') {
@@ -105,7 +105,7 @@ self.addEventListener('fetch', (event) => {
             }
             
             // For other requests, you might want to return a default offline response
-            return new Response('Offline - CanadaAccountants will sync when connection is restored', {
+            return new Response('Offline - CanadaLawyers will sync when connection is restored', {
               status: 503,
               statusText: 'Service Unavailable',
               headers: new Headers({
@@ -119,7 +119,7 @@ self.addEventListener('fetch', (event) => {
 
 // Background sync for when connection is restored
 self.addEventListener('sync', (event) => {
-  console.log('CanadaAccountants Service Worker: Background sync triggered');
+  console.log('CanadaLawyers Service Worker: Background sync triggered');
   
   if (event.tag === 'background-sync') {
     event.waitUntil(
@@ -131,10 +131,10 @@ self.addEventListener('sync', (event) => {
 
 // Push notification handler
 self.addEventListener('push', (event) => {
-  console.log('CanadaAccountants Service Worker: Push notification received');
+  console.log('CanadaLawyers Service Worker: Push notification received');
   
   const options = {
-    body: event.data ? event.data.text() : 'New update from CanadaAccountants',
+    body: event.data ? event.data.text() : 'New update from CanadaLawyers',
     vibrate: [200, 100, 200],
     data: {
       dateOfArrival: Date.now(),
@@ -153,13 +153,13 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    self.registration.showNotification('CanadaAccountants', options)
+    self.registration.showNotification('CanadaLawyers', options)
   );
 });
 
 // Notification click handler
 self.addEventListener('notificationclick', (event) => {
-  console.log('CanadaAccountants Service Worker: Notification clicked');
+  console.log('CanadaLawyers Service Worker: Notification clicked');
   
   event.notification.close();
 
@@ -179,7 +179,7 @@ self.addEventListener('notificationclick', (event) => {
 
 // Message handler for communication with main app
 self.addEventListener('message', (event) => {
-  console.log('CanadaAccountants Service Worker: Message received:', event.data);
+  console.log('CanadaLawyers Service Worker: Message received:', event.data);
   
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
@@ -193,7 +193,7 @@ self.addEventListener('message', (event) => {
 // Helper function for background sync
 async function syncOfflineData() {
   try {
-    console.log('CanadaAccountants Service Worker: Syncing offline data...');
+    console.log('CanadaLawyers Service Worker: Syncing offline data...');
     
     // Implement your offline data synchronization logic here
     // For example: sync user preferences, cached form data, etc.
@@ -207,9 +207,9 @@ async function syncOfflineData() {
       });
     });
     
-    console.log('CanadaAccountants Service Worker: Offline data sync complete');
+    console.log('CanadaLawyers Service Worker: Offline data sync complete');
   } catch (error) {
-    console.error('CanadaAccountants Service Worker: Sync failed:', error);
+    console.error('CanadaLawyers Service Worker: Sync failed:', error);
   }
 }
 
@@ -224,7 +224,7 @@ self.addEventListener('periodicsync', (event) => {
 
 // Handle app updates
 self.addEventListener('appinstalled', (event) => {
-  console.log('CanadaAccountants PWA: App installed successfully');
+  console.log('CanadaLawyers PWA: App installed successfully');
 });
 
 // Performance monitoring
@@ -237,14 +237,14 @@ self.addEventListener('fetch', (event) => {
       const duration = endTime - startTime;
       
       // Log performance metrics (you could send these to analytics)
-      console.log(`CanadaAccountants Performance: ${event.request.url} took ${duration}ms`);
+      console.log(`CanadaLawyers Performance: ${event.request.url} took ${duration}ms`);
       
       return response;
     })
   );
 });
 
-console.log('CanadaAccountants Service Worker: Script loaded successfully');
-console.log('CEO: Arthur Kostaras, CPA, CMA, CF');
+console.log('CanadaLawyers Service Worker: Script loaded successfully');
+console.log('Founder: Arthur Kostaras');
 console.log('Email: arthur@negotiateandwin.com');
 console.log('Phone: 647.956.7290');

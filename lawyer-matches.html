@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       
-      gtag('config', 'G-XCF2Z737', {
+      gtag('config', 'G-XXXXXXXXX', {
         custom_map: {
           'custom_parameter_1': 'business_type',
           'custom_parameter_2': 'pain_point', 
@@ -18,7 +18,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Perfect CPA Matches - CanadaAccountants</title>
+    <title>Your Perfect CPA Matches - CanadaLawyers</title>
     <style>
         * {
             margin: 0;
@@ -470,7 +470,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <span class="maple-leaf">🍁</span>
-                CanadaAccountants
+                CanadaLawyers
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -485,7 +485,7 @@
     <div id="loadingScreen" class="loading-screen">
         <div class="loading-animation"></div>
         <div class="loading-text">🤖 AI Analyzing Your Requirements...</div>
-        <div class="loading-subtext">Evaluating 200+ CPAs to find your perfect matches</div>
+        <div class="loading-subtext">Evaluating 200+ Lawyers to find your perfect matches</div>
     </div>
 
     <!-- Results Content -->
@@ -497,12 +497,12 @@
 
         <div class="match-summary">
             <h2>🎯 AI Matching Complete</h2>
-            <p id="summaryText">We've identified exceptional CPAs who are perfectly suited for your business needs.</p>
+            <p id="summaryText">We've identified exceptional Lawyers who are perfectly suited for your business needs.</p>
             
             <div class="summary-stats">
                 <div class="stat-item">
                     <span class="stat-number" id="totalAnalyzed">200+</span>
-                    <span class="stat-label">CPAs Analyzed</span>
+                    <span class="stat-label">Lawyers Analyzed</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">3</span>
@@ -525,16 +525,16 @@
 
         <div class="next-steps">
             <h2>🚀 What Happens Next?</h2>
-            <p>We've sent your requirements to all three CPAs. You'll receive personalized proposals within 24 hours. Choose the CPA that feels like the best fit and start your partnership!</p>
+            <p>We've sent your requirements to all three Lawyers. You'll receive personalized proposals within 24 hours. Choose the CPA that feels like the best fit and start your partnership!</p>
             
             <div class="cta-buttons">
                 <a href="contact.html" class="btn btn-primary">Questions? Contact Us</a>
-                <a href="find-cpa.html" class="btn btn-secondary">Find More CPAs</a>
+                <a href="find-lawyer.html" class="btn btn-secondary">Find More Lawyers</a>
             </div>
 
             <div class="guarantee-reminder">
                 <h3>🔍 Quality Match Promise</h3>
-                <p>Our AI-powered matching connects you directly with pre-screened CPAs who specialize in your industry and business size. No contracts, no fees - just quality introductions to accounting professionals who fit your exact needs.</p>
+                <p>Our AI-powered matching connects you directly with pre-screened Lawyers who specialize in your industry and business size. No contracts, no fees - just quality introductions to legal professionals who fit your exact needs.</p>
             </div>
         </div>
     </div>
@@ -572,10 +572,10 @@
                 };
             }
 
-            findMatches(businessProfile, availableCPAs) {
+            findMatches(businessProfile, availableLawyers) {
                 console.log('🎯 Starting AI matching process...', businessProfile);
                 
-                const scoredMatches = availableCPAs.map(cpa => {
+                const scoredMatches = availableLawyers.map(cpa => {
                     const score = this.calculateCompatibilityScore(businessProfile, cpa);
                     const reasoning = this.generateMatchReasoning(businessProfile, cpa, score);
                     
@@ -814,7 +814,7 @@
         });
             // Fetch live CPA database
         const cpaDatabase = await getCPADatabase();
-        console.log('Using CPA database:', cpaDatabase.length, 'CPAs');
+        console.log('Using CPA database:', cpaDatabase.length, 'Lawyers');
             
             // Run AI matching algorithm
             const algorithm = new CPAMatchingAlgorithm();
@@ -876,7 +876,7 @@ function showErrorState() {
     }
     
     try {
-        const response = await fetch(`https://sme-intelligence-backend-production-5185.up.railway.app/api/questionnaire/retrieve/${sessionId}`);
+        const response = await fetch(`https://lawyer-intelligence-backend-production.up.railway.app/api/questionnaire/retrieve/${sessionId}`);
         
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -906,16 +906,16 @@ function getDemoData() {
 }
         async function getCPADatabase() {
     try {
-        console.log('Fetching verified CPAs from database...');
-        const response = await fetch('https://sme-intelligence-backend-production-5185.up.railway.app/api/cpa/search?verification_status=verified&limit=50');
+        console.log('Fetching verified Lawyers from database...');
+        const response = await fetch('https://lawyer-intelligence-backend-production.up.railway.app/api/cpa/search?verification_status=verified&limit=50');
         
         if (response.ok) {
             const result = await response.json();
-            console.log('Retrieved CPAs:', result);
+            console.log('Retrieved Lawyers:', result);
             
             // Transform database format to match your matching algorithm
             return result.cpas.map(cpa => ({
-                id: cpa.cpa_id,
+                id: cpa.lawyer_id,
                 name: `${cpa.first_name} ${cpa.last_name}`,
                 firm: cpa.firm_name,
                 location: `${cpa.city}, ${cpa.province}`,
@@ -945,9 +945,9 @@ function getDemoData() {
         {
             id: 'cpa_fallback',
             name: 'David Wilson, CPA',
-            firm: 'Reliable Accounting Services',
+            firm: 'Reliable Legal Services',
             location: 'Toronto, ON',
-            email: 'david@reliableaccounting.ca',
+            email: 'david@reliablelegal.ca',
             industrySpecializations: ['general-business'],
             clientSizeExperience: ['startup', 'small', 'medium'],
             serviceOfferings: ['bookkeeping', 'tax-prep'],
@@ -989,7 +989,7 @@ function mapRateRange(minRate, maxRate) {
             
             const businessType = industryText[businessData.question_1] || 'business';
             document.getElementById('summaryText').textContent = 
-                `We've identified exceptional CPAs who are perfectly suited for your ${businessType} needs.`;
+                `We've identified exceptional Lawyers who are perfectly suited for your ${businessType} needs.`;
             
             // Generate match cards
             const container = document.getElementById('matchesContainer');
@@ -1013,13 +1013,13 @@ async function createMatchCard(match, index) {
     // Call AI Performance Scoring Engine
     let aiPerformanceData = null;
     try {
-        const response = await fetch('https://canadaaccountants-backend-production-1d8f.up.railway.app/api/performance/score', {
+        const response = await fetch('https://canadalawyers-backend-production.up.railway.app/api/performance/score', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                cpaId: cpa.id || index,
+                lawyerId: cpa.id || index,
                 cpaName: cpa.name,
                 location: cpa.location,
                 yearsExperience: cpa.yearsExperience,
@@ -1250,9 +1250,9 @@ function createAIScoreBars(metrics) {
 }
 
 // View full AI analysis profile
-function viewFullProfile(cpaId) {
+function viewFullProfile(lawyerId) {
     // This would open a detailed AI analysis report
-    alert(`Opening detailed AI analysis report for CPA ${cpaId}...`);
+    alert(`Opening detailed AI analysis report for CPA ${lawyerId}...`);
 }
 
 // CSS Styles for AI Performance Dashboard

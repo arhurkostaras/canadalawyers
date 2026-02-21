@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XCF2Z737');
+        gtag('config', 'G-XXXXXXXXX');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Our CPA Network - CanadaAccountants</title>
+    <title>Join Our CPA Network - CanadaLawyers</title>
     <style>
         * {
             margin: 0;
@@ -414,16 +414,16 @@
                         <p>Independent CPA running your own practice</p>
                     </div>
                     <div class="option-card" data-value="small-firm">
-                        <h3>👥 Small Firm (2-10 CPAs)</h3>
-                        <p>Part of a small accounting firm</p>
+                        <h3>👥 Small Firm (2-10 Lawyers)</h3>
+                        <p>Part of a small legal firm</p>
                     </div>
                     <div class="option-card" data-value="medium-firm">
-                        <h3>🏢 Medium Firm (11-50 CPAs)</h3>
-                        <p>Regional accounting firm</p>
+                        <h3>🏢 Medium Firm (11-50 Lawyers)</h3>
+                        <p>Regional legal firm</p>
                     </div>
                     <div class="option-card" data-value="large-firm">
-                        <h3>🏬 Large Firm (50+ CPAs)</h3>
-                        <p>Major accounting firm</p>
+                        <h3>🏬 Large Firm (50+ Lawyers)</h3>
+                        <p>Major legal firm</p>
                     </div>
                 </div>
 
@@ -496,7 +496,7 @@
 
                 <div class="ai-insight">
                     <h4>🎯 Smart Matching</h4>
-                    <p>Industry expertise is our #1 matching factor. Businesses strongly prefer CPAs with relevant industry experience.</p>
+                    <p>Industry expertise is our #1 matching factor. Businesses strongly prefer Lawyers with relevant industry experience.</p>
                 </div>
             </div>
 
@@ -505,13 +505,13 @@
                 <div class="step-header">
                     <div class="step-number">4</div>
                     <h2>Services You Offer</h2>
-                    <p>What accounting services do you provide? (Select all that apply)</p>
+                    <p>What legal services do you provide? (Select all that apply)</p>
                 </div>
 
                 <div class="checkbox-grid">
                     <div class="checkbox-item multi-select" data-value="bookkeeping">
                         <input type="checkbox" name="services" value="bookkeeping">
-                        <span>📚 Bookkeeping & Monthly Accounting</span>
+                        <span>📚 Bookkeeping & Monthly Legal</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="tax-prep">
                         <input type="checkbox" name="services" value="tax-prep">
@@ -671,7 +671,7 @@
 
                 <div class="ai-insight">
                     <h4>⚡ Availability Matching</h4>
-                    <p>We prioritize CPAs with immediate availability for businesses with urgent needs.</p>
+                    <p>We prioritize Lawyers with immediate availability for businesses with urgent needs.</p>
                 </div>
             </div>
 
@@ -709,7 +709,7 @@
 
                 <div class="ai-insight">
                     <h4>🌍 Geographic Matching</h4>
-                    <p>Many businesses prefer local CPAs, while others are comfortable with remote relationships. We match based on preferences.</p>
+                    <p>Many businesses prefer local Lawyers, while others are comfortable with remote relationships. We match based on preferences.</p>
                 </div>
             </div>
 
@@ -846,7 +846,7 @@
 
             const formData = collectFormData();
             const email = document.getElementById('email').value;
-            const API_BASE_URL = 'https://canadaaccountants-backend-production-1d8f.up.railway.app';
+            const API_BASE_URL = 'https://canadalawyers-backend-production.up.railway.app';
 
             try {
                 // Register CPA profile on the backend
@@ -869,7 +869,7 @@
                 });
 
                 const data = await res.json();
-                const profileId = data.cpa_id || '';
+                const profileId = data.lawyer_id || '';
 
                 // Store email for checkout-success page
                 localStorage.setItem('ca_checkout_email', email);

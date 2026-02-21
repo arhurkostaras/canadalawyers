@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XCF2Z737');
+        gtag('config', 'G-XXXXXXXXX');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predictive CPA Matching Algorithm - Enhanced AI Demo</title>
@@ -215,7 +215,7 @@
             font-size: 0.875rem;
         }
 
-        .cpa-matches {
+        .lawyer-matches {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
@@ -399,7 +399,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .cpa-matches {
+            .lawyer-matches {
                 grid-template-columns: 1fr;
             }
         }
@@ -503,10 +503,10 @@
 
             <!-- Primary Challenge -->
             <div class="form-section">
-                <h3 class="section-title">🎯 Primary Accounting Challenge</h3>
+                <h3 class="section-title">🎯 Primary Legal Challenge</h3>
                 
                 <div class="form-group">
-                    <label class="form-label" for="primaryChallenge">What's your biggest accounting challenge?</label>
+                    <label class="form-label" for="primaryChallenge">What's your biggest legal challenge?</label>
                     <select id="primaryChallenge" class="form-select" required>
                         <option value="">Select primary challenge</option>
                         <option value="cash-flow">Cash Flow Management (60% of SMEs)</option>
@@ -539,8 +539,8 @@
                 
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label" for="accountingSoftware">Current accounting software</label>
-                        <select id="accountingSoftware" class="form-select" required>
+                        <label class="form-label" for="legalSoftware">Current legal software</label>
+                        <select id="legalSoftware" class="form-select" required>
                             <option value="">Select your software</option>
                             <option value="quickbooks">QuickBooks (47% market share)</option>
                             <option value="excel">Excel/Spreadsheets (23% - upgrade opportunity!)</option>
@@ -595,7 +595,7 @@
             </div>
 
             <!-- CPA Matches -->
-            <div class="cpa-matches" id="cpaMatches">
+            <div class="lawyer-matches" id="cpaMatches">
                 <!-- Matches will be populated by JavaScript -->
             </div>
 
@@ -622,7 +622,7 @@
                 growthStage: document.getElementById('growthStage').value,
                 primaryChallenge: document.getElementById('primaryChallenge').value,
                 urgency: document.getElementById('urgency').value,
-                accountingSoftware: document.getElementById('accountingSoftware').value,
+                legalSoftware: document.getElementById('legalSoftware').value,
                 communicationStyle: document.getElementById('communicationStyle').value
             };
 
@@ -662,7 +662,7 @@
                 { name: 'Geographic Proximity', score: calculateGeoScore(data.province) },
                 { name: 'Growth Stage Alignment', score: calculateGrowthScore(data.growthStage) },
                 { name: 'Challenge Specialization', score: calculateChallengeScore(data.primaryChallenge) },
-                { name: 'Technology Stack Match', score: calculateTechScore(data.accountingSoftware) },
+                { name: 'Technology Stack Match', score: calculateTechScore(data.legalSoftware) },
                 { name: 'Communication Style Fit', score: calculateCommScore(data.communicationStyle) },
                 { name: 'Seasonal Demand Pattern', score: calculateSeasonalScore(data.urgency) },
                 { name: 'Provincial Compliance', score: calculateComplianceScore(data.province) },
@@ -683,7 +683,7 @@
             const insights = [
                 { metric: getMarketShare(data.industry), label: 'Industry Market Share' },
                 { metric: getSeasonalDemand(data.urgency), label: 'Seasonal Demand Level' },
-                { metric: getTechAdoption(data.accountingSoftware), label: 'Tech Adoption Rate' },
+                { metric: getTechAdoption(data.legalSoftware), label: 'Tech Adoption Rate' },
                 { metric: getProvincialRanking(data.province), label: 'Provincial CPA Availability' }
             ];
 
@@ -837,7 +837,7 @@
             const cpaPools = {
                 'technology': [
                     { name: 'Sarah Chen, CPA', specialization: 'Tech Startup & Scale-up Specialist', experience: '12 years', location: 'Toronto, ON', responseTime: '2.1 hours', techStack: 'QuickBooks, Xero, AI Tools', reasons: ['Tech Industry Expert', 'Scaling Specialist', 'VC Experience', 'QuickBooks Pro'] },
-                    { name: 'Michael Rodriguez, CPA', specialization: 'SaaS & Software Accounting', experience: '9 years', location: 'Vancouver, BC', responseTime: '3.2 hours', techStack: 'Xero, Sage, Custom APIs', reasons: ['SaaS Expertise', 'Growth Stage Focus', 'Tech Stack Match'] },
+                    { name: 'Michael Rodriguez, CPA', specialization: 'SaaS & Software Legal', experience: '9 years', location: 'Vancouver, BC', responseTime: '3.2 hours', techStack: 'Xero, Sage, Custom APIs', reasons: ['SaaS Expertise', 'Growth Stage Focus', 'Tech Stack Match'] },
                     { name: 'Alex Kim, CPA', specialization: 'Fintech & Innovation', experience: '8 years', location: 'Waterloo, ON', responseTime: '1.8 hours', techStack: 'QuickBooks, FreshBooks', reasons: ['Fintech Focus', 'Innovation Expert', 'Fast Response'] }
                 ],
                 'healthcare': [
@@ -845,15 +845,15 @@
                     { name: 'Robert Chen, CPA', specialization: 'Healthcare Compliance', experience: '11 years', location: 'Ottawa, ON', responseTime: '3.1 hours', techStack: 'QuickBooks, Custom Solutions', reasons: ['Regulatory Expert', 'Compliance Focus'] }
                 ],
                 'construction': [
-                    { name: 'Maria Santos, CPA', specialization: 'Construction & Real Estate', experience: '13 years', location: 'Edmonton, AB', responseTime: '2.8 hours', techStack: 'Sage, QuickBooks, Project Tools', reasons: ['Construction Expert', 'Project Accounting', 'Real Estate Focus'] }
+                    { name: 'Maria Santos, CPA', specialization: 'Construction & Real Estate', experience: '13 years', location: 'Edmonton, AB', responseTime: '2.8 hours', techStack: 'Sage, QuickBooks, Project Tools', reasons: ['Construction Expert', 'Project Legal', 'Real Estate Focus'] }
                 ]
             };
 
             // Get relevant CPA pool or default
-            const relevantCPAs = cpaPools[data.industry] || cpaPools['technology'];
+            const relevantLawyers = cpaPools[data.industry] || cpaPools['technology'];
             
             // Calculate match scores and return top 3
-            return relevantCPAs.slice(0, 3).map((cpa, index) => ({
+            return relevantLawyers.slice(0, 3).map((cpa, index) => ({
                 ...cpa,
                 matchScore: 96 - (index * 3) + Math.floor(Math.random() * 4)
             }));

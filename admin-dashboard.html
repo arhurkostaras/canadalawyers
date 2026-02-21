@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XCF2Z737');
+        gtag('config', 'G-XXXXXXXXX');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - CanadaAccountants</title>
+    <title>Admin Dashboard - CanadaLawyers</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
@@ -21,7 +21,7 @@
             const token = localStorage.getItem('cpa_token');
             const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
             if (!token || user.userType !== 'admin') {
-                window.location.href = '/cpa-login.html';
+                window.location.href = '/lawyer-login.html';
             }
         })();
     </script>
@@ -29,7 +29,7 @@
     <!-- Top nav -->
     <nav class="bg-gray-800 border-b border-gray-700 px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-4">
-            <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">CanadaAccountants Admin</span>
+            <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">CanadaLawyers Admin</span>
             <a href="/admin-outreach.html" class="text-sm text-gray-400 hover:text-white ml-4">Outreach</a>
             <a href="/admin-test-matching.html" class="text-sm text-gray-400 hover:text-white ml-2">AI Matching Test</a>
         </div>
@@ -43,7 +43,7 @@
         <!-- Stats cards -->
         <section id="statsSection" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
-                <p class="text-gray-400 text-sm">Total CPAs</p>
+                <p class="text-gray-400 text-sm">Total Lawyers</p>
                 <p id="statCpas" class="text-3xl font-bold mt-1">--</p>
                 <p id="statVerified" class="text-xs text-green-400 mt-1"></p>
             </div>
@@ -66,8 +66,8 @@
         <section class="mb-8">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-semibold">CPA Management</h2>
-                <select id="cpaFilter" onchange="loadCPAs()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
-                    <option value="">All CPAs</option>
+                <select id="cpaFilter" onchange="loadLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                    <option value="">All Lawyers</option>
                     <option value="true">Verified</option>
                     <option value="false">Unverified</option>
                 </select>
@@ -132,7 +132,7 @@
     </main>
 
     <script>
-        const API = 'https://canadaaccountants-backend-production-1d8f.up.railway.app';
+        const API = 'https://canadalawyers-backend-production.up.railway.app';
         const token = localStorage.getItem('cpa_token');
         const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
 
@@ -143,7 +143,7 @@
         function logout() {
             localStorage.removeItem('cpa_token');
             localStorage.removeItem('cpa_user');
-            window.location.href = '/cpa-login.html';
+            window.location.href = '/lawyer-login.html';
         }
 
         function fmtDate(d) {
@@ -180,9 +180,9 @@
             }
         }
 
-        // ---- Load CPAs table ----
+        // ---- Load Lawyers table ----
         let currentCPAPage = 1;
-        async function loadCPAs(page) {
+        async function loadLawyers(page) {
             if (page) currentCPAPage = page;
             const filter = document.getElementById('cpaFilter').value;
             const qs = `page=${currentCPAPage}&limit=10${filter ? `&verified=${filter}` : ''}`;
@@ -193,7 +193,7 @@
 
                 const tbody = document.getElementById('cpaTableBody');
                 if (data.cpas.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" class="px-4 py-6 text-center text-gray-500">No CPAs found</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="6" class="px-4 py-6 text-center text-gray-500">No Lawyers found</td></tr>';
                 } else {
                     tbody.innerHTML = data.cpas.map(c => `
                         <tr class="hover:bg-gray-750">
@@ -216,23 +216,23 @@
                 document.getElementById('cpaPagination').innerHTML = `
                     <span>Page ${p.page} of ${p.totalPages} (${p.total} total)</span>
                     <div class="flex gap-2">
-                        <button onclick="loadCPAs(${p.page - 1})" ${p.page <= 1 ? 'disabled class="opacity-30 cursor-default"' : 'class="hover:text-white"'}>&larr; Prev</button>
-                        <button onclick="loadCPAs(${p.page + 1})" ${p.page >= p.totalPages ? 'disabled class="opacity-30 cursor-default"' : 'class="hover:text-white"'}>Next &rarr;</button>
+                        <button onclick="loadLawyers(${p.page - 1})" ${p.page <= 1 ? 'disabled class="opacity-30 cursor-default"' : 'class="hover:text-white"'}>&larr; Prev</button>
+                        <button onclick="loadLawyers(${p.page + 1})" ${p.page >= p.totalPages ? 'disabled class="opacity-30 cursor-default"' : 'class="hover:text-white"'}>Next &rarr;</button>
                     </div>
                 `;
             } catch (e) {
-                console.error('CPAs load error:', e);
+                console.error('Lawyers load error:', e);
             }
         }
 
-        async function toggleVerify(cpaId, verified) {
+        async function toggleVerify(lawyerId, verified) {
             try {
-                await fetch(`${API}/api/admin/cpas/${cpaId}/verify`, {
+                await fetch(`${API}/api/admin/cpas/${lawyerId}/verify`, {
                     method: 'POST',
                     headers,
                     body: JSON.stringify({ verified }),
                 });
-                loadCPAs();
+                loadLawyers();
                 loadStats();
             } catch (e) {
                 console.error('Verify toggle error:', e);
@@ -302,7 +302,7 @@
 
         // ---- Init ----
         loadStats();
-        loadCPAs();
+        loadLawyers();
         loadSubmissions();
         loadMatches();
     </script>

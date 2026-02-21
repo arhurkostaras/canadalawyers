@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCF2Z737"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XCF2Z737');
+        gtag('config', 'G-XXXXXXXXX');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outreach Dashboard - CanadaAccountants</title>
+    <title>Outreach Dashboard - CanadaLawyers</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white min-h-screen">
@@ -21,7 +21,7 @@
             const token = localStorage.getItem('cpa_token');
             const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
             if (!token || user.userType !== 'admin') {
-                window.location.href = '/cpa-login.html';
+                window.location.href = '/lawyer-login.html';
             }
         })();
     </script>
@@ -29,7 +29,7 @@
     <!-- Top nav -->
     <nav class="bg-gray-800 border-b border-gray-700 px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-4">
-            <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">CanadaAccountants Admin</span>
+            <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">CanadaLawyers Admin</span>
             <a href="/admin-dashboard.html" class="text-sm text-gray-400 hover:text-white ml-4">Dashboard</a>
             <a href="/admin-outreach.html" class="text-sm text-white ml-2 border-b border-indigo-400">Outreach</a>
             <a href="/admin-test-matching.html" class="text-sm text-gray-400 hover:text-white ml-2">AI Matching Test</a>
@@ -71,7 +71,7 @@
         <!-- Scraped Data Stats -->
         <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
-                <p class="text-gray-400 text-sm">Scraped CPAs</p>
+                <p class="text-gray-400 text-sm">Scraped Lawyers</p>
                 <p id="statScrapedCpas" class="text-2xl font-bold mt-1">--</p>
                 <p id="statCpasEmail" class="text-xs text-green-400 mt-1"></p>
             </div>
@@ -160,20 +160,20 @@
         <section class="mb-8">
             <h2 class="text-xl font-semibold mb-4">Scraped Data Browser</h2>
             <div class="flex gap-4 mb-4">
-                <button onclick="showTab('cpas')" id="tabCpas" class="px-4 py-2 rounded text-sm bg-indigo-600">Scraped CPAs</button>
+                <button onclick="showTab('cpas')" id="tabCpas" class="px-4 py-2 rounded text-sm bg-indigo-600">Scraped Lawyers</button>
                 <button onclick="showTab('smes')" id="tabSmes" class="px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600">Scraped SMEs</button>
             </div>
 
-            <!-- CPAs Tab -->
+            <!-- Lawyers Tab -->
             <div id="cpasTab">
                 <div class="flex gap-3 mb-3">
-                    <select id="cpaProvFilter" onchange="loadScrapedCPAs()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                    <select id="cpaProvFilter" onchange="loadScrapedLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
                         <option value="">All Provinces</option>
                         <option value="BC">BC</option><option value="AB">AB</option><option value="SK">SK</option>
                         <option value="MB">MB</option><option value="ON">ON</option><option value="QC">QC</option>
                         <option value="NS">NS</option><option value="NB">NB</option><option value="PE">PE</option><option value="NL">NL</option>
                     </select>
-                    <input id="cpaCityFilter" type="text" placeholder="Filter by city..." onchange="loadScrapedCPAs()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                    <input id="cpaCityFilter" type="text" placeholder="Filter by city..." onchange="loadScrapedLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
                 </div>
                 <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-x-auto">
                     <table class="w-full text-sm">
@@ -248,8 +248,8 @@
     </main>
 
     <script>
-        const API = 'https://canadaaccountants-backend-production-1d8f.up.railway.app';
-        const INTEL_API = 'https://sme-intelligence-backend-production-5185.up.railway.app';
+        const API = 'https://canadalawyers-backend-production.up.railway.app';
+        const INTEL_API = 'https://lawyer-intelligence-backend-production.up.railway.app';
         const token = localStorage.getItem('cpa_token');
         const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
 
@@ -259,7 +259,7 @@
         function logout() {
             localStorage.removeItem('cpa_token');
             localStorage.removeItem('cpa_user');
-            window.location.href = '/cpa-login.html';
+            window.location.href = '/lawyer-login.html';
         }
 
         function fmtDate(d) {
@@ -283,10 +283,10 @@
 
         // ---- Default templates ----
         const DEFAULT_CPA_SUBJECT = '{{sme_count}} businesses in {{city}} need a CPA like you';
-        const DEFAULT_CPA_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{cpa_name}},</h2><p>Did you know there are <strong>{{sme_count}} businesses</strong> in {{province}} actively looking for CPA services?</p><p>Right now, <strong>{{active_requests}} business owners</strong> on CanadaAccountants have submitted requests for help with tax planning, bookkeeping, and advisory services.</p><p>The average Canadian SME spends <strong>585 days</strong> searching for the right accountant. We eliminate that friction completely.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">Why CPAs join CanadaAccountants:</p><ul style="margin:0;padding-left:20px;"><li>AI-matched leads based on your specialization</li><li>Serve clients anywhere in Canada — remote-friendly matching</li><li>Zero marketing spend — clients come to you</li><li>Verified professional profile with trust badge</li><li>Free to join during launch</li></ul></div><p style="font-size:14px;color:#555;"><strong>Work from anywhere:</strong> Whether you prefer in-person meetings in {{city}} or serving clients remotely across Canada, our AI matching considers your work preferences to connect you with the right clients.</p><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/join-as-cpa.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Claim Your Free Profile</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras, CPA, CF<br>Founder, CanadaAccountants</p></div>`;
+        const DEFAULT_CPA_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{cpa_name}},</h2><p>Did you know there are <strong>{{sme_count}} businesses</strong> in {{province}} actively looking for CPA services?</p><p>Right now, <strong>{{active_requests}} business owners</strong> on CanadaLawyers have submitted requests for help with tax planning, bookkeeping, and advisory services.</p><p>The average Canadian SME spends <strong>585 days</strong> searching for the right lawyer. We eliminate that friction completely.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">Why Lawyers join CanadaLawyers:</p><ul style="margin:0;padding-left:20px;"><li>AI-matched leads based on your specialization</li><li>Serve clients anywhere in Canada — remote-friendly matching</li><li>Zero marketing spend — clients come to you</li><li>Verified professional profile with trust badge</li><li>Free to join during launch</li></ul></div><p style="font-size:14px;color:#555;"><strong>Work from anywhere:</strong> Whether you prefer in-person meetings in {{city}} or serving clients remotely across Canada, our AI matching considers your work preferences to connect you with the right clients.</p><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/join-as-lawyer.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Claim Your Free Profile</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras<br>Founder, CanadaLawyers</p></div>`;
 
-        const DEFAULT_SME_SUBJECT = 'Stop wasting 585 days finding the right CPA';
-        const DEFAULT_SME_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{business_name}},</h2><p>Finding the right CPA for your {{industry}} business shouldn't take <strong>585 days</strong>.</p><p>CanadaAccountants uses AI to match your business with pre-verified CPAs in {{province}} in <strong>under 24 hours</strong>.</p><p>There are <strong>{{cpa_count}} verified CPAs</strong> on our platform right now.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">How it works:</p><ol style="margin:0;padding-left:20px;"><li>Tell us about your business needs (2 minutes)</li><li>Our AI matches you with the top 3 CPAs</li><li>Connect directly — no middleman</li></ol></div><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/find-cpa.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Find My CPA Match</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras, CPA, CF<br>Founder, CanadaAccountants</p></div>`;
+        const DEFAULT_SME_SUBJECT = 'Stop wasting 585 days finding the right lawyer';
+        const DEFAULT_SME_BODY = `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333;"><h2 style="color:#1e293b;">Hi {{business_name}},</h2><p>Finding the right lawyer for your {{industry}} business shouldn't take <strong>585 days</strong>.</p><p>CanadaLawyers uses AI to match your business with pre-verified Lawyers in {{province}} in <strong>under 24 hours</strong>.</p><p>There are <strong>{{cpa_count}} verified Lawyers</strong> on our platform right now.</p><div style="background:#f8fafc;border-radius:8px;padding:20px;margin:20px 0;"><p style="margin:0 0 12px 0;font-weight:bold;">How it works:</p><ol style="margin:0;padding-left:20px;"><li>Tell us about your business needs (2 minutes)</li><li>Our AI matches you with the top 3 Lawyers</li><li>Connect directly — no middleman</li></ol></div><p style="text-align:center;margin:30px 0;"><a href="{{platform_url}}/find-lawyer.html" style="display:inline-block;background:#dc2626;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;">Find My CPA Match</a></p><p style="color:#666;font-size:14px;">Best regards,<br>Arthur Kostaras<br>Founder, CanadaLawyers</p></div>`;
 
         function updateTemplateDefaults() {
             const type = document.getElementById('campType').value;
@@ -440,9 +440,9 @@
             document.getElementById('tabSmes').className = tab === 'smes' ? 'px-4 py-2 rounded text-sm bg-indigo-600' : 'px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600';
         }
 
-        // ---- Scraped CPAs ----
+        // ---- Scraped Lawyers ----
         let cpaPage = 1;
-        async function loadScrapedCPAs(page) {
+        async function loadScrapedLawyers(page) {
             if (page) cpaPage = page;
             const prov = document.getElementById('cpaProvFilter').value;
             const city = document.getElementById('cpaCityFilter').value;
@@ -455,7 +455,7 @@
 
                 const tbody = document.getElementById('scrapedCpasBody');
                 if (data.cpas.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="7" class="px-4 py-6 text-center text-gray-500">No scraped CPAs found</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="7" class="px-4 py-6 text-center text-gray-500">No scraped Lawyers found</td></tr>';
                 } else {
                     tbody.innerHTML = data.cpas.map(c => `
                         <tr class="hover:bg-gray-750">
@@ -474,11 +474,11 @@
                 document.getElementById('cpaPag').innerHTML = `
                     <span>Page ${cpaPage} of ${totalPages} (${data.total} total)</span>
                     <div class="flex gap-2">
-                        <button onclick="loadScrapedCPAs(${cpaPage - 1})" ${cpaPage <= 1 ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>&larr; Prev</button>
-                        <button onclick="loadScrapedCPAs(${cpaPage + 1})" ${cpaPage >= totalPages ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>Next &rarr;</button>
+                        <button onclick="loadScrapedLawyers(${cpaPage - 1})" ${cpaPage <= 1 ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>&larr; Prev</button>
+                        <button onclick="loadScrapedLawyers(${cpaPage + 1})" ${cpaPage >= totalPages ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>Next &rarr;</button>
                     </div>
                 `;
-            } catch (e) { console.error('Scraped CPAs error:', e); }
+            } catch (e) { console.error('Scraped Lawyers error:', e); }
         }
 
         // ---- Scraped SMEs ----
@@ -558,7 +558,7 @@
         // ---- Init ----
         loadStats();
         loadCampaigns();
-        loadScrapedCPAs();
+        loadScrapedLawyers();
         loadScrapedSMEs();
         loadScrapeJobs();
     </script>
