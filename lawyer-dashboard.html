@@ -19,8 +19,8 @@
     <!-- Auth gate -->
     <script>
         (function() {
-            const token = localStorage.getItem('cpa_token');
-            const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+            const token = localStorage.getItem('lawyer_token');
+            const user = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
             if (!token || user.userType !== 'Lawyer') {
                 window.location.href = '/lawyer-login.html';
             }
@@ -91,7 +91,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Welcome & Stats -->
         <div class="mb-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-2">Welcome back, <span id="cpaName">CPA</span></h1>
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">Welcome back, <span id="lawyerName">Lawyer</span></h1>
             <p class="text-gray-600">Here's your dashboard overview.</p>
         </div>
 
@@ -198,18 +198,18 @@
 
     <script>
         const API = 'https://canadalawyers-backend-production.up.railway.app';
-        const token = localStorage.getItem('cpa_token');
+        const token = localStorage.getItem('lawyer_token');
         const headers = { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' };
-        const user = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+        const user = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
 
         document.getElementById('userEmail').textContent = user.email || '';
-        document.getElementById('cpaName').textContent = user.firstName
+        document.getElementById('lawyerName').textContent = user.firstName
             ? `${user.firstName} ${user.lastName || ''}`
             : (user.email || 'Lawyer');
 
         function logout() {
-            localStorage.removeItem('cpa_token');
-            localStorage.removeItem('cpa_user');
+            localStorage.removeItem('lawyer_token');
+            localStorage.removeItem('lawyer_user');
             window.location.href = '/lawyer-login.html';
         }
 
@@ -359,7 +359,7 @@
     <script>
     (function() {
         const API_BASE_URL = 'https://canadalawyers-backend-production.up.railway.app';
-        const email = localStorage.getItem('ca_checkout_email') || (JSON.parse(localStorage.getItem('cpa_user') || '{}')).email;
+        const email = localStorage.getItem('ca_checkout_email') || (JSON.parse(localStorage.getItem('lawyer_user') || '{}')).email;
 
         const TIER_NAMES = {
             associate: 'Basic Position',

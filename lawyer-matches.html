@@ -18,7 +18,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Perfect CPA Matches - CanadaLawyers</title>
+    <title>Your Perfect Lawyer Matches - CanadaLawyers</title>
     <style>
         * {
             margin: 0;
@@ -491,7 +491,7 @@
     <!-- Results Content -->
     <div id="resultsContent" class="container hidden">
         <div class="header">
-            <h1>🍁 Your Perfect CPA Matches</h1>
+            <h1>🍁 Your Perfect Lawyer Matches</h1>
             <p class="subtitle" id="analysisSubtitle">Our AI analyzed your requirements and found your top matches</p>
         </div>
 
@@ -525,7 +525,7 @@
 
         <div class="next-steps">
             <h2>🚀 What Happens Next?</h2>
-            <p>We've sent your requirements to all three Lawyers. You'll receive personalized proposals within 24 hours. Choose the CPA that feels like the best fit and start your partnership!</p>
+            <p>We've sent your requirements to all three Lawyers. You'll receive personalized proposals within 24 hours. Choose the lawyer that feels like the best fit and start your partnership!</p>
             
             <div class="cta-buttons">
                 <a href="contact.html" class="btn btn-primary">Questions? Contact Us</a>
@@ -541,7 +541,7 @@
 
     <script>
         // AI Matching Algorithm (Integrated)
-        class CPAMatchingAlgorithm {
+        class LawyerMatchingAlgorithm {
             constructor() {
                 this.weights = {
                     industryMatch: 0.30,
@@ -574,13 +574,13 @@
 
             findMatches(businessProfile, availableLawyers) {
                 console.log('🎯 Starting AI matching process...', businessProfile);
-                
-                const scoredMatches = availableLawyers.map(cpa => {
-                    const score = this.calculateCompatibilityScore(businessProfile, cpa);
-                    const reasoning = this.generateMatchReasoning(businessProfile, cpa, score);
-                    
+
+                const scoredMatches = availableLawyers.map(lawyer => {
+                    const score = this.calculateCompatibilityScore(businessProfile, lawyer);
+                    const reasoning = this.generateMatchReasoning(businessProfile, lawyer, score);
+
                     return {
-                        cpa: cpa,
+                        cpa: lawyer,
                         compatibilityScore: score.total,
                         scoreBreakdown: score.breakdown,
                         matchReasoning: reasoning,
@@ -591,15 +591,15 @@
                 return scoredMatches.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
             }
 
-            calculateCompatibilityScore(business, cpa) {
+            calculateCompatibilityScore(business, lawyer) {
                 const breakdown = {
-                    industryMatch: this.scoreIndustryMatch(business, cpa),
-                    sizeComplexity: this.scoreSizeComplexity(business, cpa),
-                    serviceAlignment: this.scoreServiceAlignment(business, cpa),
-                    geographic: this.scoreGeographic(business, cpa),
-                    budgetFit: this.scoreBudgetFit(business, cpa),
-                    availabilityUrgency: this.scoreAvailabilityUrgency(business, cpa),
-                    communicationStyle: this.scoreCommunicationStyle(business, cpa)
+                    industryMatch: this.scoreIndustryMatch(business, lawyer),
+                    sizeComplexity: this.scoreSizeComplexity(business, lawyer),
+                    serviceAlignment: this.scoreServiceAlignment(business, lawyer),
+                    geographic: this.scoreGeographic(business, lawyer),
+                    budgetFit: this.scoreBudgetFit(business, lawyer),
+                    availabilityUrgency: this.scoreAvailabilityUrgency(business, lawyer),
+                    communicationStyle: this.scoreCommunicationStyle(business, lawyer)
                 };
 
                 const total = Object.keys(breakdown).reduce((sum, key) => {
@@ -612,121 +612,121 @@
                 };
             }
 
-            scoreIndustryMatch(business, cpa) {
+            scoreIndustryMatch(business, lawyer) {
                 const businessIndustry = business.question_1;
-                const cpaSpecializations = cpa.industrySpecializations || [];
-                
-                if (cpaSpecializations.includes(businessIndustry)) return 1.0;
-                
+                const lawyerSpecializations = lawyer.industrySpecializations || [];
+
+                if (lawyerSpecializations.includes(businessIndustry)) return 1.0;
+
                 const relatedIndustries = this.industrySpecializations[businessIndustry] || [];
-                const hasRelatedExperience = relatedIndustries.some(industry => 
-                    cpaSpecializations.includes(industry)
+                const hasRelatedExperience = relatedIndustries.some(industry =>
+                    lawyerSpecializations.includes(industry)
                 );
-                
+
                 if (hasRelatedExperience) return 0.7;
-                if (cpaSpecializations.includes('general-business')) return 0.4;
+                if (lawyerSpecializations.includes('general-business')) return 0.4;
                 return 0.1;
             }
 
-            scoreSizeComplexity(business, cpa) {
+            scoreSizeComplexity(business, lawyer) {
                 const businessSize = business.question_2;
-                const cpaExperience = cpa.clientSizeExperience || [];
-                
+                const lawyerExperience = lawyer.clientSizeExperience || [];
+
                 const sizeComplexity = {
                     'startup': 1, 'small': 2, 'medium': 3, 'large': 4
                 };
-                
+
                 const businessComplexity = sizeComplexity[businessSize];
-                const cpaMaxComplexity = Math.max(...cpaExperience.map(size => sizeComplexity[size] || 0));
-                
-                if (cpaMaxComplexity >= businessComplexity) {
-                    return cpaExperience.includes(businessSize) ? 1.0 : 0.8;
+                const lawyerMaxComplexity = Math.max(...lawyerExperience.map(size => sizeComplexity[size] || 0));
+
+                if (lawyerMaxComplexity >= businessComplexity) {
+                    return lawyerExperience.includes(businessSize) ? 1.0 : 0.8;
                 }
                 return 0.3;
             }
 
-            scoreServiceAlignment(business, cpa) {
+            scoreServiceAlignment(business, lawyer) {
                 const requiredServices = business.question_3 || [];
-                const cpaServices = cpa.serviceOfferings || [];
-                
+                const lawyerServices = lawyer.serviceOfferings || [];
+
                 if (requiredServices.length === 0) return 0.5;
-                
-                const matchedServices = requiredServices.filter(service => 
-                    cpaServices.includes(service)
+
+                const matchedServices = requiredServices.filter(service =>
+                    lawyerServices.includes(service)
                 );
                 
                 return matchedServices.length / requiredServices.length;
             }
 
-            scoreGeographic(business, cpa) {
+            scoreGeographic(business, lawyer) {
                 const businessLocation = business['business-location'];
                 const locationPreference = business.question_5;
-                const cpaLocation = cpa.location;
-                const cpaRemoteCapable = cpa.remoteCapable || false;
-                
+                const lawyerLocation = lawyer.location;
+                const lawyerRemoteCapable = lawyer.remoteCapable || false;
+
                 const businessCity = this.extractCity(businessLocation);
-                const cpaCity = this.extractCity(cpaLocation);
-                const isLocalCPA = businessCity === cpaCity;
-                
+                const lawyerCity = this.extractCity(lawyerLocation);
+                const isLocalLawyer = businessCity === lawyerCity;
+
                 switch (locationPreference) {
-                    case 'local-only': return isLocalCPA ? 1.0 : 0.1;
-                    case 'local-preferred': return isLocalCPA ? 1.0 : (cpaRemoteCapable ? 0.6 : 0.2);
-                    case 'remote-ok': return isLocalCPA ? 1.0 : (cpaRemoteCapable ? 0.9 : 0.3);
+                    case 'local-only': return isLocalLawyer ? 1.0 : 0.1;
+                    case 'local-preferred': return isLocalLawyer ? 1.0 : (lawyerRemoteCapable ? 0.6 : 0.2);
+                    case 'remote-ok': return isLocalLawyer ? 1.0 : (lawyerRemoteCapable ? 0.9 : 0.3);
                     default: return 0.5;
                 }
             }
 
-            scoreBudgetFit(business, cpa) {
+            scoreBudgetFit(business, lawyer) {
                 const businessBudget = business.question_6;
-                const cpaRateRange = cpa.rateRange || 'budget-1000';
+                const lawyerRateRange = lawyer.rateRange || 'budget-1000';
                 
                 const budgetValues = {
                     'budget-500': 400, 'budget-1000': 750, 'budget-2500': 1750, 'budget-high': 3500
                 };
                 
                 const businessMax = budgetValues[businessBudget] || 750;
-                const cpaRate = budgetValues[cpaRateRange] || 750;
-                
-                if (cpaRate <= businessMax) return 1.0;
-                if (cpaRate <= businessMax * 1.2) return 0.7;
-                if (cpaRate <= businessMax * 1.5) return 0.4;
+                const lawyerRate = budgetValues[lawyerRateRange] || 750;
+
+                if (lawyerRate <= businessMax) return 1.0;
+                if (lawyerRate <= businessMax * 1.2) return 0.7;
+                if (lawyerRate <= businessMax * 1.5) return 0.4;
                 return 0.1;
             }
 
-            scoreAvailabilityUrgency(business, cpa) {
+            scoreAvailabilityUrgency(business, lawyer) {
                 const businessUrgency = business.question_4;
-                const cpaAvailability = cpa.availability || 'month';
+                const lawyerAvailability = lawyer.availability || 'month';
                 
                 const urgencyLevels = {
                     'immediate': 4, 'soon': 3, 'month': 2, 'flexible': 1
                 };
                 
                 const businessUrgencyLevel = urgencyLevels[businessUrgency];
-                const cpaAvailabilityLevel = urgencyLevels[cpaAvailability];
-                
-                if (cpaAvailabilityLevel >= businessUrgencyLevel) return 1.0;
-                if (cpaAvailabilityLevel >= businessUrgencyLevel - 1) return 0.6;
+                const lawyerAvailabilityLevel = urgencyLevels[lawyerAvailability];
+
+                if (lawyerAvailabilityLevel >= businessUrgencyLevel) return 1.0;
+                if (lawyerAvailabilityLevel >= businessUrgencyLevel - 1) return 0.6;
                 return 0.2;
             }
 
-            scoreCommunicationStyle(business, cpa) {
+            scoreCommunicationStyle(business, lawyer) {
                 const businessStyle = business.question_7;
-                const cpaStyle = cpa.communicationStyle || 'responsive';
-                
-                if (businessStyle === cpaStyle) return 1.0;
-                
+                const lawyerStyle = lawyer.communicationStyle || 'responsive';
+
+                if (businessStyle === lawyerStyle) return 1.0;
+
                 const compatiblePairs = {
                     'detailed': ['proactive'],
                     'summary': ['responsive'],
                     'proactive': ['detailed', 'summary'],
                     'responsive': ['summary', 'detailed']
                 };
-                
-                if (compatiblePairs[businessStyle]?.includes(cpaStyle)) return 0.8;
+
+                if (compatiblePairs[businessStyle]?.includes(lawyerStyle)) return 0.8;
                 return 0.5;
             }
 
-            generateMatchReasoning(business, cpa, score) {
+            generateMatchReasoning(business, lawyer, score) {
                 const reasons = [];
                 const breakdown = score.breakdown;
                 
@@ -812,17 +812,17 @@
                 'business_type': businessData.question_2 || 'unknown'
             }
         });
-            // Fetch live CPA database
+            // Fetch live Lawyer database
         const cpaDatabase = await getCPADatabase();
-        console.log('Using CPA database:', cpaDatabase.length, 'Lawyers');
+        console.log('Using Lawyer database:', cpaDatabase.length, 'Lawyers');
             
             // Run AI matching algorithm
-            const algorithm = new CPAMatchingAlgorithm();
+            const algorithm = new LawyerMatchingAlgorithm();
             const matches = algorithm.findMatches(businessData, cpaDatabase);
             // Track successful matching
         gtag('event', 'matches_displayed', {
             'event_category': 'conversion',
-            'event_label': 'cpa_matches_shown', 
+            'event_label': 'lawyer_matches_shown',
             'value': matches.length,
             'custom_parameters': {
                 'match_count': matches.length,
@@ -860,7 +860,7 @@ function showErrorState() {
     document.getElementById('loadingScreen').innerHTML = `
         <div style="text-align: center; padding: 4rem 2rem;">
             <div style="font-size: 4rem; margin-bottom: 2rem;">⚠️</div>
-            <div style="font-size: 1.2rem; margin-bottom: 1rem;">Unable to load CPA matches</div>
+            <div style="font-size: 1.2rem; margin-bottom: 1rem;">Unable to load lawyer matches</div>
             <div style="opacity: 0.8;">Please try refreshing the page or contact support.</div>
         </div>
     `;
@@ -934,8 +934,8 @@ function getDemoData() {
         
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     } catch (error) {
-        console.error('Failed to fetch live CPA database:', error);
-        console.log('Falling back to static CPA data');
+        console.error('Failed to fetch live Lawyer database:', error);
+        console.log('Falling back to static Lawyer data');
         return getStaticCPADatabase();
     }
 }
@@ -944,7 +944,7 @@ function getDemoData() {
     return [
         {
             id: 'cpa_fallback',
-            name: 'David Wilson, CPA',
+            name: 'David Wilson, Esq.',
             firm: 'Reliable Legal Services',
             location: 'Toronto, ON',
             email: 'david@reliablelegal.ca',
@@ -1006,7 +1006,7 @@ if (card && card.nodeType === Node.ELEMENT_NODE) {
             });
         }
 
-        // AI-Powered CPA Performance Scoring Function
+        // AI-Powered Lawyer Performance Scoring Function
 async function createMatchCard(match, index) {
     const { cpa, compatibilityScore, scoreBreakdown, matchReasoning, confidenceLevel } = match;
     
@@ -1025,7 +1025,7 @@ async function createMatchCard(match, index) {
                 yearsExperience: cpa.yearsExperience,
                 firm: cpa.firm,
                 specializations: cpa.specializations || [],
-                clientData: JSON.parse(localStorage.getItem('cpaMatchingData') || '{}'),
+                clientData: JSON.parse(localStorage.getItem('lawyerMatchingData') || '{}'),
                 timestamp: new Date().toISOString()
             })
         });
@@ -1034,7 +1034,7 @@ async function createMatchCard(match, index) {
             aiPerformanceData = await response.json();
         }
     } catch (error) {
-        console.log('Using fallback scoring for CPA:', cpa.name);
+        console.log('Using fallback scoring for Lawyer:', cpa.name);
     }
 
     // Use AI data if available, otherwise intelligent fallback
@@ -1144,13 +1144,13 @@ if (!card || !card.nodeType) {
     console.error('createMatchCard failed to create valid DOM element');
     const errorCard = document.createElement('div');
     errorCard.className = 'match-card error';
-    errorCard.innerHTML = '<div class="error">Error creating CPA card</div>';
+    errorCard.innerHTML = '<div class="error">Error creating Lawyer card</div>';
     return errorCard;
 }
 return card;
 }
 
-// Generate intelligent performance score based on CPA data
+// Generate intelligent performance score based on Lawyer data
 function generateIntelligentScore(cpa, index) {
     let baseScore = 75 + (5 - index) * 5; // Higher scores for top matches
     
@@ -1164,7 +1164,7 @@ function generateIntelligentScore(cpa, index) {
     return Math.min(Math.max(baseScore, 70), 98);
 }
 
-// Generate success prediction based on CPA profile
+// Generate success prediction based on Lawyer profile
 function generateSuccessPrediction(cpa) {
     let prediction = 75;
     
@@ -1188,7 +1188,7 @@ function generatePerformanceMetrics(cpa) {
     };
 }
 
-// Generate AI insights for the CPA
+// Generate AI insights for the Lawyer
 function generateAIInsights(cpa, performanceScore, compatibilityScore) {
     const insights = [];
     
@@ -1252,7 +1252,7 @@ function createAIScoreBars(metrics) {
 // View full AI analysis profile
 function viewFullProfile(lawyerId) {
     // This would open a detailed AI analysis report
-    alert(`Opening detailed AI analysis report for CPA ${lawyerId}...`);
+    alert(`Opening detailed AI analysis report for Lawyer ${lawyerId}...`);
 }
 
 // CSS Styles for AI Performance Dashboard

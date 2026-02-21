@@ -11,7 +11,7 @@
         gtag('config', 'G-XXXXXXXXX');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predictive CPA Matching Algorithm - Enhanced AI Demo</title>
+    <title>Predictive Lawyer Matching Algorithm - Enhanced AI Demo</title>
     <style>
         body {
             margin: 0;
@@ -408,7 +408,7 @@
 <body>
     <div class="demo-container">
         <div class="demo-header">
-            <h1 class="demo-title">🤖 Predictive CPA Matching</h1>
+            <h1 class="demo-title">🤖 Predictive Lawyer Matching</h1>
             <p class="demo-subtitle">AI-powered matching using real-time Canadian SME intelligence</p>
             <div class="intelligence-badge">
                 <div class="pulse"></div>
@@ -568,7 +568,7 @@
             </div>
 
             <button type="button" class="analyze-button" onclick="analyzeMatches()">
-                🚀 Analyze My Predictive CPA Matches
+                🚀 Analyze My Predictive Lawyer Matches
             </button>
         </form>
 
@@ -594,14 +594,14 @@
                 </div>
             </div>
 
-            <!-- CPA Matches -->
+            <!-- Lawyer Matches -->
             <div class="lawyer-matches" id="cpaMatches">
                 <!-- Matches will be populated by JavaScript -->
             </div>
 
             <div style="text-align: center; margin-top: 32px;">
                 <a href="../index.html" class="analyze-button" style="text-decoration: none; display: inline-block;">
-                    Get Your FREE CPA Selection Guide
+                    Get Your FREE Lawyer Selection Guide
                 </a>
                 <br>
                 <a href="../index.html" class="back-button">← Back to Main Site</a>
@@ -648,7 +648,7 @@
             // Generate predictive insights
             generatePredictiveInsights(data);
             
-            // Generate CPA matches using predictive algorithm
+            // Generate Lawyer matches using predictive algorithm
             generatePredictiveCPAMatches(data);
         }
 
@@ -747,7 +747,7 @@
         }
 
         function calculateSizeScore(revenue, employees) {
-            // Based on CPA specialization in business sizes
+            // Based on lawyer specialization in business sizes
             return 85 + Math.floor(Math.random() * 10);
         }
 
@@ -833,23 +833,23 @@
         }
 
         function generateMatches(data) {
-            // Predictive CPA matching based on real intelligence patterns
+            // Predictive Lawyer matching based on real intelligence patterns
             const cpaPools = {
                 'technology': [
-                    { name: 'Sarah Chen, CPA', specialization: 'Tech Startup & Scale-up Specialist', experience: '12 years', location: 'Toronto, ON', responseTime: '2.1 hours', techStack: 'QuickBooks, Xero, AI Tools', reasons: ['Tech Industry Expert', 'Scaling Specialist', 'VC Experience', 'QuickBooks Pro'] },
-                    { name: 'Michael Rodriguez, CPA', specialization: 'SaaS & Software Legal', experience: '9 years', location: 'Vancouver, BC', responseTime: '3.2 hours', techStack: 'Xero, Sage, Custom APIs', reasons: ['SaaS Expertise', 'Growth Stage Focus', 'Tech Stack Match'] },
-                    { name: 'Alex Kim, CPA', specialization: 'Fintech & Innovation', experience: '8 years', location: 'Waterloo, ON', responseTime: '1.8 hours', techStack: 'QuickBooks, FreshBooks', reasons: ['Fintech Focus', 'Innovation Expert', 'Fast Response'] }
+                    { name: 'Sarah Chen, Esq.', specialization: 'Tech Startup & Scale-up Specialist', experience: '12 years', location: 'Toronto, ON', responseTime: '2.1 hours', techStack: 'QuickBooks, Xero, AI Tools', reasons: ['Tech Industry Expert', 'Scaling Specialist', 'VC Experience', 'QuickBooks Pro'] },
+                    { name: 'Michael Rodriguez, Esq.', specialization: 'SaaS & Software Legal', experience: '9 years', location: 'Vancouver, BC', responseTime: '3.2 hours', techStack: 'Xero, Sage, Custom APIs', reasons: ['SaaS Expertise', 'Growth Stage Focus', 'Tech Stack Match'] },
+                    { name: 'Alex Kim, Esq.', specialization: 'Fintech & Innovation', experience: '8 years', location: 'Waterloo, ON', responseTime: '1.8 hours', techStack: 'QuickBooks, FreshBooks', reasons: ['Fintech Focus', 'Innovation Expert', 'Fast Response'] }
                 ],
                 'healthcare': [
-                    { name: 'Dr. Jennifer Walsh, CPA', specialization: 'Healthcare & Medical Practice', experience: '15 years', location: 'Calgary, AB', responseTime: '2.5 hours', techStack: 'QuickBooks, Sage, Medical Software', reasons: ['Healthcare Expert', 'Compliance Specialist', 'Medical Background'] },
-                    { name: 'Robert Chen, CPA', specialization: 'Healthcare Compliance', experience: '11 years', location: 'Ottawa, ON', responseTime: '3.1 hours', techStack: 'QuickBooks, Custom Solutions', reasons: ['Regulatory Expert', 'Compliance Focus'] }
+                    { name: 'Dr. Jennifer Walsh, Esq.', specialization: 'Healthcare & Medical Practice', experience: '15 years', location: 'Calgary, AB', responseTime: '2.5 hours', techStack: 'QuickBooks, Sage, Medical Software', reasons: ['Healthcare Expert', 'Compliance Specialist', 'Medical Background'] },
+                    { name: 'Robert Chen, Esq.', specialization: 'Healthcare Compliance', experience: '11 years', location: 'Ottawa, ON', responseTime: '3.1 hours', techStack: 'QuickBooks, Custom Solutions', reasons: ['Regulatory Expert', 'Compliance Focus'] }
                 ],
                 'construction': [
-                    { name: 'Maria Santos, CPA', specialization: 'Construction & Real Estate', experience: '13 years', location: 'Edmonton, AB', responseTime: '2.8 hours', techStack: 'Sage, QuickBooks, Project Tools', reasons: ['Construction Expert', 'Project Legal', 'Real Estate Focus'] }
+                    { name: 'Maria Santos, Esq.', specialization: 'Construction & Real Estate', experience: '13 years', location: 'Edmonton, AB', responseTime: '2.8 hours', techStack: 'Sage, QuickBooks, Project Tools', reasons: ['Construction Expert', 'Project Legal', 'Real Estate Focus'] }
                 ]
             };
 
-            // Get relevant CPA pool or default
+            // Get relevant Lawyer pool or default
             const relevantLawyers = cpaPools[data.industry] || cpaPools['technology'];
             
             // Calculate match scores and return top 3

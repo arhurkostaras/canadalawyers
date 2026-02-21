@@ -98,7 +98,7 @@
                 <p class="mt-2 text-sm text-gray-600">
                     Don't have an account? 
                     <a href="/lawyer-onboarding" class="font-medium text-indigo-600 hover:text-indigo-500">
-                        Register as a CPA
+                        Register as a Lawyer
                     </a>
                 </p>
             </div>
@@ -139,8 +139,8 @@
                 
                 if (response.ok) {
                     // Store JWT token
-                    localStorage.setItem('cpa_token', data.token);
-                    localStorage.setItem('cpa_user', JSON.stringify(data.user));
+                    localStorage.setItem('lawyer_token', data.token);
+                    localStorage.setItem('lawyer_user', JSON.stringify(data.user));
 
                     // Route based on user type
                     const isAdmin = data.user.userType === 'admin';
@@ -172,9 +172,9 @@
 
         // Check if already logged in
         document.addEventListener('DOMContentLoaded', function() {
-            const token = localStorage.getItem('cpa_token');
+            const token = localStorage.getItem('lawyer_token');
             if (token) {
-                const storedUser = JSON.parse(localStorage.getItem('cpa_user') || '{}');
+                const storedUser = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
                 const dest = storedUser.userType === 'admin' ? '/admin-dashboard.html' : '/lawyer-dashboard.html';
                 // Verify token is still valid and redirect if so
                 fetch('https://canadalawyers-backend-production.up.railway.app/api/auth/verify', {
@@ -189,8 +189,8 @@
                 })
                 .catch(() => {
                     // Token invalid, remove it
-                    localStorage.removeItem('cpa_token');
-                    localStorage.removeItem('cpa_user');
+                    localStorage.removeItem('lawyer_token');
+                    localStorage.removeItem('lawyer_user');
                 });
             }
         });

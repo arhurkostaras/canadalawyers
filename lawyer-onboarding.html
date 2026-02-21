@@ -11,7 +11,7 @@
         gtag('config', 'G-XXXXXXXXX');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Our CPA Network - CanadaLawyers</title>
+    <title>Join Our Lawyer Network - CanadaLawyers</title>
     <style>
         * {
             margin: 0;
@@ -330,7 +330,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🍁 Join as a Professional CPA</h1>
+            <h1>🍁 Join as a Professional Lawyer</h1>
             <p>Connect with quality businesses across Canada and grow your practice</p>
         </div>
 
@@ -343,12 +343,12 @@
                 <span id="currentStep">1</span> of 8 steps
             </div>
 
-            <!-- Step 1: CPA Credentials -->
+            <!-- Step 1: Lawyer Credentials -->
             <div class="step active" id="step1">
                 <div class="step-header">
                     <div class="step-number">1</div>
                     <h2>Professional Credentials</h2>
-                    <p>Tell us about your CPA certification and professional background</p>
+                    <p>Tell us about your legal certification and professional background</p>
                 </div>
 
                 <div class="form-group">
@@ -357,7 +357,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="licenseNumber">CPA License Number *</label>
+                    <label for="licenseNumber">Bar Number / Law Society ID *</label>
                     <input type="text" id="licenseNumber" name="licenseNumber" required>
                 </div>
 
@@ -396,7 +396,7 @@
 
                 <div class="ai-insight">
                     <h4>🤖 AI Insight</h4>
-                    <p>We verify all CPA credentials to ensure our clients connect with legitimate, qualified professionals.</p>
+                    <p>We verify all lawyer credentials to ensure our clients connect with legitimate, qualified professionals.</p>
                 </div>
             </div>
 
@@ -411,7 +411,7 @@
                 <div class="options-grid">
                     <div class="option-card" data-value="solo">
                         <h3>🏢 Solo Practice</h3>
-                        <p>Independent CPA running your own practice</p>
+                        <p>Independent Lawyer running your own practice</p>
                     </div>
                     <div class="option-card" data-value="small-firm">
                         <h3>👥 Small Firm (2-10 Lawyers)</h3>
@@ -762,7 +762,7 @@
             <div class="navigation">
                 <button type="button" class="btn btn-secondary" onclick="previousStep()" id="prevBtn" style="display: none;">Previous</button>
                 <button type="button" class="btn btn-primary" onclick="nextStep()" id="nextBtn">Next Step</button>
-                <button type="submit" class="btn btn-primary" onclick="submitForm()" id="submitBtn" style="display: none;">Join CPA Network</button>
+                <button type="submit" class="btn btn-primary" onclick="submitForm()" id="submitBtn" style="display: none;">Join Lawyer Network</button>
             </div>
         </div>
 
@@ -849,7 +849,7 @@
             const API_BASE_URL = 'https://canadalawyers-backend-production.up.railway.app';
 
             try {
-                // Register CPA profile on the backend
+                // Register Lawyer profile on the backend
                 const res = await fetch(`${API_BASE_URL}/api/cpa/register`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
