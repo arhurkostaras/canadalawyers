@@ -32,82 +32,24 @@
     <meta name="twitter:description" content="Contact CanadaLawyers. Reach Arthur Kostaras for partnership inquiries, lawyer onboarding, or business matching questions.">
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: white;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-        }
-
-        .maple-leaf {
-            margin-right: 0.5rem;
-            font-size: 1.8rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        .get-started-btn {
-            background: #6366f1;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        .get-started-btn:hover {
-            background: #5855eb;
-        }
+        :root { --primary-purple: #667eea; --primary-violet: #764ba2; --primary-navy: #1e3a5f; --accent-green: #059669; --dark-bg: #0a0a0a; --card-bg: #1a1a1a; --border-color: #333333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: white; -webkit-font-smoothing: antialiased; }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: white; }
+        .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
 
         /* Main Content */
         .container {
@@ -168,7 +110,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: #22c55e;
+            background: var(--accent-green);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -189,7 +131,7 @@
         }
 
         .contact-details a {
-            color: #22c55e;
+            color: var(--accent-green);
             text-decoration: none;
         }
 
@@ -244,7 +186,7 @@
         }
 
         .submit-btn {
-            background: #22c55e;
+            background: var(--accent-green);
             color: white;
             padding: 1rem 2rem;
             border: none;
@@ -256,9 +198,13 @@
             width: 100%;
         }
 
-        .submit-btn:hover {
-            background: #16a34a;
-        }
+        .submit-btn:hover { background: #047857; }
+        .footer { background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
+        .footer-logo .maple { color: var(--primary-purple); }
+        .footer-tagline { color: #a0a0a0; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem; }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -287,26 +233,19 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <span class="maple-leaf">🍁</span>
-                CanadaLawyers
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#vision">Vision</a></li>
-                <li><a href="guarantee.html">Guarantee</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="#why-we-win">Why We Win</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="register.html" class="get-started-btn">Get Started</a></li>
-            </ul>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span></a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="why-we-win.html">Why We Win</a>
+                <a href="join-as-lawyer.html" class="nav-cta">Apply to Join</a>
+            </div>
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container" style="padding-top: 100px;">
         <div class="contact-header">
             <h1>Contact Us</h1>
             <p>Ready to transform your business with the right lawyer connection? Get in touch with us today and let's discuss how CanadaLawyers can help you achieve your goals.</p>
@@ -381,6 +320,14 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span></div>
+            <p class="footer-tagline">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div class="footer-bottom">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
+        </div>
+    </footer>
+
     <script>
         const API_BASE = 'https://canadalawyers-backend-production.up.railway.app';
 

@@ -60,7 +60,12 @@
     }
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root { --primary-purple: #667eea; --primary-violet: #764ba2; --accent-green: #059669; --dark-bg: #0a0a0a; --card-bg: #1a1a1a; --border-color: #333333; }
         * {
             margin: 0;
             padding: 0;
@@ -68,99 +73,23 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Navigation */
-        .nav {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #2563eb;
-        }
-
-        .lawyer-link {
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .lawyer-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
-        }
-
-        /* Friction Alert Banner */
-        .friction-alert {
-            background: #dc2626;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-top: 70px;
-            border-bottom: 3px solid #991b1b;
-        }
-
-        .friction-alert h3 {
-            font-size: 1.5rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .friction-alert p {
-            font-size: 1.1rem;
-            font-weight: 800;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-            margin: 0 auto;
-            text-align: center;
-        }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: white; }
+        .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
 
         /* Hero Section */
         .hero {
@@ -229,7 +158,7 @@
         }
 
         .pain-point-card {
-            background: rgba(220, 38, 38, 0.9);
+            background: rgba(102, 126, 234, 0.3);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
@@ -250,7 +179,7 @@
         }
 
         .pain-description {
-            color: #fecaca;
+            color: rgba(255,255,255,0.85);
             font-size: 1.1rem;
             line-height: 1.5;
         }
@@ -292,7 +221,7 @@
         .stat-number {
             font-size: 2.8rem;
             font-weight: 900;
-            color: #2563eb;
+            color: var(--primary-purple);
             margin-bottom: 8px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -317,7 +246,7 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 100%);
             color: white;
             padding: 25px 50px;
             border-radius: 12px;
@@ -373,7 +302,7 @@
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #2563eb, #1d4ed8);
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-violet));
             height: 100%;
             width: 12.5%;
             transition: width 0.3s ease;
@@ -434,14 +363,14 @@
 
         .option-card:hover {
             background: #f1f5f9;
-            border-color: #2563eb;
+            border-color: var(--primary-purple);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
         }
 
         .option-card.selected {
             background: #eff6ff;
-            border-color: #2563eb;
+            border-color: var(--primary-purple);
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
@@ -486,7 +415,7 @@
         }
 
         .input-group input:focus, .input-group select:focus {
-            border-color: #2563eb;
+            border-color: var(--primary-purple);
             outline: none;
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
@@ -515,7 +444,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 100%);
             color: white;
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
@@ -596,7 +525,7 @@
         }
 
         .footer-link:hover {
-            color: #2563eb;
+            color: var(--primary-purple);
         }
 
         /* Mobile Responsive */
@@ -637,34 +566,22 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                🍁 CanadaLawyers
-            </a>
-            <ul class="nav-links">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="#" class="nav-link">Features</a></li>
-                <li><a href="#" class="nav-link">Success Stories</a></li>
-                <li><a href="join-as-lawyer.html" class="lawyer-link">Join as Lawyer</a></li>
-            </ul>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span></a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="why-we-win.html">Why We Win</a>
+                <a href="join-as-lawyer.html" class="nav-cta">Apply to Join</a>
+            </div>
         </div>
     </nav>
-
-    <!-- Friction Alert Banner -->
-    <section class="friction-alert">
-        <h3>🚨 CANADIAN BUSINESSES ARE LOSING THOUSANDS TO PREVENTABLE LEGAL MISTAKES</h3>
-        <p>Stop the endless lawyer search nightmare • End contract bottlenecks • Eliminate costly legal oversights</p>
-    </section>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <div class="urgent-badge">
-                🔥 URGENT: Stop Risking Your Business Without Legal Protection
-            </div>
-            <h1 class="hero-title">Find the Right Lawyer for Your Business in 24 Hours</h1>
+            <h1 class="hero-title">Find Your Perfect Lawyer in 24 Hours</h1>
             
             <!-- SME Pain Points -->
             <div class="sme-pain-points">
@@ -685,11 +602,9 @@
                 </div>
             </div>
 
-            <div class="solution-arrow">⬇️</div>
-
             <p class="hero-subtitle">
-                END THE SEARCH: Find your perfect lawyer in 24 hours, not weeks.
-                Get contracts reviewed, disputes resolved, and your business legally protected.
+                AI-powered matching finds your perfect lawyer in 24 hours, not weeks.
+                Get contracts reviewed, disputes resolved, and your business protected.
             </p>
 
             <div class="stats-grid">
@@ -1040,16 +955,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">© 2026 CanadaLawyers. Connecting Canadian businesses with the right lawyers through AI-powered matching.</p>
-            <div class="footer-links">
-                <a href="join-as-lawyer.html" class="footer-link">For Lawyers</a>
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Terms of Service</a>
-                <a href="#" class="footer-link">Contact</a>
+    <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
+        <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; color: white;">
+                <i class="fas fa-maple-leaf" style="color: var(--primary-purple);"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
             </div>
+            <p style="color: #a0a0a0; margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
         </div>
     </footer>
 
@@ -1237,7 +1149,7 @@ gtag('event', 'questionnaire_submitted', {
     container.innerHTML = `
         <div style="text-align: center; padding: 60px 20px;">
             <div style="font-size: 4rem; margin-bottom: 20px;">⏳</div>
-            <h2 style="color: #2563eb; font-size: 2.5rem; margin-bottom: 15px;">Matching You With Perfect Lawyers...</h2>
+            <h2 style="color: var(--primary-purple); font-size: 2.5rem; margin-bottom: 15px;">Matching You With Perfect Lawyers...</h2>
             <p style="font-size: 1.2rem; color: #64748b;">Our AI is analyzing your needs and finding your ideal matches</p>
         </div>
     `;
@@ -1302,7 +1214,7 @@ function showErrorMessage() {
             <p style="font-size: 1rem; color: #64748b; margin-bottom: 30px;">
                 Please call us directly at <strong>(647) 956-7290</strong> and we'll match you immediately!
             </p>
-            <a href="/" style="background: #2563eb; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
+            <a href="/" style="background: #667eea; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
                 Return to Homepage
             </a>
         </div>
@@ -1317,12 +1229,12 @@ function showErrorMessage() {
     container.innerHTML = `
         <div style="text-align: center; padding: 60px 20px;">
             <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
-            <h2 style="color: #2563eb; font-size: 2.5rem; margin-bottom: 15px; font-weight: 800;">AI Matching Complete!</h2>
+            <h2 style="color: var(--primary-purple); font-size: 2.5rem; margin-bottom: 15px; font-weight: 800;">AI Matching Complete!</h2>
             <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 30px;">
                 Your perfect lawyer matches are ready for review.
             </p>
             
-            <a href="${resultsUrl}" style="display: inline-block; background: #2563eb; color: white; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.2rem; margin-top: 20px;">
+            <a href="${resultsUrl}" style="display: inline-block; background: #667eea; color: white; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.2rem; margin-top: 20px;">
                 View My Lawyer Matches →
             </a>
             

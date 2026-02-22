@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why We Win - CanadaLawyers</title>
     <meta name="description" content="Discover why CanadaLawyers outperforms traditional lawyer search methods. AI-powered matching, 24-hour results, and verified professionals.">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://canadalawyers.app/why-we-win.html">
@@ -33,510 +32,210 @@
     <meta name="twitter:description" content="Discover why CanadaLawyers outperforms traditional lawyer search methods. AI-powered matching, 24-hour results, and verified professionals.">
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        :root { --primary-purple: #667eea; --primary-violet: #764ba2; --primary-navy: #1e3a5f; --accent-green: #059669; --dark-bg: #0a0a0a; --card-bg: #1a1a1a; --border-color: #333333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--dark-bg); min-height: 100vh; color: white; -webkit-font-smoothing: antialiased; }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: white; }
+        .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #ffffff;
-        }
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 140px 24px 80px; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; }
+        .hero p { font-size: 1.3rem; opacity: 0.9; max-width: 650px; margin: 0 auto; line-height: 1.6; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        /* Comparison */
+        .comparison { max-width: 1100px; margin: -40px auto 0; padding: 0 24px; position: relative; z-index: 2; }
+        .comparison-card { background: var(--card-bg); border-radius: 1rem; border: 1px solid var(--border-color); overflow: hidden; }
+        .comparison-header { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; background: rgba(102,126,234,0.15); padding: 20px 24px; font-weight: 700; font-size: 0.95rem; }
+        .comparison-header .col-us { background: linear-gradient(135deg, var(--primary-purple), var(--primary-violet)); color: white; border-radius: 8px; padding: 12px; text-align: center; }
+        .comparison-header .col { text-align: center; color: rgba(255,255,255,0.6); padding: 12px; }
+        .comparison-header .col-label { color: rgba(255,255,255,0.4); padding: 12px; text-align: left; }
+        .comparison-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center; }
+        .comparison-row:last-child { border-bottom: none; }
+        .comparison-row .feature { font-weight: 500; color: rgba(255,255,255,0.9); }
+        .comparison-row .cell { text-align: center; padding: 8px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; }
+        .cell-bad { background: rgba(239,68,68,0.15); color: #fca5a5; }
+        .cell-ok { background: rgba(251,191,36,0.15); color: #fde68a; }
+        .cell-great { background: rgba(5,150,105,0.15); color: #6ee7b7; }
 
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+        /* Differentiators */
+        .differentiators { max-width: 1100px; margin: 80px auto; padding: 0 24px; }
+        .differentiators h2 { text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; }
+        .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .diff-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 1rem; padding: 2.5rem; transition: transform 0.3s, border-color 0.3s; }
+        .diff-card:hover { transform: translateY(-4px); border-color: var(--primary-purple); }
+        .diff-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-violet)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .diff-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+        .diff-card p { color: rgba(255,255,255,0.7); line-height: 1.6; }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* CTA */
+        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 24px; text-align: center; }
+        .cta h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .cta p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 2rem; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: white; color: var(--primary-purple); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Main Content */
-        main {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: calc(100vh - 140px);
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-        }
-
-        .page-header p {
-            font-size: 1.25rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Comparison Table */
-        .comparison-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            padding: 40px;
-            margin-bottom: 60px;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .comparison-header {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-            border-radius: 15px;
-        }
-
-        .header-cell {
-            text-align: center;
-            font-weight: 600;
-            color: #334155;
-        }
-
-        .canada-lawyers-column {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .canada-lawyers-column::after {
-            content: "BEST CHOICE";
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #fbbf24;
-            color: #1f2937;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .comparison-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 20px;
-            padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
-            align-items: center;
-        }
-
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
-
-        .feature-name {
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .competitor-feature,
-        .canada-feature {
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 500;
-        }
-
-        .feature-excellent {
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-            color: #166534;
-        }
-
-        .feature-ok {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            color: #92400e;
-        }
-
-        .feature-bad {
-            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
-            color: #991b1b;
-        }
-
-        /* Key Differentiators */
-        .differentiators {
-            margin-top: 60px;
-        }
-
-        .differentiators h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .differentiator-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .differentiator-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .differentiator-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-        }
-
-        .differentiator-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .differentiator-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #1e293b;
-        }
-
-        .differentiator-card p {
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            margin-top: 60px;
-            border-radius: 20px;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            font-size: 1.25rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 15px 30px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #1e3a8a;
-        }
-
-        .btn-primary:hover {
-            background: #f1f5f9;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #1e3a8a;
-        }
-
-        /* Footer */
-        footer {
-            background: #1f2937;
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .comparison-header,
-            .comparison-row {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            .canada-lawyers-column::after {
-                position: static;
-                margin-top: 10px;
-                display: block;
-            }
-
-            .cta-section h2 {
-                font-size: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .comparison-container {
-                padding: 20px;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 120px 16px 60px; }
+            .comparison-header, .comparison-row { grid-template-columns: 1fr; gap: 8px; }
+            .comparison-header .col-label { display: none; }
+            .comparison-row .feature { font-weight: 700; margin-bottom: 4px; }
+            .diff-grid { grid-template-columns: 1fr; }
+            .cta h2 { font-size: 1.8rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="lawyer-dashboard.html" class="logo">CanadaLawyers</a>
-            <ul class="nav-links">
-                <li><a href="lawyer-dashboard.html">Home</a></li>
-                <li><a href="lawyer-dashboard.html#features">Features</a></li>
-                <li><a href="lawyer-dashboard.html#vision">Vision</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="tel:6479567290">Contact Arthur</a></li>
-            </ul>
-            <button class="mobile-menu-btn">☰</button>
-        </nav>
-    </header>
-
-    <main>
-        <div class="container">
-            <div class="page-header">
-                <h1>Why We Win</h1>
-                <p>See how CanadaLawyers revolutionizes lawyer-business matching compared to outdated alternatives</p>
-            </div>
-
-            <!-- Comparison Table -->
-            <div class="comparison-container">
-                <div class="comparison-header">
-                    <div class="header-cell">Feature</div>
-                    <div class="header-cell">Traditional Methods</div>
-                    <div class="header-cell">Avvo / FindLaw</div>
-                    <div class="header-cell canada-lawyers-column">CanadaLawyers</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature-name">Verification Process</div>
-                    <div class="competitor-feature feature-bad">Manual/None</div>
-                    <div class="competitor-feature feature-ok">Basic Checks</div>
-                    <div class="canada-feature feature-excellent">6-Factor AI Verification</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature-name">Matching Algorithm</div>
-                    <div class="competitor-feature feature-bad">Random/Geographic</div>
-                    <div class="competitor-feature feature-ok">Basic Filters</div>
-                    <div class="canada-feature feature-excellent">Proprietary 6-Factor AI</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature-name">Quality Guarantee</div>
-                    <div class="competitor-feature feature-bad">None</div>
-                    <div class="competitor-feature feature-ok">Limited</div>
-                    <div class="canada-feature feature-excellent">Arthur's Launch Guarantee</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature-name">Response Time</div>
-                    <div class="competitor-feature feature-bad">Days/Weeks</div>
-                    <div class="competitor-feature feature-ok">24-48 Hours</div>
-                    <div class="canada-feature feature-excellent">Service launches within 30 days</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature-name">Specialization Matching</div>
-                    <div class="competitor-feature feature-bad">Generic</div>
-                    <div class="competitor-feature feature-ok">Basic Categories</div>
-                    <div class="canada-feature feature-excellent">Precise Industry Expertise</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature-name">Ongoing Support</div>
-                    <div class="competitor-feature feature-bad">None</div>
-                    <div class="competitor-feature feature-ok">Email Only</div>
-                    <div class="canada-feature feature-excellent">Direct Arthur Hotline</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature-name">Technology Platform</div>
-                    <div class="competitor-feature feature-bad">Phone/Email</div>
-                    <div class="competitor-feature feature-ok">Basic Web</div>
-                    <div class="canada-feature feature-excellent">Advanced AI-Powered Platform</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="feature-name">Market Position Control</div>
-                    <div class="competitor-feature feature-bad">No Control</div>
-                    <div class="competitor-feature feature-ok">Basic Listing</div>
-                    <div class="canada-feature feature-excellent">Algorithm Position Purchase</div>
-                </div>
-            </div>
-
-            <!-- Key Differentiators -->
-            <div class="differentiators">
-                <h2>Our Key Differentiators</h2>
-                <div class="differentiator-grid">
-                    <div class="differentiator-card">
-                        <div class="differentiator-icon">🎯</div>
-                        <h3>6-Factor Proprietary Algorithm</h3>
-                        <p>Our advanced AI analyzes industry expertise, business size, service complexity, location, cultural fit, and availability for perfect matches.</p>
-                    </div>
-
-                    <div class="differentiator-card">
-                        <div class="differentiator-icon">✅</div>
-                        <h3>Rigorous Lawyer Verification</h3>
-                        <p>Every lawyer undergoes our comprehensive 8-step professional registration process including law society standing, experience, and practice area specializations.</p>
-                    </div>
-
-                    <div class="differentiator-card">
-                        <div class="differentiator-icon">🚀</div>
-                        <h3>Algorithm Position Purchase</h3>
-                        <p>Unique system where Lawyers can purchase their search position. Higher investment = higher visibility = more qualified leads.</p>
-                    </div>
-
-                    <div class="differentiator-card">
-                        <div class="differentiator-icon">🎖️</div>
-                        <h3>Arthur's Launch Guarantee</h3>
-                        <p>Service launches within 30 days of signup. Lead generation begins immediately upon platform activation with full refund protection.</p>
-                    </div>
-
-                    <div class="differentiator-card">
-                        <div class="differentiator-icon">🤝</div>
-                        <h3>Direct Founder Access</h3>
-                        <p>Arthur Kostaras personally oversees the platform. Founding 500 members get direct hotline access to resolve any issues immediately.</p>
-                    </div>
-
-                    <div class="differentiator-card">
-                        <div class="differentiator-icon">📊</div>
-                        <h3>Pre-Launch Exclusive Access</h3>
-                        <p>Join the Founding 500 during our exclusive pre-launch phase. Lock in discounted pricing forever and secure premium market positions.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA Section -->
-            <div class="cta-section">
-                <h2>Ready to Experience the Difference?</h2>
-                <p>Join Canada's elite lawyer network during our exclusive pre-launch phase</p>
-                <div class="cta-buttons">
-                    <a href="lawyer-dashboard.html" class="btn btn-primary">Explore the Platform</a>
-                    <a href="join-as-lawyer.html" class="btn btn-secondary">Join as Lawyer</a>
-                </div>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span></a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="guarantee.html">Guarantee</a>
+                <a href="join-as-lawyer.html" class="nav-cta">Apply to Join</a>
             </div>
         </div>
-    </main>
+    </nav>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 CanadaLawyers.app. Revolutionary algorithm placement for Canadian Lawyers.</p>
+    <section class="hero">
+        <h1>Why We Win</h1>
+        <p>See how CanadaLawyers revolutionizes lawyer-business matching compared to outdated alternatives</p>
+    </section>
+
+    <!-- Comparison Table -->
+    <div class="comparison">
+        <div class="comparison-card">
+            <div class="comparison-header">
+                <div class="col-label">Feature</div>
+                <div class="col">Traditional</div>
+                <div class="col">Avvo / FindLaw</div>
+                <div class="col-us">CanadaLawyers</div>
+            </div>
+
+            <div class="comparison-row">
+                <div class="feature">Verification Process</div>
+                <div class="cell cell-bad">Manual / None</div>
+                <div class="cell cell-ok">Basic Checks</div>
+                <div class="cell cell-great">6-Factor AI Verification</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature">Matching Algorithm</div>
+                <div class="cell cell-bad">Random / Geographic</div>
+                <div class="cell cell-ok">Basic Filters</div>
+                <div class="cell cell-great">Proprietary 6-Factor AI</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature">Quality Guarantee</div>
+                <div class="cell cell-bad">None</div>
+                <div class="cell cell-ok">Limited</div>
+                <div class="cell cell-great">3 Leads or Money Back</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature">Response Time</div>
+                <div class="cell cell-bad">Days / Weeks</div>
+                <div class="cell cell-ok">24-48 Hours</div>
+                <div class="cell cell-great">Under 24 Hours</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature">Specialization Matching</div>
+                <div class="cell cell-bad">Generic</div>
+                <div class="cell cell-ok">Basic Categories</div>
+                <div class="cell cell-great">Precise Practice Area Matching</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature">Ongoing Support</div>
+                <div class="cell cell-bad">None</div>
+                <div class="cell cell-ok">Email Only</div>
+                <div class="cell cell-great">Direct Founder Hotline</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature">Technology Platform</div>
+                <div class="cell cell-bad">Phone / Email</div>
+                <div class="cell cell-ok">Basic Web</div>
+                <div class="cell cell-great">Advanced AI-Powered</div>
+            </div>
+            <div class="comparison-row">
+                <div class="feature">Market Position Control</div>
+                <div class="cell cell-bad">No Control</div>
+                <div class="cell cell-ok">Basic Listing</div>
+                <div class="cell cell-great">Algorithm Position Purchase</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Differentiators -->
+    <section class="differentiators">
+        <h2>Our Key Differentiators</h2>
+        <div class="diff-grid">
+            <div class="diff-card">
+                <div class="diff-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>6-Factor Proprietary Algorithm</h3>
+                <p>Our advanced AI analyzes practice area expertise, business size, case complexity, location, cultural fit, and availability for perfect matches.</p>
+            </div>
+            <div class="diff-card">
+                <div class="diff-icon"><i class="fas fa-shield-halved"></i></div>
+                <h3>Rigorous Lawyer Verification</h3>
+                <p>Every lawyer undergoes comprehensive verification including law society standing, experience, and practice area specializations across all provinces.</p>
+            </div>
+            <div class="diff-card">
+                <div class="diff-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Algorithm Position Purchase</h3>
+                <p>Unique system where lawyers can purchase their search position. Higher investment = higher visibility = more qualified leads.</p>
+            </div>
+            <div class="diff-card">
+                <div class="diff-icon"><i class="fas fa-medal"></i></div>
+                <h3>3 Leads or Money Back</h3>
+                <p>We guarantee at least 3 qualified leads within your first 3 months. If we don't deliver, you get a full refund — no questions asked.</p>
+            </div>
+            <div class="diff-card">
+                <div class="diff-icon"><i class="fas fa-handshake"></i></div>
+                <h3>Direct Founder Access</h3>
+                <p>Arthur Kostaras personally oversees the platform. Founding members get direct access to resolve any issues immediately.</p>
+            </div>
+            <div class="diff-card">
+                <div class="diff-icon"><i class="fas fa-database"></i></div>
+                <h3>Canada's Largest Lawyer Database</h3>
+                <p>127,000+ verified lawyers across 8 provinces. We know where every lawyer practices, what they specialize in, and how to reach them.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Ready to Experience the Difference?</h2>
+        <p>Join Canada's most advanced lawyer marketplace and start receiving qualified leads</p>
+        <div class="cta-buttons">
+            <a href="join-as-lawyer.html" class="btn-primary">Apply to Join</a>
+            <a href="pricing.html" class="btn-outline">View Pricing</a>
+        </div>
+    </section>
+
+    <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
+        <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
+                <i class="fas fa-maple-leaf" style="color: var(--primary-purple);"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+            </div>
+            <p style="color: #a0a0a0; margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
         </div>
     </footer>
 </body>

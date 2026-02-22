@@ -32,557 +32,546 @@
     <meta name="twitter:description" content="Transparent, performance-based pricing for Lawyers. Associate $199/mo, Professional $299/mo, Enterprise $599/mo. No hidden fees.">
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Brand Colors — softer blue palette */
         :root {
-            --brand-primary: #2563eb;
-            --brand-secondary: #1e40af;
-            --brand-light: #3b82f6;
-            --brand-accent: #059669;
+            --primary-purple: #667eea;
+            --primary-violet: #764ba2;
+            --primary-navy: #1e3a5f;
+            --accent-green: #059669;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #333333;
         }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .pricing-card {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+        /* Navigation */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center; height: 64px;
         }
-
-        .roi-calculator {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid #3b82f6;
-            border-radius: 20px;
-            padding: 30px;
+        .nav-logo {
+            display: flex; align-items: center; gap: 8px;
+            text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem;
         }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--brand-accent);
+        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500; transition: color 0.3s;
         }
+        .nav-links a:hover { color: white; }
+        .nav-cta {
+            background: white !important; color: var(--primary-purple) !important;
+            padding: 10px 24px; border-radius: 8px; font-weight: 700 !important;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
 
-        /* Pricing toggle */
+        /* Hero */
+        .hero {
+            padding: 140px 24px 80px;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 50%, var(--primary-navy) 100%);
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            padding: 12px 24px; border-radius: 50px; font-size: 0.9rem; font-weight: 500;
+            margin-bottom: 32px; border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero h1 {
+            font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px;
+            max-width: 800px; margin-left: auto; margin-right: auto;
+        }
+        .hero h1 span { opacity: 0.85; }
+        .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 48px; opacity: 0.9; line-height: 1.7; }
+        .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .hero-stat {
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 24px;
+        }
+        .hero-stat .value { font-size: 1.75rem; font-weight: 900; margin-bottom: 4px; }
+        .hero-stat .label { font-size: 0.85rem; opacity: 0.8; }
+
+        /* Pricing Section */
+        .pricing-section { padding: 100px 24px; background: var(--dark-bg); }
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header h2 { font-size: 2.75rem; font-weight: 900; margin-bottom: 16px; }
+        .section-header p { font-size: 1.15rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 32px; }
+
+        /* Toggle */
         .toggle-container {
-            display: inline-flex;
-            background: #e2e8f0;
-            border-radius: 30px;
-            padding: 4px;
+            display: inline-flex; background: rgba(255,255,255,0.1);
+            border-radius: 50px; padding: 4px; border: 1px solid rgba(255,255,255,0.15);
         }
         .toggle-option {
-            padding: 10px 24px;
-            border-radius: 26px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            color: #64748b;
+            padding: 10px 28px; border-radius: 50px; cursor: pointer;
+            font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; color: var(--text-secondary);
         }
         .toggle-option.active {
-            background: var(--brand-primary);
-            color: white;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            background: var(--primary-purple); color: white;
+            box-shadow: 0 2px 12px rgba(102,126,234,0.4);
+        }
+        .savings-badge { color: var(--accent-green); font-weight: 600; font-size: 0.9rem; margin-top: 12px; }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+            max-width: 1100px; margin: 0 auto 80px; align-items: start;
+        }
+        .pricing-card {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 40px 32px; transition: all 0.3s ease; position: relative;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px); border-color: var(--primary-purple);
+            box-shadow: 0 20px 60px rgba(102,126,234,0.15);
+        }
+        .pricing-card.featured {
+            border-color: var(--primary-purple);
+            background: linear-gradient(180deg, rgba(102,126,234,0.08) 0%, var(--card-bg) 100%);
+            transform: scale(1.03);
+        }
+        .pricing-card.featured:hover { transform: scale(1.03) translateY(-8px); }
+        .popular-badge {
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-violet));
+            color: white; padding: 6px 24px; border-radius: 50px;
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px;
+        }
+        .card-icon {
+            width: 56px; height: 56px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; font-size: 1.5rem;
+        }
+        .card-icon.associate { background: rgba(102,126,234,0.15); color: var(--primary-purple); }
+        .card-icon.professional { background: rgba(102,126,234,0.2); color: var(--primary-purple); }
+        .card-icon.enterprise { background: rgba(118,75,162,0.2); color: var(--primary-violet); }
+        .card-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+        .card-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px; }
+        .card-price { font-size: 3.25rem; font-weight: 900; margin-bottom: 4px; }
+        .card-interval { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 8px; }
+        .card-savings { color: var(--accent-green); font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; }
+        .card-features { list-style: none; margin-bottom: 32px; }
+        .card-features li {
+            display: flex; align-items: center; gap: 12px; padding: 8px 0;
+            font-size: 0.95rem; color: rgba(255,255,255,0.85);
+        }
+        .card-features li i { color: var(--accent-green); font-size: 0.85rem; flex-shrink: 0; }
+        .card-btn {
+            width: 100%; padding: 16px; border-radius: 12px; border: none;
+            font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: inherit;
+        }
+        .card-btn.outline { background: transparent; border: 2px solid var(--border-color); color: white; }
+        .card-btn.outline:hover { border-color: var(--primary-purple); background: rgba(102,126,234,0.1); }
+        .card-btn.primary { background: linear-gradient(135deg, var(--primary-purple), var(--primary-violet)); color: white; }
+        .card-btn.primary:hover { box-shadow: 0 8px 25px rgba(102,126,234,0.4); transform: translateY(-1px); }
+        .card-btn.dark { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+        .card-btn.dark:hover { background: rgba(255,255,255,0.15); }
+
+        /* Promise Section */
+        .promise-section {
+            max-width: 1100px; margin: 0 auto 80px;
+            background: rgba(5,150,105,0.08); border: 1px solid rgba(5,150,105,0.2);
+            border-radius: 20px; padding: 48px; text-align: center;
+        }
+        .promise-icon {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: rgba(5,150,105,0.15); display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; font-size: 1.5rem; color: var(--accent-green);
+        }
+        .promise-section h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: 24px; }
+        .promise-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-bottom: 24px; }
+        .promise-item i { color: var(--accent-green); font-size: 1.5rem; margin-bottom: 8px; }
+        .promise-item div { font-weight: 600; font-size: 0.95rem; }
+        .promise-section > p { color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+        /* ROI Section */
+        .roi-section { max-width: 1100px; margin: 0 auto 80px; }
+        .roi-header { text-align: center; margin-bottom: 32px; }
+        .roi-header h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: 8px; }
+        .roi-header p { color: var(--text-secondary); }
+        .roi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .roi-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 28px; }
+        .roi-card.featured { border-color: var(--primary-purple); }
+        .roi-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; color: var(--primary-purple); }
+        .roi-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.9rem; }
+        .roi-row span:first-child { color: var(--text-secondary); }
+        .roi-row span:last-child { font-weight: 700; }
+        .roi-divider { border: none; border-top: 1px solid var(--border-color); margin: 8px 0; }
+        .roi-result { display: flex; justify-content: space-between; padding: 8px 0; font-size: 1.1rem; }
+        .roi-result span:first-child { font-weight: 700; }
+        .roi-result span:last-child { font-weight: 900; color: var(--accent-green); }
+        .roi-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
+
+        /* How It Works */
+        .how-section { padding: 100px 24px; background: var(--card-bg); }
+        .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; max-width: 1000px; margin: 0 auto; }
+        .how-step { text-align: center; padding: 24px; }
+        .step-number {
+            width: 56px; height: 56px; border-radius: 50%;
+            background: rgba(102,126,234,0.15); color: var(--primary-purple);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 900; margin: 0 auto 16px;
+        }
+        .how-step h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+        .how-step p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 24px;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 50%, var(--primary-navy) 100%);
+            text-align: center;
+        }
+        .cta-section h2 { font-size: 2.75rem; font-weight: 900; margin-bottom: 20px; line-height: 1.1; }
+        .cta-section h2 span { opacity: 0.85; }
+        .cta-section > p { font-size: 1.15rem; max-width: 600px; margin: 0 auto 40px; opacity: 0.9; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap; }
+        .cta-btn-primary {
+            background: white; color: var(--primary-purple); padding: 16px 36px;
+            border-radius: 12px; font-weight: 700; font-size: 1.05rem;
+            text-decoration: none; transition: all 0.3s;
+        }
+        .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .cta-btn-secondary {
+            border: 2px solid white; color: white; padding: 16px 36px;
+            border-radius: 12px; font-weight: 700; font-size: 1.05rem;
+            text-decoration: none; transition: all 0.3s;
+        }
+        .cta-btn-secondary:hover { background: white; color: var(--primary-purple); }
+        .cta-quote {
+            background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 20px;
+            padding: 32px; max-width: 700px; margin: 0 auto;
+        }
+        .cta-quote p { font-size: 1.05rem; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+        .cta-quote .author { font-weight: 700; }
+        .cta-quote .title { opacity: 0.8; font-size: 0.9rem; }
+
+        /* Footer */
+        .footer { background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .footer-logo {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;
+        }
+        .footer-logo .maple { color: var(--primary-purple); }
+        .footer-tagline { color: var(--text-secondary); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-bottom: 32px; }
+        .footer-grid h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 12px; }
+        .footer-grid .items { color: var(--text-secondary); font-size: 0.85rem; line-height: 2; }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links a:not(.nav-cta) { display: none; }
+            .hero { padding: 120px 16px 60px; }
+            .hero h1 { font-size: 2.25rem; }
+            .hero p { font-size: 1rem; }
+            .hero-stats { grid-template-columns: 1fr; gap: 12px; }
+            .pricing-section { padding: 60px 16px; }
+            .section-header h2 { font-size: 2rem; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .pricing-card.featured { transform: none; }
+            .pricing-card.featured:hover { transform: translateY(-8px); }
+            .promise-grid { grid-template-columns: repeat(2,1fr); }
+            .promise-section { padding: 32px 20px; }
+            .roi-grid { grid-template-columns: 1fr; }
+            .how-section { padding: 60px 16px; }
+            .how-grid { grid-template-columns: 1fr; }
+            .cta-section { padding: 60px 16px; }
+            .cta-section h2 { font-size: 2rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg border-b-4 border-blue-600">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <i class="fas fa-maple-leaf text-2xl text-blue-600 mr-2"></i>
-                    <span class="font-bold text-xl text-gray-900">CanadaLawyers</span>
-                    <span class="text-blue-600 font-bold text-xl">.app</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="/" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium hidden sm:block">Home</a>
-                    <a href="join-as-lawyer.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
-                        Apply to Join
-                    </a>
-                </div>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-maple-leaf maple"></i>
+                CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="why-we-win.html">Why We Win</a>
+                <a href="contact.html">Contact</a>
+                <a href="join-as-lawyer.html" class="nav-cta">Apply to Join</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="mb-8">
-                <div class="inline-flex items-center bg-white bg-opacity-20 px-6 py-3 rounded-full mb-6">
-                    <i class="fas fa-chart-line mr-2"></i>
-                    Transparent, Performance-Based Pricing
-                </div>
-                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
-                    Choose Your Tier.<br>
-                    <span class="text-blue-200">Grow Your Practice.</span>
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed opacity-90">
-                    Higher tiers unlock more client matches, better search visibility, and premium features.
-                    <strong>No setup fees. No contracts. Cancel anytime.</strong>
-                </p>
+    <section class="hero">
+        <div class="hero-badge">
+            <i class="fas fa-chart-line"></i>
+            Transparent, Performance-Based Pricing
+        </div>
+        <h1>Choose Your Tier.<br><span>Grow Your Practice.</span></h1>
+        <p>Higher tiers unlock more client matches, better search visibility, and premium features. <strong>No setup fees. No contracts. Cancel anytime.</strong></p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="value">AI-Matched</div>
+                <div class="label">Qualified leads based on your specialization</div>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-white bg-opacity-10 p-6 rounded-xl">
-                    <div class="text-3xl font-bold text-blue-200">AI-Matched</div>
-                    <div class="text-sm opacity-80">Qualified leads based on your specialization</div>
-                </div>
-                <div class="bg-white bg-opacity-10 p-6 rounded-xl">
-                    <div class="text-3xl font-bold text-blue-200">24-Hour</div>
-                    <div class="text-sm opacity-80">Average time to first client match</div>
-                </div>
-                <div class="bg-white bg-opacity-10 p-6 rounded-xl">
-                    <div class="text-3xl font-bold text-blue-200">0% Commission</div>
-                    <div class="text-sm opacity-80">Keep 100% of what you earn from clients</div>
-                </div>
+            <div class="hero-stat">
+                <div class="value">24-Hour</div>
+                <div class="label">Average time to first client match</div>
+            </div>
+            <div class="hero-stat">
+                <div class="value">0% Commission</div>
+                <div class="label">Keep 100% of what you earn from clients</div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
-                    Simple, Transparent Pricing
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-                    Your investment directly impacts your search visibility and client flow.
-                    Every tier includes a professional lawyer profile and AI-powered matching.
-                </p>
+    <section class="pricing-section">
+        <div class="section-header">
+            <h2>Simple, Transparent Pricing</h2>
+            <p>Your investment directly impacts your search visibility and client flow. Every tier includes a professional lawyer profile and AI-powered matching.</p>
+            <div class="toggle-container">
+                <div class="toggle-option active" id="monthlyToggle" onclick="showMonthly()">Monthly</div>
+                <div class="toggle-option" id="annualToggle" onclick="showAnnual()">Annual</div>
+            </div>
+            <div class="savings-badge" id="savingsBadge" style="display: none;">Save up to 16% with annual billing</div>
+        </div>
 
-                <!-- Monthly/Annual Toggle -->
-                <div class="flex items-center justify-center gap-4 mb-4">
-                    <div class="toggle-container">
-                        <div class="toggle-option active" id="monthlyToggle" onclick="showMonthly()">Monthly</div>
-                        <div class="toggle-option" id="annualToggle" onclick="showAnnual()">Annual</div>
-                    </div>
+        <div class="pricing-grid">
+            <!-- Associate -->
+            <div class="pricing-card">
+                <div class="card-icon associate"><i class="fas fa-user"></i></div>
+                <div class="card-title">Associate</div>
+                <div class="card-subtitle">Get started and build your presence</div>
+                <div class="card-price">
+                    <span class="monthly-price">$199</span>
+                    <span class="annual-price" style="display: none;">$1,999</span>
                 </div>
-                <p class="text-sm text-blue-600 font-semibold" id="savingsBadge" style="display: none;">Save up to 16% with annual billing</p>
+                <div class="card-interval">
+                    <span class="monthly-label">/month</span>
+                    <span class="annual-label" style="display: none;">/year</span>
+                </div>
+                <div class="card-savings annual-savings" style="display: none;">Save $389/year</div>
+                <ul class="card-features">
+                    <li><i class="fas fa-check"></i> Up to 3 active client matches</li>
+                    <li><i class="fas fa-check"></i> Standard search ranking</li>
+                    <li><i class="fas fa-check"></i> Professional lawyer profile</li>
+                    <li><i class="fas fa-check"></i> Client lead notifications</li>
+                    <li><i class="fas fa-check"></i> Email support</li>
+                </ul>
+                <button onclick="subscribeToPlan('associate', currentInterval)" class="card-btn outline">Get Started</button>
             </div>
 
-            <!-- Pricing Cards -->
-            <div class="grid lg:grid-cols-3 gap-8 mb-16">
-                <!-- Associate Plan -->
-                <div class="pricing-card bg-white rounded-2xl shadow-lg border-2 border-gray-200 p-8 relative">
-                    <div class="text-center mb-6">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-50 rounded-full mb-4">
-                            <i class="fas fa-user text-blue-400 text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800">Associate</h3>
-                        <p class="text-gray-500">Get started and build your presence</p>
-                    </div>
-
-                    <div class="text-center mb-8">
-                        <div class="text-5xl font-black text-gray-700 mb-1">
-                            <span class="monthly-price">$199</span>
-                            <span class="annual-price" style="display: none;">$1,999</span>
-                        </div>
-                        <div class="text-gray-500"><span class="monthly-label">/month</span><span class="annual-label" style="display: none;">/year</span></div>
-                        <div class="annual-savings text-sm text-blue-600 font-semibold mt-1" style="display: none;">Save $389/year</div>
-                    </div>
-
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-400"></i>
-                            <span>Up to 3 active client matches</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-400"></i>
-                            <span>Standard search ranking</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-400"></i>
-                            <span>Professional lawyer profile</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-400"></i>
-                            <span>Client lead notifications</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-400"></i>
-                            <span>Email support</span>
-                        </div>
-                    </div>
-
-                    <button onclick="subscribeToPlan('associate', currentInterval)" class="w-full bg-blue-100 text-blue-700 py-4 rounded-xl font-bold hover:bg-blue-200 transition-colors">
-                        Get Started
-                    </button>
+            <!-- Professional -->
+            <div class="pricing-card featured">
+                <div class="popular-badge">MOST POPULAR</div>
+                <div class="card-icon professional"><i class="fas fa-crown"></i></div>
+                <div class="card-title">Professional</div>
+                <div class="card-subtitle">For serious practice growth</div>
+                <div class="card-price">
+                    <span class="monthly-price">$299</span>
+                    <span class="annual-price" style="display: none;">$2,999</span>
                 </div>
-
-                <!-- Professional Plan -->
-                <div class="pricing-card bg-white rounded-2xl shadow-xl border-2 border-blue-500 p-8 relative transform lg:scale-105">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-                        <div class="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-                            MOST POPULAR
-                        </div>
-                    </div>
-
-                    <div class="text-center mb-6">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                            <i class="fas fa-crown text-blue-600 text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Professional</h3>
-                        <p class="text-gray-600">For serious practice growth</p>
-                    </div>
-
-                    <div class="text-center mb-8">
-                        <div class="text-5xl font-black text-blue-600 mb-1">
-                            <span class="monthly-price">$299</span>
-                            <span class="annual-price" style="display: none;">$2,999</span>
-                        </div>
-                        <div class="text-gray-600"><span class="monthly-label">/month</span><span class="annual-label" style="display: none;">/year</span></div>
-                        <div class="annual-savings text-sm text-blue-600 font-semibold mt-1" style="display: none;">Save $589/year</div>
-                    </div>
-
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span><strong>Up to 7 active client matches</strong></span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span><strong>Enhanced search ranking</strong></span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Featured profile with specializations</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Priority lead notifications</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Advanced dashboard analytics</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-600"></i>
-                            <span>Priority support</span>
-                        </div>
-                    </div>
-
-                    <button onclick="subscribeToPlan('professional', currentInterval)" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors">
-                        Get Started
-                    </button>
+                <div class="card-interval">
+                    <span class="monthly-label">/month</span>
+                    <span class="annual-label" style="display: none;">/year</span>
                 </div>
-
-                <!-- Enterprise Plan -->
-                <div class="pricing-card bg-white rounded-2xl shadow-lg border-2 border-gray-200 p-8 relative">
-                    <div class="text-center mb-6">
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-50 rounded-full mb-4">
-                            <i class="fas fa-building text-blue-800 text-2xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900">Enterprise</h3>
-                        <p class="text-gray-600">For firms ready to dominate</p>
-                    </div>
-
-                    <div class="text-center mb-8">
-                        <div class="text-5xl font-black text-blue-800 mb-1">
-                            <span class="monthly-price">$599</span>
-                            <span class="annual-price" style="display: none;">$5,999</span>
-                        </div>
-                        <div class="text-gray-600"><span class="monthly-label">/month</span><span class="annual-label" style="display: none;">/year</span></div>
-                        <div class="annual-savings text-sm text-blue-600 font-semibold mt-1" style="display: none;">Save $1,189/year</div>
-                    </div>
-
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-800"></i>
-                            <span><strong>Up to 15 active client matches</strong></span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-800"></i>
-                            <span><strong>Premium search ranking (top results)</strong></span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-800"></i>
-                            <span>Showcase profile with case studies</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-800"></i>
-                            <span>Instant lead notifications</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-800"></i>
-                            <span>Dedicated account manager</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-800"></i>
-                            <span>White-glove onboarding</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-blue-800"></i>
-                            <span>Direct Arthur hotline</span>
-                        </div>
-                    </div>
-
-                    <button onclick="subscribeToPlan('enterprise', currentInterval)" class="w-full bg-blue-800 text-white py-4 rounded-xl font-bold hover:bg-blue-900 transition-colors">
-                        Get Started
-                    </button>
-                </div>
+                <div class="card-savings annual-savings" style="display: none;">Save $589/year</div>
+                <ul class="card-features">
+                    <li><i class="fas fa-check"></i> <strong>Up to 7 active client matches</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>Enhanced search ranking</strong></li>
+                    <li><i class="fas fa-check"></i> Featured profile with specializations</li>
+                    <li><i class="fas fa-check"></i> Priority lead notifications</li>
+                    <li><i class="fas fa-check"></i> Advanced dashboard analytics</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                </ul>
+                <button onclick="subscribeToPlan('professional', currentInterval)" class="card-btn primary">Get Started</button>
             </div>
 
-            <!-- No Hidden Fees Promise -->
-            <div class="bg-green-50 border-2 border-green-200 rounded-2xl p-8 mb-16">
-                <div class="text-center">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-                        <i class="fas fa-shield-alt text-green-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Our No Hidden Fees Promise</h3>
-                    <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                        <div class="text-center">
-                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
-                            <div class="font-semibold">No Setup Fees</div>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
-                            <div class="font-semibold">No Commission Fees</div>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
-                            <div class="font-semibold">No Contract Lock-ins</div>
-                        </div>
-                        <div class="text-center">
-                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
-                            <div class="font-semibold">No Success Fees</div>
-                        </div>
-                    </div>
-                    <p class="text-lg text-gray-700 mt-6 max-w-3xl mx-auto">
-                        What you see is what you pay. <strong>Monthly or annual subscription only.</strong> Cancel anytime.
-                        Keep every dollar you earn from your clients.
-                    </p>
+            <!-- Enterprise -->
+            <div class="pricing-card">
+                <div class="card-icon enterprise"><i class="fas fa-building"></i></div>
+                <div class="card-title">Enterprise</div>
+                <div class="card-subtitle">For firms ready to dominate</div>
+                <div class="card-price">
+                    <span class="monthly-price">$599</span>
+                    <span class="annual-price" style="display: none;">$5,999</span>
                 </div>
+                <div class="card-interval">
+                    <span class="monthly-label">/month</span>
+                    <span class="annual-label" style="display: none;">/year</span>
+                </div>
+                <div class="card-savings annual-savings" style="display: none;">Save $1,189/year</div>
+                <ul class="card-features">
+                    <li><i class="fas fa-check"></i> <strong>Up to 15 active client matches</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>Premium search ranking (top results)</strong></li>
+                    <li><i class="fas fa-check"></i> Showcase profile with case studies</li>
+                    <li><i class="fas fa-check"></i> Instant lead notifications</li>
+                    <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                    <li><i class="fas fa-check"></i> White-glove onboarding</li>
+                    <li><i class="fas fa-check"></i> Direct Arthur hotline</li>
+                </ul>
+                <button onclick="subscribeToPlan('enterprise', currentInterval)" class="card-btn dark">Get Started</button>
             </div>
+        </div>
 
-            <!-- ROI Calculator -->
-            <div class="roi-calculator mb-16">
-                <div class="text-center mb-8">
-                    <h3 class="text-3xl font-bold text-gray-900 mb-4">Calculate Your ROI</h3>
-                    <p class="text-gray-600">See how quickly each tier pays for itself</p>
+        <!-- No Hidden Fees Promise -->
+        <div class="promise-section">
+            <div class="promise-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Our No Hidden Fees Promise</h3>
+            <div class="promise-grid">
+                <div class="promise-item"><i class="fas fa-check-circle"></i><div>No Setup Fees</div></div>
+                <div class="promise-item"><i class="fas fa-check-circle"></i><div>No Commission Fees</div></div>
+                <div class="promise-item"><i class="fas fa-check-circle"></i><div>No Contract Lock-ins</div></div>
+                <div class="promise-item"><i class="fas fa-check-circle"></i><div>No Success Fees</div></div>
+            </div>
+            <p>What you see is what you pay. <strong>Monthly or annual subscription only.</strong> Cancel anytime. Keep every dollar you earn from your clients.</p>
+        </div>
+
+        <!-- ROI Calculator -->
+        <div class="roi-section">
+            <div class="roi-header">
+                <h3>Calculate Your ROI</h3>
+                <p>See how quickly each tier pays for itself</p>
+            </div>
+            <div class="roi-grid">
+                <div class="roi-card">
+                    <h4>Associate ROI</h4>
+                    <div class="roi-row"><span>Monthly cost:</span><span>$199</span></div>
+                    <div class="roi-row"><span>Active matches:</span><span>Up to 3</span></div>
+                    <div class="roi-row"><span>Avg client value:</span><span>$8,000</span></div>
+                    <hr class="roi-divider">
+                    <div class="roi-result"><span>ROI:</span><span>3,919%</span></div>
+                    <div class="roi-note">Pays for itself with 1 client</div>
                 </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h4 class="font-bold text-xl text-blue-500 mb-4">Associate ROI</h4>
-                        <div class="space-y-3">
-                            <div class="flex justify-between">
-                                <span>Monthly cost:</span>
-                                <span class="font-bold">$199</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Active matches:</span>
-                                <span class="font-bold">Up to 3</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Avg client value:</span>
-                                <span class="font-bold">$8,000</span>
-                            </div>
-                            <div class="border-t pt-2">
-                                <div class="flex justify-between text-lg">
-                                    <span class="font-bold">ROI:</span>
-                                    <span class="font-bold text-green-600">3,919%</span>
-                                </div>
-                                <div class="text-sm text-gray-600">Pays for itself with 1 client</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-blue-400">
-                        <h4 class="font-bold text-xl text-blue-600 mb-4">Professional ROI</h4>
-                        <div class="space-y-3">
-                            <div class="flex justify-between">
-                                <span>Monthly cost:</span>
-                                <span class="font-bold">$299</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Active matches:</span>
-                                <span class="font-bold">Up to 7</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Avg client value:</span>
-                                <span class="font-bold">$8,000</span>
-                            </div>
-                            <div class="border-t pt-2">
-                                <div class="flex justify-between text-lg">
-                                    <span class="font-bold">ROI:</span>
-                                    <span class="font-bold text-green-600">9,364%</span>
-                                </div>
-                                <div class="text-sm text-gray-600">Pays for itself with 1 client</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <h4 class="font-bold text-xl text-blue-800 mb-4">Enterprise ROI</h4>
-                        <div class="space-y-3">
-                            <div class="flex justify-between">
-                                <span>Monthly cost:</span>
-                                <span class="font-bold">$599</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Active matches:</span>
-                                <span class="font-bold">Up to 15</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Avg client value:</span>
-                                <span class="font-bold">$8,000</span>
-                            </div>
-                            <div class="border-t pt-2">
-                                <div class="flex justify-between text-lg">
-                                    <span class="font-bold">ROI:</span>
-                                    <span class="font-bold text-green-600">19,033%</span>
-                                </div>
-                                <div class="text-sm text-gray-600">Pays for itself with 1 client</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="roi-card featured">
+                    <h4>Professional ROI</h4>
+                    <div class="roi-row"><span>Monthly cost:</span><span>$299</span></div>
+                    <div class="roi-row"><span>Active matches:</span><span>Up to 7</span></div>
+                    <div class="roi-row"><span>Avg client value:</span><span>$8,000</span></div>
+                    <hr class="roi-divider">
+                    <div class="roi-result"><span>ROI:</span><span>9,364%</span></div>
+                    <div class="roi-note">Pays for itself with 1 client</div>
+                </div>
+                <div class="roi-card">
+                    <h4>Enterprise ROI</h4>
+                    <div class="roi-row"><span>Monthly cost:</span><span>$599</span></div>
+                    <div class="roi-row"><span>Active matches:</span><span>Up to 15</span></div>
+                    <div class="roi-row"><span>Avg client value:</span><span>$8,000</span></div>
+                    <hr class="roi-divider">
+                    <div class="roi-result"><span>ROI:</span><span>19,033%</span></div>
+                    <div class="roi-note">Pays for itself with 1 client</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="bg-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
-                <p class="text-xl text-gray-600">From sign-up to your first client match in 24 hours</p>
+    <section class="how-section">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>From sign-up to your first client match in 24 hours</p>
+        </div>
+        <div class="how-grid">
+            <div class="how-step">
+                <div class="step-number">1</div>
+                <h3>Apply & Get Verified</h3>
+                <p>Submit your credentials. We verify your law society standing, practice areas, and professional record.</p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                        <span class="text-blue-600 font-black text-2xl">1</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Apply & Get Verified</h3>
-                    <p class="text-gray-600">Submit your credentials. We verify your law society standing, practice areas, and professional record.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                        <span class="text-blue-600 font-black text-2xl">2</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Choose Your Tier</h3>
-                    <p class="text-gray-600">Select the plan that fits your growth goals. Higher tiers unlock more matches and better search visibility.</p>
-                </div>
-                <div class="text-center p-6">
-                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                        <span class="text-blue-600 font-black text-2xl">3</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Receive AI-Matched Leads</h3>
-                    <p class="text-gray-600">Our AI matches you with businesses based on your specialization, location, and capacity. You choose which clients to take.</p>
-                </div>
+            <div class="how-step">
+                <div class="step-number">2</div>
+                <h3>Choose Your Tier</h3>
+                <p>Select the plan that fits your growth goals. Higher tiers unlock more matches and better search visibility.</p>
+            </div>
+            <div class="how-step">
+                <div class="step-number">3</div>
+                <h3>Receive AI-Matched Leads</h3>
+                <p>Our AI matches you with businesses based on your specialization, location, and capacity. You choose which clients to take.</p>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="gradient-bg text-white py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl md:text-5xl font-black mb-8">
-                Ready to Grow<br>
-                Your <span class="text-blue-200">Practice</span>?
-            </h2>
-            <p class="text-xl mb-12 leading-relaxed opacity-90">
-                Join hundreds of Canadian Lawyers who are growing their practices through AI-powered client matching.
-                Every tier pays for itself with a single client.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <a href="join-as-lawyer.html" class="bg-white text-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-colors">
-                    Apply to Join
-                </a>
-                <a href="tel:6479567290" class="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-700 transition-colors">
-                    Call Arthur: (647) 956-7290
-                </a>
-            </div>
-
-            <div class="bg-white bg-opacity-15 p-6 rounded-2xl backdrop-blur-sm">
-                <p class="text-lg leading-relaxed">
-                    "As a CFO, I watched lawyers struggle with the same client acquisition problems I saw in every industry.
-                    I built this platform to solve it. Every tier is designed to deliver ROI from day one."
-                </p>
-                <div class="mt-4">
-                    <strong>Arthur Kostaras</strong><br>
-                    <span class="opacity-80">Founder, CanadaLawyers</span>
-                </div>
-            </div>
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Ready to Grow<br>Your <span>Practice</span>?</h2>
+        <p>Join hundreds of Canadian lawyers who are growing their practices through AI-powered client matching. Every tier pays for itself with a single client.</p>
+        <div class="cta-buttons">
+            <a href="join-as-lawyer.html" class="cta-btn-primary">Apply to Join</a>
+            <a href="tel:6479567290" class="cta-btn-secondary">Call Arthur: (647) 956-7290</a>
+        </div>
+        <div class="cta-quote">
+            <p>"As a CFO, I watched lawyers struggle with the same client acquisition problems I saw in every industry. I built this platform to solve it. Every tier is designed to deliver ROI from day one."</p>
+            <div class="author">Arthur Kostaras</div>
+            <div class="title">Founder, CanadaLawyers</div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex items-center justify-center mb-6">
-                <i class="fas fa-maple-leaf text-blue-400 text-3xl mr-3"></i>
-                <span class="font-bold text-2xl">CanadaLawyers</span>
-                <span class="text-blue-400 font-bold text-2xl">.app</span>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <i class="fas fa-maple-leaf maple"></i>
+                CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
             </div>
-            <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
-                AI-powered lawyer marketplace built for Canadian legal professionals.
-            </p>
-            <div class="grid md:grid-cols-3 gap-8">
+            <p class="footer-tagline">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div class="footer-grid">
                 <div>
-                    <h4 class="font-semibold mb-3">Contact</h4>
-                    <div class="space-y-2 text-gray-400">
-                        <div>(647) 956-7290</div>
-                        <div>arthur@negotiateandwin.com</div>
-                    </div>
+                    <h4>Contact</h4>
+                    <div class="items">(647) 956-7290<br>arthur@negotiateandwin.com</div>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-3">Plans</h4>
-                    <div class="space-y-1 text-gray-400 text-sm">
-                        <div>Associate: $199/mo</div>
-                        <div>Professional: $299/mo</div>
-                        <div>Enterprise: $599/mo</div>
-                    </div>
+                    <h4>Plans</h4>
+                    <div class="items">Associate: $199/mo<br>Professional: $299/mo<br>Enterprise: $599/mo</div>
                 </div>
                 <div>
-                    <h4 class="font-semibold mb-3">Promise</h4>
-                    <div class="space-y-1 text-gray-400 text-sm">
-                        <div>No setup fees</div>
-                        <div>No commission fees</div>
-                        <div>Cancel anytime</div>
-                    </div>
+                    <h4>Promise</h4>
+                    <div class="items">No setup fees<br>No commission fees<br>Cancel anytime</div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-6 mt-8">
-                <p class="text-gray-500 text-sm">&copy; 2026 CanadaLawyers.app. AI-powered Lawyer marketplace for Canadian professionals.</p>
-            </div>
+            <div class="footer-bottom">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
         </div>
     </footer>
 
     <script>
-        // ---- Configuration ----
         const API_BASE_URL = 'https://canadalawyers-backend-production.up.railway.app';
         let currentInterval = 'monthly';
 
-        // Read URL params
         const urlParams = new URLSearchParams(window.location.search);
         const userEmail = urlParams.get('email') || '';
         const profileId = urlParams.get('profileId') || '';
 
-        // Stripe tier mapping
         const TIER_MAP = {
             associate:    { monthly: 'associate_monthly',    yearly: 'associate_yearly' },
             professional: { monthly: 'professional_monthly', yearly: 'professional_yearly' },
             enterprise:   { monthly: 'enterprise_monthly',   yearly: 'enterprise_yearly' }
         };
 
-        // ---- Pricing Toggle ----
         function showMonthly() {
             currentInterval = 'monthly';
             document.getElementById('monthlyToggle').classList.add('active');
@@ -607,48 +596,31 @@
             document.getElementById('savingsBadge').style.display = '';
         }
 
-        // ---- Subscribe via Stripe Checkout ----
         async function subscribeToPlan(tier, interval) {
             const priceKey = TIER_MAP[tier]?.[interval];
-            if (!priceKey) {
-                alert('Invalid plan selection.');
-                return;
-            }
+            if (!priceKey) { alert('Invalid plan selection.'); return; }
 
             let email = userEmail;
             if (!email) {
                 email = prompt('Please enter your professional email to continue:');
-                if (!email || !email.includes('@')) {
-                    alert('A valid email is required to proceed.');
-                    return;
-                }
+                if (!email || !email.includes('@')) { alert('A valid email is required to proceed.'); return; }
             }
 
             try {
                 const res = await fetch(`${API_BASE_URL}/api/stripe/create-checkout-session`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        priceId: priceKey,
-                        email: email,
-                        profileId: profileId,
-                        tier: tier,
-                        interval: interval
-                    })
+                    body: JSON.stringify({ priceId: priceKey, email, profileId, tier, interval })
                 });
-
                 const data = await res.json();
-
                 if (data.url) {
                     localStorage.setItem('ca_checkout_email', email);
                     window.location.href = data.url;
                 } else {
                     alert('Unable to start checkout. Please try again or call Arthur at (647) 956-7290.');
-                    console.error('Checkout error:', data);
                 }
             } catch (err) {
                 alert('Connection error. Please try again or call Arthur at (647) 956-7290.');
-                console.error('Checkout fetch error:', err);
             }
         }
     </script>
