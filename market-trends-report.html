@@ -14,6 +14,12 @@
     <title>Canadian SME Legal Trends Report Q1 2026 - Real-Time Intelligence</title>
     <meta name="description" content="Canadian SME legal market trends and intelligence. Real-time data on lawyer demand, industry insights, and legal service statistics.">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://canadalawyers.app/market-trends-report.html">
 
@@ -33,6 +39,18 @@
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
     <style>
+        :root {
+            --primary-navy: #1e3a5f;
+            --primary-purple: #667eea;
+            --primary-violet: #764ba2;
+            --accent-green: #059669;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #333333;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -40,15 +58,28 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
             color: #1e293b;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
+
+        /* Glassmorphic Navigation */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: white; }
+        .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
 
         .report-container {
             max-width: 1000px;
             margin: 0 auto;
+            padding-top: 80px;
             background: white;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -457,50 +488,54 @@
             box-shadow: 0 12px 28px rgba(220, 38, 38, 0.4);
         }
 
+        /* Branded Footer */
         .footer {
-            background: #f8fafc;
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid #e2e8f0;
+            background: var(--dark-bg);
+            padding: 60px 24px;
+            border-top: 1px solid var(--border-color);
         }
-
-        .footer-text {
-            color: #64748b;
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
+        .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; color: white; }
+        .footer-logo .maple { color: var(--primary-purple); }
+        .footer-tagline { color: var(--text-secondary); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 32px; }
+        .footer-grid h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 12px; color: white; }
+        .footer-grid .items { color: var(--text-secondary); font-size: 0.85rem; line-height: 2; }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem; }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+
             .report-container {
                 margin: 0;
             }
-            
+
             .report-header,
             .report-content,
-            .cta-section,
-            .footer {
+            .cta-section {
                 padding: 32px 20px;
             }
-            
+
             .report-title {
                 font-size: 2.25rem;
             }
-            
+
             .section-title {
                 font-size: 1.75rem;
             }
-            
+
             .insights-grid,
             .findings-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .report-meta {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-            
+
             .stat-number {
                 font-size: 2.5rem;
             }
@@ -508,6 +543,22 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-maple-leaf maple"></i>
+                CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="why-we-win.html">Why We Win</a>
+                <a href="join-as-lawyer.html" class="nav-cta">Apply to Join</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="report-container">
         <!-- Report Header -->
         <div class="report-header">
@@ -973,15 +1024,33 @@
             <a href="index.html" class="cta-button">Get Your FREE Lawyer Selection Guide</a>
         </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p class="footer-text">
-                © 2026 CanadaLawyers.app - Canada's Most Advanced Lawyer Matching Platform<br>
-                PIPEDA Certified • Government Approved • Official Legal Partner • Real-Time Intelligence Leader<br>
-                <strong>Data Sources:</strong> Statistics Canada, ISED Canada, Industry Leaders • Updated Daily
-            </p>
-        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <i class="fas fa-maple-leaf maple"></i>
+                CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+            </div>
+            <p class="footer-tagline">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div class="footer-grid">
+                <div>
+                    <h4>Contact</h4>
+                    <div class="items">(647) 956-7290<br>arthur@negotiateandwin.com</div>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <div class="items">Market Trends Report<br>AI Demo<br>Why We Win</div>
+                </div>
+                <div>
+                    <h4>Data Sources</h4>
+                    <div class="items">Statistics Canada<br>ISED Canada<br>Updated Daily</div>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
+        </div>
+    </footer>
 
     <script>
         // Real-time data simulation

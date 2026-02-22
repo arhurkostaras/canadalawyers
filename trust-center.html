@@ -32,17 +32,40 @@
     <meta name="twitter:description" content="Learn about CanadaLawyers' security measures, compliance certifications, and data protection policies. SOC 2, PIPEDA compliance, and Canadian data residency.">
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --brand-primary: #dc2626;
-            --brand-secondary: #1e40af;
-            --brand-accent: #059669;
+            --primary-purple: #667eea;
+            --primary-blue: #764ba2;
+            --primary-navy: #1a1a2e;
+            --bg-dark: #0a0a0a;
+            --bg-card: #111;
+            --bg-card-hover: #1a1a1a;
+            --border-color: rgba(255,255,255,0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: var(--bg-dark); color: var(--text-primary); }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: white; }
+        .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+
         .gradient-bg {
-            background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-purple) 100%);
         }
 
         .trust-badge {
@@ -159,27 +182,28 @@
             color: #f59e0b;
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg border-b-4 border-red-600">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <i class="fas fa-maple-leaf text-2xl text-red-600 mr-2"></i>
-                    <span class="font-bold text-xl text-gray-900">CanadaLawyers</span>
-                    <span class="text-red-600 font-bold text-xl">.app</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <a href="/" class="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium">← Back to Home</a>
-                    <a href="tel:6479567290" class="bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700">
-                        Contact Security Team
-                    </a>
-                </div>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/pricing.html">Pricing</a>
+                <a href="/why-we-win.html">Why We Win</a>
+                <a href="/join-as-lawyer.html" class="nav-cta">Apply to Join</a>
             </div>
         </div>
     </nav>
+    <div style="height: 64px;"></div>
 
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-16">
@@ -504,24 +528,13 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex items-center justify-center mb-6">
-                <i class="fas fa-maple-leaf text-red-500 text-3xl mr-3"></i>
-                <span class="font-bold text-2xl">CanadaLawyers</span>
-                <span class="text-red-500 font-bold text-2xl">.app</span>
+    <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
+        <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
+                <i class="fas fa-maple-leaf" style="color: var(--primary-purple);"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
             </div>
-            <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
-                Trusted by Canadian businesses and Lawyers. Your security and privacy are our commitment.
-            </p>
-            <div class="border-t border-gray-800 pt-6">
-                <p class="text-gray-500 text-sm">
-                    &copy; 2026 CanadaLawyers.app. All rights reserved. |
-                    <a href="/trust-center.html" class="text-blue-400 hover:text-blue-300">Trust Center</a> | 
-                    <a href="/privacy-policy.html" class="text-blue-400 hover:text-blue-300">Privacy</a> | 
-                    <a href="/terms-of-service.html" class="text-blue-400 hover:text-blue-300">Terms</a>
-                </p>
-            </div>
+            <p style="color: #a0a0a0; margin-bottom: 32px;">Trusted by Canadian law firms. Your security and privacy are our commitment.</p>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. Trusted by Canadian law firms. Your security and privacy are our commitment.</div>
         </div>
     </footer>
 
