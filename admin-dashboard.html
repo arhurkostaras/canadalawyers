@@ -44,7 +44,7 @@
         <section id="statsSection" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
                 <p class="text-gray-400 text-sm">Total Lawyers</p>
-                <p id="statCpas" class="text-3xl font-bold mt-1">--</p>
+                <p id="statLawyers" class="text-3xl font-bold mt-1">--</p>
                 <p id="statVerified" class="text-xs text-green-400 mt-1"></p>
             </div>
             <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
@@ -66,7 +66,7 @@
         <section class="mb-8">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-semibold">Lawyer Management</h2>
-                <select id="cpaFilter" onchange="loadLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                <select id="lawyerFilter" onchange="loadLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
                     <option value="">All Lawyers</option>
                     <option value="true">Verified</option>
                     <option value="false">Unverified</option>
@@ -84,10 +84,10 @@
                             <th class="text-left px-4 py-3">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="cpaTableBody" class="divide-y divide-gray-700"></tbody>
+                    <tbody id="lawyerTableBody" class="divide-y divide-gray-700"></tbody>
                 </table>
             </div>
-            <div id="cpaPagination" class="flex items-center justify-between mt-3 text-sm text-gray-400"></div>
+            <div id="lawyerPagination" class="flex items-center justify-between mt-3 text-sm text-gray-400"></div>
         </section>
 
         <!-- Recent Submissions -->
@@ -169,8 +169,8 @@
                 const data = await res.json();
                 if (!data.success) throw new Error(data.error);
                 const s = data.stats;
-                document.getElementById('statCpas').textContent = s.total_cpas;
-                document.getElementById('statVerified').textContent = `${s.verified_cpas} verified`;
+                document.getElementById('statLawyers').textContent = s.total_lawyers;
+                document.getElementById('statVerified').textContent = `${s.verified_lawyers} verified`;
                 document.getElementById('statRequests').textContent = s.total_sme_requests;
                 document.getElementById('statNewRequests').textContent = `${s.new_requests_7d} this week`;
                 document.getElementById('statMatches').textContent = s.total_matches;
@@ -181,21 +181,21 @@
         }
 
         // ---- Load Lawyers table ----
-        let currentCPAPage = 1;
+        let currentLawyerPage = 1;
         async function loadLawyers(page) {
-            if (page) currentCPAPage = page;
-            const filter = document.getElementById('cpaFilter').value;
-            const qs = `page=${currentCPAPage}&limit=10${filter ? `&verified=${filter}` : ''}`;
+            if (page) currentLawyerPage = page;
+            const filter = document.getElementById('lawyerFilter').value;
+            const qs = `page=${currentLawyerPage}&limit=10${filter ? `&verified=${filter}` : ''}`;
             try {
-                const res = await fetch(`${API}/api/admin/cpas?${qs}`, { headers });
+                const res = await fetch(`${API}/api/admin/lawyers?${qs}`, { headers });
                 const data = await res.json();
                 if (!data.success) throw new Error(data.error);
 
-                const tbody = document.getElementById('cpaTableBody');
-                if (data.cpas.length === 0) {
+                const tbody = document.getElementById('lawyerTableBody');
+                if (data.lawyers.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="6" class="px-4 py-6 text-center text-gray-500">No Lawyers found</td></tr>';
                 } else {
-                    tbody.innerHTML = data.cpas.map(c => `
+                    tbody.innerHTML = data.lawyers.map(c => `
                         <tr class="hover:bg-gray-750">
                             <td class="px-4 py-3">${c.first_name || ''} ${c.last_name || ''}</td>
                             <td class="px-4 py-3 text-gray-400">${c.email || '--'}</td>
@@ -213,7 +213,7 @@
                 }
 
                 const p = data.pagination;
-                document.getElementById('cpaPagination').innerHTML = `
+                document.getElementById('lawyerPagination').innerHTML = `
                     <span>Page ${p.page} of ${p.totalPages} (${p.total} total)</span>
                     <div class="flex gap-2">
                         <button onclick="loadLawyers(${p.page - 1})" ${p.page <= 1 ? 'disabled class="opacity-30 cursor-default"' : 'class="hover:text-white"'}>&larr; Prev</button>
@@ -227,7 +227,7 @@
 
         async function toggleVerify(lawyerId, verified) {
             try {
-                await fetch(`${API}/api/admin/cpas/${lawyerId}/verify`, {
+                await fetch(`${API}/api/admin/lawyers/${lawyerId}/verify`, {
                     method: 'POST',
                     headers,
                     body: JSON.stringify({ verified }),
@@ -286,7 +286,7 @@
                         return `
                             <tr class="hover:bg-gray-750">
                                 <td class="px-4 py-3 text-gray-400">${fmtDate(m.created_at)}</td>
-                                <td class="px-4 py-3">${m.cpa_name || '--'}</td>
+                                <td class="px-4 py-3">${m.lawyer_name || '--'}</td>
                                 <td class="px-4 py-3">${contact.name || '--'}<br><span class="text-xs text-gray-500">${m.pain_point || ''}</span></td>
                                 <td class="px-4 py-3 font-mono">${m.match_score ? parseFloat(m.match_score).toFixed(1) : '--'}%</td>
                                 <td class="px-4 py-3">${badge(m.status || 'presented', m.status === 'partnership_formed' ? 'green' : 'gray')}</td>

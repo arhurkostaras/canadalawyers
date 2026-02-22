@@ -222,7 +222,7 @@
             margin-bottom: 32px;
         }
 
-        .cpa-card {
+        .lawyer-card {
             background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             border-radius: 16px;
             padding: 24px;
@@ -232,7 +232,7 @@
             overflow: hidden;
         }
 
-        .cpa-card::before {
+        .lawyer-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -242,13 +242,13 @@
             background: linear-gradient(90deg, #22c55e, #60a5fa, #8b5cf6);
         }
 
-        .cpa-card:hover {
+        .lawyer-card:hover {
             transform: translateY(-4px);
             border-color: #22c55e;
             box-shadow: 0 12px 24px rgba(34, 197, 94, 0.2);
         }
 
-        .cpa-match-score {
+        .lawyer-match-score {
             position: absolute;
             top: 16px;
             right: 16px;
@@ -260,20 +260,20 @@
             font-size: 0.875rem;
         }
 
-        .cpa-name {
+        .lawyer-name {
             font-size: 1.25rem;
             font-weight: 700;
             color: #f1f5f9;
             margin-bottom: 8px;
         }
 
-        .cpa-specialization {
+        .lawyer-specialization {
             color: #94a3b8;
             font-size: 0.875rem;
             margin-bottom: 16px;
         }
 
-        .cpa-details {
+        .lawyer-details {
             margin-bottom: 16px;
         }
 
@@ -595,7 +595,7 @@
             </div>
 
             <!-- Lawyer Matches -->
-            <div class="lawyer-matches" id="cpaMatches">
+            <div class="lawyer-matches" id="lawyerMatches">
                 <!-- Matches will be populated by JavaScript -->
             </div>
 
@@ -649,7 +649,7 @@
             generatePredictiveInsights(data);
             
             // Generate Lawyer matches using predictive algorithm
-            generatePredictiveCPAMatches(data);
+            generatePredictiveLawyerMatches(data);
         }
 
         function generateIntelligenceFactors(data) {
@@ -695,41 +695,41 @@
             `).join('');
         }
 
-        function generatePredictiveCPAMatches(data) {
-            const cpaMatches = document.getElementById('cpaMatches');
-            
+        function generatePredictiveLawyerMatches(data) {
+            const lawyerMatches = document.getElementById('lawyerMatches');
+
             // Generate matches based on predictive algorithm
             const matches = generateMatches(data);
-            
-            cpaMatches.innerHTML = matches.map(cpa => `
-                <div class="cpa-card">
-                    <div class="cpa-match-score">${cpa.matchScore}% Match</div>
-                    <div class="cpa-name">${cpa.name}</div>
-                    <div class="cpa-specialization">${cpa.specialization}</div>
-                    
-                    <div class="cpa-details">
+
+            lawyerMatches.innerHTML = matches.map(lawyer => `
+                <div class="lawyer-card">
+                    <div class="lawyer-match-score">${lawyer.matchScore}% Match</div>
+                    <div class="lawyer-name">${lawyer.name}</div>
+                    <div class="lawyer-specialization">${lawyer.specialization}</div>
+
+                    <div class="lawyer-details">
                         <div class="detail-item">
                             <span class="detail-label">Experience:</span>
-                            <span class="detail-value">${cpa.experience}</span>
+                            <span class="detail-value">${lawyer.experience}</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Location:</span>
-                            <span class="detail-value">${cpa.location}</span>
+                            <span class="detail-value">${lawyer.location}</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Response Time:</span>
-                            <span class="detail-value">${cpa.responseTime}</span>
+                            <span class="detail-value">${lawyer.responseTime}</span>
                         </div>
                         <div class="detail-item">
                             <span class="detail-label">Tech Stack:</span>
-                            <span class="detail-value">${cpa.techStack}</span>
+                            <span class="detail-value">${lawyer.techStack}</span>
                         </div>
                     </div>
-                    
+
                     <div class="match-reasons">
                         <div class="reasons-title">Why This Match</div>
                         <div class="reason-tags">
-                            ${cpa.reasons.map(reason => `<span class="reason-tag">${reason}</span>`).join('')}
+                            ${lawyer.reasons.map(reason => `<span class="reason-tag">${reason}</span>`).join('')}
                         </div>
                     </div>
                 </div>
@@ -834,7 +834,7 @@
 
         function generateMatches(data) {
             // Predictive Lawyer matching based on real intelligence patterns
-            const cpaPools = {
+            const lawyerPools = {
                 'technology': [
                     { name: 'Sarah Chen, Esq.', specialization: 'Tech Startup & Scale-up Specialist', experience: '12 years', location: 'Toronto, ON', responseTime: '2.1 hours', techStack: 'QuickBooks, Xero, AI Tools', reasons: ['Tech Industry Expert', 'Scaling Specialist', 'VC Experience', 'QuickBooks Pro'] },
                     { name: 'Michael Rodriguez, Esq.', specialization: 'SaaS & Software Legal', experience: '9 years', location: 'Vancouver, BC', responseTime: '3.2 hours', techStack: 'Xero, Sage, Custom APIs', reasons: ['SaaS Expertise', 'Growth Stage Focus', 'Tech Stack Match'] },
@@ -850,11 +850,11 @@
             };
 
             // Get relevant Lawyer pool or default
-            const relevantLawyers = cpaPools[data.industry] || cpaPools['technology'];
+            const relevantLawyers = lawyerPools[data.industry] || lawyerPools['technology'];
             
             // Calculate match scores and return top 3
-            return relevantLawyers.slice(0, 3).map((cpa, index) => ({
-                ...cpa,
+            return relevantLawyers.slice(0, 3).map((lawyer, index) => ({
+                ...lawyer,
                 matchScore: 96 - (index * 3) + Math.floor(Math.random() * 4)
             }));
         }

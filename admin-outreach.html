@@ -72,8 +72,8 @@
         <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
                 <p class="text-gray-400 text-sm">Scraped Lawyers</p>
-                <p id="statScrapedCpas" class="text-2xl font-bold mt-1">--</p>
-                <p id="statCpasEmail" class="text-xs text-green-400 mt-1"></p>
+                <p id="statScrapedLawyers" class="text-2xl font-bold mt-1">--</p>
+                <p id="statLawyersEmail" class="text-xs text-green-400 mt-1"></p>
             </div>
             <div class="bg-gray-800 rounded-xl p-5 border border-gray-700">
                 <p class="text-gray-400 text-sm">Scraped SMEs</p>
@@ -108,7 +108,7 @@
                     <div>
                         <label class="block text-sm text-gray-400 mb-1">Type</label>
                         <select id="campType" onchange="updateTemplateDefaults()" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-sm">
-                            <option value="cpa">Lawyer Acquisition</option>
+                            <option value="lawyer">Lawyer Acquisition</option>
                             <option value="sme">SME Acquisition</option>
                         </select>
                     </div>
@@ -160,20 +160,20 @@
         <section class="mb-8">
             <h2 class="text-xl font-semibold mb-4">Scraped Data Browser</h2>
             <div class="flex gap-4 mb-4">
-                <button onclick="showTab('cpas')" id="tabCpas" class="px-4 py-2 rounded text-sm bg-indigo-600">Scraped Lawyers</button>
+                <button onclick="showTab('lawyers')" id="tabLawyers" class="px-4 py-2 rounded text-sm bg-indigo-600">Scraped Lawyers</button>
                 <button onclick="showTab('smes')" id="tabSmes" class="px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600">Scraped SMEs</button>
             </div>
 
             <!-- Lawyers Tab -->
-            <div id="cpasTab">
+            <div id="lawyersTab">
                 <div class="flex gap-3 mb-3">
-                    <select id="cpaProvFilter" onchange="loadScrapedLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                    <select id="lawyerProvFilter" onchange="loadScrapedLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
                         <option value="">All Provinces</option>
                         <option value="BC">BC</option><option value="AB">AB</option><option value="SK">SK</option>
                         <option value="MB">MB</option><option value="ON">ON</option><option value="QC">QC</option>
                         <option value="NS">NS</option><option value="NB">NB</option><option value="PE">PE</option><option value="NL">NL</option>
                     </select>
-                    <input id="cpaCityFilter" type="text" placeholder="Filter by city..." onchange="loadScrapedLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
+                    <input id="lawyerCityFilter" type="text" placeholder="Filter by city..." onchange="loadScrapedLawyers()" class="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm">
                 </div>
                 <div class="bg-gray-800 rounded-xl border border-gray-700 overflow-x-auto">
                     <table class="w-full text-sm">
@@ -188,10 +188,10 @@
                                 <th class="text-left px-4 py-3">Status</th>
                             </tr>
                         </thead>
-                        <tbody id="scrapedCpasBody" class="divide-y divide-gray-700"></tbody>
+                        <tbody id="scrapedLawyersBody" class="divide-y divide-gray-700"></tbody>
                     </table>
                 </div>
-                <div id="cpaPag" class="flex items-center justify-between mt-3 text-sm text-gray-400"></div>
+                <div id="lawyerPag" class="flex items-center justify-between mt-3 text-sm text-gray-400"></div>
             </div>
 
             <!-- SMEs Tab -->
@@ -290,8 +290,8 @@
 
         function updateTemplateDefaults() {
             const type = document.getElementById('campType').value;
-            document.getElementById('campSubject').value = type === 'cpa' ? DEFAULT_LAWYER_SUBJECT : DEFAULT_SME_SUBJECT;
-            document.getElementById('campBody').value = type === 'cpa' ? DEFAULT_LAWYER_BODY : DEFAULT_SME_BODY;
+            document.getElementById('campSubject').value = type === 'lawyer' ? DEFAULT_LAWYER_SUBJECT : DEFAULT_SME_SUBJECT;
+            document.getElementById('campBody').value = type === 'lawyer' ? DEFAULT_LAWYER_BODY : DEFAULT_SME_BODY;
         }
 
         function showCreateForm() {
@@ -316,8 +316,8 @@
                 document.getElementById('statConverted').textContent = s.total_converted;
                 document.getElementById('statConvRate').textContent = `${pct(s.total_converted, s.total_sent)} conversion`;
                 document.getElementById('statBounce').textContent = pct(s.total_bounced, s.total_sent);
-                document.getElementById('statScrapedCpas').textContent = s.total_scraped_lawyers;
-                document.getElementById('statCpasEmail').textContent = `${s.lawyers_with_email} with email`;
+                document.getElementById('statScrapedLawyers').textContent = s.total_scraped_lawyers;
+                document.getElementById('statLawyersEmail').textContent = `${s.lawyers_with_email} with email`;
                 document.getElementById('statScrapedSmes').textContent = s.total_scraped_smes;
                 document.getElementById('statSmesEmail').textContent = `${s.smes_with_email} with email`;
                 document.getElementById('statActiveCampaigns').textContent = s.active_campaigns;
@@ -340,7 +340,7 @@
 
                 tbody.innerHTML = data.campaigns.map(c => {
                     const statusColor = { draft: 'gray', active: 'green', paused: 'yellow', completed: 'blue' };
-                    const typeColor = { cpa: 'purple', sme: 'blue' };
+                    const typeColor = { lawyer: 'purple', sme: 'blue' };
                     return `
                         <tr class="hover:bg-gray-750">
                             <td class="px-4 py-3 font-medium">${c.name}</td>
@@ -434,30 +434,30 @@
 
         // ---- Tabs ----
         function showTab(tab) {
-            document.getElementById('cpasTab').classList.toggle('hidden', tab !== 'cpas');
+            document.getElementById('lawyersTab').classList.toggle('hidden', tab !== 'lawyers');
             document.getElementById('smesTab').classList.toggle('hidden', tab !== 'smes');
-            document.getElementById('tabCpas').className = tab === 'cpas' ? 'px-4 py-2 rounded text-sm bg-indigo-600' : 'px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600';
+            document.getElementById('tabLawyers').className = tab === 'lawyers' ? 'px-4 py-2 rounded text-sm bg-indigo-600' : 'px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600';
             document.getElementById('tabSmes').className = tab === 'smes' ? 'px-4 py-2 rounded text-sm bg-indigo-600' : 'px-4 py-2 rounded text-sm bg-gray-700 hover:bg-gray-600';
         }
 
         // ---- Scraped Lawyers ----
-        let cpaPage = 1;
+        let lawyerPage = 1;
         async function loadScrapedLawyers(page) {
-            if (page) cpaPage = page;
-            const prov = document.getElementById('cpaProvFilter').value;
-            const city = document.getElementById('cpaCityFilter').value;
-            const qs = `page=${cpaPage}&limit=20${prov ? `&province=${prov}` : ''}${city ? `&city=${city}` : ''}`;
+            if (page) lawyerPage = page;
+            const prov = document.getElementById('lawyerProvFilter').value;
+            const city = document.getElementById('lawyerCityFilter').value;
+            const qs = `page=${lawyerPage}&limit=20${prov ? `&province=${prov}` : ''}${city ? `&city=${city}` : ''}`;
 
             try {
-                const res = await fetch(`${API}/api/admin/outreach/scraped-cpas?${qs}`, { headers });
+                const res = await fetch(`${API}/api/admin/outreach/scraped-lawyers?${qs}`, { headers });
                 const data = await res.json();
                 if (!data.success) return;
 
-                const tbody = document.getElementById('scrapedCpasBody');
-                if (data.cpas.length === 0) {
+                const tbody = document.getElementById('scrapedLawyersBody');
+                if (data.lawyers.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="7" class="px-4 py-6 text-center text-gray-500">No scraped Lawyers found</td></tr>';
                 } else {
-                    tbody.innerHTML = data.cpas.map(c => `
+                    tbody.innerHTML = data.lawyers.map(c => `
                         <tr class="hover:bg-gray-750">
                             <td class="px-4 py-3">${c.full_name || `${c.first_name || ''} ${c.last_name || ''}`.trim()}</td>
                             <td class="px-4 py-3">${c.province || '--'}</td>
@@ -471,11 +471,11 @@
                 }
 
                 const totalPages = Math.ceil(data.total / 20);
-                document.getElementById('cpaPag').innerHTML = `
-                    <span>Page ${cpaPage} of ${totalPages} (${data.total} total)</span>
+                document.getElementById('lawyerPag').innerHTML = `
+                    <span>Page ${lawyerPage} of ${totalPages} (${data.total} total)</span>
                     <div class="flex gap-2">
-                        <button onclick="loadScrapedLawyers(${cpaPage - 1})" ${cpaPage <= 1 ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>&larr; Prev</button>
-                        <button onclick="loadScrapedLawyers(${cpaPage + 1})" ${cpaPage >= totalPages ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>Next &rarr;</button>
+                        <button onclick="loadScrapedLawyers(${lawyerPage - 1})" ${lawyerPage <= 1 ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>&larr; Prev</button>
+                        <button onclick="loadScrapedLawyers(${lawyerPage + 1})" ${lawyerPage >= totalPages ? 'disabled class="opacity-30"' : 'class="hover:text-white"'}>Next &rarr;</button>
                     </div>
                 `;
             } catch (e) { console.error('Scraped Lawyers error:', e); }

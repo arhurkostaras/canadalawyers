@@ -165,7 +165,7 @@
             </div>
         </div>
 
-        <form id="cpaRegistrationForm">
+        <form id="lawyerRegistrationForm">
             <!-- Personal Information -->
             <div class="form-section">
                 <h3 class="section-title">Personal Information</h3>
@@ -196,8 +196,8 @@
                 <h3 class="section-title">Professional Credentials</h3>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="cpaLicense">Bar Number <span class="required">*</span></label>
-                        <input type="text" id="cpaLicense" name="cpaLicense" placeholder="e.g., ON-12345" required>
+                        <label for="lawyerLicense">Bar Number <span class="required">*</span></label>
+                        <input type="text" id="lawyerLicense" name="lawyerLicense" placeholder="e.g., ON-12345" required>
                     </div>
                     <div class="form-group">
                         <label for="province">Licensed Province <span class="required">*</span></label>
@@ -381,7 +381,7 @@
 
     <script>
         // Enhanced form submission handling
-        document.getElementById('cpaRegistrationForm').addEventListener('submit', async function(e) {
+        document.getElementById('lawyerRegistrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Collect form data

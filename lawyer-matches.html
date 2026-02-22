@@ -216,26 +216,26 @@
             margin-bottom: 1.5rem;
         }
 
-        .cpa-info h3 {
+        .lawyer-info h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
             color: white;
         }
 
-        .cpa-firm {
+        .lawyer-firm {
             font-size: 1rem;
             opacity: 0.8;
             margin-bottom: 0.5rem;
         }
 
-        .cpa-location {
+        .lawyer-location {
             font-size: 0.9rem;
             opacity: 0.7;
             display: flex;
             align-items: center;
         }
 
-        .cpa-location::before {
+        .lawyer-location::before {
             content: "📍";
             margin-right: 0.5rem;
         }
@@ -580,7 +580,7 @@
                     const reasoning = this.generateMatchReasoning(businessProfile, lawyer, score);
 
                     return {
-                        cpa: lawyer,
+                        lawyer: lawyer,
                         compatibilityScore: score.total,
                         scoreBreakdown: score.breakdown,
                         matchReasoning: reasoning,
@@ -813,12 +813,12 @@
             }
         });
             // Fetch live Lawyer database
-        const cpaDatabase = await getCPADatabase();
-        console.log('Using Lawyer database:', cpaDatabase.length, 'Lawyers');
+        const lawyerDatabase = await getLawyerDatabase();
+        console.log('Using Lawyer database:', lawyerDatabase.length, 'Lawyers');
             
             // Run AI matching algorithm
             const algorithm = new LawyerMatchingAlgorithm();
-            const matches = algorithm.findMatches(businessData, cpaDatabase);
+            const matches = algorithm.findMatches(businessData, lawyerDatabase);
             // Track successful matching
         gtag('event', 'matches_displayed', {
             'event_category': 'conversion',
@@ -904,7 +904,7 @@ function getDemoData() {
         'business-location': 'Toronto, ON'
     };
 }
-        async function getCPADatabase() {
+        async function getLawyerDatabase() {
     try {
         console.log('Fetching verified Lawyers from database...');
         const response = await fetch('https://lawyer-intelligence-backend-production.up.railway.app/api/lawyer/search?verification_status=verified&limit=50');
@@ -936,14 +936,14 @@ function getDemoData() {
     } catch (error) {
         console.error('Failed to fetch live Lawyer database:', error);
         console.log('Falling back to static Lawyer data');
-        return getStaticCPADatabase();
+        return getStaticLawyerDatabase();
     }
 }
 
-        function getStaticCPADatabase() {
+        function getStaticLawyerDatabase() {
     return [
         {
-            id: 'cpa_fallback',
+            id: 'lawyer_fallback',
             name: 'David Wilson, Esq.',
             firm: 'Reliable Legal Services',
             location: 'Toronto, ON',
@@ -1008,7 +1008,7 @@ if (card && card.nodeType === Node.ELEMENT_NODE) {
 
         // AI-Powered Lawyer Performance Scoring Function
 async function createMatchCard(match, index) {
-    const { cpa, compatibilityScore, scoreBreakdown, matchReasoning, confidenceLevel } = match;
+    const { lawyer, compatibilityScore, scoreBreakdown, matchReasoning, confidenceLevel } = match;
     
     // Call AI Performance Scoring Engine
     let aiPerformanceData = null;
@@ -1019,12 +1019,12 @@ async function createMatchCard(match, index) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                lawyerId: cpa.id || index,
-                cpaName: cpa.name,
-                location: cpa.location,
-                yearsExperience: cpa.yearsExperience,
-                firm: cpa.firm,
-                specializations: cpa.specializations || [],
+                lawyerId: lawyer.id || index,
+                lawyerName: lawyer.name,
+                location: lawyer.location,
+                yearsExperience: lawyer.yearsExperience,
+                firm: lawyer.firm,
+                specializations: lawyer.specializations || [],
                 clientData: JSON.parse(localStorage.getItem('lawyerMatchingData') || '{}'),
                 timestamp: new Date().toISOString()
             })
@@ -1034,15 +1034,15 @@ async function createMatchCard(match, index) {
             aiPerformanceData = await response.json();
         }
     } catch (error) {
-        console.log('Using fallback scoring for Lawyer:', cpa.name);
+        console.log('Using fallback scoring for Lawyer:', lawyer.name);
     }
 
     // Use AI data if available, otherwise intelligent fallback
-    const performanceScore = aiPerformanceData?.performanceScore || generateIntelligentScore(cpa, index);
+    const performanceScore = aiPerformanceData?.performanceScore || generateIntelligentScore(lawyer, index);
     const aiCompatibilityScore = aiPerformanceData?.compatibilityScore || compatibilityScore;
     const aiConfidenceLevel = aiPerformanceData?.confidenceLevel || confidenceLevel;
-    const successPrediction = aiPerformanceData?.successPrediction || generateSuccessPrediction(cpa);
-    const performanceMetrics = aiPerformanceData?.performanceMetrics || generatePerformanceMetrics(cpa);
+    const successPrediction = aiPerformanceData?.successPrediction || generateSuccessPrediction(lawyer);
+    const performanceMetrics = aiPerformanceData?.performanceMetrics || generatePerformanceMetrics(lawyer);
     
     const rankLabels = ['🏆 Best Match', '⭐ Excellent Match', '👍 Strong Match'];
     const rankClasses = ['', 'second', 'third'];
@@ -1054,10 +1054,10 @@ async function createMatchCard(match, index) {
         <div class="match-rank ${rankClasses[index]}">${rankLabels[index]}</div>
         
         <div class="match-header">
-            <div class="cpa-info">
-                <h3>${cpa.name}</h3>
-                <div class="cpa-firm">${cpa.firm}</div>
-                <div class="cpa-location">${cpa.location} • ${cpa.yearsExperience} years experience</div>
+            <div class="lawyer-info">
+                <h3>${lawyer.name}</h3>
+                <div class="lawyer-firm">${lawyer.firm}</div>
+                <div class="lawyer-location">${lawyer.location} • ${lawyer.yearsExperience} years experience</div>
             </div>
         </div>
 
@@ -1110,7 +1110,7 @@ async function createMatchCard(match, index) {
         <div class="match-reasons ai-enhanced">
             <h4>🧠 AI Match Insights</h4>
             <div class="ai-insights">
-                ${generateAIInsights(cpa, performanceScore, aiCompatibilityScore).map(insight => 
+                ${generateAIInsights(lawyer, performanceScore, aiCompatibilityScore).map(insight =>
                     `<div class="insight-item">
                         <span class="insight-icon">${insight.icon}</span>
                         <span class="insight-text">${insight.text}</span>
@@ -1130,10 +1130,10 @@ async function createMatchCard(match, index) {
 
         <!-- CTA Buttons -->
         <div class="cta-buttons">
-            <a href="mailto:${cpa.email}" class="btn btn-primary ai-recommended">
-                Connect with ${cpa.name.split(' ')[0]} (AI Recommended)
+            <a href="mailto:${lawyer.email}" class="btn btn-primary ai-recommended">
+                Connect with ${lawyer.name.split(' ')[0]} (AI Recommended)
             </a>
-            <a href="#" class="btn btn-secondary" onclick="viewFullProfile('${cpa.id}')">
+            <a href="#" class="btn btn-secondary" onclick="viewFullProfile('${lawyer.id}')">
                 View AI Analysis Report
             </a>
         </div>
@@ -1151,12 +1151,12 @@ return card;
 }
 
 // Generate intelligent performance score based on Lawyer data
-function generateIntelligentScore(cpa, index) {
+function generateIntelligentScore(lawyer, index) {
     let baseScore = 75 + (5 - index) * 5; // Higher scores for top matches
-    
+
     // Adjust based on experience
-    if (cpa.yearsExperience > 15) baseScore += 10;
-    else if (cpa.yearsExperience > 10) baseScore += 5;
+    if (lawyer.yearsExperience > 15) baseScore += 10;
+    else if (lawyer.yearsExperience > 10) baseScore += 5;
     
     // Add some intelligent randomization
     baseScore += Math.floor(Math.random() * 15);
@@ -1165,19 +1165,19 @@ function generateIntelligentScore(cpa, index) {
 }
 
 // Generate success prediction based on Lawyer profile
-function generateSuccessPrediction(cpa) {
+function generateSuccessPrediction(lawyer) {
     let prediction = 75;
-    
-    if (cpa.yearsExperience > 15) prediction += 15;
-    else if (cpa.yearsExperience > 10) prediction += 10;
-    else if (cpa.yearsExperience > 5) prediction += 5;
+
+    if (lawyer.yearsExperience > 15) prediction += 15;
+    else if (lawyer.yearsExperience > 10) prediction += 10;
+    else if (lawyer.yearsExperience > 5) prediction += 5;
     
     prediction += Math.floor(Math.random() * 10);
     return Math.min(Math.max(prediction, 65), 95);
 }
 
 // Generate performance metrics
-function generatePerformanceMetrics(cpa) {
+function generatePerformanceMetrics(lawyer) {
     return {
         clientSatisfaction: Math.floor(85 + Math.random() * 13), // 85-98%
         responseTime: `${Math.floor(2 + Math.random() * 8)} hours`, // 2-10 hours
@@ -1189,7 +1189,7 @@ function generatePerformanceMetrics(cpa) {
 }
 
 // Generate AI insights for the Lawyer
-function generateAIInsights(cpa, performanceScore, compatibilityScore) {
+function generateAIInsights(lawyer, performanceScore, compatibilityScore) {
     const insights = [];
     
     if (performanceScore > 90) {
@@ -1208,7 +1208,7 @@ function generateAIInsights(cpa, performanceScore, compatibilityScore) {
         });
     }
     
-    if (cpa.yearsExperience > 10) {
+    if (lawyer.yearsExperience > 10) {
         insights.push({
             icon: '📈',
             text: 'Proven track record with similar businesses',
