@@ -308,6 +308,9 @@
             .cta-buttons { flex-direction: column; align-items: center; }
             .footer-grid { grid-template-columns: 1fr; gap: 24px; }
         }
+
+        .match-count { font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 4px; }
+        .match-count-label { font-size: 0.85rem; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
     </style>
 </head>
 <body>
@@ -369,6 +372,8 @@
                 <div class="card-icon associate"><i class="fas fa-user"></i></div>
                 <div class="card-title">Associate</div>
                 <div class="card-subtitle">Get started and build your presence</div>
+                <div class="match-count">3</div>
+                <div class="match-count-label">Active Matches</div>
                 <div class="card-price">
                     <span class="monthly-price">$199</span>
                     <span class="annual-price" style="display: none;">$1,999</span>
@@ -379,10 +384,11 @@
                 </div>
                 <div class="card-savings annual-savings" style="display: none;">Save $389/year</div>
                 <ul class="card-features">
-                    <li><i class="fas fa-check"></i> Up to 3 active client matches</li>
+                    <li><i class="fas fa-check"></i> Up to 3 active client matches per month</li>
                     <li><i class="fas fa-check"></i> Standard search ranking</li>
-                    <li><i class="fas fa-check"></i> Professional lawyer profile</li>
-                    <li><i class="fas fa-check"></i> Client lead notifications</li>
+                    <li><i class="fas fa-check"></i> Verified profile with basic listing</li>
+                    <li><i class="fas fa-check"></i> Basic dashboard with match stats</li>
+                    <li><i class="fas fa-check"></i> 1 testimonial display slot</li>
                     <li><i class="fas fa-check"></i> Email support</li>
                 </ul>
                 <button onclick="subscribeToPlan('associate', currentInterval)" class="card-btn outline">Get Started</button>
@@ -394,6 +400,8 @@
                 <div class="card-icon professional"><i class="fas fa-crown"></i></div>
                 <div class="card-title">Professional</div>
                 <div class="card-subtitle">For serious practice growth</div>
+                <div class="match-count">7</div>
+                <div class="match-count-label">Active Matches</div>
                 <div class="card-price">
                     <span class="monthly-price">$299</span>
                     <span class="annual-price" style="display: none;">$2,999</span>
@@ -404,12 +412,14 @@
                 </div>
                 <div class="card-savings annual-savings" style="display: none;">Save $589/year</div>
                 <ul class="card-features">
-                    <li><i class="fas fa-check"></i> <strong>Up to 7 active client matches</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>Up to 7 active client matches per month</strong></li>
                     <li><i class="fas fa-check"></i> <strong>Enhanced search ranking</strong></li>
-                    <li><i class="fas fa-check"></i> Featured profile with specializations</li>
-                    <li><i class="fas fa-check"></i> Priority lead notifications</li>
-                    <li><i class="fas fa-check"></i> Advanced dashboard analytics</li>
-                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Featured profile with specializations highlighted</li>
+                    <li><i class="fas fa-check"></i> Profile view & click-through tracking</li>
+                    <li><i class="fas fa-check"></i> Featured in weekly client digest emails</li>
+                    <li><i class="fas fa-check"></i> Video introduction on profile</li>
+                    <li><i class="fas fa-check"></i> Priority new-client alerts</li>
+                    <li><i class="fas fa-check"></i> Priority email support</li>
                 </ul>
                 <button onclick="subscribeToPlan('professional', currentInterval)" class="card-btn primary">Get Started</button>
             </div>
@@ -419,6 +429,8 @@
                 <div class="card-icon enterprise"><i class="fas fa-building"></i></div>
                 <div class="card-title">Enterprise</div>
                 <div class="card-subtitle">For firms ready to dominate</div>
+                <div class="match-count">15</div>
+                <div class="match-count-label">Active Matches</div>
                 <div class="card-price">
                     <span class="monthly-price">$599</span>
                     <span class="annual-price" style="display: none;">$5,999</span>
@@ -429,13 +441,16 @@
                 </div>
                 <div class="card-savings annual-savings" style="display: none;">Save $1,189/year</div>
                 <ul class="card-features">
-                    <li><i class="fas fa-check"></i> <strong>Up to 15 active client matches</strong></li>
-                    <li><i class="fas fa-check"></i> <strong>Premium search ranking (top results)</strong></li>
-                    <li><i class="fas fa-check"></i> Showcase profile with case studies</li>
-                    <li><i class="fas fa-check"></i> Instant lead notifications</li>
-                    <li><i class="fas fa-check"></i> Dedicated account manager</li>
-                    <li><i class="fas fa-check"></i> White-glove onboarding</li>
-                    <li><i class="fas fa-check"></i> Direct Arthur hotline</li>
+                    <li><i class="fas fa-check"></i> <strong>Up to 15 active client matches per month</strong></li>
+                    <li><i class="fas fa-check"></i> <strong>Premium search ranking — guaranteed top 3 results</strong></li>
+                    <li><i class="fas fa-check"></i> Showcase profile with case studies & unlimited testimonials</li>
+                    <li><i class="fas fa-check"></i> Full conversion funnel analytics with source attribution</li>
+                    <li><i class="fas fa-check"></i> Automated follow-up sequences for unconverted matches</li>
+                    <li><i class="fas fa-check"></i> Quarterly benchmarking report vs. platform averages</li>
+                    <li><i class="fas fa-check"></i> Featured spot in client digest emails</li>
+                    <li><i class="fas fa-check"></i> Guided setup + profile optimization review</li>
+                    <li><i class="fas fa-check"></i> Practice area spotlight — featured in relevant category pages</li>
+                    <li><i class="fas fa-check"></i> Priority email + chat support</li>
                 </ul>
                 <button onclick="subscribeToPlan('enterprise', currentInterval)" class="card-btn dark">Get Started</button>
             </div>
