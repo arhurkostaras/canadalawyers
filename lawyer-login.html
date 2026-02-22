@@ -68,7 +68,7 @@
                     </div>
 
                     <div class="text-sm">
-                        <a href="/forgot-password.html" class="font-medium text-indigo-600 hover:text-indigo-500">
+                        <a href="/forgot-password" class="font-medium text-indigo-600 hover:text-indigo-500">
                             Forgot your password?
                         </a>
                     </div>
@@ -144,7 +144,7 @@
 
                     // Route based on user type
                     const isAdmin = data.user.userType === 'admin';
-                    const destination = isAdmin ? '/admin-dashboard.html' : '/lawyer-dashboard.html';
+                    const destination = isAdmin ? '/admin-dashboard' : '/lawyer-dashboard';
 
                     // Show success message
                     successMessage.textContent = `Login successful! Redirecting to ${isAdmin ? 'admin' : ''} dashboard...`;
@@ -175,7 +175,7 @@
             const token = localStorage.getItem('lawyer_token');
             if (token) {
                 const storedUser = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
-                const dest = storedUser.userType === 'admin' ? '/admin-dashboard.html' : '/lawyer-dashboard.html';
+                const dest = storedUser.userType === 'admin' ? '/admin-dashboard' : '/lawyer-dashboard';
                 // Verify token is still valid and redirect if so
                 fetch('https://canadalawyers-backend-production.up.railway.app/api/auth/verify', {
                     headers: {

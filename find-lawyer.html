@@ -22,11 +22,11 @@
     <meta name="description" content="End the endless lawyer search. Find your perfect legal match in 24 hours, not months. AI-powered matching for Canadian businesses.">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://canadalawyers.app/find-lawyer.html">
+    <link rel="canonical" href="https://canadalawyers.app/find-lawyer">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://canadalawyers.app/find-lawyer.html">
+    <meta property="og:url" content="https://canadalawyers.app/find-lawyer">
     <meta property="og:title" content="Find Your Perfect Lawyer in 24 Hours | CanadaLawyers">
     <meta property="og:description" content="End the endless lawyer search. AI-powered matching finds your perfect legal partner in 24 hours.">
     <meta property="og:image" content="https://canadalawyers.app/icon-512.png">
@@ -45,7 +45,7 @@
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "CanadaLawyers Lawyer Matching",
-        "url": "https://canadalawyers.app/find-lawyer.html",
+        "url": "https://canadalawyers.app/find-lawyer",
         "description": "AI-powered lawyer matching service for Canadian businesses. Find your perfect lawyer in 24 hours.",
         "areaServed": {
             "@type": "Country",
@@ -571,9 +571,9 @@
             <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span></a>
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="why-we-win.html">Why We Win</a>
-                <a href="join-as-lawyer.html" class="nav-cta">Apply to Join</a>
+                <a href="pricing">Pricing</a>
+                <a href="why-we-win">Why We Win</a>
+                <a href="join-as-lawyer" class="nav-cta">Apply to Join</a>
             </div>
         </div>
     </nav>
@@ -1223,7 +1223,7 @@ function showErrorMessage() {
 
         function showSuccessMessage(response) {
     const sessionId = response.session_id;
-    const resultsUrl = response.results_url || `find-lawyer.html?session=${sessionId}`;
+    const resultsUrl = response.results_url || `find-lawyer?session=${sessionId}`;
     
     const container = document.querySelector('.container');
     container.innerHTML = `

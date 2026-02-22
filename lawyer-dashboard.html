@@ -22,7 +22,7 @@
             const token = localStorage.getItem('lawyer_token');
             const user = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
             if (!token || user.userType !== 'Lawyer') {
-                window.location.href = '/lawyer-login.html';
+                window.location.href = '/lawyer-login';
             }
         })();
     </script>
@@ -81,7 +81,7 @@
                     <i class="fas fa-info-circle text-yellow-600 text-xl"></i>
                     <span class="text-yellow-800 font-medium">You don't have an active subscription yet. Subscribe to get algorithm placement and start receiving leads.</span>
                 </div>
-                <a href="pricing.html" class="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm whitespace-nowrap">
+                <a href="pricing" class="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm whitespace-nowrap">
                     View Plans
                 </a>
             </div>
@@ -192,7 +192,7 @@
     <footer class="bg-gray-900 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-gray-400 text-sm">&copy; 2026 CanadaLawyers.app. All rights reserved.</p>
-            <p class="text-gray-500 text-xs mt-2">Need help? Call Arthur at <a href="tel:6479567290" class="text-red-400 hover:text-red-300">(647) 956-7290</a></p>
+            <p class="text-gray-500 text-xs mt-2">Need help? Call us at <a href="tel:6479567290" class="text-red-400 hover:text-red-300">(647) 956-7290</a></p>
         </div>
     </footer>
 
@@ -210,7 +210,7 @@
         function logout() {
             localStorage.removeItem('lawyer_token');
             localStorage.removeItem('lawyer_user');
-            window.location.href = '/lawyer-login.html';
+            window.location.href = '/lawyer-login';
         }
 
         function fmtDate(d) {
@@ -425,7 +425,7 @@
                 if (data.url) {
                     window.location.href = data.url;
                 } else {
-                    alert('Unable to open billing portal. Please call Arthur at (647) 956-7290.');
+                    alert('Unable to open billing portal. Please call us at (647) 956-7290.');
                 }
             } catch (err) {
                 console.error('Portal error:', err);

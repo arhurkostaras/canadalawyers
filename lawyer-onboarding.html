@@ -875,12 +875,12 @@
                 localStorage.setItem('ca_checkout_email', email);
 
                 // Redirect to pricing page with email and profileId
-                window.location.href = `pricing.html?from=registration&email=${encodeURIComponent(email)}&profileId=${encodeURIComponent(profileId)}`;
+                window.location.href = `pricing?from=registration&email=${encodeURIComponent(email)}&profileId=${encodeURIComponent(profileId)}`;
             } catch (err) {
                 console.error('Registration error:', err);
                 // Fallback: still redirect to pricing with email
                 localStorage.setItem('ca_checkout_email', email);
-                window.location.href = `pricing.html?from=registration&email=${encodeURIComponent(email)}`;
+                window.location.href = `pricing?from=registration&email=${encodeURIComponent(email)}`;
             }
         }
 

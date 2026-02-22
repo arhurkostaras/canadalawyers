@@ -205,7 +205,7 @@
             const token = localStorage.getItem('lawyer_token');
             const user = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
             if (!token || user.userType !== 'admin') {
-                window.location.href = '/lawyer-login.html';
+                window.location.href = '/lawyer-login';
             }
         })();
     </script>

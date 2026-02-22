@@ -21,11 +21,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://canadalawyers.app/join-as-lawyer.html">
+    <link rel="canonical" href="https://canadalawyers.app/join-as-lawyer">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://canadalawyers.app/join-as-lawyer.html">
+    <meta property="og:url" content="https://canadalawyers.app/join-as-lawyer">
     <meta property="og:title" content="Join as Lawyer | CanadaLawyers">
     <meta property="og:description" content="End your 585-day sales cycle nightmare. Join Canada's only friction elimination lawyer network and get pre-qualified clients in 24 hours, not 585 days.">
     <meta property="og:image" content="https://canadalawyers.app/icon-512.png">
@@ -1024,9 +1024,9 @@
             <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span></a>
             <div class="nav-links">
                 <a href="/">Home</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="why-we-win.html">Why We Win</a>
-                <a href="join-as-lawyer.html" class="nav-cta">Apply to Join</a>
+                <a href="pricing">Pricing</a>
+                <a href="why-we-win">Why We Win</a>
+                <a href="join-as-lawyer" class="nav-cta">Apply to Join</a>
             </div>
         </div>
     </nav>
@@ -1730,7 +1730,7 @@
             }));
             
             // Redirect to pricing page with plan highlighted
-            window.location.href = `/pricing.html?recommended=${plan}&from=calculator`;
+            window.location.href = `/pricing?recommended=${plan}&from=calculator`;
         }
 
         function selectAlternative(plan) {
@@ -1769,7 +1769,7 @@
             document.querySelector('[style*="position: fixed"]').remove();
             
             // Redirect to pricing page
-            window.location.href = `/pricing.html?selected=${plan}&from=calculator`;
+            window.location.href = `/pricing?selected=${plan}&from=calculator`;
         }
 
         function submitLawyerApplication(event) {
@@ -1813,12 +1813,12 @@
                 const planData = JSON.parse(selectedPlan);
                 // Redirect to pricing with their selected plan
                 setTimeout(() => {
-                    window.location.href = `/pricing.html?selected=${planData.plan}&from=application`;
+                    window.location.href = `/pricing?selected=${planData.plan}&from=application`;
                 }, 1500);
             } else {
                 // Default redirect to pricing page
                 setTimeout(() => {
-                    window.location.href = '/pricing.html?from=application';
+                    window.location.href = '/pricing?from=application';
                 }, 1500);
             }
         }
@@ -1842,7 +1842,7 @@
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
                                 <span style="color: #667eea; font-weight: bold;">2.</span>
-                                <span style="color: #c0c0c0;">Arthur will follow up within 24 hours to discuss onboarding</span>
+                                <span style="color: #c0c0c0;">Our team will follow up within 24 hours to discuss onboarding</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
                                 <span style="color: #667eea; font-weight: bold;">3.</span>
@@ -1851,7 +1851,7 @@
                         </div>
                     </div>
 
-                    <a href="lawyer-revenue-calculator.html" style="display: inline-block; background: #667eea; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
+                    <a href="lawyer-revenue-calculator" style="display: inline-block; background: #667eea; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
                     Explore Revenue Calculator
                     </a>
                 </div>
