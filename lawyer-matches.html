@@ -554,21 +554,29 @@
                 };
 
                 this.industrySpecializations = {
-                    'tech': ['software', 'saas', 'it-services', 'fintech', 'ecommerce'],
-                    'retail': ['ecommerce', 'brick-mortar', 'inventory-heavy', 'consumer-goods'],
-                    'professional': ['consulting', 'legal-services', 'marketing', 'service-based'],
+                    'personal': ['family-law', 'real-estate', 'criminal', 'immigration', 'personal-injury', 'wills-estates'],
+                    'tech': ['technology', 'software', 'saas', 'it-services', 'fintech', 'ecommerce'],
+                    'retail': ['ecommerce', 'retail', 'consumer-goods', 'commercial'],
+                    'professional': ['consulting', 'professional-services', 'marketing', 'service-based'],
                     'manufacturing': ['production', 'supply-chain', 'industrial', 'distribution'],
-                    'healthcare': ['medical', 'dental', 'wellness', 'healthcare-services'],
-                    'other': ['construction', 'real-estate', 'food-service', 'transportation']
+                    'healthcare': ['medical', 'dental', 'wellness', 'healthcare'],
+                    'other': ['construction', 'real-estate', 'food-service', 'transportation', 'general-business']
                 };
 
                 this.serviceComplexity = {
-                    'bookkeeping': 1,
-                    'tax-prep': 2,
-                    'tax-planning': 4,
-                    'financial-analysis': 3,
-                    'cfo-services': 5,
-                    'audit': 4
+                    'contract-review': 2,
+                    'business-incorporation': 3,
+                    'litigation': 5,
+                    'compliance': 3,
+                    'employment-law': 4,
+                    'ip-protection': 4,
+                    'family-law': 4,
+                    'real-estate-law': 3,
+                    'criminal-law': 5,
+                    'immigration-law': 4,
+                    'personal-injury': 4,
+                    'wills-estates': 3,
+                    'tax-law': 4
                 };
             }
 
@@ -613,7 +621,7 @@
             }
 
             scoreIndustryMatch(business, lawyer) {
-                const businessIndustry = business.question_1;
+                const businessIndustry = business.industry || business.business_type;
                 const lawyerSpecializations = lawyer.industrySpecializations || [];
 
                 if (lawyerSpecializations.includes(businessIndustry)) return 1.0;
@@ -629,7 +637,7 @@
             }
 
             scoreSizeComplexity(business, lawyer) {
-                const businessSize = business.question_2;
+                const businessSize = business.business_size;
                 const lawyerExperience = lawyer.clientSizeExperience || [];
 
                 const sizeComplexity = {
@@ -646,7 +654,7 @@
             }
 
             scoreServiceAlignment(business, lawyer) {
-                const requiredServices = business.question_3 || [];
+                const requiredServices = business.required_services || [];
                 const lawyerServices = lawyer.serviceOfferings || [];
 
                 if (requiredServices.length === 0) return 0.5;
@@ -659,33 +667,31 @@
             }
 
             scoreGeographic(business, lawyer) {
-                const businessLocation = business['business-location'];
-                const locationPreference = business.question_5;
+                const businessLocation = business.location_preference || (business.contact_info && business.contact_info.location) || '';
                 const lawyerLocation = lawyer.location;
                 const lawyerRemoteCapable = lawyer.remoteCapable || false;
 
+                if (!businessLocation || businessLocation === 'remote-ok') return 0.5;
+
                 const businessCity = this.extractCity(businessLocation);
                 const lawyerCity = this.extractCity(lawyerLocation);
-                const isLocalLawyer = businessCity === lawyerCity;
+                const isLocalLawyer = businessCity && lawyerCity && businessCity === lawyerCity;
 
-                switch (locationPreference) {
-                    case 'local-only': return isLocalLawyer ? 1.0 : 0.1;
-                    case 'local-preferred': return isLocalLawyer ? 1.0 : (lawyerRemoteCapable ? 0.6 : 0.2);
-                    case 'remote-ok': return isLocalLawyer ? 1.0 : (lawyerRemoteCapable ? 0.9 : 0.3);
-                    default: return 0.5;
-                }
+                if (isLocalLawyer) return 1.0;
+                if (lawyerRemoteCapable) return 0.6;
+                return 0.3;
             }
 
             scoreBudgetFit(business, lawyer) {
-                const businessBudget = business.question_6;
-                const lawyerRateRange = lawyer.rateRange || 'budget-1000';
-                
+                const businessBudget = business.budget_range;
+                const lawyerRateRange = lawyer.rateRange || 'budget-2500';
+
                 const budgetValues = {
-                    'budget-500': 400, 'budget-1000': 750, 'budget-2500': 1750, 'budget-high': 3500
+                    'budget-2500': 2000, 'budget-5000': 4000, 'budget-10000': 8000, 'budget-high': 15000
                 };
-                
-                const businessMax = budgetValues[businessBudget] || 750;
-                const lawyerRate = budgetValues[lawyerRateRange] || 750;
+
+                const businessMax = budgetValues[businessBudget] || 4000;
+                const lawyerRate = budgetValues[lawyerRateRange] || 4000;
 
                 if (lawyerRate <= businessMax) return 1.0;
                 if (lawyerRate <= businessMax * 1.2) return 0.7;
@@ -694,15 +700,15 @@
             }
 
             scoreAvailabilityUrgency(business, lawyer) {
-                const businessUrgency = business.question_4;
-                const lawyerAvailability = lawyer.availability || 'month';
-                
+                const businessUrgency = business.urgency_level;
+                const lawyerAvailability = lawyer.availability || 'soon';
+
                 const urgencyLevels = {
-                    'immediate': 4, 'soon': 3, 'month': 2, 'flexible': 1
+                    'emergency': 4, 'urgent': 3, 'soon': 2, 'month': 1
                 };
-                
-                const businessUrgencyLevel = urgencyLevels[businessUrgency];
-                const lawyerAvailabilityLevel = urgencyLevels[lawyerAvailability];
+
+                const businessUrgencyLevel = urgencyLevels[businessUrgency] || 2;
+                const lawyerAvailabilityLevel = urgencyLevels[lawyerAvailability] || 2;
 
                 if (lawyerAvailabilityLevel >= businessUrgencyLevel) return 1.0;
                 if (lawyerAvailabilityLevel >= businessUrgencyLevel - 1) return 0.6;
@@ -710,7 +716,7 @@
             }
 
             scoreCommunicationStyle(business, lawyer) {
-                const businessStyle = business.question_7;
+                const businessStyle = business.preferred_communication;
                 const lawyerStyle = lawyer.communicationStyle || 'responsive';
 
                 if (businessStyle === lawyerStyle) return 1.0;
@@ -731,13 +737,13 @@
                 const breakdown = score.breakdown;
                 
                 if (breakdown.industryMatch >= 0.8) {
-                    reasons.push(`Specializes in ${business.question_1} industry`);
+                    reasons.push(`Specializes in ${business.industry || business.business_type} industry`);
                 } else if (breakdown.industryMatch >= 0.5) {
                     reasons.push(`Has related industry experience`);
                 }
-                
+
                 if (breakdown.sizeComplexity >= 0.8) {
-                    reasons.push(`Experienced with ${business.question_2} businesses`);
+                    reasons.push(`Experienced with ${business.business_size} businesses`);
                 }
                 
                 if (breakdown.serviceAlignment >= 0.8) {
@@ -809,7 +815,7 @@
             'event_label': 'session_data_loaded',
             'custom_parameters': {
                 'session_id': sessionId,
-                'business_type': businessData.question_2 || 'unknown'
+                'business_type': businessData.business_type || 'unknown'
             }
         });
             // Fetch live Lawyer database
@@ -827,7 +833,7 @@
             'custom_parameters': {
                 'match_count': matches.length,
                 'session_id': sessionId,
-                'business_type': businessData.question_2 || 'unknown'
+                'business_type': businessData.business_type || 'unknown'
             }
         });
             
@@ -884,8 +890,21 @@ function showErrorState() {
         
         const result = await response.json();
         console.log('Retrieved questionnaire data:', result);
-        
-        return result.formatted_for_matching;
+
+        const data = result.formatted_for_matching;
+        // Fix required_services if split(',') mangled a JSON array string
+        if (data && data.required_services && data.required_services.length > 0) {
+            try {
+                const rejoined = data.required_services.join(',');
+                const parsed = JSON.parse(rejoined);
+                if (Array.isArray(parsed)) {
+                    data.required_services = parsed;
+                }
+            } catch (e) {
+                // Already a clean array, keep as-is
+            }
+        }
+        return data;
     } catch (error) {
         console.error('Failed to fetch questionnaire data:', error);
         return getDemoData();
@@ -894,14 +913,15 @@ function showErrorState() {
 
 function getDemoData() {
     return {
-        question_1: 'tech',
-        question_2: 'small',
-        question_3: ['bookkeeping', 'tax-planning', 'financial-analysis'],
-        question_4: 'soon',
-        question_5: 'remote-ok',
-        question_6: 'budget-1000',
-        question_7: 'proactive',
-        'business-location': 'Toronto, ON'
+        industry: 'tech',
+        business_type: 'tech',
+        business_size: 'small',
+        required_services: ['contract-review', 'compliance', 'employment-law'],
+        urgency_level: 'soon',
+        budget_range: 'budget-5000',
+        location_preference: 'Toronto, ON',
+        preferred_communication: 'professional',
+        contact_info: { location: 'Toronto, ON' }
     };
 }
         async function getLawyerDatabase() {
@@ -950,8 +970,8 @@ function getDemoData() {
             email: 'david@reliablelegal.ca',
             industrySpecializations: ['general-business'],
             clientSizeExperience: ['startup', 'small', 'medium'],
-            serviceOfferings: ['bookkeeping', 'tax-prep'],
-            rateRange: 'budget-1000',
+            serviceOfferings: ['contract-review', 'litigation'],
+            rateRange: 'budget-2500',
             availability: 'soon',
             communicationStyle: 'professional',
             remoteCapable: true,
@@ -963,9 +983,9 @@ function getDemoData() {
 
 function mapRateRange(minRate, maxRate) {
     const avgRate = (minRate + maxRate) / 2;
-    if (avgRate < 500) return 'budget-500';
-    if (avgRate < 1000) return 'budget-1000';
     if (avgRate < 2500) return 'budget-2500';
+    if (avgRate < 5000) return 'budget-5000';
+    if (avgRate < 10000) return 'budget-10000';
     return 'budget-high';
 }
 
@@ -979,6 +999,7 @@ function mapRateRange(minRate, maxRate) {
             
             // Update summary text based on business type
             const industryText = {
+                'personal': 'personal legal',
                 'tech': 'technology business',
                 'retail': 'retail business',
                 'professional': 'professional services',
@@ -986,8 +1007,8 @@ function mapRateRange(minRate, maxRate) {
                 'healthcare': 'healthcare practice',
                 'other': 'business'
             };
-            
-            const businessType = industryText[businessData.question_1] || 'business';
+
+            const businessType = industryText[businessData.industry || businessData.business_type] || 'legal';
             document.getElementById('summaryText').textContent = 
                 `We've identified exceptional Lawyers who are perfectly suited for your ${businessType} needs.`;
             
