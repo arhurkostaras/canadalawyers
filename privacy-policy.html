@@ -124,11 +124,26 @@
             font-weight: 700;
             margin-bottom: 10px;
         }
+        .nav-toggle { display: none; background: none; border: none; color: #374151; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .pp-nav-links.active { display: flex !important; }
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .pp-nav-links {
+                display: none !important;
+                position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column; align-items: center; gap: 0;
+                background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 12px 0; border-bottom: 1px solid #e5e7eb;
+            }
+            .pp-nav-links.active { display: flex !important; }
+            .pp-nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; width: 100%; }
+            .pp-nav-links a:hover { background: #f3f4f6; }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg border-b-4 border-red-600">
+    <nav class="bg-white shadow-lg border-b-4 border-red-600" style="position: relative;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -136,7 +151,8 @@
                     <span class="font-bold text-xl text-gray-900">CanadaLawyers</span>
                     <span class="text-red-600 font-bold text-xl">.app</span>
                 </div>
-                <div class="flex items-center space-x-4">
+                <button class="nav-toggle" onclick="document.querySelector('.pp-nav-links').classList.toggle('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
+                <div class="pp-nav-links flex items-center space-x-4">
                     <a href="/" class="text-gray-700 hover:text-red-600 px-3 py-2 rounded-md text-sm font-medium">← Back to Home</a>
                     <a href="/trust-center" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700">
                         Trust Center

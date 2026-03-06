@@ -18,11 +18,26 @@
         body { font-family: 'Inter', sans-serif; }
         .section-spacing { margin-bottom: 2rem; }
         .subsection-spacing { margin-bottom: 1.5rem; }
+        .nav-toggle { display: none; background: none; border: none; color: #374151; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .dpa-nav-links.active { display: flex !important; }
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .dpa-nav-links {
+                display: none !important;
+                position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column; align-items: center; gap: 0;
+                background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 12px 0; border-bottom: 1px solid #e5e7eb;
+            }
+            .dpa-nav-links.active { display: flex !important; }
+            .dpa-nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; width: 100%; }
+            .dpa-nav-links a:hover { background: #f3f4f6; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <!-- Header -->
-    <header class="bg-white shadow-sm border-b">
+    <header class="bg-white shadow-sm border-b" style="position: relative;">
         <div class="max-w-6xl mx-auto px-4 py-6">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-4">
@@ -30,8 +45,10 @@
                     <span class="text-gray-400">|</span>
                     <span class="text-gray-600">Data Processing Agreement</span>
                 </div>
-                <div class="text-sm text-gray-500">
-                    Last Updated: January 15, 2025
+                <button class="nav-toggle" onclick="document.querySelector('.dpa-nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+                <div class="dpa-nav-links flex items-center space-x-4">
+                    <a href="/" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">&#8592; Back to Home</a>
+                    <span class="text-sm text-gray-500">Last Updated: January 15, 2025</span>
                 </div>
             </div>
         </div>

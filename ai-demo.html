@@ -52,6 +52,8 @@
         .nav-links a:hover { color: white; }
         .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links.active { display: flex; }
 
         /* Branded Footer */
         .footer { background: var(--dark-bg); padding: 60px 24px; border-top: 1px solid var(--border-color); }
@@ -425,7 +427,18 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .nav-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column; align-items: center; gap: 0;
+                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
+            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+            .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
 
             .demo-container {
                 padding: 20px;
@@ -454,6 +467,7 @@
                 <i class="fas fa-maple-leaf maple"></i>
                 CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
             </a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
             <div class="nav-links">
                 <a href="/">Home</a>
                 <a href="pricing">Pricing</a>
