@@ -72,6 +72,7 @@
         .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
         .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a.cta-button { color: var(--primary-blue); }
         .nav-links a:hover { color: white; }
         .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
@@ -517,7 +518,8 @@
             }
             .nav-links.active { display: flex; }
             .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
-            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+            .nav-links a.cta-button { color: var(--primary-blue); }
+        .nav-links a:hover { background: rgba(255,255,255,0.05); }
             .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
             .footer-grid { grid-template-columns: 1fr; gap: 24px; }
 
