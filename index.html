@@ -82,6 +82,32 @@
     }
     </script>
 
+    <!-- WebSite Schema with SearchAction -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CanadaLawyers",
+        "url": "https://canadalawyers.app",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://canadalawyers.app/find-lawyer.html",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://canadalawyers.app/" }
+        ]
+    }
+    </script>
+
     <style>
         :root {
             --primary-blue: #2563eb;
