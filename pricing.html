@@ -50,6 +50,79 @@
         ]
     }
     </script>
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why flat-fee pricing instead of commission-based models?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Commission-based models create misaligned incentives. They penalize lawyers who build successful client relationships and reward platforms for doing nothing after the initial referral. Our flat-fee model means you keep 100% of your client revenue. Your success is your success. We earn our fee by continuously delivering qualified matches and platform value."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does the search algorithm position actually work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "When a client searches for a lawyer, our AI evaluates six factors: practice area match, case type alignment, geographic proximity, firm size fit, lawyer capacity, and subscription tier. Your tier acts as a ranking boost. Enterprise lawyers get maximum visibility, Professional lawyers get enhanced placement, and Associate lawyers appear in standard rotation. Even at lower tiers, you only receive matches where your expertise genuinely fits the client's needs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I upgrade or downgrade my plan?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Monthly plan holders can upgrade instantly or downgrade at the end of their billing cycle. Annual plan holders can upgrade at any time with prorated billing. Downgrades on annual plans take effect at renewal. Your search position adjusts immediately upon upgrade."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the annual billing discount?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Annual billing saves you 16% compared to monthly. Associate drops from $199/mo to $167/mo ($2,004/yr instead of $2,388/yr). Professional drops from $299/mo to $251/mo ($3,012/yr instead of $3,588/yr). Enterprise drops from $599/mo to $503/mo ($6,036/yr instead of $7,188/yr). Annual plans require a 12-month commitment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if I don't get any client matches?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We stand behind our platform. If you receive zero qualified matches in your first 90 days, we will refund your subscription in full. This is our launch guarantee, and it applies to all tiers. We also provide profile optimization assistance to ensure your listing attracts the right clients."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a setup fee or hidden cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. The subscription price is the only cost. There is no setup fee, no onboarding charge, no per-lead fee, and absolutely no commission on your client revenue. What you see on this page is what you pay."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do clients pay anything?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. CanadaLawyers is completely free for individuals and businesses seeking legal representation. Our revenue comes entirely from lawyer subscriptions. This two-sided model ensures clients have zero friction in finding qualified professionals, which means more qualified leads flowing to you."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What credentials do you verify?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We verify law society membership and standing across all Canadian provinces, call to the bar status, declared practice areas, and professional disciplinary record. We cross-reference with provincial law society directories including the LSO, Barreau du Quebec, LSBC, and others. Verification happens before your profile goes live and is re-checked periodically."
+                }
+            }
+        ]
+    }
+    </script>
 
     <style>
         :root {
@@ -334,10 +407,23 @@
             .cta-section h2 { font-size: 2rem; }
             .cta-buttons { flex-direction: column; align-items: center; }
             .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+            .faq-section { padding: 60px 16px; }
         }
 
         .match-count { font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #2563eb, #1e3a8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 4px; }
         .match-count-label { font-size: 0.85rem; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+
+        /* FAQ Section */
+        .faq-section { background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 100px 24px; }
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--border-color); padding: 24px 0; cursor: pointer; }
+        .faq-item:first-child { border-top: 1px solid var(--border-color); }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; font-size: 1.05rem; font-weight: 600; line-height: 1.4; }
+        .faq-question i { color: var(--primary-blue); font-size: 0.85rem; transition: transform 0.3s; flex-shrink: 0; margin-left: 16px; }
+        .faq-item.open .faq-question i { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
+        .faq-item.open .faq-answer { max-height: 300px; padding-top: 16px; }
+        .section-overline { display: inline-block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-blue); margin-bottom: 16px; }
     </style>
 </head>
 <body>
@@ -560,6 +646,89 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <div class="section-overline">Frequently Asked Questions</div>
+            <h2>Pricing Questions, Answered</h2>
+            <p>Everything you need to know about our pricing model, billing, and how search visibility impacts your results.</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Why flat-fee pricing instead of commission-based models?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Commission-based models create misaligned incentives. They penalize lawyers who build successful client relationships and reward platforms for doing nothing after the initial referral. Our flat-fee model means you keep 100% of your client revenue. Your success is your success. We earn our fee by continuously delivering qualified matches and platform value.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How does the search algorithm position actually work?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    When a client searches for a lawyer, our AI evaluates six factors: practice area match, case type alignment, geographic proximity, firm size fit, lawyer capacity, and subscription tier. Your tier acts as a ranking boost. Enterprise lawyers get maximum visibility, Professional lawyers get enhanced placement, and Associate lawyers appear in standard rotation. Even at lower tiers, you only receive matches where your expertise genuinely fits the client's needs.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Can I upgrade or downgrade my plan?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes. Monthly plan holders can upgrade instantly or downgrade at the end of their billing cycle. Annual plan holders can upgrade at any time with prorated billing. Downgrades on annual plans take effect at renewal. Your search position adjusts immediately upon upgrade.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What is the annual billing discount?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Annual billing saves you 16% compared to monthly. Associate drops from $199/mo to $167/mo ($2,004/yr instead of $2,388/yr). Professional drops from $299/mo to $251/mo ($3,012/yr instead of $3,588/yr). Enterprise drops from $599/mo to $503/mo ($6,036/yr instead of $7,188/yr). Annual plans require a 12-month commitment.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What happens if I don't get any client matches?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We stand behind our platform. If you receive zero qualified matches in your first 90 days, we will refund your subscription in full. This is our launch guarantee, and it applies to all tiers. We also provide profile optimization assistance to ensure your listing attracts the right clients.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Is there a setup fee or hidden cost?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    No. The subscription price is the only cost. There is no setup fee, no onboarding charge, no per-lead fee, and absolutely no commission on your client revenue. What you see on this page is what you pay.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Do clients pay anything?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    No. CanadaLawyers is completely free for individuals and businesses seeking legal representation. Our revenue comes entirely from lawyer subscriptions. This two-sided model ensures clients have zero friction in finding qualified professionals, which means more qualified leads flowing to you.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What credentials do you verify?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We verify law society membership and standing across all Canadian provinces, call to the bar status, declared practice areas, and professional disciplinary record. We cross-reference with provincial law society directories including the LSO, Barreau du Quebec, LSBC, and others. Verification happens before your profile goes live and is re-checked periodically.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-section">
         <h2>Ready to Grow<br>Your <span>Practice</span>?</h2>
@@ -665,6 +834,14 @@
             } catch (err) {
                 alert('Connection error. Please try again or call us at (647) 956-7290.');
             }
+        }
+
+        // FAQ accordion
+        function toggleFAQ(el) {
+            const item = el.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
         }
     </script>
 </body>
