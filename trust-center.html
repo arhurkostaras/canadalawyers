@@ -39,8 +39,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-purple: #667eea;
-            --primary-blue: #764ba2;
+            --primary-blue: #2563eb;
+            --primary-blue: #1e3a8a;
             --primary-navy: #1a1a2e;
             --bg-dark: #0a0a0a;
             --bg-card: #111;
@@ -57,17 +57,17 @@
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
         .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
-        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
         .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
         .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         .gradient-bg {
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-purple) 100%);
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
         }
 
         .trust-badge {
@@ -206,7 +206,7 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">
-                <i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+                <i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </a>
             <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
             <div class="nav-links">
@@ -545,7 +545,7 @@
     <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
-                <i class="fas fa-maple-leaf" style="color: var(--primary-purple);"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+                <i class="fas fa-maple-leaf" style="color: var(--primary-blue);"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </div>
             <p style="color: #a0a0a0; margin-bottom: 32px;">Trusted by Canadian law firms. Your security and privacy are our commitment.</p>
             <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. Trusted by Canadian law firms. Your security and privacy are our commitment.</div>

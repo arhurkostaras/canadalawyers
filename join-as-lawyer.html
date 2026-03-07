@@ -40,9 +40,9 @@
 
     <style>
         :root {
-            --primary-purple: #667eea;
-            --primary-violet: #764ba2;
-            --primary-navy: #1e3a5f;
+            --primary-blue: #2563eb;
+            --primary-navy: #1e3a8a;
+            --primary-navy: #1e3a8a;
             --accent-green: #059669;
             --dark-bg: #0a0a0a;
             --card-bg: #1a1a1a;
@@ -67,11 +67,11 @@
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
         .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
-        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
         .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
         .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
@@ -103,7 +103,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
             color: white;
             padding: 80px 0;
             text-align: center;
@@ -135,7 +135,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
             padding: 12px 24px;
             border-radius: 30px;
@@ -226,7 +226,7 @@
         .stat-number {
             font-size: 2.8rem;
             font-weight: 900;
-            color: var(--primary-purple);
+            color: var(--primary-blue);
             margin-bottom: 8px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -561,7 +561,7 @@
         }
 
         .premium-bar {
-            background: linear-gradient(90deg, var(--primary-purple) 0%, var(--primary-violet) 100%);
+            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
         }
 
         .basic-bar {
@@ -677,7 +677,7 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
             color: white;
             padding: 25px 50px;
             border-radius: 12px;
@@ -756,7 +756,7 @@
             right: -15px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -770,7 +770,7 @@
         .step-icon {
             font-size: 4rem;
             margin-bottom: 30px;
-            color: var(--primary-purple);
+            color: var(--primary-blue);
         }
 
         .step-title {
@@ -803,7 +803,7 @@
         }
 
         .feature-check {
-            color: var(--primary-purple);
+            color: var(--primary-blue);
             font-weight: bold;
         }
 
@@ -839,7 +839,7 @@
         .benefit-icon {
             font-size: 3.5rem;
             margin-bottom: 25px;
-            color: var(--primary-purple);
+            color: var(--primary-blue);
         }
 
         .benefit-title {
@@ -915,7 +915,7 @@
         .form-input:focus,
         .form-select:focus,
         .form-textarea:focus {
-            border-color: var(--primary-purple);
+            border-color: var(--primary-blue);
             outline: none;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
         }
@@ -927,7 +927,7 @@
 
         .submit-button {
             width: 100%;
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-violet) 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
             color: white;
             border: none;
             padding: 18px 30px;
@@ -1036,7 +1036,7 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span></a>
+            <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span></a>
             <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
             <div class="nav-links">
                 <a href="javascript:history.back()" style="display: flex; align-items: center; gap: 6px;"><i class="fas fa-arrow-left"></i> Back</a>
@@ -1592,7 +1592,7 @@
     <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
-                <i class="fas fa-maple-leaf" style="color: var(--primary-purple);"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+                <i class="fas fa-maple-leaf" style="color: var(--primary-blue);"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </div>
             <p style="color: #a0a0a0; margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
             <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
@@ -1775,7 +1775,7 @@
                             <button onclick="proceedWithAlternative('${plan}')" style="background: #444; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                                 Proceed Anyway
                             </button>
-                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #667eea; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #2563eb; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                                 Keep Recommended Plan
                             </button>
                         </div>
@@ -1864,32 +1864,32 @@
                     </p>
 
                     <div style="background: rgba(102,126,234,0.1); border: 2px solid rgba(102,126,234,0.3); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: left;">
-                        <h3 style="color: #667eea; margin-bottom: 20px;">What happens next:</h3>
+                        <h3 style="color: #2563eb; margin-bottom: 20px;">What happens next:</h3>
                         <div style="display: grid; gap: 15px;">
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="color: #667eea; font-weight: bold;">1.</span>
+                                <span style="color: #2563eb; font-weight: bold;">1.</span>
                                 <span style="color: #c0c0c0;">We verify your credentials with your law society (within 24 hours)</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="color: #667eea; font-weight: bold;">2.</span>
+                                <span style="color: #2563eb; font-weight: bold;">2.</span>
                                 <span style="color: #c0c0c0;">A confirmation email will be sent to your inbox shortly</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="color: #667eea; font-weight: bold;">3.</span>
+                                <span style="color: #2563eb; font-weight: bold;">3.</span>
                                 <span style="color: #c0c0c0;">Our team contacts you to discuss onboarding and your practice profile</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="color: #667eea; font-weight: bold;">4.</span>
+                                <span style="color: #2563eb; font-weight: bold;">4.</span>
                                 <span style="color: #c0c0c0;">Your profile goes live and you start receiving matched client leads</span>
                             </div>
                         </div>
                     </div>
 
                     <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="pricing" style="display: inline-block; background: #667eea; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
+                        <a href="pricing" style="display: inline-block; background: #2563eb; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
                             View Pricing Plans
                         </a>
-                        <a href="/" style="display: inline-block; background: transparent; color: #667eea; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 2px solid #667eea;">
+                        <a href="/" style="display: inline-block; background: transparent; color: #2563eb; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 2px solid #2563eb;">
                             Back to Home
                         </a>
                     </div>

@@ -37,23 +37,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary-purple: #667eea; --primary-violet: #764ba2; --primary-navy: #1e3a5f; --accent-green: #059669; --dark-bg: #0a0a0a; --card-bg: #1a1a1a; --border-color: #333333; }
+        :root { --primary-blue: #2563eb; --primary-navy: #1e3a8a; --primary-navy: #1e3a8a; --accent-green: #059669; --dark-bg: #0a0a0a; --card-bg: #1a1a1a; --border-color: #333333; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--dark-bg); min-height: 100vh; color: white; -webkit-font-smoothing: antialiased; }
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
         .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
-        .nav-logo .maple { color: var(--primary-purple); font-size: 1.5rem; }
+        .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
         .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-purple) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
         .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(102,126,234,0.3); }
         .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         /* Hero */
-        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 140px 24px 80px; text-align: center; }
+        .hero { background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%); padding: 140px 24px 80px; text-align: center; }
         .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; }
         .hero p { font-size: 1.3rem; opacity: 0.9; max-width: 650px; margin: 0 auto; line-height: 1.6; }
 
@@ -61,7 +61,7 @@
         .comparison { max-width: 1100px; margin: -40px auto 0; padding: 0 24px; position: relative; z-index: 2; }
         .comparison-card { background: var(--card-bg); border-radius: 1rem; border: 1px solid var(--border-color); overflow: hidden; }
         .comparison-header { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; background: rgba(102,126,234,0.15); padding: 20px 24px; font-weight: 700; font-size: 0.95rem; }
-        .comparison-header .col-us { background: linear-gradient(135deg, var(--primary-purple), var(--primary-violet)); color: white; border-radius: 8px; padding: 12px; text-align: center; }
+        .comparison-header .col-us { background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy)); color: white; border-radius: 8px; padding: 12px; text-align: center; }
         .comparison-header .col { text-align: center; color: rgba(255,255,255,0.6); padding: 12px; }
         .comparison-header .col-label { color: rgba(255,255,255,0.4); padding: 12px; text-align: left; }
         .comparison-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center; }
@@ -77,17 +77,17 @@
         .differentiators h2 { text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; }
         .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
         .diff-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 1rem; padding: 2.5rem; transition: transform 0.3s, border-color 0.3s; }
-        .diff-card:hover { transform: translateY(-4px); border-color: var(--primary-purple); }
-        .diff-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-purple), var(--primary-violet)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .diff-card:hover { transform: translateY(-4px); border-color: var(--primary-blue); }
+        .diff-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
         .diff-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
         .diff-card p { color: rgba(255,255,255,0.7); line-height: 1.6; }
 
         /* CTA */
-        .cta { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 24px; text-align: center; }
+        .cta { background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%); padding: 80px 24px; text-align: center; }
         .cta h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
         .cta p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 2rem; }
         .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { background: white; color: var(--primary-purple); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-primary { background: white; color: var(--primary-blue); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: transform 0.3s, box-shadow 0.3s; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
         .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s; }
         .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
@@ -119,7 +119,7 @@
 <body>
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span></a>
+            <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span></a>
             <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
             <div class="nav-links">
                 <a href="/">Home</a>
@@ -246,7 +246,7 @@
     <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
-                <i class="fas fa-maple-leaf" style="color: var(--primary-purple);"></i> CanadaLawyers<span style="color: var(--primary-purple)">.app</span>
+                <i class="fas fa-maple-leaf" style="color: var(--primary-blue);"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </div>
             <p style="color: #a0a0a0; margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
             <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
