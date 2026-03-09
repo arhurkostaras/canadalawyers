@@ -1822,9 +1822,14 @@
             submitBtn.innerHTML = 'Submitting...';
             submitBtn.disabled = true;
 
+            // Read ref token from URL for conversion tracking
+            const urlParams = new URLSearchParams(window.location.search);
+            const refToken = urlParams.get('ref') || '';
+
             // Get form data
             const formData = {
-                fullName: document.getElementById('fullName').value,
+                firstName: document.getElementById('fullName').value.split(' ')[0] || '',
+                lastName: document.getElementById('fullName').value.split(' ').slice(1).join(' ') || '',
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 firmName: document.getElementById('firmName').value,
@@ -1835,23 +1840,16 @@
                 lawSociety: document.getElementById('lawSociety').value,
                 practiceAreas: Array.from(document.querySelectorAll('input[name="practiceAreas"]:checked')).map(cb => cb.value),
                 whyJoin: document.getElementById('whyJoin').value,
-                applicationType: 'Lawyer Application',
-                timestamp: new Date().toISOString(),
+                ref: refToken,
                 referrer: document.referrer
             };
 
-            // Submit to backend API
+            // Submit to backend API (correct endpoint: /api/lawyer-registration)
             try {
-                const response = await fetch('https://canadalawyers-backend-production.up.railway.app/api/contact', {
+                const response = await fetch('https://canadalawyers-backend-production.up.railway.app/api/lawyer-registration', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name: formData.fullName,
-                        email: formData.email,
-                        phone: formData.phone,
-                        subject: 'Lawyer Application',
-                        message: `Firm: ${formData.firmName || 'N/A'}\nProvince: ${formData.province}\nLaw Society: ${formData.lawSociety}\nBar #: ${formData.barNumber}\nExperience: ${formData.experience}\nPractice Areas: ${formData.practiceAreas.join(', ')}\nMarketing Spend: ${formData.currentMarketingWaste || 'N/A'}\n\n${formData.whyJoin || ''}`
-                    })
+                    body: JSON.stringify(formData)
                 });
                 console.log('Application submitted to backend:', response.status);
             } catch (err) {
