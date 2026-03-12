@@ -582,14 +582,14 @@
                     <label class="form-label" for="primaryChallenge">What's your biggest legal challenge?</label>
                     <select id="primaryChallenge" class="form-select" required>
                         <option value="">Select primary challenge</option>
-                        <option value="cash-flow">Cash Flow Management (60% of SMEs)</option>
-                        <option value="tax-planning">Tax Planning & Optimization</option>
-                        <option value="financial-reporting">Financial Reporting & Analysis</option>
-                        <option value="compliance">Regulatory Compliance</option>
-                        <option value="bookkeeping">Daily Bookkeeping & Records</option>
-                        <option value="payroll">Payroll Processing</option>
-                        <option value="budgeting">Budgeting & Forecasting</option>
-                        <option value="audit-prep">Audit Preparation</option>
+                        <option value="contract-disputes">Contract Disputes (28% of SMEs)</option>
+                        <option value="ip-protection">IP Protection & Trademark Filing</option>
+                        <option value="employment-law">Employment Law & HR Compliance</option>
+                        <option value="real-estate">Real Estate Transactions</option>
+                        <option value="corporate-governance">Corporate Governance & Restructuring</option>
+                        <option value="litigation-defense">Litigation Defense</option>
+                        <option value="regulatory-compliance">Regulatory Compliance</option>
+                        <option value="ma-support">M&A Support & Due Diligence</option>
                     </select>
                 </div>
                 
@@ -599,8 +599,8 @@
                         <option value="">Select urgency level</option>
                         <option value="immediate">Immediate (within 1 week)</option>
                         <option value="soon">Soon (within 1 month)</option>
-                        <option value="q1-tax">Q1 Tax Season Planning</option>
-                        <option value="q4-planning">Q4 Year-end Planning</option>
+                        <option value="upcoming-filing">Upcoming Filing Deadline</option>
+                        <option value="ongoing-matter">Ongoing Legal Matter</option>
                         <option value="exploring">Just exploring options</option>
                     </select>
                 </div>
@@ -615,12 +615,13 @@
                         <label class="form-label" for="legalSoftware">Current legal software</label>
                         <select id="legalSoftware" class="form-select" required>
                             <option value="">Select your software</option>
-                            <option value="quickbooks">QuickBooks (47% market share)</option>
-                            <option value="excel">Excel/Spreadsheets (23% - upgrade opportunity!)</option>
-                            <option value="sage">Sage (12% market share)</option>
-                            <option value="xero">Xero (10% - fastest growing)</option>
-                            <option value="freshbooks">FreshBooks</option>
-                            <option value="wave">Wave</option>
+                            <option value="clio">Clio (34% market share)</option>
+                            <option value="practicepanther">PracticePanther (15% market share)</option>
+                            <option value="mycase">MyCase (12% market share)</option>
+                            <option value="cosmolex">CosmoLex (8% market share)</option>
+                            <option value="pclaw">PCLaw</option>
+                            <option value="soluno">Soluno</option>
+                            <option value="ulawpractice">uLawPractice</option>
                             <option value="none">No current software</option>
                             <option value="other">Other</option>
                         </select>
@@ -854,16 +855,18 @@
 
         function calculateChallengeScore(challenge) {
             const challengeScores = {
-                'cash-flow': 94, 'tax-planning': 91, 'compliance': 89,
-                'financial-reporting': 87, 'bookkeeping': 85
+                'contract-disputes': 94, 'litigation-defense': 91, 'regulatory-compliance': 89,
+                'employment-law': 87, 'ip-protection': 92, 'real-estate': 88,
+                'corporate-governance': 90, 'ma-support': 93
             };
             return challengeScores[challenge] || 86;
         }
 
         function calculateTechScore(software) {
             const techScores = {
-                'quickbooks': 95, 'xero': 93, 'sage': 90,
-                'excel': 75, 'freshbooks': 88, 'none': 70
+                'clio': 95, 'practicepanther': 93, 'mycase': 90,
+                'cosmolex': 88, 'pclaw': 87, 'soluno': 86,
+                'ulawpractice': 85, 'none': 70
             };
             return techScores[software] || 82;
         }
@@ -874,8 +877,8 @@
 
         function calculateSeasonalScore(urgency) {
             const seasonalScores = {
-                'immediate': 95, 'soon': 90, 'q1-tax': 92,
-                'q4-planning': 89, 'exploring': 85
+                'immediate': 95, 'soon': 90, 'upcoming-filing': 92,
+                'ongoing-matter': 89, 'exploring': 85
             };
             return seasonalScores[urgency] || 87;
         }
@@ -898,14 +901,14 @@
 
         function getSeasonalDemand(urgency) {
             const demands = {
-                'q1-tax': '42%', 'q4-planning': '28%', 'immediate': '18%'
+                'upcoming-filing': '42%', 'ongoing-matter': '28%', 'immediate': '18%'
             };
             return demands[urgency] || '12%';
         }
 
         function getTechAdoption(software) {
             const adoption = {
-                'quickbooks': '47%', 'excel': '23%', 'sage': '12%', 'xero': '10%'
+                'clio': '34%', 'practicepanther': '15%', 'mycase': '12%', 'cosmolex': '8%'
             };
             return adoption[software] || '8%';
         }
@@ -921,16 +924,16 @@
             // Predictive Lawyer matching based on real intelligence patterns
             const lawyerPools = {
                 'technology': [
-                    { name: 'Sarah Chen, Esq.', specialization: 'Tech Startup & Scale-up Specialist', experience: '12 years', location: 'Toronto, ON', responseTime: '2.1 hours', techStack: 'QuickBooks, Xero, AI Tools', reasons: ['Tech Industry Expert', 'Scaling Specialist', 'VC Experience', 'QuickBooks Pro'] },
-                    { name: 'Michael Rodriguez, Esq.', specialization: 'SaaS & Software Legal', experience: '9 years', location: 'Vancouver, BC', responseTime: '3.2 hours', techStack: 'Xero, Sage, Custom APIs', reasons: ['SaaS Expertise', 'Growth Stage Focus', 'Tech Stack Match'] },
-                    { name: 'Alex Kim, Esq.', specialization: 'Fintech & Innovation', experience: '8 years', location: 'Waterloo, ON', responseTime: '1.8 hours', techStack: 'QuickBooks, FreshBooks', reasons: ['Fintech Focus', 'Innovation Expert', 'Fast Response'] }
+                    { name: 'Sarah Chen, Esq.', specialization: 'Tech Startup & IP Specialist', experience: '12 years', location: 'Toronto, ON', responseTime: '2.1 hours', techStack: 'Clio, Westlaw, LexisNexis', reasons: ['Tech Industry Expert', 'IP Specialist', 'VC Experience', 'Clio Certified'] },
+                    { name: 'Michael Rodriguez, Esq.', specialization: 'SaaS & Software Legal', experience: '9 years', location: 'Vancouver, BC', responseTime: '3.2 hours', techStack: 'PracticePanther, Westlaw', reasons: ['SaaS Expertise', 'Growth Stage Focus', 'Tech Stack Match'] },
+                    { name: 'Alex Kim, Esq.', specialization: 'Fintech & Innovation Law', experience: '8 years', location: 'Waterloo, ON', responseTime: '1.8 hours', techStack: 'Clio, CosmoLex', reasons: ['Fintech Focus', 'Innovation Expert', 'Fast Response'] }
                 ],
                 'healthcare': [
-                    { name: 'Dr. Jennifer Walsh, Esq.', specialization: 'Healthcare & Medical Practice', experience: '15 years', location: 'Calgary, AB', responseTime: '2.5 hours', techStack: 'QuickBooks, Sage, Medical Software', reasons: ['Healthcare Expert', 'Compliance Specialist', 'Medical Background'] },
-                    { name: 'Robert Chen, Esq.', specialization: 'Healthcare Compliance', experience: '11 years', location: 'Ottawa, ON', responseTime: '3.1 hours', techStack: 'QuickBooks, Custom Solutions', reasons: ['Regulatory Expert', 'Compliance Focus'] }
+                    { name: 'Dr. Jennifer Walsh, Esq.', specialization: 'Healthcare & Medical Practice Law', experience: '15 years', location: 'Calgary, AB', responseTime: '2.5 hours', techStack: 'Clio, LexisNexis, HealthLaw Tools', reasons: ['Healthcare Expert', 'Compliance Specialist', 'Medical Background'] },
+                    { name: 'Robert Chen, Esq.', specialization: 'Healthcare Regulatory Compliance', experience: '11 years', location: 'Ottawa, ON', responseTime: '3.1 hours', techStack: 'MyCase, Westlaw', reasons: ['Regulatory Expert', 'Compliance Focus'] }
                 ],
                 'construction': [
-                    { name: 'Maria Santos, Esq.', specialization: 'Construction & Real Estate', experience: '13 years', location: 'Edmonton, AB', responseTime: '2.8 hours', techStack: 'Sage, QuickBooks, Project Tools', reasons: ['Construction Expert', 'Project Legal', 'Real Estate Focus'] }
+                    { name: 'Maria Santos, Esq.', specialization: 'Construction & Real Estate Law', experience: '13 years', location: 'Edmonton, AB', responseTime: '2.8 hours', techStack: 'PCLaw, Soluno, Westlaw', reasons: ['Construction Expert', 'Lien Disputes', 'Real Estate Focus'] }
                 ]
             };
 
