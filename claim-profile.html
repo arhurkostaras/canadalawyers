@@ -174,19 +174,14 @@
         .tier-period { font-size: 0.8rem; color: var(--text-secondary); }
 
         /* Footer */
-        .footer { background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color); }
-        .footer-inner { max-width: 1100px; margin: 0 auto; }
-        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-bottom: 40px; }
-        .footer-grid h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; }
-        .footer-grid ul { list-style: none; }
-        .footer-grid li { margin-bottom: 10px; }
-        .footer-grid a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
-        .footer-grid a:hover { color: white; }
-        .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 24px; text-align: center; }
-        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
-        .footer-logo .maple { color: var(--primary-blue); }
-        .footer-tagline { color: var(--text-secondary); margin-bottom: 16px; font-size: 0.9rem; }
-        .footer-copy { color: #666; font-size: 0.8rem; }
+        footer { background: rgba(0, 0, 0, 0.6); padding: 60px 20px 30px; margin-top: 80px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { font-size: 18px; margin-bottom: 20px; font-weight: 700; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin-bottom: 12px; }
+        .footer-section a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s ease; font-size: 15px; }
+        .footer-section a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); }
 
         /* Mobile */
         @media (max-width: 768px) {
@@ -209,7 +204,7 @@
             .profile-name { font-size: 1.4rem; }
             .form-row { flex-direction: column; }
             .tier-cards { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -313,48 +308,54 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div>
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="find-lawyer">Find a Lawyer</a></li>
-                        <li><a href="pricing">Pricing</a></li>
-                        <li><a href="why-we-win">Why We Win</a></li>
-                        <li><a href="guarantee">Our Guarantee</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>For Professionals</h4>
-                    <ul>
-                        <li><a href="join-as-lawyer">Apply to Join</a></li>
-                        <li><a href="lawyer-revenue-calculator">Revenue Calculator</a></li>
-                        <li><a href="lawyer-login">Lawyer Login</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="trust-center">Trust Center</a></li>
-                        <li><a href="market-trends-report">Market Report</a></li>
-                        <li><a href="contact">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="terms-of-service">Terms of Service</a></li>
-                        <li><a href="privacy-policy">Privacy Policy</a></li>
-                        <li><a href="data-processing-agreement">DPA</a></li>
-                    </ul>
-                </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>For Lawyers</h3>
+                <ul>
+                    <li><a href="lawyer-onboarding">Join Network</a></li>
+                    <li><a href="lawyer-login">Dashboard Login</a></li>
+                    <li><a href="lawyer-revenue-calculator">Revenue Calculator</a></li>
+                    <li><a href="pricing">Pricing & Algorithm</a></li>
+                    <li><a href="lawyer-matches">View Matches</a></li>
+                    <li><a href="lawyer-dashboard">Dashboard</a></li>
+                </ul>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span></div>
-                <p class="footer-tagline">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
-                <p class="footer-copy">&copy; 2026 CanadaLawyers.app | AI-powered lawyer marketplace for Canadian professionals.</p>
+
+            <div class="footer-section">
+                <h3>For Businesses</h3>
+                <ul>
+                    <li><a href="find-lawyer">Find a Lawyer</a></li>
+                    <li><a href="join-as-lawyer">Register Business</a></li>
+                    <li><a href="why-we-win">Why We Win</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                </ul>
             </div>
+
+            <div class="footer-section">
+                <h3>Legal & Resources</h3>
+                <ul>
+                    <li><a href="terms-of-service">Terms of Service</a></li>
+                    <li><a href="privacy-policy">Privacy Policy</a></li>
+                    <li><a href="trust-center">Trust Center</a></li>
+                    <li><a href="data-processing-agreement">Data Processing Agreement</a></li>
+                    <li><a href="market-trends-report">Market Trends Report</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></li>
+                    <li><a href="tel:+16479567290">1.647.956.7290</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 CanadaLawyers.app | All Rights Reserved</p>
+            <p style="margin-top: 10px; font-size: 12px;">Technology platform only. Not a professional services firm. Lawyers maintain full professional independence.</p>
         </div>
     </footer>
 
