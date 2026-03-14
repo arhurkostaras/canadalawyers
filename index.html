@@ -861,6 +861,257 @@
             }
         }
         
+        /* AI Tools Showcase */
+        .ai-tools-section {
+            padding: 100px 20px;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-tools-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 50%, rgba(5, 150, 105, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .ai-tools-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .ai-tools-section .section-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            max-width: 700px;
+            margin: 0 auto 16px;
+            text-align: center;
+        }
+
+        .ai-tools-free-badge {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .ai-tools-free-badge span {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.2), rgba(5, 150, 105, 0.1));
+            border: 1px solid rgba(5, 150, 105, 0.4);
+            color: #34d399;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .ai-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .ai-tool-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 40px 32px 36px;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .ai-tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .ai-tool-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15), 0 0 40px rgba(37, 99, 235, 0.05);
+        }
+
+        .ai-tool-card:hover::before {
+            opacity: 1;
+        }
+
+        .ai-tool-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .ai-tool-icon.bio { background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(30, 58, 138, 0.3)); color: #60a5fa; }
+        .ai-tool-icon.seo { background: linear-gradient(135deg, rgba(5, 150, 105, 0.2), rgba(4, 120, 87, 0.3)); color: #34d399; }
+        .ai-tool-icon.email { background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(126, 34, 206, 0.3)); color: #c084fc; }
+
+        .ai-tool-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .ai-tool-card > p {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .ai-tool-preview {
+            background: #111;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .ai-tool-preview-label {
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            background: #1a1a1a;
+            padding: 2px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ai-tool-preview p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .ai-tool-preview .highlight {
+            color: var(--accent-green);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .seo-meter {
+            margin-bottom: 14px;
+        }
+
+        .seo-meter-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .seo-meter-label span:first-child { color: rgba(255,255,255,0.6); }
+        .seo-meter-label span:last-child { color: var(--accent-green); font-weight: 700; }
+
+        .seo-meter-bar {
+            height: 8px;
+            background: #2a2a2a;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .seo-meter-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #ef4444, #f59e0b, var(--accent-green));
+            width: 72%;
+            transition: width 1s ease;
+        }
+
+        .seo-rec {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 10px;
+        }
+
+        .seo-rec i { color: #f59e0b; font-size: 10px; }
+
+        .email-preview-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .email-preview-line .label {
+            color: rgba(255,255,255,0.4);
+            font-weight: 600;
+            min-width: 55px;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .email-preview-line .value {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .ai-tools-cta {
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .ai-tools-cta a {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy));
+            color: white;
+            padding: 18px 48px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 17px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .ai-tools-cta a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .ai-tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-tools-section h2 {
+                font-size: 32px;
+            }
+        }
+
         @media (max-width: 480px) {
             .hero-ctas {
                 flex-direction: column;
@@ -928,6 +1179,8 @@
                         <li>Transparent, fixed-fee pricing</li>
                         <li>Your practice, your rules</li>
                         <li>Dashboard to manage everything</li>
+                        <li>AI Bio Generator & SEO Score</li>
+                        <li>Outreach email templates included</li>
                     </ul>
                     <div style="text-align: center; margin-top: 20px;">
                         <a href="lawyer-login" style="color: white; font-weight: 600;">Lawyer Login →</a>
@@ -952,6 +1205,77 @@
         </div>
     </section>
     
+    <!-- AI-Powered Tools Showcase -->
+    <section class="ai-tools-section" id="ai-tools">
+        <div class="container">
+            <h2>Your AI-Powered Competitive Edge</h2>
+            <p class="section-subtitle">Every claimed profile unlocks powerful AI tools designed to help you stand out, attract clients, and grow your practice.</p>
+            <div class="ai-tools-free-badge">
+                <span><i class="fas fa-gift" style="margin-right: 8px;"></i> Included FREE with every claimed profile</span>
+            </div>
+
+            <div class="ai-tools-grid">
+                <!-- AI Bio Generator -->
+                <div class="ai-tool-card">
+                    <div class="ai-tool-icon bio"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h3>AI Bio Generator</h3>
+                    <p>Generate a professionally written bio from your credentials in seconds. Tailored for your practice areas, years of call, and specializations.</p>
+                    <div class="ai-tool-preview">
+                        <div class="ai-tool-preview-label">Sample Output</div>
+                        <p>"Sarah Chen is a <span class="highlight">corporate and commercial law</span> practitioner called to the Ontario bar in 2014. With over a decade of experience advising mid-market companies on M&A transactions, she brings a practical, results-driven approach to every engagement..."</p>
+                    </div>
+                </div>
+
+                <!-- Profile SEO Score -->
+                <div class="ai-tool-card">
+                    <div class="ai-tool-icon seo"><i class="fas fa-chart-line"></i></div>
+                    <h3>Profile SEO Score</h3>
+                    <p>See exactly how visible you are to potential clients searching for lawyers like you, with specific recommendations to improve your ranking.</p>
+                    <div class="ai-tool-preview">
+                        <div class="ai-tool-preview-label">Live Preview</div>
+                        <div class="seo-meter">
+                            <div class="seo-meter-label">
+                                <span>Profile Visibility</span>
+                                <span>72/100</span>
+                            </div>
+                            <div class="seo-meter-bar">
+                                <div class="seo-meter-fill"></div>
+                            </div>
+                        </div>
+                        <div class="seo-rec"><i class="fas fa-circle"></i> Add 2+ practice areas to reach more clients</div>
+                        <div class="seo-rec"><i class="fas fa-circle"></i> Add a professional bio to boost score by 15 pts</div>
+                        <div class="seo-rec"><i class="fas fa-circle"></i> Upload a profile photo to increase engagement 40%</div>
+                    </div>
+                </div>
+
+                <!-- Outreach Email Template -->
+                <div class="ai-tool-card">
+                    <div class="ai-tool-icon email"><i class="fas fa-envelope-open-text"></i></div>
+                    <h3>Outreach Email Template</h3>
+                    <p>Get a personalized announcement email to share your new profile with colleagues, referral partners, and your professional network.</p>
+                    <div class="ai-tool-preview">
+                        <div class="ai-tool-preview-label">Email Preview</div>
+                        <div class="email-preview-line">
+                            <span class="label">Subject</span>
+                            <span class="value">I've joined Canada's AI-powered lawyer marketplace</span>
+                        </div>
+                        <div class="email-preview-line">
+                            <span class="label">From</span>
+                            <span class="value">Sarah Chen, LL.B.</span>
+                        </div>
+                        <div style="border-top: 1px solid #2a2a2a; margin-top: 8px; padding-top: 10px;">
+                            <p style="font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6;">"I'm excited to share that my practice is now listed on CanadaLawyers.app. If you know anyone looking for corporate counsel in Ontario, I'd appreciate the referral..."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-tools-cta">
+                <a href="claim-profile.html" onclick="trackEvent('cta_click', {location: 'ai_tools', type: 'claim_profile'})">Claim Your Profile & Access AI Tools <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Quick Preview Section -->
     <section class="pricing-section" id="pricing">
         <div class="container">
