@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C388HDDCZL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C388HDDCZL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - CanadaLawyers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, -apple-system, sans-serif; background: #0a0a0a; color: #e5e7eb; min-height: 100vh; }
+        a { color: #818cf8; text-decoration: none; }
+        a:hover { color: #a5b4fc; }
+
+        /* Login Page */
+        .login-container { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem; }
+        .login-card { background: #1a1a1a; border: 1px solid #333; border-radius: 16px; padding: 2.5rem; width: 100%; max-width: 420px; }
+        .login-card h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; background: linear-gradient(135deg, #818cf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .login-card p { color: #9ca3af; font-size: 0.875rem; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.25rem; }
+        .form-group input { width: 100%; padding: 0.6rem 0.75rem; background: #111; border: 1px solid #333; border-radius: 8px; color: #e5e7eb; font-size: 0.9rem; }
+        .form-group input:focus { outline: none; border-color: #818cf8; }
+        .login-btn { width: 100%; padding: 0.7rem; background: #4f46e5; color: #fff; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-top: 0.5rem; }
+        .login-btn:hover { background: #4338ca; }
+        .login-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .login-error { color: #f87171; font-size: 0.8rem; margin-top: 0.75rem; display: none; }
+
+        /* Dashboard */
+        .dashboard { display: none; }
+        .dashboard.active { display: block; }
+        nav { background: rgba(26,26,26,0.95); border-bottom: 1px solid #333; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); }
+        .nav-brand { font-size: 1.15rem; font-weight: 700; background: linear-gradient(135deg, #818cf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: flex; gap: 1rem; align-items: center; }
+        .nav-links a { color: #9ca3af; font-size: 0.8rem; }
+        .nav-links a:hover { color: #fff; }
+        .nav-links a.active { color: #fff; border-bottom: 2px solid #818cf8; padding-bottom: 2px; }
+        .nav-right { display: flex; align-items: center; gap: 1rem; }
+        .nav-right .email { color: #9ca3af; font-size: 0.8rem; }
+        .logout-btn { background: #dc2626; color: #fff; border: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
+        .logout-btn:hover { background: #b91c1c; }
+
+        main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+
+        /* Refresh indicator */
+        .refresh-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+        .refresh-bar .last-update { color: #6b7280; font-size: 0.75rem; }
+        .refresh-bar .refresh-btn { background: #333; border: 1px solid #444; color: #d1d5db; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.75rem; cursor: pointer; }
+        .refresh-bar .refresh-btn:hover { background: #444; }
+        .refresh-bar .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block; margin-right: 6px; }
+        .refresh-bar .status-dot.error { background: #ef4444; }
+
+        /* Stats grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        .stat-card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 1.25rem; }
+        .stat-card .label { color: #9ca3af; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .stat-card .value { font-size: 1.75rem; font-weight: 700; margin-top: 0.25rem; }
+        .stat-card .sub { color: #6b7280; font-size: 0.7rem; margin-top: 0.15rem; }
+        .text-green { color: #22c55e; }
+        .text-blue { color: #3b82f6; }
+        .text-purple { color: #a78bfa; }
+        .text-red { color: #ef4444; }
+        .text-yellow { color: #eab308; }
+        .text-indigo { color: #818cf8; }
+
+        /* Section headings */
+        .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+        .section-header h2 { font-size: 1.1rem; font-weight: 600; }
+
+        /* Campaign cards */
+        .campaign-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .campaign-card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 1.25rem; }
+        .campaign-card .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+        .campaign-card .card-header h3 { font-size: 0.95rem; font-weight: 600; }
+        .campaign-card .card-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 0.75rem; }
+        .campaign-card .mini-stat { text-align: center; }
+        .campaign-card .mini-stat .mini-val { font-size: 1.1rem; font-weight: 700; }
+        .campaign-card .mini-stat .mini-label { font-size: 0.65rem; color: #9ca3af; text-transform: uppercase; }
+        .campaign-card .card-actions { display: flex; gap: 0.5rem; }
+        .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+        .badge-green { background: #14532d; color: #86efac; }
+        .badge-yellow { background: #713f12; color: #fde047; }
+        .badge-red { background: #7f1d1d; color: #fca5a5; }
+        .badge-blue { background: #1e3a5f; color: #93c5fd; }
+        .badge-gray { background: #374151; color: #d1d5db; }
+        .badge-purple { background: #3b0764; color: #d8b4fe; }
+
+        /* Tables */
+        .panel { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
+        .panel-header { padding: 1rem 1.25rem; border-bottom: 1px solid #333; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; justify-content: space-between; }
+        .panel table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+        .panel th { text-align: left; padding: 0.6rem 1rem; color: #9ca3af; border-bottom: 1px solid #333; font-weight: 500; }
+        .panel td { padding: 0.6rem 1rem; border-bottom: 1px solid #222; }
+        .panel tr:last-child td { border-bottom: none; }
+        .panel tr:hover td { background: #222; }
+
+        /* Health grid */
+        .health-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+        @media (max-width: 768px) { .health-grid { grid-template-columns: 1fr; } }
+        .health-card { background: #1a1a1a; border: 1px solid #333; border-radius: 12px; padding: 1.25rem; }
+        .health-card h3 { font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.75rem; }
+        .health-card .health-value { font-size: 2rem; font-weight: 700; }
+        .health-card .health-sub { font-size: 0.7rem; color: #6b7280; margin-top: 0.25rem; }
+
+        /* Quick actions */
+        .action-btn { background: #333; border: 1px solid #444; color: #d1d5db; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; }
+        .action-btn:hover { background: #444; }
+        .action-btn.primary { background: #4f46e5; border-color: #4f46e5; color: #fff; }
+        .action-btn.primary:hover { background: #4338ca; }
+        .action-btn.danger { background: #991b1b; border-color: #991b1b; color: #fff; }
+        .action-btn.danger:hover { background: #7f1d1d; }
+        .action-btn.success { background: #166534; border-color: #166534; color: #fff; }
+        .action-btn.success:hover { background: #14532d; }
+        .action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Validation table */
+        .bar-container { width: 100%; background: #333; border-radius: 4px; height: 6px; }
+        .bar-fill { height: 6px; border-radius: 4px; transition: width 0.5s ease; }
+
+        /* Loading */
+        .loading { color: #6b7280; font-size: 0.8rem; padding: 2rem; text-align: center; }
+        .spin { animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Toast */
+        .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 0.75rem 1.25rem; font-size: 0.8rem; z-index: 100; opacity: 0; transform: translateY(10px); transition: all 0.3s ease; }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        .toast.success { border-color: #22c55e; }
+        .toast.error { border-color: #ef4444; }
+    </style>
+</head>
+<body>
+
+<!-- ==================== LOGIN PAGE ==================== -->
+<div id="loginPage" class="login-container">
+    <div class="login-card">
+        <h1>CanadaLawyers Admin</h1>
+        <p>Sign in to access the admin dashboard</p>
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" placeholder="admin@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn" id="loginBtn">Sign In</button>
+            <div class="login-error" id="loginError"></div>
+        </form>
+    </div>
+</div>
+
+<!-- ==================== DASHBOARD ==================== -->
+<div id="dashboardPage" class="dashboard">
+    <nav>
+        <div style="display:flex;align-items:center;gap:1.5rem;">
+            <span class="nav-brand">CanadaLawyers Admin</span>
+            <div class="nav-links">
+                <a href="/admin" class="active">Dashboard</a>
+                <a href="/admin-dashboard">Full Admin</a>
+                <a href="/admin-outreach">Outreach</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <span class="email" id="navEmail"></span>
+            <button class="logout-btn" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Refresh bar -->
+        <div class="refresh-bar">
+            <div>
+                <span class="status-dot" id="statusDot"></span>
+                <span class="last-update" id="lastUpdate">Loading...</span>
+            </div>
+            <button class="refresh-btn" onclick="refreshAll()"><i class="fas fa-sync-alt"></i> Refresh Now</button>
+        </div>
+
+        <!-- ===== TOP ROW STATS ===== -->
+        <div class="stats-grid" id="topStats">
+            <div class="stat-card">
+                <div class="label">Total Emails Sent</div>
+                <div class="value" id="totalSent">--</div>
+                <div class="sub" id="sentToday">-- sent today</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Delivered Today</div>
+                <div class="value text-green" id="deliveredToday">--</div>
+                <div class="sub" id="queueSize">-- in queue</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Total Claims</div>
+                <div class="value text-purple" id="totalClaims">--</div>
+                <div class="sub" id="claimRate">-- claim rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Active Campaigns</div>
+                <div class="value text-indigo" id="activeCampaigns">--</div>
+                <div class="sub" id="totalCampaigns">-- total campaigns</div>
+            </div>
+        </div>
+
+        <!-- ===== EMAIL HEALTH ===== -->
+        <div class="section-header">
+            <h2><i class="fas fa-heartbeat" style="color:#ef4444;margin-right:0.5rem;"></i>Email Health (7 day)</h2>
+        </div>
+        <div class="health-grid">
+            <div class="health-card">
+                <h3>Bounce Rate (7d)</h3>
+                <div class="health-value" id="bounceRate7d">--</div>
+                <div class="health-sub" id="bouncedCount7d">-- bounced of -- sent</div>
+            </div>
+            <div class="health-card">
+                <h3>Unsubscribe Rate (7d)</h3>
+                <div class="health-value" id="unsubRate7d">--</div>
+                <div class="health-sub" id="unsubCount7d">-- unsubscribed</div>
+            </div>
+            <div class="health-card">
+                <h3>Clicked But Not Claimed</h3>
+                <div class="health-value text-yellow" id="clickedNoClaim">--</div>
+                <div class="health-sub">Warm leads ready for follow-up</div>
+            </div>
+        </div>
+
+        <!-- ===== CAMPAIGNS ===== -->
+        <div class="section-header">
+            <h2><i class="fas fa-paper-plane" style="color:#818cf8;margin-right:0.5rem;"></i>Campaigns</h2>
+        </div>
+        <div class="campaign-grid" id="campaignGrid">
+            <div class="loading"><i class="fas fa-spinner spin"></i> Loading campaigns...</div>
+        </div>
+
+        <!-- ===== EMAIL QUALITY BY SOURCE ===== -->
+        <div class="panel">
+            <div class="panel-header">
+                <span><i class="fas fa-shield-alt" style="color:#22c55e;margin-right:0.5rem;"></i>Email Validation Analysis</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Total</th>
+                        <th>Valid</th>
+                        <th>Invalid</th>
+                        <th>Invalid Rate</th>
+                        <th>Quality</th>
+                    </tr>
+                </thead>
+                <tbody id="validationBody">
+                    <tr><td colspan="6" class="loading"><i class="fas fa-spinner spin"></i> Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== CLICKED NO CLAIM TABLE ===== -->
+        <div class="panel">
+            <div class="panel-header">
+                <span><i class="fas fa-mouse-pointer" style="color:#eab308;margin-right:0.5rem;"></i>Clicked But Not Claimed (Warm Leads)</span>
+                <span class="badge badge-yellow" id="warmLeadCount">0</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Province</th>
+                        <th>City</th>
+                        <th>Clicked At</th>
+                        <th>Campaign</th>
+                    </tr>
+                </thead>
+                <tbody id="clickedNoClaimBody">
+                    <tr><td colspan="6" class="loading"><i class="fas fa-spinner spin"></i> Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== QUICK ACTIONS ===== -->
+        <div class="section-header">
+            <h2><i class="fas fa-bolt" style="color:#eab308;margin-right:0.5rem;"></i>Quick Actions</h2>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:2rem;">
+            <button class="action-btn primary" onclick="triggerQueue()"><i class="fas fa-play"></i> Trigger Queue Processing</button>
+            <button class="action-btn success" id="btnLaunchAll" onclick="bulkCampaignAction('launch')"><i class="fas fa-rocket"></i> Launch All Draft Campaigns</button>
+            <button class="action-btn danger" id="btnPauseAll" onclick="bulkCampaignAction('pause')"><i class="fas fa-pause"></i> Pause All Active Campaigns</button>
+            <button class="action-btn" onclick="window.open('/admin-dashboard','_self')"><i class="fas fa-cogs"></i> Full Admin Dashboard</button>
+            <button class="action-btn" onclick="window.open('/admin-outreach','_self')"><i class="fas fa-envelope-open-text"></i> Outreach Manager</button>
+        </div>
+    </main>
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
+
+<script>
+const API = 'https://canadalawyers-backend-production.up.railway.app';
+let refreshInterval = null;
+let allCampaigns = [];
+
+// ===================== AUTH =====================
+function getToken() { return localStorage.getItem('admin_jwt'); }
+function getHeaders() {
+    const t = getToken();
+    return t ? { 'Authorization': `Bearer ${t}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
+}
+
+function checkAuth() {
+    // Also accept lawyer_token for compatibility
+    const token = getToken() || localStorage.getItem('lawyer_token');
+    const user = JSON.parse(localStorage.getItem('lawyer_user') || '{}');
+    if (token && (user.userType === 'admin' || localStorage.getItem('admin_jwt'))) {
+        if (!localStorage.getItem('admin_jwt') && token) {
+            localStorage.setItem('admin_jwt', token);
+        }
+        showDashboard(user);
+    } else {
+        showLogin();
+    }
+}
+
+function showLogin() {
+    document.getElementById('loginPage').style.display = 'flex';
+    document.getElementById('dashboardPage').classList.remove('active');
+    if (refreshInterval) clearInterval(refreshInterval);
+}
+
+function showDashboard(user) {
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('dashboardPage').classList.add('active');
+    document.getElementById('navEmail').textContent = user.email || '';
+    refreshAll();
+    refreshInterval = setInterval(refreshAll, 60000);
+}
+
+async function handleLogin(e) {
+    e.preventDefault();
+    const btn = document.getElementById('loginBtn');
+    const errEl = document.getElementById('loginError');
+    btn.disabled = true;
+    btn.textContent = 'Signing in...';
+    errEl.style.display = 'none';
+
+    try {
+        const res = await fetch(`${API}/api/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: document.getElementById('loginEmail').value,
+                password: document.getElementById('loginPassword').value
+            })
+        });
+        const data = await res.json();
+        if (data.success && data.token) {
+            localStorage.setItem('admin_jwt', data.token);
+            localStorage.setItem('lawyer_token', data.token);
+            localStorage.setItem('lawyer_user', JSON.stringify(data.user || { email: document.getElementById('loginEmail').value, userType: 'admin' }));
+            showDashboard(data.user || { email: document.getElementById('loginEmail').value });
+        } else {
+            errEl.textContent = data.error || data.message || 'Login failed';
+            errEl.style.display = 'block';
+        }
+    } catch (err) {
+        errEl.textContent = 'Network error. Please try again.';
+        errEl.style.display = 'block';
+    }
+    btn.disabled = false;
+    btn.textContent = 'Sign In';
+}
+
+function doLogout() {
+    localStorage.removeItem('admin_jwt');
+    localStorage.removeItem('lawyer_token');
+    localStorage.removeItem('lawyer_user');
+    showLogin();
+}
+
+// ===================== DATA LOADING =====================
+async function fetchJSON(url) {
+    const res = await fetch(url, { headers: getHeaders() });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+}
+
+function num(n) { return (n || 0).toLocaleString(); }
+function pct(n, d) { return d > 0 ? ((n / d) * 100).toFixed(1) + '%' : '0.0%'; }
+function fmtDate(d) {
+    if (!d) return '--';
+    return new Date(d).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+let apiOk = true;
+async function refreshAll() {
+    const dot = document.getElementById('statusDot');
+    const updateEl = document.getElementById('lastUpdate');
+    try {
+        await Promise.allSettled([
+            loadCampaigns(),
+            loadHealth(),
+            loadClickedNoClaim(),
+            loadValidationAnalysis()
+        ]);
+        apiOk = true;
+        dot.classList.remove('error');
+        updateEl.textContent = `Last updated: ${new Date().toLocaleTimeString()} (auto-refresh 60s)`;
+    } catch (e) {
+        apiOk = false;
+        dot.classList.add('error');
+        updateEl.textContent = `Error refreshing at ${new Date().toLocaleTimeString()}`;
+        console.error('Refresh error:', e);
+    }
+}
+
+// ----- Campaigns -----
+async function loadCampaigns() {
+    try {
+        const data = await fetchJSON(`${API}/api/admin/outreach/campaigns`);
+        if (!data.success) return;
+        allCampaigns = data.campaigns || [];
+
+        // Compute aggregated stats
+        let totalSent = 0, totalDelivered = 0, totalBounced = 0, totalOpened = 0, totalClicked = 0, totalConverted = 0, active = 0;
+        allCampaigns.forEach(c => {
+            totalSent += c.total_sent || 0;
+            totalDelivered += c.total_delivered || c.total_sent || 0;
+            totalBounced += c.total_bounced || 0;
+            totalOpened += c.total_opened || 0;
+            totalClicked += c.total_clicked || 0;
+            totalConverted += c.total_converted || 0;
+            if (c.status === 'active') active++;
+        });
+
+        document.getElementById('totalSent').textContent = num(totalSent);
+        document.getElementById('totalClaims').textContent = num(totalConverted);
+        document.getElementById('claimRate').textContent = totalSent > 0 ? pct(totalConverted, totalSent) + ' conversion' : '-- conversion';
+        document.getElementById('activeCampaigns').textContent = active;
+        document.getElementById('totalCampaigns').textContent = `${allCampaigns.length} total campaigns`;
+
+        // Render campaign cards
+        const grid = document.getElementById('campaignGrid');
+        if (allCampaigns.length === 0) {
+            grid.innerHTML = '<div class="loading">No campaigns found</div>';
+            return;
+        }
+
+        grid.innerHTML = allCampaigns.map(c => {
+            const statusClass = { active: 'badge-green', paused: 'badge-yellow', draft: 'badge-gray', completed: 'badge-blue' };
+            const delivered = c.total_delivered || c.total_sent || 0;
+            const complained = c.total_complained || 0;
+            return `
+                <div class="campaign-card">
+                    <div class="card-header">
+                        <h3>${esc(c.name)}</h3>
+                        <span class="badge ${statusClass[c.status] || 'badge-gray'}">${c.status.toUpperCase()}</span>
+                    </div>
+                    <div class="card-stats">
+                        <div class="mini-stat">
+                            <div class="mini-val">${num(c.total_sent || 0)}</div>
+                            <div class="mini-label">Sent</div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-val text-green">${num(delivered)}</div>
+                            <div class="mini-label">Delivered</div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-val text-red">${num(c.total_bounced || 0)}</div>
+                            <div class="mini-label">Bounced</div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-val text-blue">${num(c.total_opened || 0)}</div>
+                            <div class="mini-label">Opened ${delivered > 0 ? '<span style="font-size:0.6rem;color:#6b7280;">(' + pct(c.total_opened, delivered) + ')</span>' : ''}</div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-val text-yellow">${num(c.total_clicked || 0)}</div>
+                            <div class="mini-label">Clicked</div>
+                        </div>
+                        <div class="mini-stat">
+                            <div class="mini-val text-purple">${num(c.total_converted || 0)}</div>
+                            <div class="mini-label">Converted</div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;">
+                        <span style="font-size:0.7rem;color:#6b7280;">Queue: ${num(c.queued || c.queue_size || 0)} | Complained: ${complained}</span>
+                        <div class="card-actions">
+                            ${c.status === 'draft' ? `<button class="action-btn success" style="padding:0.25rem 0.6rem;font-size:0.7rem;" onclick="campaignAction(${c.id},'launch')"><i class="fas fa-play"></i> Launch</button>` : ''}
+                            ${c.status === 'active' ? `<button class="action-btn danger" style="padding:0.25rem 0.6rem;font-size:0.7rem;" onclick="campaignAction(${c.id},'pause')"><i class="fas fa-pause"></i> Pause</button>` : ''}
+                            ${c.status === 'paused' ? `<button class="action-btn success" style="padding:0.25rem 0.6rem;font-size:0.7rem;" onclick="campaignAction(${c.id},'launch')"><i class="fas fa-play"></i> Resume</button>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    } catch (e) {
+        console.error('Campaigns error:', e);
+        document.getElementById('campaignGrid').innerHTML = '<div class="loading" style="color:#ef4444;">Failed to load campaigns</div>';
+    }
+}
+
+// ----- Health -----
+async function loadHealth() {
+    try {
+        const data = await fetchJSON(`${API}/api/outreach/health`);
+        const sent = data.sent_today || 0;
+        const queued = data.queued || 0;
+        const bounced7d = data.bounced_7d || 0;
+        const unsub7d = data.unsubscribed_7d || 0;
+        const sentTotal7d = data.sent_7d || sent; // fallback
+
+        document.getElementById('sentToday').textContent = `${num(sent)} sent today`;
+        document.getElementById('deliveredToday').textContent = num(sent);
+        document.getElementById('queueSize').textContent = `${num(queued)} in queue`;
+
+        // Bounce rate
+        const bounceRate = sentTotal7d > 0 ? ((bounced7d / sentTotal7d) * 100).toFixed(2) + '%' : '0.0%';
+        document.getElementById('bounceRate7d').textContent = bounceRate;
+        document.getElementById('bounceRate7d').className = 'health-value ' + (bounced7d / (sentTotal7d || 1) > 0.05 ? 'text-red' : 'text-green');
+        document.getElementById('bouncedCount7d').textContent = `${num(bounced7d)} bounced of ${num(sentTotal7d)} sent`;
+
+        // Unsub rate
+        const unsubRate = sentTotal7d > 0 ? ((unsub7d / sentTotal7d) * 100).toFixed(2) + '%' : '0.0%';
+        document.getElementById('unsubRate7d').textContent = unsubRate;
+        document.getElementById('unsubRate7d').className = 'health-value ' + (unsub7d / (sentTotal7d || 1) > 0.02 ? 'text-yellow' : 'text-green');
+        document.getElementById('unsubCount7d').textContent = `${num(unsub7d)} unsubscribed`;
+    } catch (e) {
+        console.error('Health error:', e);
+    }
+}
+
+// ----- Clicked No Claim -----
+async function loadClickedNoClaim() {
+    try {
+        const data = await fetchJSON(`${API}/api/admin/clicked-no-claim`);
+        const leads = data.leads || data.lawyers || data.data || [];
+        document.getElementById('clickedNoClaim').textContent = num(leads.length);
+        document.getElementById('warmLeadCount').textContent = leads.length;
+
+        const tbody = document.getElementById('clickedNoClaimBody');
+        if (leads.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#6b7280;padding:1.5rem;">No clicked-but-unclaimed leads</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = leads.slice(0, 50).map(l => `
+            <tr>
+                <td>${esc(l.full_name || l.name || ((l.first_name || '') + ' ' + (l.last_name || '')).trim() || '--')}</td>
+                <td>${esc(l.email || l.enriched_email || '--')}</td>
+                <td>${esc(l.province || '--')}</td>
+                <td>${esc(l.city || '--')}</td>
+                <td>${fmtDate(l.clicked_at || l.last_clicked || l.updated_at)}</td>
+                <td>${esc(l.campaign_name || l.campaign || '--')}</td>
+            </tr>
+        `).join('');
+    } catch (e) {
+        console.error('Clicked no claim error:', e);
+        document.getElementById('clickedNoClaimBody').innerHTML = '<tr><td colspan="6" style="text-align:center;color:#ef4444;padding:1rem;">Failed to load</td></tr>';
+    }
+}
+
+// ----- Validation Analysis -----
+async function loadValidationAnalysis() {
+    try {
+        const data = await fetchJSON(`${API}/api/admin/validation-analysis`);
+        const sources = data.sources || data.by_source || data.data || [];
+
+        const tbody = document.getElementById('validationBody');
+        if (!sources || sources.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#6b7280;padding:1.5rem;">No validation data available</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = sources.map(s => {
+            const total = s.total || (s.valid + s.invalid) || 0;
+            const valid = s.valid || 0;
+            const invalid = s.invalid || 0;
+            const rate = total > 0 ? ((invalid / total) * 100).toFixed(1) : 0;
+            const rateNum = parseFloat(rate);
+            const barColor = rateNum > 10 ? '#ef4444' : rateNum > 5 ? '#eab308' : '#22c55e';
+            const qualityLabel = rateNum > 10 ? 'Poor' : rateNum > 5 ? 'Fair' : 'Good';
+            const qualityClass = rateNum > 10 ? 'badge-red' : rateNum > 5 ? 'badge-yellow' : 'badge-green';
+            return `
+                <tr>
+                    <td style="font-weight:600;">${esc(s.source || s.email_source || '--')}</td>
+                    <td>${num(total)}</td>
+                    <td class="text-green">${num(valid)}</td>
+                    <td class="text-red">${num(invalid)}</td>
+                    <td>
+                        <div style="display:flex;align-items:center;gap:0.5rem;">
+                            <div class="bar-container" style="width:80px;">
+                                <div class="bar-fill" style="width:${Math.min(rateNum * 2, 100)}%;background:${barColor};"></div>
+                            </div>
+                            <span>${rate}%</span>
+                        </div>
+                    </td>
+                    <td><span class="badge ${qualityClass}">${qualityLabel}</span></td>
+                </tr>
+            `;
+        }).join('');
+    } catch (e) {
+        console.error('Validation error:', e);
+        document.getElementById('validationBody').innerHTML = '<tr><td colspan="6" style="text-align:center;color:#ef4444;padding:1rem;">Failed to load</td></tr>';
+    }
+}
+
+// ===================== ACTIONS =====================
+async function campaignAction(id, action) {
+    const label = action === 'launch' ? 'Launch' : 'Pause';
+    if (!confirm(`${label} this campaign?`)) return;
+    try {
+        const res = await fetch(`${API}/api/admin/outreach/campaigns/${id}/${action}`, {
+            method: 'POST', headers: getHeaders()
+        });
+        const data = await res.json();
+        if (data.success) {
+            showToast(`Campaign ${action}ed successfully`, 'success');
+            await loadCampaigns();
+        } else {
+            showToast('Error: ' + (data.error || 'Unknown'), 'error');
+        }
+    } catch (e) { showToast('Failed: ' + e.message, 'error'); }
+}
+
+async function bulkCampaignAction(action) {
+    const targets = allCampaigns.filter(c => action === 'launch' ? c.status === 'draft' : c.status === 'active');
+    if (targets.length === 0) {
+        showToast(`No ${action === 'launch' ? 'draft' : 'active'} campaigns to ${action}`, 'error');
+        return;
+    }
+    if (!confirm(`${action === 'launch' ? 'Launch' : 'Pause'} ${targets.length} campaigns?`)) return;
+
+    for (const c of targets) {
+        try {
+            await fetch(`${API}/api/admin/outreach/campaigns/${c.id}/${action}`, {
+                method: 'POST', headers: getHeaders()
+            });
+        } catch (e) { console.error(e); }
+    }
+    showToast(`${targets.length} campaigns ${action}ed`, 'success');
+    await loadCampaigns();
+}
+
+async function triggerQueue() {
+    try {
+        const res = await fetch(`${API}/api/admin/outreach/process-queue`, {
+            method: 'POST', headers: getHeaders()
+        });
+        const data = await res.json();
+        if (data.success) {
+            showToast(`Queue triggered: ${data.processed || 0} processed`, 'success');
+        } else {
+            showToast('Queue trigger: ' + (data.error || data.message || 'sent'), 'success');
+        }
+    } catch (e) {
+        showToast('Queue trigger failed: ' + e.message, 'error');
+    }
+}
+
+// ===================== UTILS =====================
+function esc(s) {
+    if (!s) return '';
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+}
+
+function showToast(msg, type) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className = 'toast ' + (type || '');
+    setTimeout(() => el.classList.add('show'), 10);
+    setTimeout(() => el.classList.remove('show'), 3500);
+}
+
+// ===================== INIT =====================
+checkAuth();
+</script>
+</body>
+</html>
