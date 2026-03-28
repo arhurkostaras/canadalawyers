@@ -136,19 +136,40 @@
         .toast.success { border-color: #22c55e; }
         .toast.error { border-color: #ef4444; }
 
-        /* Upgrade gate */
-        .upgrade-banner { background: linear-gradient(135deg, #1e1b4b, #312e81); border: 1px solid #4338ca; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; text-align: center; }
-        .upgrade-banner h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; background: linear-gradient(135deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .upgrade-banner p { color: #a5b4fc; font-size: 0.85rem; margin-bottom: 1.5rem; }
-        .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto; }
+        /* AI Profile Analysis */
+        .ai-analysis-box { background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid #2563eb; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+        .ai-analysis-box h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; color: #60a5fa; }
+        .ai-analysis-box h2 i { margin-right: 0.5rem; }
+        .ai-score { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .ai-score-circle { width: 64px; height: 64px; border-radius: 50%; border: 3px solid #ef4444; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .ai-score-circle .grade { font-size: 1.5rem; font-weight: 800; color: #ef4444; }
+        .ai-score-text { font-size: 0.95rem; color: #e5e7eb; }
+        .ai-score-text strong { color: #fff; }
+        .ai-score-text .score-num { color: #ef4444; font-weight: 700; }
+        .ai-score-text .city-ref { color: #60a5fa; }
+        .ai-diagnostics { list-style: none; padding: 0; margin: 1rem 0 0; }
+        .ai-diagnostics li { font-size: 0.85rem; color: #fca5a5; padding: 0.4rem 0; display: flex; align-items: center; gap: 0.5rem; }
+        .ai-diagnostics li i { color: #ef4444; font-size: 0.8rem; width: 16px; text-align: center; }
+
+        /* AI CTA */
+        .ai-cta { background: linear-gradient(135deg, #1e1b4b, #312e81); border: 1px solid #4338ca; border-radius: 16px; padding: 1.75rem; margin-bottom: 1.5rem; text-align: center; }
+        .ai-cta h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; background: linear-gradient(135deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .ai-cta h3 i { -webkit-text-fill-color: #a78bfa; margin-right: 0.4rem; }
+        .ai-cta p { color: #c4b5fd; font-size: 0.85rem; line-height: 1.6; max-width: 640px; margin: 0 auto; }
+        .ai-cta .city-ref { color: #60a5fa; font-weight: 600; }
+
+        /* Tier grid */
+        .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 860px; margin: 1.5rem auto 0; }
         @media (max-width: 768px) { .tier-grid { grid-template-columns: 1fr; } }
-        .tier-card { background: rgba(0,0,0,0.3); border: 1px solid #4338ca; border-radius: 12px; padding: 1.25rem; transition: all 0.2s ease; }
+        .tier-card { background: rgba(0,0,0,0.3); border: 1px solid #4338ca; border-radius: 12px; padding: 1.25rem; transition: all 0.2s ease; display: flex; flex-direction: column; }
         .tier-card:hover { border-color: #818cf8; transform: translateY(-2px); }
-        .tier-card.featured { border-color: #a78bfa; background: rgba(99,102,241,0.15); }
+        .tier-card.featured { border-color: #a78bfa; background: rgba(99,102,241,0.15); position: relative; }
+        .tier-card.featured::before { content: 'Most Popular'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #7c3aed, #6366f1); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 12px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .tier-card .tier-label { font-size: 0.7rem; font-weight: 700; color: #60a5fa; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.15rem; }
         .tier-card .tier-name { font-size: 0.85rem; font-weight: 600; color: #c4b5fd; text-transform: uppercase; letter-spacing: 0.05em; }
         .tier-card .tier-price { font-size: 1.75rem; font-weight: 700; color: #fff; margin: 0.5rem 0; }
         .tier-card .tier-price span { font-size: 0.8rem; font-weight: 400; color: #9ca3af; }
-        .tier-card .tier-features { list-style: none; margin: 0.75rem 0 1rem; padding: 0; }
+        .tier-card .tier-features { list-style: none; margin: 0.75rem 0 1rem; padding: 0; flex: 1; }
         .tier-card .tier-features li { font-size: 0.75rem; color: #d1d5db; padding: 0.2rem 0; }
         .tier-card .tier-features li::before { content: '\2713'; color: #22c55e; margin-right: 0.4rem; font-weight: 700; }
         .tier-btn { width: 100%; padding: 0.6rem; border: none; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
@@ -157,6 +178,11 @@
         .tier-btn.featured { background: linear-gradient(135deg, #7c3aed, #6366f1); color: #fff; }
         .tier-btn.featured:hover { background: linear-gradient(135deg, #6d28d9, #4f46e5); }
         .tier-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Active subscriber badge */
+        .subscribed-active { background: rgba(5,150,105,0.15); border: 1px solid #059669; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: center; }
+        .subscribed-active .sub-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: #059669; color: #fff; font-size: 0.85rem; font-weight: 700; padding: 0.5rem 1.25rem; border-radius: 20px; margin-bottom: 0.5rem; }
+        .subscribed-active .sub-tier { color: #6ee7b7; font-size: 0.9rem; margin-top: 0.25rem; }
 
         /* Match cards */
         .match-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
@@ -332,55 +358,83 @@
             <button class="action-btn" onclick="window.open('/admin-outreach','_self')"><i class="fas fa-envelope-open-text"></i> Outreach Manager</button>
         </div>
 
-        <!-- ===== SME MATCHES / UPGRADE GATE ===== -->
-        <div id="matchesSection">
+        <!-- ===== AI UPGRADE GATE ===== -->
+        <div id="upgradeSection">
             <div class="section-header">
-                <h2><i class="fas fa-handshake" style="color:#818cf8;margin-right:0.5rem;"></i>SME Matches in Your Province</h2>
+                <h2><i class="fas fa-brain" style="color:#60a5fa;margin-right:0.5rem;"></i>AI Profile Intelligence</h2>
                 <span id="subBadge"></span>
             </div>
 
-            <!-- Upgrade banner (hidden for subscribers) -->
-            <div id="upgradeBanner" class="upgrade-banner" style="display:none;">
-                <h2>Unlock Direct Client Connections</h2>
-                <p>Upgrade your plan to see full contact details for every matched SME — name, email, phone, and website.</p>
+            <!-- Active subscriber view -->
+            <div id="subscribedView" class="subscribed-active" style="display:none;">
+                <div class="sub-badge"><i class="fas fa-check-circle"></i> Active Subscriber</div>
+                <div class="sub-tier" id="subTierName"></div>
+            </div>
+
+            <!-- Non-subscriber: AI analysis + upgrade -->
+            <div id="upgradeGate" style="display:none;">
+                <!-- AI Profile Analysis -->
+                <div class="ai-analysis-box">
+                    <h2><i class="fas fa-microscope"></i> Your AI Profile Analysis</h2>
+                    <div class="ai-score">
+                        <div class="ai-score-circle"><span class="grade">C</span></div>
+                        <div class="ai-score-text">
+                            <strong>Your Score: <span class="score-num">50/100</span></strong><br>
+                            Top lawyers in <span class="city-ref" id="aiCity">your city</span> score 85+. Here's what's costing you visibility:
+                        </div>
+                    </div>
+                    <ul class="ai-diagnostics">
+                        <li><i class="fas fa-times-circle"></i> Your bio lacks practice area keywords</li>
+                        <li><i class="fas fa-times-circle"></i> No specializations listed on your profile</li>
+                        <li><i class="fas fa-times-circle"></i> Missing phone number and contact details</li>
+                    </ul>
+                </div>
+
+                <!-- AI CTA -->
+                <div class="ai-cta">
+                    <h3><i class="fas fa-wand-magic-sparkles"></i> Let AI Fix This Automatically</h3>
+                    <p>Upgrade and our AI optimizes your profile weekly — rewriting your bio with practice-area keywords, boosting your search ranking, and keeping you ahead of competitors in <span class="city-ref" id="aiCityRef">your city</span>.</p>
+                </div>
+
+                <!-- Tier cards -->
                 <div class="tier-grid">
                     <div class="tier-card">
+                        <div class="tier-label">AI Profile Optimization</div>
                         <div class="tier-name">Associate</div>
                         <div class="tier-price">$199<span>/mo</span></div>
                         <ul class="tier-features">
-                            <li>5 verified leads/month</li>
-                            <li>Full contact details</li>
-                            <li>Email support</li>
+                            <li>AI rewrites your bio weekly</li>
+                            <li>SEO keyword optimization</li>
+                            <li>Priority search ranking</li>
+                            <li>Profile performance analytics</li>
                         </ul>
                         <button class="tier-btn primary" onclick="startCheckout('associate')"><i class="fas fa-arrow-right"></i> Get Started</button>
                     </div>
                     <div class="tier-card featured">
                         <div class="tier-name">Professional</div>
+                        <div class="tier-label">AI Client Matching</div>
                         <div class="tier-price">$299<span>/mo</span></div>
                         <ul class="tier-features">
-                            <li>15 verified leads/month</li>
-                            <li>Full contact details</li>
-                            <li>Priority matching</li>
-                            <li>AI practice insights</li>
+                            <li>Everything in Associate</li>
+                            <li>AI-matched business leads</li>
+                            <li>AI-written outreach templates</li>
+                            <li>Weekly competitor insights</li>
                         </ul>
                         <button class="tier-btn featured" onclick="startCheckout('professional')"><i class="fas fa-star"></i> Most Popular</button>
                     </div>
                     <div class="tier-card">
+                        <div class="tier-label">AI Working For You</div>
                         <div class="tier-name">Enterprise</div>
                         <div class="tier-price">$599<span>/mo</span></div>
                         <ul class="tier-features">
-                            <li>Unlimited leads</li>
-                            <li>Full contact details</li>
-                            <li>Dedicated account manager</li>
-                            <li>Custom integrations</li>
+                            <li>Everything in Professional</li>
+                            <li>AI emails businesses for you</li>
+                            <li>Competitive monitoring alerts</li>
+                            <li>Dedicated support</li>
                         </ul>
                         <button class="tier-btn primary" onclick="startCheckout('enterprise')"><i class="fas fa-building"></i> Go Enterprise</button>
                     </div>
                 </div>
-            </div>
-
-            <div class="match-grid" id="matchGrid">
-                <div class="loading"><i class="fas fa-spinner spin"></i> Loading matches...</div>
             </div>
         </div>
     </main>
@@ -495,7 +549,7 @@ async function refreshAll() {
             loadHealth(),
             loadClickedNoClaim(),
             loadValidationAnalysis(),
-            loadMatches()
+            loadUpgradeSection()
         ]);
         apiOk = true;
         dot.classList.remove('error');
@@ -767,62 +821,36 @@ function showToast(msg, type) {
     setTimeout(() => el.classList.remove('show'), 3500);
 }
 
-// ===================== MATCHES & UPGRADE GATE =====================
-async function loadMatches() {
+// ===================== AI UPGRADE GATE =====================
+async function loadUpgradeSection() {
     try {
         const data = await fetchJSON(`${API}/api/dashboard/matches`);
         if (!data.success) return;
 
-        const grid = document.getElementById('matchGrid');
-        const banner = document.getElementById('upgradeBanner');
         const badge = document.getElementById('subBadge');
+        const subscribedView = document.getElementById('subscribedView');
+        const upgradeGate = document.getElementById('upgradeGate');
 
         if (data.subscribed) {
-            banner.style.display = 'none';
-            badge.innerHTML = '<span class="subscribed-badge"><i class="fas fa-check-circle"></i> ' + (data.tier || 'Active').charAt(0).toUpperCase() + (data.tier || 'active').slice(1) + ' Plan</span>';
+            subscribedView.style.display = 'block';
+            upgradeGate.style.display = 'none';
+            const tierName = (data.tier || 'active').charAt(0).toUpperCase() + (data.tier || 'active').slice(1);
+            document.getElementById('subTierName').textContent = tierName + ' Plan';
+            badge.innerHTML = '<span class="subscribed-badge"><i class="fas fa-check-circle"></i> ' + tierName + '</span>';
         } else {
-            banner.style.display = 'block';
+            subscribedView.style.display = 'none';
+            upgradeGate.style.display = 'block';
             badge.innerHTML = '<span class="badge badge-yellow">Free Plan</span>';
-        }
 
-        if (!data.matches || data.matches.length === 0) {
-            grid.innerHTML = '<div class="loading">No matches found in your province yet</div>';
-            return;
+            // Populate city from profile if available
+            const city = data.city || data.profile_city || 'your city';
+            const aiCity = document.getElementById('aiCity');
+            const aiCityRef = document.getElementById('aiCityRef');
+            if (aiCity) aiCity.textContent = city;
+            if (aiCityRef) aiCityRef.textContent = city;
         }
-
-        grid.innerHTML = data.matches.map(m => {
-            if (m.upgrade_to_connect) {
-                return `
-                    <div class="match-card locked">
-                        <div class="match-biz">${esc(m.business_name)}</div>
-                        <div class="match-meta"><i class="fas fa-briefcase"></i> ${esc(m.industry)} &bull; <i class="fas fa-map-marker-alt"></i> ${esc(m.city)}</div>
-                        <div class="match-contact" style="filter:blur(5px);pointer-events:none;">
-                            <div><i class="fas fa-user"></i> John Smith</div>
-                            <div><i class="fas fa-envelope"></i> contact@company.ca</div>
-                            <div><i class="fas fa-phone"></i> (416) 555-1234</div>
-                        </div>
-                        <div class="lock-overlay">
-                            <i class="fas fa-lock"></i>
-                            <span>Upgrade to Connect</span>
-                        </div>
-                    </div>`;
-            } else {
-                return `
-                    <div class="match-card">
-                        <div class="match-biz">${esc(m.business_name)}</div>
-                        <div class="match-meta"><i class="fas fa-briefcase"></i> ${esc(m.industry)} &bull; <i class="fas fa-map-marker-alt"></i> ${esc(m.city)}</div>
-                        <div class="match-contact">
-                            ${m.contact_name ? `<div><i class="fas fa-user"></i> ${esc(m.contact_name)}</div>` : ''}
-                            ${m.contact_email ? `<div><i class="fas fa-envelope"></i> <a href="mailto:${esc(m.contact_email)}">${esc(m.contact_email)}</a></div>` : ''}
-                            ${m.phone ? `<div><i class="fas fa-phone"></i> ${esc(m.phone)}</div>` : ''}
-                            ${m.website ? `<div><i class="fas fa-globe"></i> <a href="${esc(m.website)}" target="_blank">${esc(m.website)}</a></div>` : ''}
-                        </div>
-                    </div>`;
-            }
-        }).join('');
     } catch (e) {
-        console.error('Matches error:', e);
-        document.getElementById('matchGrid').innerHTML = '<div class="loading" style="color:#ef4444;">Failed to load matches</div>';
+        console.error('Upgrade section error:', e);
     }
 }
 
