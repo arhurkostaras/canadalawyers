@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C388HDDCZL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C388HDDCZL');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="View lawyer profile on CanadaLawyers.app — AI-powered professional bio, credentials, and practice details.">
+    <meta name="keywords" content="lawyer profile, Canadian lawyer, law society verified, lawyer directory Canada">
+
+    <title>Lawyer Profile | CanadaLawyers.app</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/icon-512.png">
+    <link rel="apple-touch-icon" href="/icon-512.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://canadalawyers.app/profile">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://canadalawyers.app/profile">
+    <meta property="og:title" content="Lawyer Profile | CanadaLawyers.app">
+    <meta property="og:description" content="View lawyer profile on CanadaLawyers.app — AI-powered professional bio, credentials, and practice details.">
+    <meta property="og:image" content="https://canadalawyers.app/icon-512.png">
+    <meta property="og:site_name" content="CanadaLawyers">
+    <meta property="og:locale" content="en_CA">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Lawyer Profile | CanadaLawyers.app">
+    <meta name="twitter:description" content="View lawyer profile on CanadaLawyers.app — AI-powered professional bio, credentials, and practice details.">
+    <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://canadalawyers.app/" },
+            { "@type": "ListItem", "position": 2, "name": "Lawyer Profile", "item": "https://canadalawyers.app/profile" }
+        ]
+    }
+    </script>
+
+    <!-- Dynamic Person Schema injected by JS -->
+    <script id="person-schema" type="application/ld+json">{}</script>
+
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-navy: #1e3a8a;
+            --accent-green: #059669;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
+        .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: white; }
+        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+
+        /* Hero */
+        .profile-hero {
+            padding: 120px 24px 60px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 50%, #1e3a5f 100%);
+            text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .profile-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 60%); pointer-events: none; }
+        .profile-hero-content { position: relative; max-width: 800px; margin: 0 auto; }
+
+        .profile-avatar {
+            width: 100px; height: 100px; border-radius: 50%;
+            background: rgba(255,255,255,0.15); border: 3px solid rgba(255,255,255,0.3);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 24px; font-size: 2.5rem; color: rgba(255,255,255,0.8);
+        }
+        .profile-hero h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
+        .profile-hero .subtitle { font-size: 1.15rem; opacity: 0.85; margin-bottom: 20px; }
+        .profile-hero .location { display: inline-flex; align-items: center; gap: 8px; font-size: 1rem; opacity: 0.8; }
+        .profile-hero .location i { font-size: 0.9rem; }
+
+        .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 18px; border-radius: 24px; font-size: 0.85rem; font-weight: 600;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+        }
+        .hero-badge i { font-size: 0.8rem; }
+        .hero-badge-verified { background: rgba(5,150,105,0.2); border-color: rgba(5,150,105,0.4); }
+
+        /* Main Content */
+        .profile-content { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+
+        /* Loading */
+        .loading-state { text-align: center; padding: 120px 24px; }
+        .spinner { width: 48px; height: 48px; border: 4px solid var(--border-color); border-top-color: var(--primary-blue); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-state p { color: var(--text-secondary); font-size: 1rem; }
+
+        /* Error */
+        .error-state { text-align: center; padding: 120px 24px; display: none; }
+        .error-icon { width: 72px; height: 72px; background: rgba(239,68,68,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; color: #ef4444; }
+        .error-state h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
+        .error-state p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; max-width: 480px; margin: 0 auto; }
+        .error-state a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        .error-state a:hover { text-decoration: underline; }
+
+        /* Bio Section */
+        .bio-section {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 36px 32px; margin-bottom: 24px;
+        }
+        .bio-section h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
+        .bio-label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 20px; padding: 4px 12px; background: rgba(37,99,235,0.08); border-radius: 20px; border: 1px solid rgba(37,99,235,0.15); }
+        .bio-label i { color: var(--primary-blue); font-size: 0.75rem; }
+        .bio-text { font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.88); }
+        .bio-text p { margin-bottom: 16px; }
+        .bio-text p:last-child { margin-bottom: 0; }
+        .bio-generating { color: var(--text-secondary); font-style: italic; }
+
+        /* Score Section */
+        .score-section {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 36px 32px; margin-bottom: 24px;
+        }
+        .score-section h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 24px; }
+
+        .score-ring-row { display: flex; align-items: center; gap: 32px; margin-bottom: 28px; }
+        .score-ring-container { flex-shrink: 0; position: relative; width: 120px; height: 120px; }
+        .score-ring-container svg { width: 120px; height: 120px; transform: rotate(-90deg); }
+        .score-ring-bg { fill: none; stroke: var(--border-color); stroke-width: 10; }
+        .score-ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.5s ease, stroke 0.5s ease; }
+        .score-number { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; font-weight: 900; }
+        .score-grade { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+        .score-details h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+        .score-details p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+
+        .recommendations { list-style: none; }
+        .recommendations li {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 16px; border-radius: 12px;
+            background: rgba(255,255,255,0.03); margin-bottom: 8px;
+            font-size: 0.92rem; transition: background 0.2s;
+        }
+        .recommendations li:hover { background: rgba(255,255,255,0.06); }
+        .rec-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+        .rec-high { background: rgba(239,68,68,0.12); color: #ef4444; }
+        .rec-medium { background: rgba(245,158,11,0.12); color: #f59e0b; }
+        .rec-low { background: rgba(37,99,235,0.12); color: #60a5fa; }
+        .rec-text { flex: 1; }
+        .rec-points { font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); white-space: nowrap; }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(30,58,138,0.12));
+            border: 1px solid rgba(37,99,235,0.25);
+            border-radius: 20px; padding: 48px 32px; text-align: center;
+        }
+        .cta-section h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 12px; }
+        .cta-section p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; max-width: 540px; margin: 0 auto 28px; }
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--accent-green); color: white; border: none;
+            padding: 16px 40px; border-radius: 12px;
+            font-size: 1.1rem; font-weight: 700; font-family: 'Roboto', sans-serif;
+            cursor: pointer; text-decoration: none; transition: all 0.3s;
+        }
+        .cta-btn:hover { background: #047857; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(5,150,105,0.4); }
+        .cta-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 24px; }
+        .cta-benefit { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-secondary); }
+        .cta-benefit i { color: var(--accent-green); font-size: 0.85rem; }
+
+        /* Footer */
+        footer { background: rgba(0, 0, 0, 0.6); padding: 60px 20px 30px; margin-top: 80px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-section h3 { font-size: 18px; margin-bottom: 20px; font-weight: 700; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin-bottom: 12px; }
+        .footer-section a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s ease; font-size: 15px; }
+        .footer-section a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .nav-links {
+                display: none; position: absolute; top: 64px; left: 0; right: 0;
+                flex-direction: column; align-items: center; gap: 0;
+                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { padding: 14px 24px; width: 100%; text-align: center; font-size: 0.95rem; }
+            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+            .nav-cta { margin: 8px 24px; width: auto; padding: 12px 24px; font-size: 0.9rem !important; text-align: center; border-radius: 8px; }
+            .profile-hero { padding: 100px 20px 48px; }
+            .profile-hero h1 { font-size: 2rem; }
+            .profile-avatar { width: 80px; height: 80px; font-size: 2rem; }
+            .score-ring-row { flex-direction: column; text-align: center; }
+            .profile-content { padding: 32px 16px 60px; }
+            .bio-section, .score-section, .cta-section { padding: 28px 20px; }
+            .hero-badges { gap: 8px; }
+            .hero-badge { font-size: 0.78rem; padding: 6px 14px; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo"><i class="fas fa-maple-leaf maple"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            <div class="nav-links">
+                <a href="find-lawyer">Find Lawyer</a>
+                <a href="why-we-win">Why We Win</a>
+                <a href="pricing">Pricing</a>
+                <a href="contact">Contact</a>
+                <a href="lawyer-login">Login</a>
+                <a href="join-as-lawyer" class="nav-cta">Apply to Join</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading State -->
+    <div class="loading-state" id="loadingState">
+        <div class="spinner"></div>
+        <p>Loading profile...</p>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-state" id="errorState">
+        <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <h3>Profile Not Found</h3>
+        <p id="errorMsg">We could not find this lawyer profile. It may have been removed or the link is incorrect.</p>
+        <p style="margin-top: 16px;"><a href="find-lawyer">Search our lawyer directory</a></p>
+    </div>
+
+    <!-- Profile Content (hidden until loaded) -->
+    <div id="profileContainer" style="display: none;">
+        <!-- Hero -->
+        <section class="profile-hero">
+            <div class="profile-hero-content">
+                <div class="profile-avatar"><i class="fas fa-user-tie"></i></div>
+                <h1 id="profileName">--</h1>
+                <p class="subtitle" id="profileSubtitle">--</p>
+                <div class="location" id="profileLocation"><i class="fas fa-map-marker-alt"></i> <span>--</span></div>
+                <div class="hero-badges" id="profileBadges"></div>
+            </div>
+        </section>
+
+        <div class="profile-content">
+            <!-- AI Bio -->
+            <div class="bio-section">
+                <h2>About</h2>
+                <div class="bio-label"><i class="fas fa-wand-magic-sparkles"></i> Generated by AI from law society data</div>
+                <div class="bio-text" id="profileBio">
+                    <p class="bio-generating">Generating professional bio...</p>
+                </div>
+            </div>
+
+            <!-- Profile Score -->
+            <div class="score-section">
+                <h2>Profile Score</h2>
+                <div class="score-ring-row">
+                    <div class="score-ring-container">
+                        <svg viewBox="0 0 120 120">
+                            <circle class="score-ring-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="score-ring-fill" id="scoreRing" cx="60" cy="60" r="50" stroke-dasharray="314.16" stroke-dashoffset="314.16"></circle>
+                        </svg>
+                        <div class="score-number" id="scoreNumber">--</div>
+                    </div>
+                    <div class="score-details">
+                        <h3 id="scoreGrade">--</h3>
+                        <p id="scoreMessage">Profile completeness measures how much information is available to potential clients searching for a lawyer.</p>
+                    </div>
+                </div>
+                <ul class="recommendations" id="recommendations"></ul>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Take Control of Your Profile</h2>
+                <p>Edit your bio, add practice areas, and manage what clients see. Claiming is free and takes 30 seconds.</p>
+                <a href="claim-profile" class="cta-btn" id="claimBtn"><i class="fas fa-shield-halved"></i> Claim This Profile</a>
+                <div class="cta-benefits">
+                    <span class="cta-benefit"><i class="fas fa-check"></i> Edit your bio</span>
+                    <span class="cta-benefit"><i class="fas fa-check"></i> Add practice areas</span>
+                    <span class="cta-benefit"><i class="fas fa-check"></i> Receive client leads</span>
+                    <span class="cta-benefit"><i class="fas fa-check"></i> Priority ranking</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>For Lawyers</h3>
+                <ul>
+                    <li><a href="lawyer-onboarding">Join Network</a></li>
+                    <li><a href="lawyer-login">Dashboard Login</a></li>
+                    <li><a href="lawyer-revenue-calculator">Revenue Calculator</a></li>
+                    <li><a href="pricing">Pricing & Algorithm</a></li>
+                    <li><a href="lawyer-matches">View Matches</a></li>
+                    <li><a href="lawyer-dashboard">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>For Businesses</h3>
+                <ul>
+                    <li><a href="find-lawyer">Find a Lawyer</a></li>
+                    <li><a href="join-as-lawyer">Register Business</a></li>
+                    <li><a href="why-we-win">Why We Win</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal & Resources</h3>
+                <ul>
+                    <li><a href="terms-of-service">Terms of Service</a></li>
+                    <li><a href="privacy-policy">Privacy Policy</a></li>
+                    <li><a href="trust-center">Trust Center</a></li>
+                    <li><a href="data-processing-agreement">Data Processing Agreement</a></li>
+                    <li><a href="market-trends-report">Market Trends Report</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></li>
+                    <li><a href="tel:+16479567290">1.647.956.7290</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 CanadaLawyers.app | All Rights Reserved</p>
+            <p style="margin-top: 10px; font-size: 12px;">Technology platform only. Not a professional services firm. Lawyers maintain full professional independence.</p>
+        </div>
+    </footer>
+
+    <script>
+        var API_BASE = 'https://canadalawyers-backend-production.up.railway.app';
+
+        // Province name map
+        var PROVINCES = {
+            ON: 'Ontario', QC: 'Quebec', BC: 'British Columbia', AB: 'Alberta',
+            SK: 'Saskatchewan', MB: 'Manitoba', NS: 'Nova Scotia', NB: 'New Brunswick',
+            PE: 'Prince Edward Island', NL: 'Newfoundland and Labrador',
+            NT: 'Northwest Territories', YT: 'Yukon', NU: 'Nunavut'
+        };
+
+        function getProfileId() {
+            var params = new URLSearchParams(window.location.search);
+            return params.get('id');
+        }
+
+        function showError(msg) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+            if (msg) document.getElementById('errorMsg').textContent = msg;
+        }
+
+        function getScoreColor(score) {
+            if (score >= 80) return '#059669';
+            if (score >= 60) return '#f59e0b';
+            if (score >= 40) return '#f97316';
+            return '#ef4444';
+        }
+
+        function animateScore(score) {
+            var ring = document.getElementById('scoreRing');
+            var circumference = 314.16;
+            var offset = circumference - (score / 100) * circumference;
+            var color = getScoreColor(score);
+            ring.style.stroke = color;
+            // Trigger animation after a tick
+            setTimeout(function() {
+                ring.style.strokeDashoffset = offset;
+            }, 100);
+            document.getElementById('scoreNumber').textContent = score;
+            document.getElementById('scoreNumber').style.color = color;
+        }
+
+        async function loadProfile() {
+            var id = getProfileId();
+            if (!id) { showError('No profile ID provided. Use ?id=12345 in the URL.'); return; }
+
+            try {
+                var resp = await fetch(API_BASE + '/api/profiles/' + encodeURIComponent(id));
+                if (resp.status === 404) { showError(); return; }
+                if (!resp.ok) { showError('Something went wrong loading this profile. Please try again later.'); return; }
+
+                var data = await resp.json();
+                var p = data.profile;
+                var seo = data.seo_score;
+                var ld = data.structured_data;
+
+                // Update page title and meta
+                document.title = p.name + ' — Lawyer Profile | CanadaLawyers.app';
+                var desc = p.name + (p.firm_name ? ' at ' + p.firm_name : '') + (p.city ? ', ' + p.city : '') + '. View professional bio, credentials, and profile score on CanadaLawyers.app.';
+                document.querySelector('meta[name="description"]').setAttribute('content', desc);
+                document.querySelector('meta[property="og:title"]').setAttribute('content', p.name + ' — Lawyer Profile | CanadaLawyers.app');
+                document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
+
+                // Inject Person structured data
+                if (ld) {
+                    document.getElementById('person-schema').textContent = JSON.stringify(ld);
+                }
+
+                // Hero
+                document.getElementById('profileName').textContent = p.name;
+
+                var provinceFull = PROVINCES[p.province] || p.province || '';
+                var subtitle = p.firm_name || ('Listed in ' + (provinceFull || 'Canadian') + ' Law Society directory');
+                document.getElementById('profileSubtitle').textContent = subtitle;
+
+                var locationParts = [p.city, provinceFull].filter(Boolean);
+                if (locationParts.length > 0) {
+                    document.getElementById('profileLocation').querySelector('span').textContent = locationParts.join(', ');
+                } else {
+                    document.getElementById('profileLocation').style.display = 'none';
+                }
+
+                // Badges
+                var badgesEl = document.getElementById('profileBadges');
+                badgesEl.innerHTML = '';
+                if (p.designation) {
+                    var desigs = p.designation.split(/[,;\/]+/).map(function(d) { return d.trim(); }).filter(Boolean);
+                    desigs.forEach(function(d) {
+                        var badge = document.createElement('span');
+                        badge.className = 'hero-badge';
+                        badge.innerHTML = '<i class="fas fa-award"></i> ' + d;
+                        badgesEl.appendChild(badge);
+                    });
+                }
+                var verifiedBadge = document.createElement('span');
+                verifiedBadge.className = 'hero-badge hero-badge-verified';
+                verifiedBadge.innerHTML = '<i class="fas fa-shield-halved"></i> Law Society Verified';
+                badgesEl.appendChild(verifiedBadge);
+                if (p.claimed) {
+                    var claimedBadge = document.createElement('span');
+                    claimedBadge.className = 'hero-badge hero-badge-verified';
+                    claimedBadge.innerHTML = '<i class="fas fa-circle-check"></i> Claimed Profile';
+                    badgesEl.appendChild(claimedBadge);
+                }
+
+                // Bio
+                var bioEl = document.getElementById('profileBio');
+                if (p.bio && !p.bio.includes('being generated')) {
+                    var paragraphs = p.bio.split(/\n\n|\n/).filter(Boolean);
+                    bioEl.innerHTML = paragraphs.map(function(para) { return '<p>' + para + '</p>'; }).join('');
+                } else {
+                    bioEl.innerHTML = '<p class="bio-generating">AI bio is being generated for this profile. Please check back in a few minutes.</p>';
+                }
+
+                // SEO Score
+                if (seo) {
+                    animateScore(seo.score);
+                    document.getElementById('scoreGrade').textContent = 'Grade: ' + seo.grade;
+
+                    // Recommendations
+                    var recList = document.getElementById('recommendations');
+                    recList.innerHTML = '';
+                    if (seo.recommendations && seo.recommendations.length > 0) {
+                        seo.recommendations.forEach(function(rec) {
+                            var iconClass = rec.impact === 'high' ? 'rec-high' : rec.impact === 'medium' ? 'rec-medium' : 'rec-low';
+                            var li = document.createElement('li');
+                            li.innerHTML = '<div class="rec-icon ' + iconClass + '"><i class="fas fa-arrow-up"></i></div>' +
+                                '<span class="rec-text">' + rec.action + '</span>' +
+                                '<span class="rec-points">+' + rec.points + ' pts</span>';
+                            recList.appendChild(li);
+                        });
+                    } else {
+                        recList.innerHTML = '<li style="justify-content: center; color: var(--accent-green);"><i class="fas fa-check-circle" style="margin-right: 8px;"></i> Profile is fully optimized</li>';
+                    }
+                }
+
+                // CTA link with profile id
+                document.getElementById('claimBtn').href = 'claim-profile?ref=' + p.id;
+
+                // Show profile, hide loading
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('profileContainer').style.display = 'block';
+
+            } catch (err) {
+                console.error('Profile load error:', err);
+                showError('Something went wrong loading this profile. Please try again later.');
+            }
+        }
+
+        loadProfile();
+    </script>
+</body>
+</html>
