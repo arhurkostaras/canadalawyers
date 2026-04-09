@@ -876,6 +876,12 @@
                     })
                 });
 
+                if (!res.ok) {
+                    let errMsg = 'Server returned HTTP ' + res.status;
+                    try { const body = await res.json(); errMsg = body.error || errMsg; } catch (e) {}
+                    throw new Error(errMsg);
+                }
+
                 const data = await res.json();
                 const profileId = data.lawyer_id || '';
 
@@ -886,9 +892,7 @@
                 window.location.href = `pricing?from=registration&email=${encodeURIComponent(email)}&profileId=${encodeURIComponent(profileId)}`;
             } catch (err) {
                 console.error('Registration error:', err);
-                // Fallback: still redirect to pricing with email
-                localStorage.setItem('ca_checkout_email', email);
-                window.location.href = `pricing?from=registration&email=${encodeURIComponent(email)}`;
+                alert('Sorry, your application could not be submitted: ' + (err.message || 'unknown error') + '. Please try again or email support@canadalawyers.app directly.');
             }
         }
 

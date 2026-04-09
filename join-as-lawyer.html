@@ -1848,22 +1848,24 @@
                 referrer: document.referrer
             };
 
-            // Submit to backend API (correct endpoint: /api/lawyer-registration)
+            // Submit to backend API
             try {
                 const response = await fetch('https://canadalawyers-backend-production.up.railway.app/api/lawyer-registration', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
                 });
+                if (!response.ok) {
+                    let errMsg = 'Server returned HTTP ' + response.status;
+                    try { const body = await response.json(); errMsg = body.error || errMsg; } catch (e) {}
+                    throw new Error(errMsg);
+                }
                 console.log('Application submitted to backend:', response.status);
             } catch (err) {
-                console.log('Backend submission error (application still saved locally):', err.message);
+                console.error('Backend submission error:', err.message);
+                alert('Sorry, your application could not be submitted: ' + (err.message || 'unknown error') + '. Please try again or email support@canadalawyers.app directly.');
+                return;
             }
-
-            // Also store locally as backup
-            let existingApplications = JSON.parse(localStorage.getItem('lawyerApplications') || '[]');
-            existingApplications.push(formData);
-            localStorage.setItem('lawyerApplications', JSON.stringify(existingApplications));
 
             // Show success message with next steps
             showSuccessMessage();
