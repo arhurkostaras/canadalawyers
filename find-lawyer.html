@@ -1214,26 +1214,26 @@ gtag('event', 'questionnaire_submitted', {
     // Generate unique request ID
     const requestId = 'req_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     
-    // Transform to match your exact database structure
+    // Transform to camelCase shape expected by canadalawyers-backend /api/friction/sme-match-request
     const smeData = {
-        request_id: requestId,
-        pain_point: answers['question_1'] || '',
-        business_type: answers['question_2'] || '',
-        business_size: answers['question_3'] || '',
-        urgency_level: answers['question_5'] || '',
-        services_needed: Array.isArray(answers['question_4']) ? JSON.stringify(answers['question_4']) : answers['question_4'] || '',
-        time_being_lost: answers['question_6'] || '',
-        budget_range: answers['question_7'] || '',
-        additional_context: 'Friction Elimination Questionnaire Submission',
-        contact_info: JSON.stringify({
+        requestId: requestId,
+        painPoint: answers['question_1'] || '',
+        businessType: answers['question_2'] || '',
+        businessSize: answers['question_3'] || '',
+        urgencyLevel: answers['question_5'] || '',
+        servicesNeeded: Array.isArray(answers['question_4']) ? answers['question_4'] : (answers['question_4'] ? [answers['question_4']] : []),
+        timeBeingLost: answers['question_6'] || '',
+        budgetRange: answers['question_7'] || '',
+        additionalContext: 'Friction Elimination Questionnaire Submission',
+        contactInfo: {
             name: answers['full-name'] || '',
             email: answers['email'] || '',
             phone: answers['phone'] || '',
             business_name: answers['business-name'] || '',
             location: answers['location'] || ''
-        })
+        }
     };
-    
+
     // Show loading state
     const container = document.querySelector('.container');
     container.innerHTML = `
@@ -1243,10 +1243,10 @@ gtag('event', 'questionnaire_submitted', {
             <p style="font-size: 1.2rem; color: #64748b;">Our AI is analyzing your needs and finding your ideal matches</p>
         </div>
     `;
-    
+
     try {
-        // Send to your Railway backend
-        const response = await fetch('https://lawyer-intelligence-backend-production.up.railway.app/api/sme-friction-request', {
+        // POST to canadalawyers-backend (auto-deploys, fires admin notification via sendFrictionMatchNotification)
+        const response = await fetch('https://canadalawyers-backend-production.up.railway.app/api/friction/sme-match-request', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -1312,24 +1312,25 @@ function showErrorMessage() {
 }
 
         function showSuccessMessage(response) {
-    const sessionId = response.session_id;
-    const resultsUrl = response.results_url || `find-lawyer?session=${sessionId}`;
-    
+    // canadalawyers-backend returns requestId + redirectUrl. Older backend returned session_id + results_url. Support both.
+    const sessionId = response.requestId || response.session_id || '';
+    const resultsUrl = response.redirectUrl || response.results_url || '/';
+
     const container = document.querySelector('.container');
     container.innerHTML = `
         <div style="text-align: center; padding: 60px 20px;">
             <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
             <h2 style="color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 15px; font-weight: 800;">AI Matching Complete!</h2>
             <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 30px;">
-                Your perfect lawyer matches are ready for review.
+                Your perfect lawyer matches are being prepared. Our team will follow up within 24 hours.
             </p>
-            
+
             <a href="${resultsUrl}" style="display: inline-block; background: #2563eb; color: white; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.2rem; margin-top: 20px;">
-                View My Lawyer Matches →
+                View My Lawyer Matches &rarr;
             </a>
-            
+
             <p style="margin-top: 20px; font-size: 0.9rem; color: #64748b;">
-                Session ID: ${sessionId}
+                Reference: ${sessionId}
             </p>
         </div>
     `;
