@@ -1599,7 +1599,7 @@
                     </button>
 
                     <p class="form-note">
-                        Your information is secure and confidential. We'll review your application and follow up within 24 hours.
+                        Accepted instantly. You'll be redirected to select your membership tier. Your bar standing will be independently verified and your profile goes live after payment.
                     </p>
                 </form>
             </div>
@@ -1860,14 +1860,18 @@
                     try { const body = await response.json(); errMsg = body.error || errMsg; } catch (e) {}
                     throw new Error(errMsg);
                 }
-                console.log('Application submitted to backend:', response.status);
+                const responseData = await response.json();
+                if (responseData.checkoutUrl) {
+                    window.location.href = responseData.checkoutUrl;
+                    return;
+                }
             } catch (err) {
                 console.error('Backend submission error:', err.message);
                 alert('Sorry, your application could not be submitted: ' + (err.message || 'unknown error') + '. Please try again or email support@canadalawyers.app directly.');
                 return;
             }
 
-            // Show success message with next steps
+            // Fallback: show success message if no checkout URL
             showSuccessMessage();
         }
         
