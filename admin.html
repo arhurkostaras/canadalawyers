@@ -884,6 +884,31 @@ function checkUpgradeResult() {
     }
 }
 
+// ===================== MAGIC LINK HANDLING =====================
+(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlToken = urlParams.get('token');
+    if (urlToken) {
+        try {
+            const payload = JSON.parse(atob(urlToken.split('.')[1]));
+            if (payload.userType === 'Lawyer') {
+                localStorage.setItem('lawyer_token', urlToken);
+                localStorage.setItem('lawyer_user', JSON.stringify({
+                    userId: payload.userId,
+                    email: payload.email,
+                    userType: payload.userType,
+                    firstName: payload.firstName || payload.email.split('@')[0]
+                }));
+                window.history.replaceState({}, '', window.location.pathname);
+                window.location.href = '/lawyer-dashboard';
+                return;
+            }
+        } catch (e) {
+            console.error('Magic link token error:', e);
+        }
+    }
+})();
+
 // ===================== INIT =====================
 checkAuth();
 checkUpgradeResult();
