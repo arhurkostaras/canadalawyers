@@ -454,6 +454,12 @@
 
                 // Hero
                 document.getElementById('profileName').textContent = p.name;
+                if (p.founding_member) {
+                    var badge = document.createElement('span');
+                    badge.style.cssText = 'display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;margin-left:8px;text-transform:uppercase;letter-spacing:0.5px;';
+                    badge.textContent = 'Founding Member';
+                    document.getElementById('profileName').appendChild(badge);
+                }
 
                 var provinceFull = PROVINCES[p.province] || p.province || '';
                 var subtitle = p.firm_name || ('Listed in ' + (provinceFull || 'Canadian') + ' Law Society directory');
