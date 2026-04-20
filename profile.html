@@ -260,6 +260,24 @@
         </div>
     </nav>
 
+    <!-- SEO: pre-render meaningful content for Googlebot before JS loads profile data -->
+    <div id="seoPrerender" style="max-width:800px;margin:40px auto;padding:0 20px;">
+        <h1 id="seoTitle" style="color:#fff;font-size:24px;">Lawyer Profile — CanadaLawyers.app</h1>
+        <p style="color:#ccc;font-size:15px;line-height:1.7;">This is a verified lawyer profile on CanadaLawyers.app, Canada's AI-powered lawyer-client matching platform. This profile includes the lawyer's credentials, practice areas, firm information, and an AI-generated professional bio based on their law society registration.</p>
+        <p style="color:#999;font-size:14px;">CanadaLawyers connects businesses and individuals with qualified lawyers across Canada. Our directory includes over 127,000 lawyers across 8 provinces, verified against law society records.</p>
+        <noscript><p style="color:#ccc;">Enable JavaScript to view the full interactive profile with AI bio, practice details, and contact information.</p></noscript>
+    </div>
+    <script>
+        // Set dynamic title from URL before API fetch
+        (function() {
+            var id = new URLSearchParams(window.location.search).get('id');
+            if (id) {
+                document.title = 'Lawyer Profile #' + id + ' | CanadaLawyers.app';
+                document.querySelector('link[rel="canonical"]').href = 'https://canadalawyers.app/profile?id=' + id;
+            }
+        })();
+    </script>
+
     <!-- Loading State -->
     <div class="loading-state" id="loadingState">
         <div class="spinner"></div>
@@ -529,8 +547,9 @@
                 // CTA link with profile id
                 document.getElementById('claimBtn').href = 'claim-profile?ref=' + p.id;
 
-                // Show profile, hide loading
+                // Show profile, hide loading + SEO prerender
                 document.getElementById('loadingState').style.display = 'none';
+                var seo = document.getElementById('seoPrerender'); if (seo) seo.style.display = 'none';
                 document.getElementById('profileContainer').style.display = 'block';
 
                 // Render related profiles for internal SEO linking
