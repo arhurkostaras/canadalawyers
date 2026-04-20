@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="About CanadaLawyers.app — the founder, mission, and story behind Canada's AI-powered lawyer marketplace.">
+
+    <title>About CanadaLawyers.app | Founder & Mission</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://canadalawyers.app/about">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://canadalawyers.app/about">
+    <meta property="og:title" content="About CanadaLawyers.app | Founder & Mission">
+    <meta property="og:description" content="Meet the founder behind CanadaLawyers.app and learn why we built Canada's AI-powered lawyer marketplace.">
+    <meta property="og:image" content="https://canadalawyers.app/icon-512.png">
+    <meta property="og:site_name" content="CanadaLawyers">
+    <meta property="og:locale" content="en_CA">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C388HDDCZL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C388HDDCZL');
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://canadalawyers.app/" },
+            { "@type": "ListItem", "position": 2, "name": "About", "item": "https://canadalawyers.app/about" }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-navy: #1e3a8a;
+            --accent-green: #059669;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navigation */
+        header {
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover { opacity: 0.8; }
+        .nav-links a.cta-button { color: var(--primary-blue); }
+
+        a.cta-button {
+            background: white;
+            color: var(--primary-blue);
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        a.cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+        }
+
+        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links.active { display: flex; }
+
+        /* Page content offset */
+        .page-content { padding-top: 80px; }
+
+        /* Hero */
+        .about-hero {
+            padding: 100px 24px 80px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 50%, #1e3a5f 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        /* Sections */
+        .section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+        .section-dark { background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .section-dark .section { padding: 80px 24px; }
+
+        /* Founder */
+        .founder-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 48px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            min-width: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            border: 3px solid rgba(255,255,255,0.15);
+        }
+
+        .founder-info h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 6px;
+        }
+
+        .founder-title {
+            font-size: 1rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .founder-bio {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+
+        /* Section headings */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-heading .overline {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-heading p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Mission cards */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .mission-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .mission-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-4px);
+        }
+
+        .mission-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .mission-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .mission-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 32px 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+        }
+
+        .stat-number {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Contact */
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 48px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 14px 28px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 360px;
+            justify-content: center;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary-blue);
+            background: rgba(37,99,235,0.1);
+        }
+
+        .contact-link i { color: var(--primary-blue); font-size: 1.1rem; }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 60px 20px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 { font-size: 18px; margin-bottom: 20px; font-weight: 700; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin-bottom: 12px; }
+        .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s ease; font-size: 15px; }
+        .footer-section a:hover { color: white; }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0; right: 0;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                background: rgba(0,0,0,0.95);
+                backdrop-filter: blur(20px);
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
+            .nav-links a.cta-button { color: var(--primary-blue); }
+            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+            .nav-links a.cta-button { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
+
+            .about-hero h1 { font-size: 2rem; }
+            .founder-card { flex-direction: column; align-items: center; text-align: center; padding: 32px 24px; gap: 24px; }
+            .mission-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/" class="logo">🍁 CanadaLawyers</a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="find-lawyer">Find Lawyer</a></li>
+                <li><a href="why-we-win">Why We Win</a></li>
+                <li><a href="pricing">Pricing</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="lawyer-login">Login</a></li>
+                <li><a href="join-as-lawyer" class="cta-button">Apply to Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-content">
+
+        <!-- Hero -->
+        <section class="about-hero">
+            <h1>About CanadaLawyers</h1>
+            <p>Connecting clients with qualified lawyers across Canada through AI-powered matching and verified professional data.</p>
+        </section>
+
+        <!-- Founder Section -->
+        <div class="section">
+            <div class="section-heading">
+                <div class="overline">Our Founder</div>
+                <h2>The Person Behind the Platform</h2>
+            </div>
+            <div class="founder-card">
+                <div class="founder-avatar">AK</div>
+                <div class="founder-info">
+                    <h2>Arthur Kostaras</h2>
+                    <div class="founder-title">Founder &amp; CEO</div>
+                    <p class="founder-bio">Arthur Kostaras is the founder of CanadaLawyers. With a background in financial services and technology, Arthur built CanadaLawyers to solve a simple problem: finding the right lawyer shouldn't take weeks of research and networking. The platform uses AI matching and verified professional data to connect clients with qualified lawyers across Canada.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="section-dark">
+            <div class="section">
+                <div class="section-heading">
+                    <div class="overline">Why We Exist</div>
+                    <h2>The Problem We Solve</h2>
+                    <p>Finding qualified legal help in Canada is harder than it should be. We built CanadaLawyers to fix that.</p>
+                </div>
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="mission-icon"><i class="fas fa-search" style="color: var(--primary-blue);"></i></div>
+                        <h3>Discovery Is Broken</h3>
+                        <p>Most people find a lawyer through word of mouth or a Google search that returns pages of ads. Neither approach surfaces who is actually the best fit for your situation.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon"><i class="fas fa-robot" style="color: var(--accent-green);"></i></div>
+                        <h3>AI Does the Matching</h3>
+                        <p>Our algorithm analyses 6 key factors — practice area, province, firm size, case type, language, and availability — to surface lawyers who are genuinely qualified for your needs.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon"><i class="fas fa-database" style="color: var(--primary-blue);"></i></div>
+                        <h3>Verified Data</h3>
+                        <p>Every lawyer in our directory is cross-referenced against provincial law society records. No scraped LinkedIn profiles, no stale data — real, active lawyers only.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon"><i class="fas fa-shield-alt" style="color: var(--accent-green);"></i></div>
+                        <h3>Professional Independence</h3>
+                        <p>CanadaLawyers is a technology platform, not a referral mill. Every lawyer maintains full professional independence and all fee arrangements are between the lawyer and the client.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Numbers Section -->
+        <div class="section">
+            <div class="section-heading">
+                <div class="overline">By The Numbers</div>
+                <h2>Platform at a Glance</h2>
+            </div>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-number">127K+</div>
+                    <div class="stat-label">Lawyers across 8 provinces</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Provinces covered with verified data</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">AI</div>
+                    <div class="stat-label">Professional bios generated for every listing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section-dark">
+            <div class="section">
+                <div class="section-heading">
+                    <div class="overline">Get In Touch</div>
+                    <h2>Reach the Founder Directly</h2>
+                    <p>Questions, feedback, or partnership inquiries — Arthur reads every message.</p>
+                </div>
+                <div class="contact-card">
+                    <h2>Contact Arthur</h2>
+                    <p>Reach out directly with questions about the platform, partnership opportunities, or anything else.</p>
+                    <div class="contact-links">
+                        <a href="mailto:arthur@negotiateandwin.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            arthur@negotiateandwin.com
+                        </a>
+                        <a href="tel:+16479567290" class="contact-link">
+                            <i class="fas fa-phone"></i>
+                            647-956-7290
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>For Lawyers</h3>
+                <ul>
+                    <li><a href="lawyer-onboarding">Join Network</a></li>
+                    <li><a href="lawyer-login">Dashboard Login</a></li>
+                    <li><a href="lawyer-revenue-calculator">Revenue Calculator</a></li>
+                    <li><a href="pricing">Pricing &amp; Algorithm</a></li>
+                    <li><a href="lawyer-matches">View Matches</a></li>
+                    <li><a href="lawyer-dashboard">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>For Businesses</h3>
+                <ul>
+                    <li><a href="find-lawyer">Find a Lawyer</a></li>
+                    <li><a href="join-as-lawyer">Register Business</a></li>
+                    <li><a href="why-we-win">Why We Win</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal &amp; Resources</h3>
+                <ul>
+                    <li><a href="terms-of-service">Terms of Service</a></li>
+                    <li><a href="privacy-policy">Privacy Policy</a></li>
+                    <li><a href="trust-center">Trust Center</a></li>
+                    <li><a href="data-processing-agreement">Data Processing Agreement</a></li>
+                    <li><a href="market-trends-report">Market Trends Report</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></li>
+                    <li><a href="tel:+16479567290">1.647.956.7290</a></li>
+                    <li><a href="about">About Us</a></li>
+                    <li><a href="contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CanadaLawyers.app | All Rights Reserved</p>
+            <p style="margin-top: 10px; font-size: 12px;">Technology platform only. Not a professional services firm. Lawyers maintain full professional independence.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
