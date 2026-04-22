@@ -1196,6 +1196,25 @@
             });
         }
 
+        // Magic link pre-fill on page load
+        (async function prefillFromMagicLink() {
+            const mlToken = new URLSearchParams(window.location.search).get('ml');
+            if (!mlToken) return;
+            try {
+                const pfRes = await fetch(`https://canadalawyers-backend-production.up.railway.app/api/demand/prefill/${mlToken}`);
+                if (pfRes.ok) {
+                    const pfData = await pfRes.json();
+                    const pf = pfData.prefill || {};
+                    const setVal = (id, val) => { const el = document.getElementById(id); if (el && val) el.value = val; };
+                    setVal('full-name', pf.contact_name);
+                    setVal('business-name', pf.business_name);
+                    if (pf.city && pf.province) setVal('location', `${pf.city}, ${pf.province}`);
+                    else if (pf.city) setVal('location', pf.city);
+                    else if (pf.province) setVal('location', pf.province);
+                }
+            } catch (e) { /* pre-fill failed — form works without it */ }
+        })();
+
         async function submitForm() {
     // Save final answers
     saveCurrentAnswers();
