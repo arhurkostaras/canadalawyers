@@ -1214,6 +1214,18 @@ gtag('event', 'questionnaire_submitted', {
     // Generate unique request ID
     const requestId = 'req_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     
+    // Capture UTM params from URL for demand-side attribution
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmData = {
+        utm_source: urlParams.get('utm_source') || null,
+        utm_medium: urlParams.get('utm_medium') || null,
+        utm_campaign: urlParams.get('utm_campaign') || null,
+        utm_content: urlParams.get('utm_content') || null,
+        utm_term: urlParams.get('utm_term') || null,
+        landing_page: window.location.href,
+        referrer: document.referrer || null
+    };
+
     // Transform to camelCase shape expected by canadalawyers-backend /api/friction/sme-match-request
     const smeData = {
         requestId: requestId,
@@ -1231,7 +1243,8 @@ gtag('event', 'questionnaire_submitted', {
             phone: answers['phone'] || '',
             business_name: answers['business-name'] || '',
             location: answers['location'] || ''
-        }
+        },
+        utm: utmData
     };
 
     // Show loading state
