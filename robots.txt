@@ -32,3 +32,5 @@ Disallow: /forgot-password.html
 Disallow: /reset-password.html
 
 Sitemap: https://canadalawyers.app/sitemap.xml
+Sitemap: https://canadalawyers.app/sitemap-directory.xml
+Sitemap: https://canadalawyers.app/sitemap_index.xml
