@@ -21,7 +21,12 @@
     <link rel="apple-touch-icon" href="/icon-512.png">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://canadalawyers.app/profile">
+    <!-- Canonical URL is injected at runtime once the lawyer ID is read from
+         the query string (see bootstrap script). Static fallback removed: it
+         used to declare /profile (no ID), which Google honored as the
+         canonical for every /profile?id=X URL — collapsing 100K+ lawyer pages
+         into one. The runtime injection now sets the per-ID canonical
+         correctly. Same fix applied to canadainvesting.app on 2026-04-26. -->
 
     <!-- Open Graph -->
     <meta property="og:type" content="profile">
@@ -272,8 +277,15 @@
         (function() {
             var id = new URLSearchParams(window.location.search).get('id');
             if (!id) return;
-            // Set canonical immediately
-            document.querySelector('link[rel="canonical"]').href = 'https://canadalawyers.app/profile?id=' + id;
+            // Inject per-ID canonical. Create the element if not present (no
+            // static fallback so Google never sees a misleading default).
+            var canon = document.querySelector('link[rel="canonical"]');
+            if (!canon) {
+                canon = document.createElement('link');
+                canon.rel = 'canonical';
+                document.head.appendChild(canon);
+            }
+            canon.href = 'https://canadalawyers.app/profile?id=' + id;
             // Fetch profile data for prerender (non-blocking, page works if this fails)
             fetch('https://canadalawyers-backend-production.up.railway.app/api/profiles/' + encodeURIComponent(id))
                 .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
