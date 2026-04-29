@@ -2,14 +2,18 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://canadalawyers.app/sitemap.xml</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-04-29</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://canadalawyers.app/sitemap-directory.xml</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-04-29</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://canadalawyers.app/sitemap-profiles-1.xml</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-04-29</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://canadalawyers.app/sitemap-profiles-2.xml</loc>
+    <lastmod>2026-04-29</lastmod>
   </sitemap>
 </sitemapindex>

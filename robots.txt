@@ -34,4 +34,5 @@ Disallow: /reset-password.html
 Sitemap: https://canadalawyers.app/sitemap.xml
 Sitemap: https://canadalawyers.app/sitemap-directory.xml
 Sitemap: https://canadalawyers.app/sitemap-profiles-1.xml
+Sitemap: https://canadalawyers.app/sitemap-profiles-2.xml
 Sitemap: https://canadalawyers.app/sitemap_index.xml
