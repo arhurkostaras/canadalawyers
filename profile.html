@@ -285,49 +285,51 @@
                 document.head.appendChild(canon);
             }
             canon.href = 'https://canadalawyers.app/profile?id=' + id;
-            // Fetch profile data for prerender (non-blocking, page works if this fails)
-            fetch('https://canadalawyers-backend-production.up.railway.app/api/profiles/' + encodeURIComponent(id))
-                .then(function(r) { return r.ok ? r.json() : Promise.reject(); })
-                .then(function(data) {
+            // Synchronous XHR — guarantees content in initial render for Googlebot
+            try {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'https://canadalawyers-backend-production.up.railway.app/api/profiles/' + encodeURIComponent(id), false);
+                xhr.timeout = 5000;
+                xhr.send();
+                if (xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
                     var p = data.profile;
-                    if (!p || !p.name) return;
-                    // Update document title
-                    var title = p.name + (p.designation ? ', ' + p.designation : '') + ', Lawyer | CanadaLawyers.app';
-                    document.title = title;
-                    // Update meta description
-                    var metaDesc = p.name + (p.designation ? ' (' + p.designation + ')' : '') +
-                        (p.firm_name ? ' at ' + p.firm_name : '') +
-                        (p.city && p.province ? ' in ' + p.city + ', ' + p.province : p.province ? ' in ' + p.province : '') +
-                        '. Verified lawyer profile on CanadaLawyers.app.';
-                    var metaEl = document.querySelector('meta[name="description"]');
-                    if (metaEl) metaEl.setAttribute('content', metaDesc);
-                    // Update OG tags
-                    var ogTitle = document.querySelector('meta[property="og:title"]');
-                    if (ogTitle) ogTitle.setAttribute('content', title);
-                    var ogDesc = document.querySelector('meta[property="og:description"]');
-                    if (ogDesc) ogDesc.setAttribute('content', metaDesc);
-                    // Populate prerender block
-                    var seoTitle = document.getElementById('seoTitle');
-                    if (seoTitle) seoTitle.textContent = p.name + (p.designation ? ', ' + p.designation : '') + ' — Lawyer Profile';
-                    var seoDesc = document.getElementById('seoDesc');
-                    if (seoDesc) {
-                        var parts = [];
-                        if (p.firm_name) parts.push(p.firm_name);
-                        if (p.city && p.province) parts.push(p.city + ', ' + p.province);
-                        else if (p.province) parts.push(p.province);
-                        seoDesc.textContent = p.name + ' is a verified lawyer' +
-                            (parts.length ? ' at ' + parts.join(' in ') : '') +
-                            ' listed on CanadaLawyers.app.';
+                    if (p && p.name) {
+                        var title = p.name + (p.designation ? ', ' + p.designation : '') + ', Lawyer | CanadaLawyers.app';
+                        document.title = title;
+                        var metaDesc = p.name + (p.designation ? ' (' + p.designation + ')' : '') +
+                            (p.firm_name ? ' at ' + p.firm_name : '') +
+                            (p.city && p.province ? ' in ' + p.city + ', ' + p.province : p.province ? ' in ' + p.province : '') +
+                            '. Verified lawyer profile on CanadaLawyers.app.';
+                        var metaEl = document.querySelector('meta[name="description"]');
+                        if (metaEl) metaEl.setAttribute('content', metaDesc);
+                        var ogTitle = document.querySelector('meta[property="og:title"]');
+                        if (ogTitle) ogTitle.setAttribute('content', title);
+                        var ogDesc = document.querySelector('meta[property="og:description"]');
+                        if (ogDesc) ogDesc.setAttribute('content', metaDesc);
+                        var ogUrl = document.querySelector('meta[property="og:url"]');
+                        if (ogUrl) ogUrl.setAttribute('content', 'https://canadalawyers.app/profile?id=' + id);
+                        var seoTitle = document.getElementById('seoTitle');
+                        if (seoTitle) seoTitle.textContent = p.name + (p.designation ? ', ' + p.designation : '') + ' — Lawyer Profile';
+                        var seoDesc = document.getElementById('seoDesc');
+                        if (seoDesc) {
+                            var parts = [];
+                            if (p.firm_name) parts.push(p.firm_name);
+                            if (p.city && p.province) parts.push(p.city + ', ' + p.province);
+                            else if (p.province) parts.push(p.province);
+                            seoDesc.textContent = p.name + ' is a verified lawyer' +
+                                (parts.length ? ' at ' + parts.join(' in ') : '') +
+                                ' listed on CanadaLawyers.app.';
+                        }
+                        var seoBio = document.getElementById('seoBio');
+                        if (seoBio && p.bio) {
+                            seoBio.textContent = p.bio.length > 200 ? p.bio.substring(0, 200) + '...' : p.bio;
+                        }
                     }
-                    var seoBio = document.getElementById('seoBio');
-                    if (seoBio && p.bio) {
-                        seoBio.textContent = p.bio.length > 200 ? p.bio.substring(0, 200) + '...' : p.bio;
-                    }
-                })
-                .catch(function() {
-                    // Prerender stays with generic content — page loads normally
-                    document.title = 'Lawyer Profile #' + id + ' | CanadaLawyers.app';
-                });
+                }
+            } catch(e) {
+                document.title = 'Lawyer Profile #' + id + ' | CanadaLawyers.app';
+            }
         })();
     </script>
 
