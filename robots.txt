@@ -30,6 +30,7 @@ Disallow: /ai-demo.html
 Disallow: /data-processing-agreement.html
 Disallow: /forgot-password.html
 Disallow: /reset-password.html
+Disallow: /api/
 
 Sitemap: https://canadalawyers.app/sitemap.xml
 Sitemap: https://canadalawyers.app/sitemap-directory.xml
