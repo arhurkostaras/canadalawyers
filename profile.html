@@ -14,6 +14,14 @@
     <meta name="description" content="View lawyer profile on CanadaLawyers.app — AI-powered professional bio, credentials, and practice details.">
     <meta name="keywords" content="lawyer profile, Canadian lawyer, law society verified, lawyer directory Canada">
 
+    <!-- 2026-05-11 EXPOSURE MITIGATION: pool contamination audit identified 83K+
+         CPA/CGA records misclassified as lawyers (36.9% of pool). Until cleanup
+         completes, all profile pages are noindex'd to prevent further search
+         exposure of fabricated AI bios. Paired with robots.txt Disallow:/profile.
+         Reversal: remove this meta tag + robots.txt entry post-cleanup. -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+
     <title>Lawyer Profile | CanadaLawyers.app</title>
 
     <!-- Favicon -->
