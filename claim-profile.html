@@ -440,7 +440,21 @@
                     renderProfile(profile);
                 })
                 .catch(function(err) {
-                    var msg = (err && err.message) || 'This claim link has expired or is invalid.';
+                    if (err && err.code === 'PROFILE_UNDER_REVIEW') {
+                        showError('Profile Under Review', err.message || 'This profile is currently under review.');
+                        var msgEl = document.getElementById('errorMessage');
+                        if (msgEl && err.contact_email) {
+                            var subject = (err.subject_prefix || 'Profile Review:') + ' ' + (err.profile_name || '');
+                            var a = document.createElement('a');
+                            a.href = 'mailto:' + err.contact_email + '?subject=' + encodeURIComponent(subject);
+                            a.textContent = 'Email ' + err.contact_email;
+                            a.style.cssText = 'display:inline-block;margin-top:16px;color:#2563eb;text-decoration:underline;font-weight:600;';
+                            msgEl.appendChild(document.createElement('br'));
+                            msgEl.appendChild(a);
+                        }
+                        return;
+                    }
+                    var msg = (err && (err.message || err.error)) || 'This claim link has expired or is invalid.';
                     if (msg.toLowerCase().indexOf('already claimed') !== -1 || msg.toLowerCase().indexOf('already been claimed') !== -1) {
                         showError('Profile Already Claimed', 'This profile has already been claimed. If you own this profile, please log in to your dashboard.');
                     } else {
