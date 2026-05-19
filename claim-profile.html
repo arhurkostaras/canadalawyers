@@ -558,7 +558,7 @@
                 showSuccess(data.referralLink);
             })
             .catch(function(err) {
-                var msg = (err && err.message) || 'Something went wrong. Please try again.';
+                var msg = (err && (err.message || err.error)) || 'Something went wrong. Please try again.';
                 // Funnel event 6: claim failed
                 gtag('event', 'claim_error', { error_message: msg });
                 if (msg.toLowerCase().indexOf('already claimed') !== -1) {
