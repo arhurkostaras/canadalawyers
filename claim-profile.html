@@ -401,6 +401,15 @@
             refToken = params.get('ref') || '';
             refCode = params.get('refCode') || '';
 
+            // Organic (no-token) path: profile pages link with ?pid=<id>. Capture intent
+            // only — separate from the email-token (?ref=) flow below, which is untouched.
+            var pid = params.get('pid') || '';
+            if (!refToken && pid) {
+                gtag('event', 'claim_page_load', { ref_token: 'organic:' + pid });
+                fetchProfileById(pid);
+                return;
+            }
+
             if (!refToken) {
                 showError('Invalid Claim Link', 'This claim link is missing the required reference token. Please check the link in your email and try again.');
                 return;
@@ -590,6 +599,82 @@
             document.getElementById('errorTitle').textContent = title;
             document.getElementById('errorMessage').textContent = message;
             document.getElementById('errorState').style.display = 'block';
+        }
+
+        // ---- Organic (no-token) claim capture — separate from the email-token flow above ----
+        var organicPid = '';
+        function fetchProfileById(id) {
+            organicPid = id;
+            fetch(API_BASE + '/api/profiles/' + encodeURIComponent(id))
+                .then(function(res) {
+                    if (!res.ok) { return res.json().then(function(data) { throw data; }); }
+                    return res.json();
+                })
+                .then(function(data) {
+                    var p = data.profile || {};
+                    renderProfile({
+                        name: p.name,
+                        firm_name: p.firm_name,
+                        city: p.city,
+                        province: p.province,
+                        credentials: p.designation,
+                        aiBio: p.bio,
+                        seoScore: data.seo_score
+                    });
+                    // Rewire the form to the capture handler and use honest, non-claim copy.
+                    document.getElementById('claimFormEl').setAttribute('onsubmit', 'submitOrganicClaim(event)');
+                    var heading = document.querySelector('#claimForm h3');
+                    if (heading) heading.textContent = "This looks like your profile — enter your email and we'll follow up to get you set up.";
+                    var cb = document.getElementById('claimBtn');
+                    cb.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Request';
+                })
+                .catch(function(err) {
+                    if (err && err.code === 'PROFILE_UNDER_REVIEW') {
+                        showError('Profile Under Review', err.message || 'This profile is currently under review.');
+                        return;
+                    }
+                    showError('Profile Not Found', (err && (err.message || err.error)) || 'We could not load this profile.');
+                });
+        }
+
+        function submitOrganicClaim(e) {
+            e.preventDefault();
+            var btn = document.getElementById('claimBtn');
+            var emailVal = document.getElementById('claimEmail').value.trim();
+            if (!emailVal) return;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            gtag('event', 'claim_form_submitted', { mode: 'organic' });
+            fetch(API_BASE + '/api/claim/attempt', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ profileId: organicPid, email: emailVal })
+            })
+            .then(function(res) {
+                if (!res.ok) { return res.json().then(function(data) { throw data; }); }
+                return res.json();
+            })
+            .then(function() {
+                gtag('event', 'claim_attempt_recorded', { mode: 'organic' });
+                showOrganicThanks();
+            })
+            .catch(function(err) {
+                gtag('event', 'claim_error', { mode: 'organic' });
+                alert((err && (err.message || err.error)) || 'Something went wrong. Please try again.');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Request';
+            });
+        }
+
+        function showOrganicThanks() {
+            document.getElementById('claimForm').style.display = 'none';
+            var s = document.getElementById('successState');
+            s.querySelector('h3').textContent = "Thanks — we've got your request";
+            var ps = s.querySelectorAll('p');
+            if (ps[0]) ps[0].textContent = "We've received your request and will follow up by email.";
+            if (ps[1]) ps[1].textContent = "";
+            s.style.display = 'block';
+            window.scrollTo({ top: s.offsetTop - 100, behavior: 'smooth' });
         }
     </script>
 </body>
