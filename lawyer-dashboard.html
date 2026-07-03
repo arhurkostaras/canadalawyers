@@ -71,25 +71,24 @@
     </script>
 
     <!-- Navigation -->
-    <nav class="bg-white shadow border-b-4 border-red-600">
+    <nav class="bg-white shadow border-b-4" style="border-color: var(--gold);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-4">
                     <div class="flex items-center">
-                        <i class="fas fa-maple-leaf text-2xl text-red-600 mr-2"></i>
                         <span class="font-bold text-xl text-gray-900">CanadaLawyers</span>
-                        <span class="text-red-600 font-bold text-xl">.app</span>
+                        <span class="font-bold text-xl" style="color: var(--gold-deep);">.app</span>
                     </div>
                     <span class="text-gray-400">|</span>
                     <span class="text-gray-600 font-medium">Lawyer Dashboard</span>
                 </div>
                 <div class="flex items-center gap-4">
-                    <a href="/" class="text-sm text-gray-600 hover:text-red-600 font-medium transition-colors">Home</a>
-                    <a href="find-lawyer" class="text-sm text-gray-600 hover:text-red-600 font-medium transition-colors">Find a Lawyer</a>
-                    <a href="contact" class="text-sm text-gray-600 hover:text-red-600 font-medium transition-colors">Contact</a>
+                    <a href="/" class="text-sm text-gray-600 hover:text-blue-800 font-medium transition-colors">Home</a>
+                    <a href="find-lawyer" class="text-sm text-gray-600 hover:text-blue-800 font-medium transition-colors">Find a Lawyer</a>
+                    <a href="contact" class="text-sm text-gray-600 hover:text-blue-800 font-medium transition-colors">Contact</a>
                     <span class="text-gray-300">|</span>
                     <span id="userEmail" class="text-sm text-gray-500"></span>
-                    <button onclick="logout()" class="text-sm bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
+                    <button onclick="logout()" class="text-sm px-4 py-2 rounded-lg transition-colors" style="background: var(--gold); color: var(--ink);">
                         <i class="fas fa-sign-out-alt mr-1"></i> Logout
                     </button>
                 </div>
@@ -121,14 +120,14 @@
     </div>
 
     <!-- No Subscription Banner -->
-    <div id="noSubscriptionBanner" style="display: none;" class="bg-yellow-50 border-b border-yellow-200">
+    <div id="noSubscriptionBanner" style="display: none; background: rgba(201,168,106,0.08); border-bottom: 1px solid var(--gold);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
                     <i class="fas fa-info-circle text-yellow-600 text-xl"></i>
-                    <span class="text-yellow-800 font-medium">You don't have an active subscription yet. Subscribe to get algorithm placement and start receiving leads.</span>
+                    <span class="font-medium" style="color: var(--text);">You don't have an active subscription yet. Subscribe to get algorithm placement and start receiving leads.</span>
                 </div>
-                <a href="pricing" class="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm whitespace-nowrap">
+                <a href="pricing" class="px-5 py-2 rounded-lg font-semibold transition-colors text-sm whitespace-nowrap" style="background: var(--gold); color: var(--ink);">
                     View Plans
                 </a>
             </div>
@@ -358,7 +357,7 @@
                         <input type="text" id="profileSpecializations" placeholder="e.g., Corporate Law, Litigation, Real Estate" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
                     </div>
                     <div class="md:col-span-2 flex items-center gap-4">
-                        <button type="submit" class="bg-red-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                        <button type="submit" class="px-6 py-2.5 rounded-lg font-semibold transition-colors" style="background: var(--gold); color: var(--ink);">
                             <i class="fas fa-save mr-1"></i> Save Changes
                         </button>
                         <span id="profileSaveMsg" class="text-sm text-green-600 hidden">Profile updated!</span>
@@ -372,7 +371,7 @@
     <footer class="bg-gray-900 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-gray-400 text-sm">&copy; 2026 CanadaLawyers.app. All rights reserved.</p>
-            <p class="text-gray-500 text-xs mt-2">Need help? Call us at <a href="tel:+16479567290" class="text-red-400 hover:text-red-300">(647) 956-7290</a></p>
+            <p class="text-gray-500 text-xs mt-2">Need help? Call us at <a href="tel:+16479567290" style="color: var(--gold-deep);">(647) 956-7290</a></p>
         </div>
     </footer>
 

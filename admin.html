@@ -48,8 +48,8 @@
         .nav-links a.active { color: var(--text); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
         .nav-right { display: flex; align-items: center; gap: 1rem; }
         .nav-right .email { color: var(--text-3); font-size: 0.8rem; }
-        .logout-btn { background: var(--danger); color: var(--text); border: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
-        .logout-btn:hover { background: var(--danger); }
+        .logout-btn { background: var(--gold); color: var(--ink); border: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
+        .logout-btn:hover { background: var(--gold-bright); }
 
         main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
 
@@ -90,12 +90,12 @@
         .campaign-card .mini-stat .mini-label { font-size: 0.65rem; color: var(--text-3); text-transform: uppercase; }
         .campaign-card .card-actions { display: flex; gap: 0.5rem; }
         .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
-        .badge-green { background: rgba(111,143,106,0.18); color: var(--cream); }
-        .badge-yellow { background: rgba(201,168,106,0.18); color: var(--gold-bright); }
-        .badge-red { background: rgba(168,86,56,0.3); color: rgba(168,86,56,0.45); }
-        .badge-blue { background: var(--bg-raised); color: var(--gold-bright); }
+        .badge-green { background: rgba(111,143,106,0.18); border: 1px solid var(--success); color: var(--text); }
+        .badge-yellow { background: rgba(201,168,106,0.18); border: 1px solid var(--gold); color: var(--gold-deep); }
+        .badge-red { background: rgba(168,86,56,0.15); border: 1px solid var(--danger); color: var(--danger); }
+        .badge-blue { background: rgba(201,168,106,0.15); border: 1px solid var(--gold); color: var(--gold-deep); }
         .badge-gray { background: var(--bg-high); color: var(--text-2); }
-        .badge-purple { background: var(--bg-raised); color: var(--gold-bright); }
+        .badge-purple { background: rgba(201,168,106,0.15); border: 1px solid var(--gold); color: var(--gold-deep); }
 
         /* Tables */
         .panel { background: var(--bg-raised); border: 1px solid var(--border-strong); border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
@@ -119,7 +119,7 @@
         .action-btn:hover { background: var(--border-strong); }
         .action-btn.primary { background: var(--gold); border-color: var(--gold); color: var(--ink); }
         .action-btn.primary:hover { background: var(--gold-deep); }
-        .action-btn.danger { background: var(--danger); border-color: var(--danger); color: var(--text); }
+        .action-btn.danger { background: var(--danger); border-color: var(--danger); color: var(--cream); }
         .action-btn.danger:hover { background: rgba(168,86,56,0.3); }
         .action-btn.success { background: rgba(111,143,106,0.25); border-color: rgba(111,143,106,0.25); color: var(--text); }
         .action-btn.success:hover { background: rgba(111,143,106,0.18); }
@@ -192,14 +192,14 @@
         .match-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
         .match-card { background: var(--bg-raised); border: 1px solid var(--border-strong); border-radius: 12px; padding: 1.25rem; position: relative; }
         .match-card.locked { }
-        .match-card .lock-overlay { position: absolute; inset: 0; background: rgba(10,10,10,0.7); backdrop-filter: blur(4px); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .match-card .lock-overlay { position: absolute; inset: 0; background: rgba(11,14,18,0.7); backdrop-filter: blur(4px); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .match-card .lock-overlay i { font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; }
         .match-card .lock-overlay span { font-size: 0.8rem; color: var(--gold-bright); font-weight: 600; }
         .match-card .match-biz { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
         .match-card .match-meta { font-size: 0.8rem; color: var(--text-3); margin-bottom: 0.5rem; }
         .match-card .match-contact { font-size: 0.8rem; color: var(--text-2); }
         .match-card .match-contact a { color: var(--gold); }
-        .subscribed-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(111,143,106,0.18); color: var(--cream); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+        .subscribed-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(111,143,106,0.18); border: 1px solid var(--success); color: var(--text); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
     </style>
 
 <style id="phronisi-type">body{font-family:var(--font-body)}</style>
