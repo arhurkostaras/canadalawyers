@@ -12,13 +12,17 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Processing Agreement - CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <link rel="stylesheet" href="/tailwind-utilities.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: var(--font-body); }
         .section-spacing { margin-bottom: 2rem; }
         .subsection-spacing { margin-bottom: 1.5rem; }
-        .nav-toggle { display: none; background: none; border: none; color: #374151; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--text-2); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .dpa-nav-links.active { display: flex !important; }
         @media (max-width: 768px) {
             .nav-toggle { display: block; }
@@ -26,16 +30,18 @@
                 display: none !important;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                padding: 12px 0; border-bottom: 1px solid #e5e7eb;
+                background: var(--bg-raised); box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 12px 0; border-bottom: 1px solid var(--border);
             }
             .dpa-nav-links.active { display: flex !important; }
             .dpa-nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; width: 100%; }
-            .dpa-nav-links a:hover { background: #f3f4f6; }
+            .dpa-nav-links a:hover { background: var(--bg-high); }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}</style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-50 min-h-screen mode-light">
     <!-- Header -->
     <header class="bg-white shadow-sm border-b" style="position: relative;">
         <div class="max-w-6xl mx-auto px-4 py-6">
@@ -45,7 +51,7 @@
                     <span class="text-gray-400">|</span>
                     <span class="text-gray-600">Data Processing Agreement</span>
                 </div>
-                <button class="nav-toggle" onclick="document.querySelector('.dpa-nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+                <button class="nav-toggle" onclick="document.querySelector('.dpa-nav-links').classList.toggle('active')" aria-label="Menu"><svg class="ph-ic" width="1.4em" height="1.4em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.2em"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
                 <div class="dpa-nav-links flex items-center space-x-4">
                     <a href="/" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">&#8592; Back to Home</a>
                     <a href="lawyer-login" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Login</a>
@@ -64,7 +70,7 @@
             <div class="bg-blue-50 border-l-4 border-blue-400 p-6 mb-6">
                 <div class="flex">
                     <div class="flex-shrink-0">
-                        <div class="w-5 h-5 text-blue-400">ℹ️</div>
+                        <div class="w-5 h-5 text-blue-400">ℹ</div>
                     </div>
                     <div class="ml-3">
                         <h3 class="text-lg font-medium text-blue-800">Enterprise Data Protection</h3>
@@ -179,21 +185,21 @@
                     <div>
                         <h3 class="text-lg font-medium text-gray-800 mb-3">3.1 Technical Safeguards</h3>
                         <ul class="space-y-2 text-gray-700">
-                            <li>🔒 <strong>Encryption:</strong> TLS 1.3 in transit, AES-256 at rest</li>
-                            <li>🛡️ <strong>Access Controls:</strong> Multi-factor authentication required</li>
-                            <li>📊 <strong>Monitoring:</strong> 24/7 security monitoring and alerting</li>
-                            <li>🔄 <strong>Backups:</strong> Automated daily backups with 30-day retention</li>
-                            <li>🌐 <strong>Infrastructure:</strong> Railway platform with enterprise security</li>
+                            <li> <strong>Encryption:</strong> TLS 1.3 in transit, AES-256 at rest</li>
+                            <li> <strong>Access Controls:</strong> Multi-factor authentication required</li>
+                            <li> <strong>Monitoring:</strong> 24/7 security monitoring and alerting</li>
+                            <li> <strong>Backups:</strong> Automated daily backups with 30-day retention</li>
+                            <li> <strong>Infrastructure:</strong> Railway platform with enterprise security</li>
                         </ul>
                     </div>
                     <div>
                         <h3 class="text-lg font-medium text-gray-800 mb-3">3.2 Organizational Controls</h3>
                         <ul class="space-y-2 text-gray-700">
-                            <li>👥 <strong>Staff Training:</strong> Privacy and security training for all personnel</li>
-                            <li>📋 <strong>Access Management:</strong> Role-based access with regular reviews</li>
-                            <li>📞 <strong>Incident Response:</strong> 24-hour breach notification protocol</li>
-                            <li>🔍 <strong>Auditing:</strong> Regular security assessments and SOC 2 compliance</li>
-                            <li>📄 <strong>Documentation:</strong> Comprehensive security policies and procedures</li>
+                            <li> <strong>Staff Training:</strong> Privacy and security training for all personnel</li>
+                            <li> <strong>Access Management:</strong> Role-based access with regular reviews</li>
+                            <li> <strong>Incident Response:</strong> 24-hour breach notification protocol</li>
+                            <li> <strong>Auditing:</strong> Regular security assessments and SOC 2 compliance</li>
+                            <li> <strong>Documentation:</strong> Comprehensive security policies and procedures</li>
                         </ul>
                     </div>
                 </div>
@@ -259,21 +265,21 @@
                     <div class="bg-blue-50 p-4 rounded-lg">
                         <h3 class="text-lg font-medium text-blue-800 mb-3">5.1 Individual Rights Under PIPEDA</h3>
                         <ul class="space-y-2 text-blue-700 text-sm">
-                            <li>✅ Right to access personal information</li>
-                            <li>✅ Right to correction of inaccurate data</li>
-                            <li>✅ Right to withdraw consent</li>
-                            <li>✅ Right to file complaints with Privacy Commissioner</li>
-                            <li>✅ Right to reasonable explanation of data use</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Right to access personal information</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Right to correction of inaccurate data</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Right to withdraw consent</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Right to file complaints with Privacy Commissioner</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Right to reasonable explanation of data use</li>
                         </ul>
                     </div>
                     <div class="bg-green-50 p-4 rounded-lg">
                         <h3 class="text-lg font-medium text-green-800 mb-3">5.2 Response Procedures</h3>
                         <ul class="space-y-2 text-green-700 text-sm">
-                            <li>⏰ 30-day maximum response time</li>
-                            <li>📧 Dedicated privacy email: support@canadalawyers.app</li>
-                            <li>📞 Phone support: (647) 956-7290</li>
-                            <li>🔍 Identity verification required</li>
-                            <li>📋 Written responses with clear explanations</li>
+                            <li> 30-day maximum response time</li>
+                            <li> Dedicated privacy email: support@canadalawyers.app</li>
+                            <li> Phone support: (647) 956-7290</li>
+                            <li> Identity verification required</li>
+                            <li> Written responses with clear explanations</li>
                         </ul>
                     </div>
                 </div>

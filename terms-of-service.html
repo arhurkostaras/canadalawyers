@@ -12,6 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
     <link rel="apple-touch-icon" href="/icon-512.png">
@@ -51,17 +55,17 @@
 
     <style>
         :root {
-            --brand-primary: #dc2626;
-            --brand-secondary: #1e40af;
-            --brand-accent: #059669;
+            --brand-primary: var(--gold);
+            --brand-secondary: var(--gold-deep);
+            --brand-accent: var(--success);
         }
 
         .gradient-bg {
-            background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
+            background: var(--gold);
         }
 
         .section-card {
-            background: white;
+            background: var(--bg-raised);
             border-radius: 12px;
             padding: 30px;
             margin: 20px 0;
@@ -70,24 +74,24 @@
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid #0ea5e9;
+            background: var(--bg-high);
+            border: 2px solid var(--gold-deep);
             border-radius: 12px;
             padding: 20px;
             margin: 20px 0;
         }
 
         .warning-box {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
+            background: rgba(201,168,106,0.2);
+            border: 2px solid var(--gold-deep);
             border-radius: 12px;
             padding: 20px;
             margin: 20px 0;
         }
 
         .contact-box {
-            background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             border-radius: 12px;
             padding: 25px;
             text-align: center;
@@ -95,13 +99,13 @@
         }
 
         .contact-box a {
-            color: #fbbf24;
+            color: var(--gold);
             text-decoration: none;
             font-weight: 600;
         }
 
         .contact-box a:hover {
-            color: #f59e0b;
+            color: var(--gold-deep);
             text-decoration: underline;
         }
 
@@ -132,21 +136,21 @@
         }
 
         .guarantee-highlight {
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-            border: 2px solid #22c55e;
+            background: rgba(111,143,106,0.18);
+            border: 2px solid var(--success);
             border-radius: 12px;
             padding: 20px;
             margin: 20px 0;
         }
 
         .prohibited-box {
-            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
-            border: 2px solid #ef4444;
+            background: rgba(168,86,56,0.25);
+            border: 2px solid var(--danger);
             border-radius: 12px;
             padding: 20px;
             margin: 20px 0;
         }
-        .nav-toggle { display: none; background: none; border: none; color: #374151; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--text-2); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .tos-nav-links.active { display: flex !important; }
         @media (max-width: 768px) {
             .nav-toggle { display: block; }
@@ -154,16 +158,18 @@
                 display: none !important;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                padding: 12px 0; border-bottom: 1px solid #e5e7eb;
+                background: var(--bg-raised); box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 12px 0; border-bottom: 1px solid var(--border);
             }
             .tos-nav-links.active { display: flex !important; }
             .tos-nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; width: 100%; }
-            .tos-nav-links a:hover { background: #f3f4f6; }
+            .tos-nav-links a:hover { background: var(--bg-high); }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}</style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 mode-light">
     <!-- Navigation -->
     <nav class="bg-white shadow-lg border-b-4 border-red-600" style="position: relative;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -624,13 +630,13 @@
             
             <div class="grid md:grid-cols-2 gap-6 text-left">
                 <div>
-                    <h3 class="text-lg font-semibold mb-2">⚖️ Legal Department</h3>
+                    <h3 class="text-lg font-semibold mb-2"> Legal Department</h3>
                     <p><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></p>
                     <p>Arthur Kostaras</p>
                     <p class="text-sm opacity-75 mt-1">Terms of Service inquiries</p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-2">📞 Support Team</h3>
+                    <h3 class="text-lg font-semibold mb-2"> Support Team</h3>
                     <p><a href="tel:+16479567290">(647) 956-7290</a></p>
                     <p><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></p>
                     <p class="text-sm opacity-75 mt-1">General platform support</p>
@@ -638,7 +644,7 @@
             </div>
 
             <div class="mt-6 pt-4 border-t border-white border-opacity-20">
-                <h3 class="text-lg font-semibold mb-2">📍 Mailing Address</h3>
+                <h3 class="text-lg font-semibold mb-2"> Mailing Address</h3>
                 <p class="text-sm opacity-90">
                     CanadaLawyers Legal Department<br>
                     Toronto, Ontario, Canada<br>

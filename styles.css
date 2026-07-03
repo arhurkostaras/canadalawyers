@@ -5,14 +5,14 @@
 
 /* CSS Variables */
 :root {
-    --primary-blue: #2563eb;
-    --primary-navy: #1e3a8a;
-    --accent-green: #059669;
-    --dark-bg: #0a0a0a;
-    --card-bg: #1a1a1a;
-    --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
-    --border-color: #333333;
+    --primary-blue: var(--gold);
+    --primary-navy: var(--gold-deep);
+    --accent-green: var(--success);
+    --dark-bg: var(--bg);
+    --card-bg: var(--bg-raised);
+    --text-primary: var(--text);
+    --text-secondary: var(--text-2);
+    --border-color: var(--border);
 }
 
 /* Reset */
@@ -23,7 +23,7 @@
 }
 
 body {
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-body);
     background: var(--dark-bg);
     color: var(--text-primary);
     line-height: 1.6;
@@ -43,7 +43,7 @@ body {
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(241,234,220,0.1);
 }
 
 .nav-inner {
@@ -61,7 +61,7 @@ body {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: white;
+    color: var(--cream);
     font-weight: 700;
     font-size: 1.25rem;
 }
@@ -79,7 +79,7 @@ body {
 }
 
 .nav-links a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(241,234,220,0.8);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
@@ -91,11 +91,11 @@ body {
 }
 
 .nav-links a:hover {
-    color: white;
+    color: var(--cream);
 }
 
 .nav-cta {
-    background: white !important;
+    background: var(--cream) !important;
     color: var(--primary-blue) !important;
     padding: 10px 24px;
     border-radius: 8px;
@@ -105,14 +105,14 @@ body {
 
 .nav-cta:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 15px rgba(201,168,106, 0.3);
 }
 
 .nav-toggle {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: var(--cream);
     font-size: 1.5rem;
     cursor: pointer;
     padding: 4px;
@@ -128,7 +128,7 @@ body {
 .logo {
     font-size: 24px;
     font-weight: 900;
-    color: white;
+    color: var(--cream);
     text-decoration: none;
     letter-spacing: -0.5px;
 }
@@ -140,7 +140,7 @@ body {
 }
 
 a.cta-button {
-    background: white;
+    background: var(--cream);
     color: var(--primary-blue);
     padding: 10px 24px;
     border-radius: 6px;
@@ -152,7 +152,7 @@ a.cta-button {
 
 a.cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(241,234,220,0.3);
 }
 
 /* ============================================
@@ -162,13 +162,13 @@ a.cta-button:hover {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy));
-    color: white;
+    background: var(--gold);
+    color: var(--cream);
     padding: 12px 20px;
     border-radius: 25px;
     font-size: 13px;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 15px rgba(201,168,106, 0.4);
     z-index: 9999;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -177,7 +177,7 @@ a.cta-button:hover {
 
 .ai-badge:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+    box-shadow: 0 6px 20px rgba(201,168,106, 0.6);
 }
 
 .ai-badge-icon {
@@ -194,8 +194,8 @@ a.cta-button:hover {
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
-    color: #e2e8f0;
+    background: linear-gradient(90deg, var(--bg) 0%, var(--bg-raised) 100%);
+    color: var(--text-2);
     padding: 12px 20px;
     text-align: center;
     font-size: 14px;
@@ -212,7 +212,7 @@ a.cta-button:hover {
    Buttons
    ============================================ */
 .btn-primary {
-    background: white;
+    background: var(--cream);
     color: var(--primary-blue);
     padding: 14px 32px;
     border-radius: 8px;
@@ -231,7 +231,7 @@ a.cta-button:hover {
 
 .btn-secondary {
     background: transparent;
-    color: white;
+    color: var(--cream);
     padding: 16px 40px;
     border-radius: 8px;
     font-weight: 700;
@@ -243,15 +243,15 @@ a.cta-button:hover {
 }
 
 .btn-secondary:hover {
-    background: white;
+    background: var(--cream);
     color: var(--primary-blue);
     transform: translateY(-3px);
 }
 
 .btn-outline {
     background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: var(--cream);
+    border: 2px solid rgba(241,234,220,0.4);
     padding: 14px 32px;
     border-radius: 8px;
     text-decoration: none;
@@ -260,8 +260,8 @@ a.cta-button:hover {
 }
 
 .btn-outline:hover {
-    border-color: white;
-    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--cream);
+    background: rgba(241,234,220,0.1);
 }
 
 /* ============================================
@@ -269,7 +269,7 @@ a.cta-button:hover {
    ============================================ */
 .hero {
     padding: 140px 24px 80px;
-    background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+    background: var(--bg);
     text-align: center;
 }
 
@@ -277,14 +277,14 @@ a.cta-button:hover {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(241,234,220,0.15);
     backdrop-filter: blur(10px);
     padding: 12px 24px;
     border-radius: 50px;
     font-size: 0.9rem;
     font-weight: 500;
     margin-bottom: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(241,234,220,0.2);
 }
 
 .hero h1 {
@@ -327,9 +327,9 @@ a.cta-button:hover {
 }
 
 .hero-stat {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(241,234,220,0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(241,234,220,0.15);
     border-radius: 16px;
     padding: 24px;
 }
@@ -395,12 +395,12 @@ a.cta-button:hover {
 .pricing-card:hover {
     transform: translateY(-8px);
     border-color: var(--primary-blue);
-    box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 20px 60px rgba(201,168,106, 0.15);
 }
 
 .pricing-card.featured {
     border-color: var(--primary-blue);
-    background: linear-gradient(180deg, rgba(37, 99, 235, 0.08) 0%, var(--card-bg) 100%);
+    background: linear-gradient(180deg, rgba(201,168,106, 0.08) 0%, var(--card-bg) 100%);
     transform: scale(1.03);
 }
 
@@ -413,8 +413,8 @@ a.cta-button:hover {
     top: -14px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy));
-    color: white;
+    background: var(--gold);
+    color: var(--cream);
     padding: 6px 24px;
     border-radius: 50px;
     font-size: 0.8rem;
@@ -425,10 +425,10 @@ a.cta-button:hover {
 /* Pricing Toggle */
 .toggle-container {
     display: inline-flex;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(241,234,220,0.1);
     border-radius: 50px;
     padding: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(241,234,220,0.15);
 }
 
 .toggle-option {
@@ -443,8 +443,8 @@ a.cta-button:hover {
 
 .toggle-option.active {
     background: var(--primary-blue);
-    color: white;
-    box-shadow: 0 2px 12px rgba(37, 99, 235, 0.4);
+    color: var(--cream);
+    box-shadow: 0 2px 12px rgba(201,168,106, 0.4);
 }
 
 .savings-badge {
@@ -467,17 +467,17 @@ a.cta-button:hover {
 }
 
 .card-icon.associate {
-    background: rgba(37, 99, 235, 0.15);
+    background: rgba(201,168,106, 0.15);
     color: var(--primary-blue);
 }
 
 .card-icon.professional {
-    background: rgba(37, 99, 235, 0.2);
+    background: rgba(201,168,106, 0.2);
     color: var(--primary-blue);
 }
 
 .card-icon.enterprise {
-    background: rgba(30, 58, 138, 0.2);
+    background: rgba(201,168,106, 0.2);
     color: var(--primary-navy);
 }
 
@@ -523,7 +523,7 @@ a.cta-button:hover {
     gap: 12px;
     padding: 8px 0;
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(241,234,220,0.85);
 }
 
 .card-features li i {
@@ -547,32 +547,32 @@ a.cta-button:hover {
 .card-btn.outline {
     background: transparent;
     border: 2px solid var(--border-color);
-    color: white;
+    color: var(--cream);
 }
 
 .card-btn.outline:hover {
     border-color: var(--primary-blue);
-    background: rgba(37, 99, 235, 0.1);
+    background: rgba(201,168,106, 0.1);
 }
 
 .card-btn.primary {
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy));
-    color: white;
+    background: var(--gold);
+    color: var(--cream);
 }
 
 .card-btn.primary:hover {
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 8px 25px rgba(201,168,106, 0.4);
     transform: translateY(-1px);
 }
 
 .card-btn.dark {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(241,234,220,0.1);
+    color: var(--cream);
+    border: 1px solid rgba(241,234,220,0.2);
 }
 
 .card-btn.dark:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(241,234,220,0.15);
 }
 
 /* ============================================
@@ -581,8 +581,8 @@ a.cta-button:hover {
 .promise-section {
     max-width: 1100px;
     margin: 0 auto 80px;
-    background: rgba(5, 150, 105, 0.08);
-    border: 1px solid rgba(5, 150, 105, 0.2);
+    background: rgba(111,143,106, 0.08);
+    border: 1px solid rgba(111,143,106, 0.2);
     border-radius: 20px;
     padding: 48px;
     text-align: center;
@@ -592,7 +592,7 @@ a.cta-button:hover {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: rgba(5, 150, 105, 0.15);
+    background: rgba(111,143,106, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -747,7 +747,7 @@ a.cta-button:hover {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: rgba(37, 99, 235, 0.15);
+    background: rgba(201,168,106, 0.15);
     color: var(--primary-blue);
     display: flex;
     align-items: center;
@@ -774,7 +774,7 @@ a.cta-button:hover {
    ============================================ */
 .cta-section {
     padding: 100px 24px;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 50%, var(--primary-navy) 100%);
+    background: var(--bg);
     text-align: center;
 }
 
@@ -805,7 +805,7 @@ a.cta-button:hover {
 }
 
 .cta-btn-primary {
-    background: white;
+    background: var(--cream);
     color: var(--primary-blue);
     padding: 16px 36px;
     border-radius: 12px;
@@ -822,7 +822,7 @@ a.cta-button:hover {
 
 .cta-btn-secondary {
     border: 2px solid white;
-    color: white;
+    color: var(--cream);
     padding: 16px 36px;
     border-radius: 12px;
     font-weight: 700;
@@ -832,14 +832,14 @@ a.cta-button:hover {
 }
 
 .cta-btn-secondary:hover {
-    background: white;
+    background: var(--cream);
     color: var(--primary-blue);
 }
 
 .cta-quote {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(241,234,220,0.12);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(241,234,220,0.2);
     border-radius: 20px;
     padding: 32px;
     max-width: 700px;
@@ -881,15 +881,15 @@ a.cta-button:hover {
 .comparison-header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    background: rgba(37, 99, 235, 0.15);
+    background: rgba(201,168,106, 0.15);
     padding: 20px 24px;
     font-weight: 700;
     font-size: 0.95rem;
 }
 
 .comparison-header .col-us {
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy));
-    color: white;
+    background: var(--gold);
+    color: var(--cream);
     border-radius: 8px;
     padding: 12px;
     text-align: center;
@@ -897,12 +897,12 @@ a.cta-button:hover {
 
 .comparison-header .col {
     text-align: center;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(241,234,220,0.6);
     padding: 12px;
 }
 
 .comparison-header .col-label {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(241,234,220,0.4);
     padding: 12px;
     text-align: left;
 }
@@ -911,7 +911,7 @@ a.cta-button:hover {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding: 16px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(241,234,220,0.05);
     align-items: center;
 }
 
@@ -921,7 +921,7 @@ a.cta-button:hover {
 
 .comparison-row .feature {
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(241,234,220,0.9);
 }
 
 .comparison-row .cell {
@@ -933,18 +933,18 @@ a.cta-button:hover {
 }
 
 .cell-bad {
-    background: rgba(239, 68, 68, 0.15);
-    color: #fca5a5;
+    background: rgba(168,86,56, 0.15);
+    color: rgba(168,86,56,0.45);
 }
 
 .cell-ok {
-    background: rgba(251, 191, 36, 0.15);
-    color: #fde68a;
+    background: rgba(201,168,106, 0.15);
+    color: rgba(201,168,106,0.35);
 }
 
 .cell-great {
-    background: rgba(5, 150, 105, 0.15);
-    color: #6ee7b7;
+    background: rgba(111,143,106, 0.15);
+    color: var(--success);
 }
 
 /* Why We Win - Differentiators */
@@ -983,7 +983,7 @@ a.cta-button:hover {
 .diff-icon {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy));
+    background: var(--gold);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -998,7 +998,7 @@ a.cta-button:hover {
 }
 
 .diff-card p {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(241,234,220,0.7);
     line-height: 1.6;
 }
 
@@ -1066,7 +1066,7 @@ a.cta-button:hover {
    Footer
    ============================================ */
 .footer {
-    background: #111;
+    background: var(--bg);
     padding: 60px 24px;
     border-top: 1px solid var(--border-color);
 }
@@ -1134,13 +1134,13 @@ a.cta-button:hover {
 }
 
 .footer-grid a:hover {
-    color: white;
+    color: var(--cream);
 }
 
 .footer-bottom {
     border-top: 1px solid var(--border-color);
     padding-top: 24px;
-    color: #666;
+    color: var(--text-3);
     font-size: 0.8rem;
 }
 
@@ -1164,7 +1164,7 @@ a.cta-button:hover {
         background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(20px);
         padding: 12px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(241,234,220,0.1);
     }
 
     .nav-links.active {
@@ -1183,7 +1183,7 @@ a.cta-button:hover {
     }
 
     .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(241,234,220,0.05);
     }
 
     .nav-links .nav-cta {

@@ -12,6 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trust Center - Security & Compliance | CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
     <link rel="apple-touch-icon" href="/icon-512.png">
@@ -35,9 +39,7 @@
     <meta name="twitter:description" content="Learn about CanadaLawyers' security measures, compliance certifications, and data protection policies. SOC 2, PIPEDA compliance, and Canadian data residency.">
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/tailwind-utilities.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- BreadcrumbList Schema -->
@@ -54,41 +56,41 @@
 
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --primary-blue: #1e3a8a;
-            --primary-navy: #1a1a2e;
-            --bg-dark: #0a0a0a;
-            --bg-card: #111;
-            --bg-card-hover: #1a1a1a;
-            --border-color: rgba(255,255,255,0.1);
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-muted: #666;
+            --primary-blue: var(--gold);
+            --primary-blue: var(--gold);
+            --primary-navy: var(--bg-raised);
+            --bg-dark: var(--bg);
+            --bg-card: var(--bg-raised);
+            --bg-card-hover: var(--bg-high);
+            --border-color: var(--border);
+            --text-primary: var(--text);
+            --text-secondary: var(--text-2);
+            --text-muted: var(--text-3);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; background: var(--bg-dark); color: var(--text-primary); }
+        body { font-family: var(--font-body); background: var(--bg-dark); color: var(--text-primary); }
 
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav{ position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(241,234,220,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
-        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--cream); font-weight: 700; font-size: 1.25rem; }
         .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a { color: rgba(241,234,220,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(201,168,106,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         .gradient-bg {
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+            background: var(--bg-raised);
         }
 
         .trust-badge {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--success) 0%, var(--success) 100%);
+            color: var(--cream);
             padding: 12px 20px;
             border-radius: 25px;
             font-size: 0.9rem;
@@ -96,15 +98,15 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 15px rgba(111,143,106, 0.3);
         }
 
         .compliance-card {
-            background: white;
+            background: var(--bg-raised);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--border-strong);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -117,13 +119,13 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #dc2626, #1e40af, #059669);
+            background: linear-gradient(90deg, var(--gold), var(--gold-bright));
         }
 
         .compliance-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            border-color: #059669;
+            border-color: var(--success);
         }
 
         .status-badge {
@@ -136,68 +138,68 @@
         }
 
         .status-compliant {
-            background: #dcfce7;
-            color: #166534;
-            border: 1px solid #bbf7d0;
+            background: rgba(111,143,106,0.18);
+            color: rgba(111,143,106,0.25);
+            border: 1px solid rgba(111,143,106,0.3);
         }
 
         .status-progress {
-            background: #fef3c7;
-            color: #92400e;
-            border: 1px solid #fde68a;
+            background: rgba(201,168,106,0.15);
+            color: var(--gold-deep);
+            border: 1px solid rgba(201,168,106,0.35);
         }
 
         .status-planned {
-            background: #dbeafe;
-            color: #1e40af;
-            border: 1px solid #bfdbfe;
+            background: rgba(201,168,106,0.15);
+            color: var(--gold-deep);
+            border: 1px solid rgba(201,168,106,0.4);
         }
 
         .security-metric {
             text-align: center;
             padding: 20px;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: var(--bg-high);
             border-radius: 12px;
-            border: 1px solid #cbd5e1;
+            border: 1px solid var(--text-2);
         }
 
         .metric-number {
             font-size: 2rem;
             font-weight: 800;
-            color: #1e40af;
+            color: var(--gold-deep);
             margin-bottom: 5px;
         }
 
         .metric-label {
             font-size: 0.9rem;
-            color: #64748b;
+            color: var(--text-2);
             font-weight: 500;
         }
 
         .data-flow {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
+            background: var(--bg-raised);
+            border: 2px solid var(--border-strong);
             border-radius: 15px;
             padding: 25px;
             margin: 20px 0;
         }
 
         .contact-card {
-            background: linear-gradient(135deg, #1e40af 0%, #dc2626 100%);
-            color: white;
+            background: var(--bg-high);
+            color: var(--cream);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
         }
 
         .contact-card a {
-            color: #fbbf24;
+            color: var(--gold-bright);
             text-decoration: none;
             font-weight: 600;
         }
 
         .contact-card a:hover {
-            color: #f59e0b;
+            color: var(--gold);
             text-decoration: underline;
         }
 
@@ -207,16 +209,28 @@
                 display: none;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: var(--nav-bg); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(241,234,220,0.1);
             }
             .nav-links.active { display: flex; }
             .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
             .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        .nav-links a:hover { background: rgba(241,234,220,0.05); }
             .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
         }
+    
+        /* dark-card overrides: tailwind light-panel text tokens resolve for ink surfaces */
+        .compliance-card .bg-blue-50 { background: rgba(201,168,106,0.10); }
+        .compliance-card .bg-green-50 { background: rgba(111,143,106,0.12); }
+        .compliance-card .text-blue-800, .compliance-card .text-blue-700, .compliance-card .text-blue-600 { color: var(--gold-bright); }
+        .compliance-card .text-green-800, .compliance-card .text-green-700, .compliance-card .text-green-600 { color: var(--text); }
+        .compliance-card .bg-purple-50 { background: rgba(201,168,106,0.10); }
+        .compliance-card .text-purple-800, .compliance-card .text-purple-700, .compliance-card .text-purple-600 { color: var(--gold-bright); }
+        .status-compliant { color: var(--text); }
+        .status-progress, .status-planned { color: var(--gold-bright); }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -239,7 +253,7 @@
     <div style="height: 64px;"></div>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-16">
+    <section class="gradient-bg py-16" style="color: var(--cream);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="trust-badge mb-6">
                 <i class="fas fa-shield-check"></i>
@@ -302,7 +316,7 @@
                         This certification validates our security, availability, and confidentiality controls.
                     </p>
                     <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                        <p class="text-blue-800 font-semibold">🎯 Audit Status:</p>
+                        <p class="text-blue-800 font-semibold"> Audit Status:</p>
                         <p class="text-blue-700">In Progress — 2026</p>
                         <p class="text-blue-600 text-sm mt-1">Control documentation and testing underway</p>
                     </div>
@@ -322,7 +336,7 @@
                         Our privacy practices meet all federal requirements for handling personal information.
                     </p>
                     <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <p class="text-green-800 font-semibold">✅ Current Status:</p>
+                        <p class="text-green-800 font-semibold"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Current Status:</p>
                         <p class="text-green-700">All PIPEDA requirements implemented</p>
                         <p class="text-green-600 text-sm mt-1">Last review: March 2026</p>
                     </div>
@@ -342,7 +356,7 @@
                         including Quebec's Bill 64 and British Columbia's PIPA.
                     </p>
                     <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <p class="text-green-800 font-semibold">🍁 Coverage:</p>
+                        <p class="text-green-800 font-semibold"> Coverage:</p>
                         <p class="text-green-700">All 10 provinces and 3 territories</p>
                         <p class="text-green-600 text-sm mt-1">Includes Quebec Bill 64 compliance</p>
                     </div>
@@ -362,7 +376,7 @@
                         Certification planned for 2026 to demonstrate global security best practices.
                     </p>
                     <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                        <p class="text-purple-800 font-semibold">📅 Timeline:</p>
+                        <p class="text-purple-800 font-semibold"> Timeline:</p>
                         <p class="text-purple-700">Planned — 2026</p>
                         <p class="text-purple-600 text-sm mt-1">Gap analysis and certification preparation underway</p>
                     </div>
@@ -433,24 +447,24 @@
             <!-- Data Residency -->
             <div class="data-flow">
                 <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">
-                    🍁 Canadian Data Residency
+                     Canadian Data Residency
                 </h3>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <div>
                     <h4 class="text-lg font-semibold text-gray-800 mb-3">Infrastructure</h4>
                     <ul class="space-y-2 text-gray-600">
-                        <li>🏢 <strong>Railway Platform:</strong> Primary application hosting</li>
-                        <li>🏢 <strong>PostgreSQL:</strong> Managed database service</li>
-                        <li>🏢 <strong>CDN:</strong> Global edge locations including Canada</li>
+                        <li> <strong>Railway Platform:</strong> Primary application hosting</li>
+                        <li> <strong>PostgreSQL:</strong> Managed database service</li>
+                        <li> <strong>CDN:</strong> Global edge locations including Canada</li>
                     </ul>
                 </div>
                     <div>
                     <h4 class="text-lg font-semibold text-gray-800 mb-3">Data Processing</h4>
                     <ul class="space-y-2 text-gray-600">
-                        <li>✅ Hosted on Railway's secure cloud infrastructure</li>
-                        <li>✅ Canadian users served via regional edge locations</li>
-                        <li>✅ PIPEDA compliant data handling practices</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Hosted on Railway's secure cloud infrastructure</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Canadian users served via regional edge locations</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> PIPEDA compliant data handling practices</li>
                     </ul>
                 </div>
                         </ul>
@@ -491,7 +505,7 @@
                         </div>
                     </div>
                     <div class="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
-                        <p class="text-green-800 font-semibold">📊 Current Performance:</p>
+                        <p class="text-green-800 font-semibold"> Current Performance:</p>
                         <p class="text-green-700">99.9%+ uptime target</p>
                     </div>
                 </div>
@@ -514,7 +528,7 @@
                         </div>
                     </div>
                     <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
-                        <p class="text-blue-800 font-semibold">⚡ Current Performance:</p>
+                        <p class="text-blue-800 font-semibold"> Current Performance:</p>
                         <p class="text-blue-700">Average 150ms response time</p>
                     </div>
                 </div>
@@ -534,13 +548,13 @@
                 
                 <div class="grid md:grid-cols-2 gap-6 text-left">
                     <div>
-                        <h3 class="text-lg font-semibold mb-2">🔐 Security Team</h3>
+                        <h3 class="text-lg font-semibold mb-2"> Security Team</h3>
                         <p><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></p>
                         <p><a href="tel:+16479567290">(647) 956-7290</a></p>
                         <p class="text-sm opacity-75 mt-1">24/7 emergency response</p>
                     </div>
                     <div>
-                        <h3 class="text-lg font-semibold mb-2">🛡️ Privacy Officer</h3>
+                        <h3 class="text-lg font-semibold mb-2"> Privacy Officer</h3>
                         <p><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></p>
                         <p>Arthur Kostaras</p>
                         <p class="text-sm opacity-75 mt-1">PIPEDA compliance inquiries</p>
@@ -548,7 +562,7 @@
                 </div>
 
                 <div class="mt-8 pt-6 border-t border-white border-opacity-20">
-                    <h3 class="text-lg font-semibold mb-3">📋 Additional Resources</h3>
+                    <h3 class="text-lg font-semibold mb-3"> Additional Resources</h3>
                     <div class="flex flex-wrap gap-4 justify-center">
                         <a href="/privacy-policy" class="text-yellow-300 hover:text-yellow-200">Privacy Policy</a>
                         <a href="/terms-of-service" class="text-yellow-300 hover:text-yellow-200">Terms of Service</a>
@@ -561,13 +575,13 @@
     </section>
 
     <!-- Footer -->
-    <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
+    <footer style="background: var(--bg); padding: 60px 24px; border-top: 1px solid var(--border-color);">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
                 <i class="fas fa-maple-leaf" style="color: var(--primary-blue);"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </div>
-            <p style="color: #a0a0a0; margin-bottom: 32px;">Trusted by Canadian law firms. Your security and privacy are our commitment.</p>
-            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. Trusted by Canadian law firms. Your security and privacy are our commitment.</div>
+            <p style="color: var(--text-2); margin-bottom: 32px;">Trusted by Canadian law firms. Your security and privacy are our commitment.</p>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: var(--text-3); font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. Trusted by Canadian law firms. Your security and privacy are our commitment.</div>
         </div>
     </footer>
 

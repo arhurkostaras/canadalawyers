@@ -12,6 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lawyer Revenue Calculator - Discover Your Earning Potential</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
     <link rel="apple-touch-icon" href="/icon-512.png">
@@ -35,9 +39,7 @@
     <meta name="twitter:description" content="Calculate your potential revenue as a lawyer on CanadaLawyers. See projected earnings based on your tier, practice area, and client capacity.">
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">
@@ -52,7 +54,7 @@
     </script>
 
     <style>
-        :root { --primary-blue: #2563eb; --primary-navy: #1e3a8a; --primary-navy: #1e3a8a; --accent-green: #059669; --dark-bg: #0a0a0a; --card-bg: #1a1a1a; --border-color: #333333; }
+        :root { --primary-blue: var(--gold); --primary-navy: var(--gold-deep); --primary-navy: var(--gold-deep); --accent-green: var(--success); --dark-bg: var(--bg); --card-bg: var(--bg-raised); --border-color: var(--border); }
         * {
             margin: 0;
             padding: 0;
@@ -60,25 +62,25 @@
         }
 
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: var(--font-body);
             background: var(--dark-bg);
-            color: white;
+            color: var(--cream);
             line-height: 1.6;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
 
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav{ position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(241,234,220,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
-        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--cream); font-weight: 700; font-size: 1.25rem; }
         .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a { color: rgba(241,234,220,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(201,168,106,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         .container {
@@ -97,7 +99,7 @@
             font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
+            background: var(--gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -106,17 +108,17 @@
 
         .header p {
             font-size: 1.3rem;
-            color: #cbd5e1;
+            color: var(--text-2);
             max-width: 800px;
             margin: 0 auto;
         }
 
         .calculator-container {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(241,234,220,0.05);
             border-radius: 30px;
             padding: 50px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(241,234,220,0.1);
             backdrop-filter: blur(10px);
             margin-bottom: 50px;
         }
@@ -144,10 +146,10 @@
         .form-group select {
             width: 100%;
             padding: 15px 20px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(241,234,220,0.2);
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: rgba(241,234,220,0.1);
+            color: var(--cream);
             font-size: 1rem;
             transition: all 0.3s ease;
         }
@@ -156,13 +158,13 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--primary-blue);
-            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
-            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(201,168,106, 0.3);
+            background: rgba(241,234,220,0.15);
         }
 
         .form-group select option {
-            background: #1a1a1a;
-            color: white;
+            background: var(--bg-raised);
+            color: var(--cream);
         }
 
         .slider-container {
@@ -173,7 +175,7 @@
             width: 100%;
             height: 8px;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(241,234,220,0.2);
             outline: none;
             -webkit-appearance: none;
         }
@@ -183,19 +185,19 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: #2563eb;
+            background: var(--gold);
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 4px 8px rgba(201,168,106, 0.4);
         }
 
         .slider::-moz-range-thumb {
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: #2563eb;
+            background: var(--gold);
             cursor: pointer;
             border: none;
-            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 4px 8px rgba(201,168,106, 0.4);
         }
 
         .slider-value {
@@ -209,8 +211,8 @@
         .calculate-btn {
             width: 100%;
             padding: 20px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             border: none;
             border-radius: 20px;
             font-size: 1.3rem;
@@ -219,22 +221,22 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 15px 30px rgba(201,168,106, 0.4);
         }
 
         .calculate-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.5);
+            box-shadow: 0 20px 40px rgba(201,168,106, 0.5);
         }
 
         .results-container {
             display: none;
             margin-top: 50px;
             padding: 40px;
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            background: linear-gradient(135deg, var(--success) 0%, var(--success) 100%);
             border-radius: 25px;
-            box-shadow: 0 20px 50px rgba(5, 150, 105, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(111,143,106, 0.3);
+            border: 2px solid rgba(241,234,220,0.1);
         }
 
         .results-header {
@@ -257,18 +259,18 @@
         }
 
         .result-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(241,234,220,0.1);
             border-radius: 20px;
             padding: 25px;
             text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(241,234,220,0.2);
             backdrop-filter: blur(10px);
         }
 
         .result-number {
             font-size: 2.5rem;
             font-weight: 900;
-            color: white;
+            color: var(--cream);
             margin-bottom: 10px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -289,15 +291,15 @@
             text-align: center;
             margin: 40px 0;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(241,234,220,0.15);
             border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(241,234,220,0.2);
         }
 
         .total-impact-number {
             font-size: 4rem;
             font-weight: 900;
-            color: white;
+            color: var(--cream);
             margin-bottom: 10px;
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
@@ -316,7 +318,7 @@
         .cta-btn {
             display: inline-block;
             padding: 20px 40px;
-            background: white;
+            background: var(--cream);
             color: var(--primary-blue);
             text-decoration: none;
             border-radius: 20px;
@@ -337,9 +339,9 @@
             text-align: center;
             margin-top: 30px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(241,234,220,0.05);
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(241,234,220,0.1);
         }
 
         .social-proof p {
@@ -354,13 +356,13 @@
                 display: none;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: var(--nav-bg); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(241,234,220,0.1);
             }
             .nav-links.active { display: flex; }
             .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
             .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        .nav-links a:hover { background: rgba(241,234,220,0.05); }
             .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
             .header h1 {
                 font-size: 2.5rem;
@@ -408,10 +410,12 @@
 
         .scenario-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(241,234,220,0.2);
+            border-color: rgba(241,234,220,0.3);
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
 </head>
 <body>
     <nav class="nav">
@@ -430,7 +434,7 @@
 
     <div class="container">
         <div class="header">
-            <h1>🎯 Lawyer Revenue Calculator</h1>
+            <h1> Lawyer Revenue Calculator</h1>
             <p>Discover your true earning potential with Canada's most advanced lawyer positioning platform. Get personalized projections based on your experience, location, and growth goals.</p>
         </div>
 
@@ -504,14 +508,14 @@
                 </div>
 
                 <button type="submit" class="calculate-btn">
-                    🚀 Calculate My Revenue Potential
+                     Calculate My Revenue Potential
                 </button>
             </form>
         </div>
 
         <div class="results-container" id="results">
             <div class="results-header">
-                <h2>🎯 Your Personalized Revenue Projection</h2>
+                <h2> Your Personalized Revenue Projection</h2>
                 <p>Based on your profile and our algorithm optimization</p>
             </div>
 
@@ -547,24 +551,24 @@
 
             <div class="cta-section">
                 <a href="javascript:void(0)" class="cta-btn" onclick="proceedToSignup()">
-                    🎯 Join Canada's Top Lawyer Network
+                     Join Canada's Top Lawyer Network
                 </a>
             </div>
 
             <div class="social-proof">
-                <p>💡 "This positioning increased my client acquisition by 340% in just 6 months. The algorithm puts me in front of exactly the right businesses." - Sarah M., Lawyer, Toronto</p>
+                <p> "This positioning increased my client acquisition by 340% in just 6 months. The algorithm puts me in front of exactly the right businesses." - Sarah M., Lawyer, Toronto</p>
             </div>
         </div>
 
         <!-- What-If Scenarios Section -->
         <div class="what-if-scenarios" id="whatIfScenarios" style="display: none; margin: 40px 0; animation: slideInUp 0.6s ease-out;">
             <div style="
-                background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
-                color: white;
+                background: var(--bg);
+                color: var(--cream);
                 border-radius: 25px;
                 padding: 40px;
-                box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
-                border: 2px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 20px 50px rgba(201,168,106, 0.3);
+                border: 2px solid rgba(241,234,220,0.1);
             ">
                 <div style="text-align: center; margin-bottom: 40px;">
                     <h3 style="
@@ -572,7 +576,7 @@
                         font-weight: 800;
                         margin-bottom: 15px;
                         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-                    ">🎯 What If You Could Earn Even More?</h3>
+                    "> What If You Could Earn Even More?</h3>
                     <p style="
                         font-size: 1.1rem;
                         opacity: 0.9;
@@ -588,94 +592,94 @@
                     margin-bottom: 30px;
                 ">
                     <div class="scenario-card" onclick="runScenario('experience')" style="
-                        background: rgba(255, 255, 255, 0.1);
+                        background: rgba(241,234,220,0.1);
                         border-radius: 20px;
                         padding: 25px;
                         text-align: center;
                         cursor: pointer;
                         transition: all 0.3s ease;
-                        border: 2px solid rgba(255, 255, 255, 0.1);
+                        border: 2px solid rgba(241,234,220,0.1);
                     ">
-                        <div style="font-size: 3rem; margin-bottom: 15px;">📈</div>
-                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white;">+2 Years Experience</h4>
+                        <div style="font-size: 3rem; margin-bottom: 15px;"></div>
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--cream);">+2 Years Experience</h4>
                         <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">See impact of added expertise</p>
                         <div id="experienceResult" style="
                             font-size: 1.4rem;
                             font-weight: 800;
-                            color: #fbbf24;
+                            color: var(--gold-bright);
                             padding: 8px 16px;
-                            background: rgba(251, 191, 36, 0.2);
+                            background: rgba(201,168,106, 0.2);
                             border-radius: 12px;
-                            border: 1px solid rgba(251, 191, 36, 0.3);
+                            border: 1px solid rgba(201,168,106, 0.3);
                         ">+$32K potential</div>
                     </div>
                     
                     <div class="scenario-card" onclick="runScenario('specialization')" style="
-                        background: rgba(255, 255, 255, 0.1);
+                        background: rgba(241,234,220,0.1);
                         border-radius: 20px;
                         padding: 25px;
                         text-align: center;
                         cursor: pointer;
                         transition: all 0.3s ease;
-                        border: 2px solid rgba(255, 255, 255, 0.1);
+                        border: 2px solid rgba(241,234,220,0.1);
                     ">
-                        <div style="font-size: 3rem; margin-bottom: 15px;">🎯</div>
-                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white;">Hot Industry Focus</h4>
+                        <div style="font-size: 3rem; margin-bottom: 15px;"></div>
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--cream);">Hot Industry Focus</h4>
                         <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">Target high-demand sectors</p>
                         <div id="specializationResult" style="
                             font-size: 1.4rem;
                             font-weight: 800;
-                            color: #fbbf24;
+                            color: var(--gold-bright);
                             padding: 8px 16px;
-                            background: rgba(251, 191, 36, 0.2);
+                            background: rgba(201,168,106, 0.2);
                             border-radius: 12px;
-                            border: 1px solid rgba(251, 191, 36, 0.3);
+                            border: 1px solid rgba(201,168,106, 0.3);
                         ">+$45K potential</div>
                     </div>
                     
                     <div class="scenario-card" onclick="runScenario('premium')" style="
-                        background: rgba(255, 255, 255, 0.1);
+                        background: rgba(241,234,220,0.1);
                         border-radius: 20px;
                         padding: 25px;
                         text-align: center;
                         cursor: pointer;
                         transition: all 0.3s ease;
-                        border: 2px solid rgba(255, 255, 255, 0.1);
+                        border: 2px solid rgba(241,234,220,0.1);
                     ">
-                        <div style="font-size: 3rem; margin-bottom: 15px;">👑</div>
-                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white;">Premium Positioning</h4>
+                        <div style="font-size: 3rem; margin-bottom: 15px;"></div>
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--cream);">Premium Positioning</h4>
                         <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">Top 3 algorithm placement</p>
                         <div id="premiumResult" style="
                             font-size: 1.4rem;
                             font-weight: 800;
-                            color: #fbbf24;
+                            color: var(--gold-bright);
                             padding: 8px 16px;
-                            background: rgba(251, 191, 36, 0.2);
+                            background: rgba(201,168,106, 0.2);
                             border-radius: 12px;
-                            border: 1px solid rgba(251, 191, 36, 0.3);
+                            border: 1px solid rgba(201,168,106, 0.3);
                         ">+$78K potential</div>
                     </div>
                     
                     <div class="scenario-card" onclick="runScenario('major-city')" style="
-                        background: rgba(255, 255, 255, 0.1);
+                        background: rgba(241,234,220,0.1);
                         border-radius: 20px;
                         padding: 25px;
                         text-align: center;
                         cursor: pointer;
                         transition: all 0.3s ease;
-                        border: 2px solid rgba(255, 255, 255, 0.1);
+                        border: 2px solid rgba(241,234,220,0.1);
                     ">
-                        <div style="font-size: 3rem; margin-bottom: 15px;">🏙️</div>
-                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: white;">Major City Market</h4>
+                        <div style="font-size: 3rem; margin-bottom: 15px;"></div>
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--cream);">Major City Market</h4>
                         <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">Toronto/Vancouver rates</p>
                         <div id="majorCityResult" style="
                             font-size: 1.4rem;
                             font-weight: 800;
-                            color: #fbbf24;
+                            color: var(--gold-bright);
                             padding: 8px 16px;
-                            background: rgba(251, 191, 36, 0.2);
+                            background: rgba(201,168,106, 0.2);
                             border-radius: 12px;
-                            border: 1px solid rgba(251, 191, 36, 0.3);
+                            border: 1px solid rgba(201,168,106, 0.3);
                         ">+$56K potential</div>
                     </div>
                 </div>
@@ -683,11 +687,11 @@
                 <!-- Scenario Details Panel -->
                 <div id="scenarioDetails" style="
                     display: none;
-                    background: rgba(255, 255, 255, 0.05);
+                    background: rgba(241,234,220,0.05);
                     border-radius: 20px;
                     padding: 30px;
                     margin-top: 30px;
-                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    border: 2px solid rgba(241,234,220,0.1);
                 ">
                     <div style="
                         display: flex;
@@ -695,27 +699,27 @@
                         align-items: center;
                         margin-bottom: 20px;
                         padding-bottom: 15px;
-                        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                        border-bottom: 1px solid rgba(241,234,220,0.1);
                     ">
-                        <h4 id="detailsTitle" style="color: white; font-size: 1.4rem;">Scenario Results</h4>
+                        <h4 id="detailsTitle" style="color: var(--cream); font-size: 1.4rem;">Scenario Results</h4>
                         <button onclick="closeScenarioDetails()" style="
                             background: none;
                             border: none;
-                            color: white;
+                            color: var(--cream);
                             font-size: 1.5rem;
                             cursor: pointer;
                             padding: 5px 10px;
                             border-radius: 50%;
                             transition: background 0.3s ease;
-                        ">✕</button>
+                        "><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
                     </div>
                     <div id="detailsContent">
                         <!-- Dynamic content will be inserted here -->
                     </div>
                     <button onclick="proceedWithScenario()" style="
                         width: 100%;
-                        background: white;
-                        color: #2563eb;
+                        background: var(--cream);
+                        color: var(--gold);
                         border: none;
                         padding: 15px 25px;
                         border-radius: 12px;
@@ -726,7 +730,7 @@
                         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
                         margin-top: 20px;
                     ">
-                        🚀 Implement This Strategy Now
+                         Implement This Strategy Now
                     </button>
                 </div>
             </div>
@@ -895,13 +899,13 @@
                 cards.forEach(card => {
                     card.addEventListener('mouseenter', function() {
                         this.style.transform = 'translateY(-5px)';
-                        this.style.boxShadow = '0 15px 40px rgba(255, 255, 255, 0.2)';
-                        this.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                        this.style.boxShadow = '0 15px 40px rgba(241,234,220,0.2)';
+                        this.style.borderColor = 'rgba(241,234,220,0.3)';
                     });
                     card.addEventListener('mouseleave', function() {
                         this.style.transform = 'translateY(0)';
                         this.style.boxShadow = 'none';
-                        this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                        this.style.borderColor = 'rgba(241,234,220,0.1)';
                     });
                 });
                 
@@ -935,7 +939,7 @@
             switch(scenarioType) {
                 case 'experience':
                     scenarioData = {
-                        title: '📈 +2 Years Experience Impact',
+                        title: '+2 Years Experience Impact',
                         newImpact: Math.round(currentImpact * 1.15),
                         newClients: Math.round(currentClients * 1.12),
                         description: 'Additional experience increases client trust and allows for premium pricing.',
@@ -950,7 +954,7 @@
                     break;
                 case 'specialization':
                     scenarioData = {
-                        title: '🎯 Hot Industry Specialization',
+                        title: 'Hot Industry Specialization',
                         newImpact: Math.round(currentImpact * 1.22),
                         newClients: Math.round(currentClients * 1.15),
                         description: 'Focusing on high-demand sectors like tech, cannabis, or ESG increases your value proposition.',
@@ -1020,61 +1024,61 @@
             contentEl.innerHTML = `
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 25px;">
                     <div style="
-                        background: rgba(16, 185, 129, 0.1);
-                        border: 2px solid rgba(16, 185, 129, 0.3);
+                        background: rgba(111,143,106, 0.1);
+                        border: 2px solid rgba(111,143,106, 0.3);
                         border-radius: 15px;
                         padding: 20px;
                         text-align: center;
                     ">
                         <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 8px;">New Revenue Impact</div>
-                        <div style="font-size: 2rem; font-weight: 800; color: #10b981; margin-bottom: 5px;">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--success); margin-bottom: 5px;">
                             $${Math.round(data.newImpact/1000)}K
                         </div>
-                        <div style="font-size: 1rem; color: #fbbf24; font-weight: 600;">
+                        <div style="font-size: 1rem; color: var(--gold-bright); font-weight: 600;">
                             +$${Math.round(increase/1000)}K increase
                         </div>
                     </div>
                     
                     <div style="
-                        background: rgba(59, 130, 246, 0.1);
-                        border: 2px solid rgba(59, 130, 246, 0.3);
+                        background: rgba(201,168,106, 0.1);
+                        border: 2px solid rgba(201,168,106, 0.3);
                         border-radius: 15px;
                         padding: 20px;
                         text-align: center;
                     ">
                         <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 8px;">New Clients/Year</div>
-                        <div style="font-size: 2rem; font-weight: 800; color: #3b82f6; margin-bottom: 5px;">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--gold); margin-bottom: 5px;">
                             ${data.newClients}
                         </div>
-                        <div style="font-size: 1rem; color: #fbbf24; font-weight: 600;">
+                        <div style="font-size: 1rem; color: var(--gold-bright); font-weight: 600;">
                             +${clientIncrease} more clients
                         </div>
                     </div>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
-                    <h5 style="color: white; font-size: 1.1rem; margin-bottom: 12px;">Strategy Overview:</h5>
-                    <p style="color: rgba(255,255,255,0.9); line-height: 1.6; font-size: 1rem;">
+                    <h5 style="color: var(--cream); font-size: 1.1rem; margin-bottom: 12px;">Strategy Overview:</h5>
+                    <p style="color: rgba(241,234,220,0.9); line-height: 1.6; font-size: 1rem;">
                         ${data.description}
                     </p>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
-                    <h5 style="color: white; font-size: 1.1rem; margin-bottom: 12px;">Key Benefits:</h5>
-                    <div style="color: rgba(255,255,255,0.9); line-height: 1.8;">
+                    <h5 style="color: var(--cream); font-size: 1.1rem; margin-bottom: 12px;">Key Benefits:</h5>
+                    <div style="color: rgba(241,234,220,0.9); line-height: 1.8;">
                         ${data.benefits.join('<br>')}
                     </div>
                 </div>
                 
                 <div style="
-                    background: rgba(251, 191, 36, 0.1);
-                    border: 1px solid rgba(251, 191, 36, 0.3);
+                    background: rgba(201,168,106, 0.1);
+                    border: 1px solid rgba(201,168,106, 0.3);
                     border-radius: 12px;
                     padding: 15px;
                     margin-bottom: 15px;
                 ">
-                    <div style="font-weight: 600; color: #fbbf24; margin-bottom: 5px;">⏱️ Implementation Timeline:</div>
-                    <div style="color: rgba(255,255,255,0.9);">${data.timeframe}</div>
+                    <div style="font-weight: 600; color: var(--gold-bright); margin-bottom: 5px;">⏱️ Implementation Timeline:</div>
+                    <div style="color: rgba(241,234,220,0.9);">${data.timeframe}</div>
                 </div>
             `;
             
@@ -1159,19 +1163,19 @@
                     box-sizing: border-box;
                 ">
                     <div style="
-                        background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
-                        color: white;
+                        background: var(--bg);
+                        color: var(--cream);
                         padding: 40px;
                         border-radius: 25px;
                         max-width: 520px;
                         width: 100%;
                         text-align: center;
                         box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-                        border: 3px solid rgba(255,255,255,0.2);
+                        border: 3px solid rgba(241,234,220,0.2);
                         animation: slideIn 0.4s ease-out;
                         position: relative;
                     ">
-                        <div style="font-size: 4rem; margin-bottom: 20px; animation: pulse 2s infinite;">⚠️</div>
+                        <div style="font-size: 4rem; margin-bottom: 20px; animation: pulse 2s infinite; color: var(--gold);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
                         
                         <h3 style="
                             font-size: 2.2rem; 
@@ -1193,53 +1197,53 @@
                         </p>
                         
                         <div style="
-                            background: rgba(255,255,255,0.15); 
+                            background: rgba(241,234,220,0.15); 
                             padding: 25px; 
                             border-radius: 18px; 
                             margin: 25px 0;
-                            border: 2px solid rgba(255,255,255,0.2);
+                            border: 2px solid rgba(241,234,220,0.2);
                             backdrop-filter: blur(10px);
                         ">
-                            <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: #fbbf24;">
-                                🎯 Claim Your FREE Revenue Strategy Call
+                            <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: var(--gold-bright);">
+                                Claim Your FREE Revenue Strategy Call
                             </div>
-                            <div style="font-size: 1rem; text-align: left; line-height: 1.7; color: rgba(255,255,255,0.95);">
-                                ✅ <strong>Personalized roadmap</strong> to achieve your ${revenueAmount} target<br>
-                                ✅ <strong>Algorithm positioning</strong> strategy from our team<br>
-                                ✅ <strong>Client acquisition plan</strong> for your ${newClients} new clients<br>
-                                ✅ <strong>Immediate action steps</strong> you can implement today
+                            <div style="font-size: 1rem; text-align: left; line-height: 1.7; color: rgba(241,234,220,0.95);">
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> <strong>Personalized roadmap</strong> to achieve your ${revenueAmount} target<br>
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> <strong>Algorithm positioning</strong> strategy from our team<br>
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> <strong>Client acquisition plan</strong> for your ${newClients} new clients<br>
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> <strong>Immediate action steps</strong> you can implement today
                             </div>
                         </div>
                         
                         <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                             <button onclick="claimStrategyCall()" style="
-                                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-                                color: white;
+                                background: linear-gradient(135deg, var(--success) 0%, var(--success) 100%);
+                                color: var(--cream);
                                 padding: 18px 35px;
                                 border: none;
                                 border-radius: 15px;
                                 font-size: 1.2rem;
                                 font-weight: 800;
                                 cursor: pointer;
-                                box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+                                box-shadow: 0 10px 25px rgba(111,143,106, 0.4);
                                 transition: all 0.3s ease;
                                 text-transform: uppercase;
                                 letter-spacing: 0.5px;
-                            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 35px rgba(16, 185, 129, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px rgba(16, 185, 129, 0.4)'">
-                                📞 Yes! Claim My Strategy Call
+                            " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 15px 35px rgba(111,143,106, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 25px rgba(111,143,106, 0.4)'">
+                                Yes! Claim My Strategy Call
                             </button>
                             
                             <button onclick="closeExitIntent()" style="
                                 background: transparent;
-                                color: rgba(255,255,255,0.8);
+                                color: rgba(241,234,220,0.8);
                                 padding: 18px 30px;
-                                border: 2px solid rgba(255,255,255,0.3);
+                                border: 2px solid rgba(241,234,220,0.3);
                                 border-radius: 15px;
                                 font-size: 1rem;
                                 font-weight: 600;
                                 cursor: pointer;
                                 transition: all 0.3s ease;
-                            " onmouseover="this.style.borderColor='rgba(255,255,255,0.6)'; this.style.color='white'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.color='rgba(255,255,255,0.8)'">
+                            " onmouseover="this.style.borderColor='rgba(241,234,220,0.6)'; this.style.color='white'" onmouseout="this.style.borderColor='rgba(241,234,220,0.3)'; this.style.color='rgba(241,234,220,0.8)'">
                                 Maybe Later
                             </button>
                         </div>
@@ -1250,7 +1254,7 @@
                             opacity: 0.8;
                             font-style: italic;
                         ">
-                            🔒 No pressure call • Just value and actionable insights
+                            No pressure call • Just value and actionable insights
                         </div>
                         
                         <!-- Close button -->
@@ -1260,12 +1264,12 @@
                             right: 20px;
                             background: none;
                             border: none;
-                            color: rgba(255,255,255,0.6);
+                            color: rgba(241,234,220,0.6);
                             font-size: 1.5rem;
                             cursor: pointer;
                             padding: 5px;
                             transition: color 0.3s ease;
-                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
+                        " onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(241,234,220,0.6)'">
                             ✕
                         </button>
                     </div>
@@ -1367,13 +1371,13 @@
         document.head.appendChild(style);
     </script>
 
-    <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color); margin-top: 80px;">
+    <footer style="background: var(--bg); padding: 60px 24px; border-top: 1px solid var(--border-color); margin-top: 80px;">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
                 <i class="fas fa-maple-leaf" style="color: var(--primary-blue);"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </div>
-            <p style="color: #a0a0a0; margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
-            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
+            <p style="color: var(--text-2); margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: var(--text-3); font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
         </div>
     </footer>
 </body>

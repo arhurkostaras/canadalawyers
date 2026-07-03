@@ -12,6 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lawyer Pricing | CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
     <link rel="apple-touch-icon" href="/icon-512.png">
@@ -36,9 +40,7 @@
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
 
     <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -129,21 +131,21 @@
 
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --primary-navy: #1e3a8a;
-            --primary-navy: #1e3a8a;
-            --accent-green: #059669;
-            --dark-bg: #0a0a0a;
-            --card-bg: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --border-color: #333333;
+            --primary-blue: var(--gold);
+            --primary-navy: var(--gold-deep);
+            --primary-navy: var(--gold-deep);
+            --accent-green: var(--success);
+            --dark-bg: var(--bg);
+            --card-bg: var(--bg-raised);
+            --text-primary: var(--text);
+            --text-secondary: var(--text-2);
+            --border-color: var(--border);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: var(--font-body);
             background: var(--dark-bg);
             color: var(--text-primary);
             line-height: 1.6;
@@ -151,11 +153,11 @@
         }
 
         /* Navigation */
-        .nav {
+        .nav{
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(241,234,220,0.1);
         }
         .nav-inner {
             max-width: 1200px; margin: 0 auto; padding: 0 24px;
@@ -163,36 +165,36 @@
         }
         .nav-logo {
             display: flex; align-items: center; gap: 8px;
-            text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem;
+            text-decoration: none; color: var(--cream); font-weight: 700; font-size: 1.25rem;
         }
         .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
         .nav-links a {
-            color: rgba(255,255,255,0.8); text-decoration: none;
+            color: rgba(241,234,220,0.8); text-decoration: none;
             font-size: 0.9rem; font-weight: 500; transition: color 0.3s;
         }
         .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { color: white; }
+        .nav-links a:hover { color: var(--cream); }
         .nav-cta {
-            background: white !important; color: var(--primary-blue) !important;
+            background: var(--cream) !important; color: var(--primary-blue) !important;
             padding: 10px 24px; border-radius: 8px; font-weight: 700 !important;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(201,168,106,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         /* Hero */
         .hero {
             padding: 140px 24px 80px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 50%, var(--primary-navy) 100%);
+            background: var(--bg);
             text-align: center;
         }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+            background: rgba(241,234,220,0.15); backdrop-filter: blur(10px);
             padding: 12px 24px; border-radius: 50px; font-size: 0.9rem; font-weight: 500;
-            margin-bottom: 32px; border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 32px; border: 1px solid rgba(241,234,220,0.2);
         }
         .hero h1 {
             font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px;
@@ -202,8 +204,8 @@
         .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 48px; opacity: 0.9; line-height: 1.7; }
         .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
         .hero-stat {
-            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 24px;
+            background: rgba(241,234,220,0.1); backdrop-filter: blur(10px);
+            border: 1px solid rgba(241,234,220,0.15); border-radius: 16px; padding: 24px;
         }
         .hero-stat .value { font-size: 1.75rem; font-weight: 900; margin-bottom: 4px; }
         .hero-stat .label { font-size: 0.85rem; opacity: 0.8; }
@@ -216,16 +218,16 @@
 
         /* Toggle */
         .toggle-container {
-            display: inline-flex; background: rgba(255,255,255,0.1);
-            border-radius: 50px; padding: 4px; border: 1px solid rgba(255,255,255,0.15);
+            display: inline-flex; background: rgba(241,234,220,0.1);
+            border-radius: 50px; padding: 4px; border: 1px solid rgba(241,234,220,0.15);
         }
         .toggle-option {
             padding: 10px 28px; border-radius: 50px; cursor: pointer;
             font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; color: var(--text-secondary);
         }
         .toggle-option.active {
-            background: var(--primary-blue); color: white;
-            box-shadow: 0 2px 12px rgba(37,99,235,0.4);
+            background: var(--primary-blue); color: var(--ink);
+            box-shadow: 0 2px 12px rgba(201,168,106,0.4);
         }
         .savings-badge { color: var(--accent-green); font-weight: 600; font-size: 0.9rem; margin-top: 12px; }
 
@@ -240,18 +242,18 @@
         }
         .pricing-card:hover {
             transform: translateY(-8px); border-color: var(--primary-blue);
-            box-shadow: 0 20px 60px rgba(37,99,235,0.15);
+            box-shadow: 0 20px 60px rgba(201,168,106,0.15);
         }
         .pricing-card.featured {
             border-color: var(--primary-blue);
-            background: linear-gradient(180deg, rgba(37,99,235,0.08) 0%, var(--card-bg) 100%);
+            background: linear-gradient(180deg, rgba(201,168,106,0.08) 0%, var(--card-bg) 100%);
             transform: scale(1.03);
         }
         .pricing-card.featured:hover { transform: scale(1.03) translateY(-8px); }
         .popular-badge {
             position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy));
-            color: white; padding: 6px 24px; border-radius: 50px;
+            background: var(--gold);
+            color: var(--ink); padding: 6px 24px; border-radius: 50px;
             font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px;
         }
         .card-icon {
@@ -259,9 +261,9 @@
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 20px; font-size: 1.5rem;
         }
-        .card-icon.associate { background: rgba(37,99,235,0.15); color: var(--primary-blue); }
-        .card-icon.professional { background: rgba(37,99,235,0.2); color: var(--primary-blue); }
-        .card-icon.enterprise { background: rgba(30,58,138,0.2); color: var(--primary-navy); }
+        .card-icon.associate { background: rgba(201,168,106,0.15); color: var(--primary-blue); }
+        .card-icon.professional { background: rgba(201,168,106,0.2); color: var(--primary-blue); }
+        .card-icon.enterprise { background: rgba(201,168,106,0.2); color: var(--primary-navy); }
         .card-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
         .card-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px; }
         .card-price { font-size: 3.25rem; font-weight: 900; margin-bottom: 4px; }
@@ -270,29 +272,29 @@
         .card-features { list-style: none; margin-bottom: 32px; }
         .card-features li {
             display: flex; align-items: center; gap: 12px; padding: 8px 0;
-            font-size: 0.95rem; color: rgba(255,255,255,0.85);
+            font-size: 0.95rem; color: rgba(241,234,220,0.85);
         }
         .card-features li i { color: var(--accent-green); font-size: 0.85rem; flex-shrink: 0; }
         .card-btn {
             width: 100%; padding: 16px; border-radius: 12px; border: none;
             font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; font-family: inherit;
         }
-        .card-btn.outline { background: transparent; border: 2px solid var(--border-color); color: white; }
-        .card-btn.outline:hover { border-color: var(--primary-blue); background: rgba(37,99,235,0.1); }
-        .card-btn.primary { background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy)); color: white; }
-        .card-btn.primary:hover { box-shadow: 0 8px 25px rgba(37,99,235,0.4); transform: translateY(-1px); }
-        .card-btn.dark { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
-        .card-btn.dark:hover { background: rgba(255,255,255,0.15); }
+        .card-btn.outline { background: transparent; border: 2px solid var(--border-color); color: var(--cream); }
+        .card-btn.outline:hover { border-color: var(--primary-blue); background: rgba(201,168,106,0.1); }
+        .card-btn.primary { background: var(--gold); color: var(--ink); }
+        .card-btn.primary:hover { box-shadow: 0 8px 25px rgba(201,168,106,0.4); transform: translateY(-1px); }
+        .card-btn.dark { background: rgba(241,234,220,0.1); color: var(--cream); border: 1px solid rgba(241,234,220,0.2); }
+        .card-btn.dark:hover { background: rgba(241,234,220,0.15); }
 
         /* Promise Section */
         .promise-section {
             max-width: 1100px; margin: 0 auto 80px;
-            background: rgba(5,150,105,0.08); border: 1px solid rgba(5,150,105,0.2);
+            background: rgba(111,143,106,0.08); border: 1px solid rgba(111,143,106,0.2);
             border-radius: 20px; padding: 48px; text-align: center;
         }
         .promise-icon {
             width: 64px; height: 64px; border-radius: 50%;
-            background: rgba(5,150,105,0.15); display: flex; align-items: center; justify-content: center;
+            background: rgba(111,143,106,0.15); display: flex; align-items: center; justify-content: center;
             margin: 0 auto 20px; font-size: 1.5rem; color: var(--accent-green);
         }
         .promise-section h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: 24px; }
@@ -325,7 +327,7 @@
         .how-step { text-align: center; padding: 24px; }
         .step-number {
             width: 56px; height: 56px; border-radius: 50%;
-            background: rgba(37,99,235,0.15); color: var(--primary-blue);
+            background: rgba(201,168,106,0.15); color: var(--primary-blue);
             display: flex; align-items: center; justify-content: center;
             font-size: 1.5rem; font-weight: 900; margin: 0 auto 16px;
         }
@@ -335,7 +337,7 @@
         /* CTA */
         .cta-section {
             padding: 100px 24px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 50%, var(--primary-navy) 100%);
+            background: var(--bg);
             text-align: center;
         }
         .cta-section h2 { font-size: 2.75rem; font-weight: 900; margin-bottom: 20px; line-height: 1.1; }
@@ -343,20 +345,20 @@
         .cta-section > p { font-size: 1.15rem; max-width: 600px; margin: 0 auto 40px; opacity: 0.9; }
         .cta-buttons { display: flex; gap: 16px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap; }
         .cta-btn-primary {
-            background: white; color: var(--primary-blue); padding: 16px 36px;
+            background: var(--btn-primary-bg); color: var(--btn-primary-text); padding: 16px 36px;
             border-radius: 12px; font-weight: 700; font-size: 1.05rem;
             text-decoration: none; transition: all 0.3s;
         }
         .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
         .cta-btn-secondary {
-            border: 2px solid white; color: white; padding: 16px 36px;
+            border: 2px solid white; color: var(--cream); padding: 16px 36px;
             border-radius: 12px; font-weight: 700; font-size: 1.05rem;
             text-decoration: none; transition: all 0.3s;
         }
-        .cta-btn-secondary:hover { background: white; color: var(--primary-blue); }
+        .cta-btn-secondary:hover { background: var(--btn-primary-bg); color: var(--btn-primary-text); }
         .cta-quote {
-            background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2); border-radius: 20px;
+            background: rgba(241,234,220,0.12); backdrop-filter: blur(10px);
+            border: 1px solid rgba(241,234,220,0.2); border-radius: 20px;
             padding: 32px; max-width: 700px; margin: 0 auto;
         }
         .cta-quote p { font-size: 1.05rem; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
@@ -364,7 +366,7 @@
         .cta-quote .title { opacity: 0.8; font-size: 0.9rem; }
 
         /* Footer */
-        .footer { background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color); }
+        .footer { background: var(--bg); padding: 60px 24px; border-top: 1px solid var(--border-color); }
         .footer-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
         .footer-logo {
             display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -373,9 +375,9 @@
         .footer-logo .maple { color: var(--primary-blue); }
         .footer-tagline { color: var(--text-secondary); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
         .footer-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-bottom: 32px; }
-        .footer-grid h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 12px; }
+        .footer-grid h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 12px; }
         .footer-grid .items { color: var(--text-secondary); font-size: 0.85rem; line-height: 2; }
-        .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem; }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 24px; color: var(--text-3); font-size: 0.8rem; }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -384,13 +386,13 @@
                 display: none;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: var(--nav-bg); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(241,234,220,0.1);
             }
             .nav-links.active { display: flex; }
             .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
             .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        .nav-links a:hover { background: rgba(241,234,220,0.05); }
             .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
             .hero { padding: 120px 16px 60px; }
             .hero h1 { font-size: 2.25rem; }
@@ -413,8 +415,8 @@
             .faq-section { padding: 60px 16px; }
         }
 
-        .match-count { font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #2563eb, #1e3a8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 4px; }
-        .match-count-label { font-size: 0.85rem; color: #999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+        .match-count { font-size: 3.5rem; font-weight: 900; background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 4px; }
+        .match-count-label { font-size: 0.85rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
 
         /* FAQ Section */
         .faq-section { background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 100px 24px; }
@@ -428,6 +430,8 @@
         .faq-item.open .faq-answer { max-height: 300px; padding-top: 16px; }
         .section-overline { display: inline-block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-blue); margin-bottom: 16px; }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -485,9 +489,9 @@
             <div class="savings-badge" id="savingsBadge" style="display: none;">Save up to 16% with annual billing</div>
         </div>
 
-        <div style="background: linear-gradient(135deg, rgba(5,150,105,0.15), rgba(37,99,235,0.15)); border: 1px solid rgba(5,150,105,0.3); border-radius: 12px; padding: 16px 24px; margin-bottom: 32px; text-align: center; max-width: 1100px; margin-left: auto; margin-right: auto;">
-            <p style="color: #059669; font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; margin-top: 0;">FOUNDING MEMBER PRICING</p>
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin: 0;">Lock in current rates before they increase. Early members keep their price forever.</p>
+        <div style="background: linear-gradient(135deg, rgba(111,143,106,0.15), rgba(201,168,106,0.15)); border: 1px solid rgba(111,143,106,0.3); border-radius: 12px; padding: 16px 24px; margin-bottom: 32px; text-align: center; max-width: 1100px; margin-left: auto; margin-right: auto;">
+            <p style="color: var(--success); font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; margin-top: 0;">FOUNDING MEMBER PRICING</p>
+            <p style="color: rgba(241,234,220,0.8); font-size: 0.85rem; margin: 0;">Lock in current rates before they increase. Early members keep their price forever.</p>
         </div>
 
         <div class="pricing-grid">
@@ -515,8 +519,8 @@
                     <li><i class="fas fa-check"></i> 1 testimonial display slot</li>
                     <li><i class="fas fa-check"></i> Email support</li>
                 </ul>
-                <div style="background: rgba(5,150,105,0.1); border: 1px solid rgba(5,150,105,0.3); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; text-align: center;">
-                    <span style="color: #059669; font-weight: 600; font-size: 0.8rem;"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>Limited positions in each province</span>
+                <div style="background: rgba(111,143,106,0.1); border: 1px solid rgba(111,143,106,0.3); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; text-align: center;">
+                    <span style="color: var(--text-2); font-weight: 600; font-size: 0.8rem;"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>Limited positions in each province</span>
                 </div>
                 <button onclick="subscribeToPlan('associate', currentInterval)" class="card-btn outline">Get Started</button>
             </div>
@@ -548,8 +552,8 @@
                     <li><i class="fas fa-check"></i> Priority new-client alerts</li>
                     <li><i class="fas fa-check"></i> Priority email support</li>
                 </ul>
-                <div style="background: rgba(5,150,105,0.1); border: 1px solid rgba(5,150,105,0.3); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; text-align: center;">
-                    <span style="color: #059669; font-weight: 600; font-size: 0.8rem;"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>Limited positions in each province</span>
+                <div style="background: rgba(111,143,106,0.1); border: 1px solid rgba(111,143,106,0.3); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; text-align: center;">
+                    <span style="color: var(--text-2); font-weight: 600; font-size: 0.8rem;"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>Limited positions in each province</span>
                 </div>
                 <button onclick="subscribeToPlan('professional', currentInterval)" class="card-btn primary">Get Started</button>
             </div>
@@ -582,16 +586,16 @@
                     <li><i class="fas fa-check"></i> Practice area spotlight — featured in relevant category pages</li>
                     <li><i class="fas fa-check"></i> Priority email + chat support</li>
                 </ul>
-                <div style="background: rgba(5,150,105,0.1); border: 1px solid rgba(5,150,105,0.3); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; text-align: center;">
-                    <span style="color: #059669; font-weight: 600; font-size: 0.8rem;"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>Limited positions in each province</span>
+                <div style="background: rgba(111,143,106,0.1); border: 1px solid rgba(111,143,106,0.3); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; text-align: center;">
+                    <span style="color: var(--text-2); font-weight: 600; font-size: 0.8rem;"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>Limited positions in each province</span>
                 </div>
                 <button onclick="subscribeToPlan('enterprise', currentInterval)" class="card-btn dark">Get Started</button>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 32px; padding: 20px;">
-            <p style="font-size: 1.1rem; font-weight: 700; color: #059669; margin-bottom: 8px;"><i class="fas fa-shield-alt" style="margin-right: 6px;"></i>3 Qualified Leads in 90 Days — Or Your Money Back</p>
-            <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin: 0;">Every plan includes our performance guarantee. <a href="guarantee" style="color: #2563eb; text-decoration: underline;">Learn more</a></p>
+            <p style="font-size: 1.1rem; font-weight: 700; color: var(--success); margin-bottom: 8px;"><i class="fas fa-shield-alt" style="margin-right: 6px;"></i>3 Qualified Leads in 90 Days — Or Your Money Back</p>
+            <p style="color: rgba(241,234,220,0.6); font-size: 0.85rem; margin: 0;">Every plan includes our performance guarantee. <a href="guarantee" style="color: var(--gold); text-decoration: underline;">Learn more</a></p>
         </div>
 
         <!-- No Hidden Fees Promise -->
@@ -778,15 +782,15 @@
             <p class="footer-tagline">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
             <div class="footer-grid">
                 <div>
-                    <h4>Contact</h4>
+                    <h3>Contact</h3>
                     <div class="items">(647) 956-7290<br>support@canadalawyers.app</div>
                 </div>
                 <div>
-                    <h4>Plans</h4>
+                    <h3>Plans</h3>
                     <div class="items">Associate: $199/mo<br>Professional: $299/mo<br>Enterprise: $599/mo</div>
                 </div>
                 <div>
-                    <h4>Promise</h4>
+                    <h3>Promise</h3>
                     <div class="items">No setup fees<br>No commission fees<br>Cancel anytime</div>
                 </div>
             </div>
@@ -874,7 +878,7 @@
           .then(d => {
             if (d.spots_remaining > 0) {
               const banner = document.createElement('div');
-              banner.style.cssText = 'text-align:center;padding:16px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:8px;margin:20px auto;max-width:500px;color:#92400e;font-size:14px;font-weight:600;';
+              banner.style.cssText = 'text-align:center;padding:16px;background:rgba(201,168,106,0.2);border-radius:8px;margin:20px auto;max-width:500px;color:var(--gold-bright);font-size:14px;font-weight:600;';
               banner.innerHTML = '<span style="font-size:24px;">🏅</span> ' + d.spots_remaining + ' of 25 Founding Member spots remaining. Founding members get permanent priority placement and a verified badge.';
               const pricingSection = document.querySelector('.pricing-grid') || document.querySelector('.pricing-cards') || document.querySelector('.pricing') || document.querySelector('main');
               if (pricingSection) pricingSection.parentNode.insertBefore(banner, pricingSection);
