@@ -12,7 +12,7 @@
     <meta property="og:description" content="Browse 13,344 Lawyer professionals in Alberta. View profiles, firms, and specializations.">
     <meta property="og:site_name" content="CanadaLawyers.app">
     <meta property="og:locale" content="en_CA">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#0B0E12">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C388HDDCZL"></script>
     <script>
@@ -26,42 +26,43 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --primary-navy: #1e3a8a;
-            --accent-green: #059669;
-            --dark-bg: #0a0a0a;
-            --card-bg: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --border-color: #333333;
+            --primary-blue: var(--gold);
+            --primary-navy: var(--gold-deep);
+            --accent-green: var(--success);
+            --dark-bg: var(--bg);
+            --card-bg: var(--bg-raised);
+            --text-primary: var(--text);
+            --text-secondary: var(--text-2);
+            --border-color: var(--border);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: var(--font-body), sans-serif;
             background: var(--dark-bg); color: var(--text-primary); line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(241,234,220,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
-        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--cream); font-weight: 700; font-size: 1.25rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links a { color: rgba(241,234,220,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
 
         .page-header {
             padding: 120px 24px 60px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 50%, #1e3a5f 100%);
+            background: var(--bg-raised);
             text-align: center; position: relative;
         }
         .page-header::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 60%);
+            background: radial-gradient(ellipse at 30% 20%, rgba(241,234,220,0.1) 0%, transparent 60%);
             pointer-events: none;
         }
         .page-header h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 16px; position: relative; }
@@ -74,7 +75,7 @@
 
         .count-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.3);
+            background: rgba(201,168,106,0.15); border: 1px solid rgba(201,168,106,0.3);
             padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; font-weight: 600;
             color: var(--primary-blue); margin-bottom: 24px;
         }
@@ -87,7 +88,7 @@
             padding: 8px 18px; border-radius: 50px; font-size: 0.85rem;
             color: var(--text-secondary); text-decoration: none; transition: all 0.3s;
         }
-        .designation-pill:hover, .designation-pill.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+        .designation-pill:hover, .designation-pill.active { background: var(--primary-blue); color: var(--ink); border-color: var(--primary-blue); }
         .designation-pill .pill-count { font-weight: 700; margin-left: 4px; }
 
         .professionals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
@@ -96,11 +97,11 @@
             border-radius: 16px; padding: 28px; transition: transform 0.3s, border-color 0.3s;
         }
         .professional-card:hover { transform: translateY(-4px); border-color: var(--primary-blue); }
-        .professional-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+        .professional-card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
         .professional-card .firm { color: var(--primary-blue); font-size: 0.9rem; font-weight: 500; margin-bottom: 6px; }
         .professional-card .location { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 4px; }
         .professional-card .designation-tag {
-            display: inline-block; background: rgba(5,150,105,0.15); color: var(--accent-green);
+            display: inline-block; background: rgba(111,143,106,0.15); border: 1px solid var(--success); color: var(--text);
             padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-bottom: 10px;
         }
         .professional-card .bio { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; }
@@ -135,11 +136,11 @@
         .cta-section p { color: var(--text-secondary); margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
         .cta-button {
             display: inline-flex; align-items: center; gap: 8px;
-            background: var(--primary-blue); color: white; padding: 14px 32px;
+            background: var(--primary-blue); color: var(--ink); padding: 14px 32px;
             border-radius: 10px; font-weight: 700; text-decoration: none;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.3); }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,106,0.3); }
 
         .more-link {
             display: inline-flex; align-items: center; gap: 8px;
@@ -148,18 +149,18 @@
         }
         .more-link:hover { text-decoration: underline; }
 
-        .footer { background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color); }
+        .footer { background: var(--bg); padding: 60px 24px; border-top: 1px solid var(--border-color); }
         .footer-inner { max-width: 1100px; margin: 0 auto; }
         .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-bottom: 40px; }
-        .footer-grid h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; }
+        .footer-grid h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; }
         .footer-grid ul { list-style: none; }
         .footer-grid li { margin-bottom: 10px; }
         .footer-grid a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
-        .footer-grid a:hover { color: white; }
+        .footer-grid a:hover { color: var(--cream); }
         .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 24px; text-align: center; }
         .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
         .footer-tagline { color: var(--text-secondary); margin-bottom: 16px; font-size: 0.9rem; }
-        .footer-copy { color: #666; font-size: 0.8rem; }
+        .footer-copy { color: var(--text-3); font-size: 0.8rem; }
 
         @media (max-width: 900px) {
             .professionals-grid { grid-template-columns: repeat(2, 1fr); }
@@ -171,19 +172,20 @@
             .province-grid { grid-template-columns: 1fr; }
             .designation-list { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,0.95); padding: 24px; gap: 16px; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--nav-bg); padding: 24px; gap: 16px; }
             .nav-links.active { display: flex; }
             .nav-toggle { display: block; }
             .page-header h1 { font-size: 1.6rem; }
             .cta-section { padding: 32px 20px; }
         }
     </style>
+<style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
 </head>
 <body>
     
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">&#127809; CanadaLawyers</a>
+            <a href="/" class="nav-logo">CanadaLawyers</a>
             <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
             <div class="nav-links">
                 <a href="/find-lawyer">Find Lawyer</a>
@@ -214,7 +216,7 @@
             
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>A. Aboughoushe</h3>
+                <h2>A. Aboughoushe</h2>
                 <div class="firm"><i class="fas fa-building"></i> Adam Aboughoushe Professional Corporation</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta</div>
                 <div class="bio"># A. Aboughoushe
@@ -223,7 +225,7 @@ A. Aboughoushe is a lawyer based in Edmonton, Alberta, practicing through Adam A
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>A. A. Garber</h3>
+                <h2>A. A. Garber</h2>
                 <div class="firm"><i class="fas fa-building"></i> Allan Garber Professional Corporation</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta</div>
                 <div class="bio"># A. A. Garber
@@ -232,7 +234,7 @@ A. A. Garber is a lawyer at Allan Garber Professional Corporation in Edmonton, A
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>A. A. Holinski</h3>
+                <h2>A. A. Holinski</h2>
                 <div class="firm"><i class="fas fa-building"></i> Nickerson Roberts Holinski &amp; Mercer</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta</div>
                 <div class="bio"># A. A. Holinski
@@ -241,7 +243,7 @@ A. A. Holinski is a lawyer at Nickerson Roberts Holinski &amp; Mercer, a respect
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaida Peerani</h3>
+                <h2>Aaida Peerani</h2>
                 
                 
                 <div class="bio"># Aaida Peerani
@@ -250,7 +252,7 @@ Aaida Peerani is a lawyer practicing independently in Alberta. She maintains a g
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aamara Hameed</h3>
+                <h2>Aamara Hameed</h2>
                 <div class="firm"><i class="fas fa-building"></i> Parlee McLaws LLP</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</div>
                 <div class="bio"># Aamara Hameed
@@ -259,7 +261,7 @@ Aamara Hameed is a lawyer at Parlee McLaws LLP in Calgary, Alberta. She maintain
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aarabhi Chari</h3>
+                <h2>Aarabhi Chari</h2>
                 <div class="firm"><i class="fas fa-building"></i> Osler, Hoskin &amp; Harcourt LLP</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</div>
                 <div class="bio"># Aarabhi Chari
@@ -268,21 +270,21 @@ Aarabhi Chari is a lawyer at Osler, Hoskin &amp; Harcourt LLP in Calgary, Albert
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aarij S. Wasti</h3>
+                <h2>Aarij S. Wasti</h2>
                 <div class="firm"><i class="fas fa-building"></i> Gowling WLG (Canada) LLP/Gowling WLG (Canada) S.E.N.C.R.L., S.R.L.</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Toronto, Alberta</div>
                 
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>A. A. Robinson</h3>
+                <h2>A. A. Robinson</h2>
                 <div class="firm"><i class="fas fa-building"></i> Robinson Brenneis LLP</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Spruce Grove, Alberta</div>
                 
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron B. Friedenthal</h3>
+                <h2>Aaron B. Friedenthal</h2>
                 <div class="firm"><i class="fas fa-building"></i> ATB Financial</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta</div>
                 <div class="bio"># Aaron B. Friedenthal
@@ -291,7 +293,7 @@ Aaron B. Friedenthal is a lawyer based in Edmonton, Alberta, providing legal ser
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron Bickman, KC</h3>
+                <h2>Aaron Bickman, KC</h2>
                 <div class="firm"><i class="fas fa-building"></i> Wise Bickman Barkauskas</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</div>
                 <div class="bio"># KC Aaron Bickman
@@ -300,14 +302,14 @@ KC Aaron Bickman is a lawyer practicing general law at Wise Bickman Barkauskas i
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron Bradley Robert Drury</h3>
+                <h2>Aaron Bradley Robert Drury</h2>
                 <div class="firm"><i class="fas fa-building"></i> Aaron Drury Family Law</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</div>
                 
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron Brown</h3>
+                <h2>Aaron Brown</h2>
                 <div class="firm"><i class="fas fa-building"></i> Latitude Family Law LLP</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta</div>
                 <div class="bio"># Aaron Brown
@@ -316,21 +318,21 @@ Aaron Brown is a lawyer at Latitude Family Law LLP in Edmonton, Alberta. He brin
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron Chai</h3>
+                <h2>Aaron Chai</h2>
                 <div class="firm"><i class="fas fa-building"></i> KPMG Law LLP/KPMG cabinet juridique s.r.l./S.E.N.C.R.L.</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</div>
                 
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron Christoff</h3>
+                <h2>Aaron Christoff</h2>
                 <div class="firm"><i class="fas fa-building"></i> Cochrane Saxberg</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Vancouver, Alberta</div>
                 
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron Christopher Tell</h3>
+                <h2>Aaron Christopher Tell</h2>
                 <div class="firm"><i class="fas fa-building"></i> Bennett Jones LLP/ Bennett Jones S.E.N.C.R.L., SRL</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</div>
                 <div class="bio"># Aaron Christopher Tell
@@ -339,21 +341,21 @@ Aaron Christopher Tell is a lawyer at Bennett Jones LLP/Bennett Jones S.E.N.C.R.
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron D. Martens, KC</h3>
+                <h2>Aaron D. Martens, KC</h2>
                 <div class="firm"><i class="fas fa-building"></i> Dunphy Best Blocksom LLP</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</div>
                 
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron Foster ROBINSON,</h3>
+                <h2>Aaron Foster ROBINSON,</h2>
                 
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Vernon, Alberta</div>
                 
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron George Aitken</h3>
+                <h2>Aaron George Aitken</h2>
                 <div class="firm"><i class="fas fa-building"></i> Enbridge Inc.</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta</div>
                 <div class="bio"># Aaron George Aitken
@@ -362,7 +364,7 @@ Aaron George Aitken is a lawyer based in Edmonton, Alberta, serving as legal cou
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron Hymes</h3>
+                <h2>Aaron Hymes</h2>
                 <div class="firm"><i class="fas fa-building"></i> Ogilvie LLP</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Edmonton, Alberta</div>
                 <div class="bio"># Aaron Hymes
@@ -371,7 +373,7 @@ Aaron Hymes is a lawyer at Ogilvie LLP in Edmonton, Alberta, where he serves cli
             </div>
             <div class="professional-card">
                 <span class="designation-tag">Lawyer</span>
-                <h3>Aaron James Sutherland</h3>
+                <h2>Aaron James Sutherland</h2>
                 <div class="firm"><i class="fas fa-building"></i> MLT Aikins LLP</div>
                 <div class="location"><i class="fas fa-map-marker-alt"></i> Calgary, Alberta</div>
                 <div class="bio"># Aaron James Sutherland
@@ -396,7 +398,7 @@ Aaron James Sutherland is a lawyer at MLT Aikins LLP, a leading law firm based i
             <div class="footer-grid">
                 
                 <div>
-                    <h4>For Lawyers</h4>
+                    <h3>For Lawyers</h3>
                     <ul>
                         <li><a href="/join-as-lawyer">Apply to Join</a></li>
                         <li><a href="/pricing">Pricing &amp; Algorithm</a></li>
@@ -405,7 +407,7 @@ Aaron James Sutherland is a lawyer at MLT Aikins LLP, a leading law firm based i
                     </ul>
                 </div>
                 <div>
-                    <h4>For Clients</h4>
+                    <h3>For Clients</h3>
                     <ul>
                         <li><a href="/find-lawyer">Find a Lawyer</a></li>
                         <li><a href="/guarantee">Our Guarantee</a></li>
@@ -413,7 +415,7 @@ Aaron James Sutherland is a lawyer at MLT Aikins LLP, a leading law firm based i
                     </ul>
                 </div>
                 <div>
-                    <h4>Legal</h4>
+                    <h3>Legal</h3>
                     <ul>
                         <li><a href="/terms-of-service">Terms of Service</a></li>
                         <li><a href="/privacy-policy">Privacy Policy</a></li>
@@ -421,7 +423,7 @@ Aaron James Sutherland is a lawyer at MLT Aikins LLP, a leading law firm based i
                     </ul>
                 </div>
                 <div>
-                    <h4>Contact</h4>
+                    <h3>Contact</h3>
                     <ul>
                         <li><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></li>
                         <li><a href="tel:+16479567290">1.647.956.7290</a></li>
@@ -429,7 +431,7 @@ Aaron James Sutherland is a lawyer at MLT Aikins LLP, a leading law firm based i
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="footer-logo">&#127809; CanadaLawyers<span style="color: var(--primary-blue)">.app</span></div>
+                <div class="footer-logo">CanadaLawyers<span style="color: var(--primary-blue)">.app</span></div>
                 <p class="footer-tagline">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
                 <p class="footer-copy">&copy; 2026 CanadaLawyers.app | Technology platform only. Not a law firm.</p>
             </div>
