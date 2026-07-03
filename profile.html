@@ -15,6 +15,10 @@
     <meta name="keywords" content="lawyer profile, Canadian lawyer, law society verified, lawyer directory Canada">
 
     <title>Lawyer Profile | CanadaLawyers.app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
@@ -44,12 +48,11 @@
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#0B0E12">
 
     <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">
@@ -68,20 +71,20 @@
 
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --primary-navy: #1e3a8a;
-            --accent-green: #059669;
-            --dark-bg: #0a0a0a;
-            --card-bg: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --border-color: #333333;
+            --primary-blue: var(--gold);
+            --primary-navy: var(--gold-deep);
+            --accent-green: var(--success);
+            --dark-bg: var(--bg);
+            --card-bg: var(--bg-raised);
+            --text-primary: var(--text);
+            --text-secondary: var(--text-2);
+            --border-color: var(--border);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: var(--font-body);
             background: var(--dark-bg);
             color: var(--text-primary);
             line-height: 1.6;
@@ -89,32 +92,32 @@
         }
 
         /* Navigation */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav{ position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(241,234,220,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
-        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--cream); font-weight: 700; font-size: 1.25rem; }
         .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links a { color: rgba(241,234,220,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(201,168,106,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
 
         /* Hero */
         .profile-hero {
             padding: 120px 24px 60px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 50%, #1e3a5f 100%);
+            background: var(--bg-raised);
             text-align: center;
             position: relative; overflow: hidden;
         }
-        .profile-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 60%); pointer-events: none; }
+        .profile-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 20%, rgba(241,234,220,0.1) 0%, transparent 60%); pointer-events: none; }
         .profile-hero-content { position: relative; max-width: 800px; margin: 0 auto; }
 
         .profile-avatar {
             width: 100px; height: 100px; border-radius: 50%;
-            background: rgba(255,255,255,0.15); border: 3px solid rgba(255,255,255,0.3);
+            background: rgba(241,234,220,0.15); border: 3px solid rgba(241,234,220,0.3);
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 24px; font-size: 2.5rem; color: rgba(255,255,255,0.8);
+            margin: 0 auto 24px; font-size: 2.5rem; color: rgba(241,234,220,0.8);
         }
         .profile-hero h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 12px; }
         .profile-hero .subtitle { font-size: 1.15rem; opacity: 0.85; margin-bottom: 20px; }
@@ -125,11 +128,11 @@
         .hero-badge {
             display: inline-flex; align-items: center; gap: 6px;
             padding: 8px 18px; border-radius: 24px; font-size: 0.85rem; font-weight: 600;
-            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(241,234,220,0.15); border: 1px solid rgba(241,234,220,0.25);
             backdrop-filter: blur(10px);
         }
         .hero-badge i { font-size: 0.8rem; }
-        .hero-badge-verified { background: rgba(5,150,105,0.2); border-color: rgba(5,150,105,0.4); }
+        .hero-badge-verified { background: rgba(111,143,106,0.2); border-color: rgba(111,143,106,0.4); }
 
         /* Main Content */
         .profile-content { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
@@ -142,7 +145,7 @@
 
         /* Error */
         .error-state { text-align: center; padding: 120px 24px; display: none; }
-        .error-icon { width: 72px; height: 72px; background: rgba(239,68,68,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; color: #ef4444; }
+        .error-icon { width: 72px; height: 72px; background: rgba(168,86,56,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; color: var(--danger); }
         .error-state h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
         .error-state p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; max-width: 480px; margin: 0 auto; }
         .error-state a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
@@ -154,9 +157,9 @@
             border-radius: 20px; padding: 36px 32px; margin-bottom: 24px;
         }
         .bio-section h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
-        .bio-label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 20px; padding: 4px 12px; background: rgba(37,99,235,0.08); border-radius: 20px; border: 1px solid rgba(37,99,235,0.15); }
+        .bio-label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 20px; padding: 4px 12px; background: rgba(201,168,106,0.08); border-radius: 20px; border: 1px solid rgba(201,168,106,0.15); }
         .bio-label i { color: var(--primary-blue); font-size: 0.75rem; }
-        .bio-text { font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.88); }
+        .bio-text { font-size: 1.05rem; line-height: 1.8; color: rgba(241,234,220,0.88); }
         .bio-text p { margin-bottom: 16px; }
         .bio-text p:last-child { margin-bottom: 0; }
         .bio-generating { color: var(--text-secondary); font-style: italic; }
@@ -182,33 +185,33 @@
         .recommendations li {
             display: flex; align-items: center; gap: 12px;
             padding: 14px 16px; border-radius: 12px;
-            background: rgba(255,255,255,0.03); margin-bottom: 8px;
+            background: rgba(241,234,220,0.03); margin-bottom: 8px;
             font-size: 0.92rem; transition: background 0.2s;
         }
-        .recommendations li:hover { background: rgba(255,255,255,0.06); }
+        .recommendations li:hover { background: rgba(241,234,220,0.06); }
         .rec-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
-        .rec-high { background: rgba(239,68,68,0.12); color: #ef4444; }
-        .rec-medium { background: rgba(245,158,11,0.12); color: #f59e0b; }
-        .rec-low { background: rgba(37,99,235,0.12); color: #60a5fa; }
+        .rec-high { background: rgba(168,86,56,0.12); color: var(--danger); }
+        .rec-medium { background: rgba(201,168,106,0.12); color: var(--gold); }
+        .rec-low { background: rgba(201,168,106,0.12); color: var(--gold-bright); }
         .rec-text { flex: 1; }
         .rec-points { font-size: 0.78rem; font-weight: 700; color: var(--text-secondary); white-space: nowrap; }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(30,58,138,0.12));
-            border: 1px solid rgba(37,99,235,0.25);
+            background: linear-gradient(135deg, rgba(201,168,106,0.12), rgba(201,168,106,0.12));
+            border: 1px solid rgba(201,168,106,0.25);
             border-radius: 20px; padding: 48px 32px; text-align: center;
         }
         .cta-section h2 { font-size: 1.6rem; font-weight: 900; margin-bottom: 12px; }
         .cta-section p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; max-width: 540px; margin: 0 auto 28px; }
         .cta-btn {
             display: inline-flex; align-items: center; gap: 10px;
-            background: var(--accent-green); color: white; border: none;
+            background: var(--accent-green); color: var(--cream); border: none;
             padding: 16px 40px; border-radius: 12px;
-            font-size: 1.1rem; font-weight: 700; font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem; font-weight: 700; font-family: var(--font-body);
             cursor: pointer; text-decoration: none; transition: all 0.3s;
         }
-        .cta-btn:hover { background: #047857; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(5,150,105,0.4); }
+        .cta-btn:hover { background: var(--success); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(111,143,106,0.4); }
         .cta-benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-top: 24px; }
         .cta-benefit { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-secondary); }
         .cta-benefit i { color: var(--accent-green); font-size: 0.85rem; }
@@ -219,9 +222,9 @@
         .footer-section h3 { font-size: 18px; margin-bottom: 20px; font-weight: 700; }
         .footer-section ul { list-style: none; }
         .footer-section li { margin-bottom: 12px; }
-        .footer-section a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s ease; font-size: 15px; }
-        .footer-section a:hover { color: white; }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.6); }
+        .footer-section a { color: rgba(241,234,220,0.7); text-decoration: none; transition: color 0.3s ease; font-size: 15px; }
+        .footer-section a:hover { color: var(--cream); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(241,234,220,0.1); color: rgba(241,234,220,0.6); }
 
         /* Mobile */
         @media (max-width: 768px) {
@@ -229,12 +232,12 @@
             .nav-links {
                 display: none; position: absolute; top: 64px; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: var(--nav-bg); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(241,234,220,0.1);
             }
             .nav-links.active { display: flex; }
             .nav-links a { padding: 14px 24px; width: 100%; text-align: center; font-size: 0.95rem; }
-            .nav-links a:hover { background: rgba(255,255,255,0.05); }
+            .nav-links a:hover { background: rgba(241,234,220,0.05); }
             .nav-cta { margin: 8px 24px; width: auto; padding: 12px 24px; font-size: 0.9rem !important; text-align: center; border-radius: 8px; }
             .profile-hero { padding: 100px 20px 48px; }
             .profile-hero h1 { font-size: 2rem; }
@@ -247,6 +250,8 @@
             .footer-content { grid-template-columns: 1fr; }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -266,10 +271,10 @@
 
     <!-- SEO: pre-render meaningful content for Googlebot before JS loads profile data -->
     <div id="seoPrerender" style="max-width:800px;margin:40px auto;padding:0 20px;">
-        <h1 id="seoTitle" style="color:#fff;font-size:24px;">Lawyer Profile — CanadaLawyers.app</h1>
-        <p id="seoDesc" style="color:#ccc;font-size:15px;line-height:1.7;">This is a verified lawyer profile on CanadaLawyers.app, Canada's AI-powered lawyer-client matching platform. This profile includes the lawyer's credentials, practice areas, firm information, and an AI-generated professional bio based on their law society registration.</p>
-        <p id="seoBio" style="color:#999;font-size:14px;">CanadaLawyers connects businesses and individuals with qualified lawyers across Canada. Our directory includes over 127,000 lawyers across 8 provinces, verified against law society records.</p>
-        <noscript><p style="color:#ccc;">Enable JavaScript to view the full interactive profile with AI bio, practice details, and contact information.</p></noscript>
+        <h1 id="seoTitle" style="color:var(--text);font-size:24px;">Lawyer Profile — CanadaLawyers.app</h1>
+        <p id="seoDesc" style="color:var(--text-2);font-size:15px;line-height:1.7;">This is a verified lawyer profile on CanadaLawyers.app, Canada's AI-powered lawyer-client matching platform. This profile includes the lawyer's credentials, practice areas, firm information, and an AI-generated professional bio based on their law society registration.</p>
+        <p id="seoBio" style="color:var(--text-3);font-size:14px;">CanadaLawyers connects businesses and individuals with qualified lawyers across Canada. Our directory includes over 127,000 lawyers across 8 provinces, verified against law society records.</p>
+        <noscript><p style="color:var(--text-2);">Enable JavaScript to view the full interactive profile with AI bio, practice details, and contact information.</p></noscript>
     </div>
     <script>
         // Early fetch: populate prerender block with real profile data for SEO
@@ -390,15 +395,15 @@
             </div>
 
             <!-- Client CTA -->
-            <div class="cta-section" style="background:linear-gradient(135deg,#059669,#047857);">
-                <h2 style="color:#fff;">Looking for a Lawyer Like This?</h2>
-                <p style="color:#d1fae5;">Tell us what you need — we'll match you with a vetted lawyer in your area. Free, confidential, no obligation.</p>
-                <a href="find-lawyer.html" class="cta-btn" style="background:#fff;color:#059669;"><i class="fas fa-search"></i> Get My Lawyer Match</a>
+            <div class="cta-section" style="background:rgba(111,143,106,0.15);">
+                <h2 style="color:var(--text);">Looking for a Lawyer Like This?</h2>
+                <p style="color:var(--cream);">Tell us what you need — we'll match you with a vetted lawyer in your area. Free, confidential, no obligation.</p>
+                <a href="find-lawyer.html" class="cta-btn" style="background:var(--text);color:var(--success);"><i class="fas fa-search"></i> Get My Lawyer Match</a>
                 <div class="cta-benefits">
-                    <span class="cta-benefit" style="color:#d1fae5;"><i class="fas fa-check" style="color:#6ee7b7;"></i> Free for clients</span>
-                    <span class="cta-benefit" style="color:#d1fae5;"><i class="fas fa-check" style="color:#6ee7b7;"></i> AI-powered matching</span>
-                    <span class="cta-benefit" style="color:#d1fae5;"><i class="fas fa-check" style="color:#6ee7b7;"></i> Verified credentials</span>
-                    <span class="cta-benefit" style="color:#d1fae5;"><i class="fas fa-check" style="color:#6ee7b7;"></i> Response within 24hrs</span>
+                    <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> Free for clients</span>
+                    <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> AI-powered matching</span>
+                    <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> Verified credentials</span>
+                    <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> Response within 24hrs</span>
                 </div>
             </div>
 
@@ -525,17 +530,17 @@
                         '<li><strong>Accountants (CPA)</strong> &mdash; <a href="https://www.cpacanada.ca/en/become-a-cpa/find-a-cpa" target="_blank" rel="noopener">CPA Canada &mdash; Find a CPA</a></li>' +
                         '<li><strong>Investment advisors</strong> &mdash; <a href="https://www.ciro.ca/office-investor/protect-your-money/check-registration-background-advisor" target="_blank" rel="noopener">CIRO Advisor Report</a></li>' +
                     '</ul>' +
-                    '<p style="font-size:0.9em; color:#666; margin-top:1.5em;">Listing questions? Email ' +
+                    '<p style="font-size:0.9em; color:var(--text-3); margin-top:1.5em;">Listing questions? Email ' +
                         '<a href="mailto:arthur@negotiateandwin.com?subject=' + subjectParam + '">arthur@negotiateandwin.com</a>' +
                     '</p>';
             }
         }
 
         function getScoreColor(score) {
-            if (score >= 80) return '#059669';
-            if (score >= 60) return '#f59e0b';
-            if (score >= 40) return '#f97316';
-            return '#ef4444';
+            if (score >= 80) return 'var(--success)';
+            if (score >= 60) return 'var(--gold)';
+            if (score >= 40) return 'var(--gold)';
+            return 'var(--danger)';
         }
 
         function animateScore(score) {
@@ -592,7 +597,7 @@
                 document.getElementById('profileName').textContent = p.name;
                 if (p.founding_member) {
                     var badge = document.createElement('span');
-                    badge.style.cssText = 'display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;margin-left:8px;text-transform:uppercase;letter-spacing:0.5px;';
+                    badge.style.cssText = 'display:inline-block;background:var(--gold);color:var(--text);font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;margin-left:8px;text-transform:uppercase;letter-spacing:0.5px;';
                     badge.textContent = 'Founding Member';
                     document.getElementById('profileName').appendChild(badge);
                 }
@@ -674,10 +679,10 @@
                 if (data.related && data.related.length > 0) {
                     var province = p.province || '';
                     var relatedHtml = data.related.map(function(r) {
-                        return '<a href="/profile?id=' + r.id + '" style="display:block;padding:16px;margin:8px 0;background:rgba(255,255,255,0.03);border:1px solid #333;border-radius:8px;text-decoration:none;color:#fff;transition:border-color 0.3s;">' +
-                            '<strong style="color:#2563eb;">' + r.name + '</strong>' +
-                            (r.firm ? '<span style="color:#999;margin-left:8px;">' + r.firm + '</span>' : '') +
-                            '<br><span style="color:#888;font-size:13px;">' + (r.designation || '') + (r.city ? ' — ' + r.city + ', ' + r.province : r.province || '') + '</span>' +
+                        return '<a href="/profile?id=' + r.id + '" style="display:block;padding:16px;margin:8px 0;background:rgba(241,234,220,0.03);border:1px solid var(--border-strong);border-radius:8px;text-decoration:none;color:var(--text);transition:border-color 0.3s;">' +
+                            '<strong style="color:var(--gold);">' + r.name + '</strong>' +
+                            (r.firm ? '<span style="color:var(--text-3);margin-left:8px;">' + r.firm + '</span>' : '') +
+                            '<br><span style="color:var(--text-3);font-size:13px;">' + (r.designation || '') + (r.city ? ' — ' + r.city + ', ' + r.province : r.province || '') + '</span>' +
                             '</a>';
                     }).join('');
 
@@ -685,7 +690,7 @@
                     if (container) {
                         var section = document.createElement('div');
                         section.style.cssText = 'max-width:800px;margin:40px auto;padding:0 20px;';
-                        section.innerHTML = '<h3 style="color:#fff;font-size:18px;margin:0 0 16px;font-weight:600;">Other Lawyers in ' + province + '</h3>' + relatedHtml;
+                        section.innerHTML = '<h3 style="color:var(--text);font-size:18px;margin:0 0 16px;font-weight:600;">Other Lawyers in ' + province + '</h3>' + relatedHtml;
                         container.appendChild(section);
                     }
                 }

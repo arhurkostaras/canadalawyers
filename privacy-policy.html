@@ -12,6 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
     <link rel="apple-touch-icon" href="/icon-512.png">
@@ -51,17 +55,17 @@
 
     <style>
         :root {
-            --brand-primary: #dc2626;
-            --brand-secondary: #1e40af;
-            --brand-accent: #059669;
+            --brand-primary: var(--gold);
+            --brand-secondary: var(--gold-deep);
+            --brand-accent: var(--success);
         }
 
         .gradient-bg {
-            background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
+            background: var(--gold);
         }
 
         .section-card {
-            background: white;
+            background: var(--bg-raised);
             border-radius: 12px;
             padding: 30px;
             margin: 20px 0;
@@ -70,16 +74,16 @@
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid #0ea5e9;
+            background: var(--bg-high);
+            border: 2px solid var(--gold-deep);
             border-radius: 12px;
             padding: 20px;
             margin: 20px 0;
         }
 
         .contact-box {
-            background: linear-gradient(135deg, var(--brand-secondary) 0%, var(--brand-primary) 100%);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             border-radius: 12px;
             padding: 25px;
             text-align: center;
@@ -87,13 +91,13 @@
         }
 
         .contact-box a {
-            color: #fbbf24;
+            color: var(--gold);
             text-decoration: none;
             font-weight: 600;
         }
 
         .contact-box a:hover {
-            color: #f59e0b;
+            color: var(--gold-deep);
             text-decoration: underline;
         }
 
@@ -109,15 +113,15 @@
 
         .privacy-table th,
         .privacy-table td {
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--border);
             padding: 12px;
             text-align: left;
         }
 
         .privacy-table th {
-            background: #f9fafb;
+            background: var(--bg-high);
             font-weight: 600;
-            color: #374151;
+            color: var(--text-2);
         }
 
         .rights-grid {
@@ -128,8 +132,8 @@
         }
 
         .right-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: var(--bg-high);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
         }
@@ -139,7 +143,7 @@
             font-weight: 700;
             margin-bottom: 10px;
         }
-        .nav-toggle { display: none; background: none; border: none; color: #374151; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--text-2); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .pp-nav-links.active { display: flex !important; }
         @media (max-width: 768px) {
             .nav-toggle { display: block; }
@@ -147,16 +151,18 @@
                 display: none !important;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-                padding: 12px 0; border-bottom: 1px solid #e5e7eb;
+                background: var(--bg-raised); box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 12px 0; border-bottom: 1px solid var(--border);
             }
             .pp-nav-links.active { display: flex !important; }
             .pp-nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; width: 100%; }
-            .pp-nav-links a:hover { background: #f3f4f6; }
+            .pp-nav-links a:hover { background: var(--bg-high); }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}</style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 mode-light">
     <!-- Navigation -->
     <nav class="bg-white shadow-lg border-b-4 border-red-600" style="position: relative;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,23 +284,23 @@
                 <div>
                     <h3 class="text-lg font-semibold text-blue-600 mb-3">Primary Uses</h3>
                     <ul class="space-y-2 text-gray-700">
-                        <li>✅ Provide lawyer matching services</li>
-                        <li>✅ Verify professional credentials</li>
-                        <li>✅ Process payments and billing</li>
-                        <li>✅ Deliver customer support</li>
-                        <li>✅ Send service notifications</li>
-                        <li>✅ Maintain platform security</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Provide lawyer matching services</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Verify professional credentials</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Process payments and billing</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Deliver customer support</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Send service notifications</li>
+                        <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Maintain platform security</li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-green-600 mb-3">Secondary Uses</h3>
                     <ul class="space-y-2 text-gray-700">
-                        <li>📊 Improve our algorithms</li>
-                        <li>📊 Analyze usage patterns</li>
-                        <li>📊 Develop new features</li>
-                        <li>📊 Send marketing communications (with consent)</li>
-                        <li>📊 Comply with legal obligations</li>
-                        <li>📊 Prevent fraud and abuse</li>
+                        <li> Improve our algorithms</li>
+                        <li> Analyze usage patterns</li>
+                        <li> Develop new features</li>
+                        <li> Send marketing communications (with consent)</li>
+                        <li> Comply with legal obligations</li>
+                        <li> Prevent fraud and abuse</li>
                     </ul>
                 </div>
             </div>
@@ -345,10 +351,10 @@
                     We DO NOT:
                 </h3>
                 <ul class="text-red-700 space-y-1">
-                    <li>❌ Sell your personal information to third parties</li>
-                    <li>❌ Share data with advertisers for tracking</li>
-                    <li>❌ Transfer data outside Canada without consent</li>
-                    <li>❌ Use your information for unrelated purposes</li>
+                    <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Sell your personal information to third parties</li>
+                    <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Share data with advertisers for tracking</li>
+                    <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Transfer data outside Canada without consent</li>
+                    <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> Use your information for unrelated purposes</li>
                 </ul>
             </div>
         </div>
@@ -434,9 +440,9 @@
                 <h3 class="text-lg font-semibold text-blue-900 mb-2">How to Exercise Your Rights</h3>
                 <p class="text-blue-800 mb-3">To exercise any of these rights, contact our Privacy Officer:</p>
                 <ul class="text-blue-700 space-y-1">
-                    <li>📧 Email: <strong>support@canadalawyers.app</strong></li>
-                    <li>📞 Phone: <strong>(647) 956-7290</strong></li>
-                    <li>📍 Mail: <strong>Privacy Officer, CanadaLawyers, Toronto, ON</strong></li>
+                    <li> Email: <strong>support@canadalawyers.app</strong></li>
+                    <li> Phone: <strong>(647) 956-7290</strong></li>
+                    <li> Mail: <strong>Privacy Officer, CanadaLawyers, Toronto, ON</strong></li>
                 </ul>
                 <p class="text-sm text-blue-600 mt-3">We will respond to your request within 30 days as required by PIPEDA.</p>
             </div>
@@ -553,19 +559,19 @@
                     <div>
                         <h4 class="font-semibold text-blue-800">Safeguards Include:</h4>
                         <ul class="text-sm text-blue-700 space-y-1">
-                            <li>✓ Contractual data protection clauses</li>
-                            <li>✓ Adequacy decisions where available</li>
-                            <li>✓ Additional security measures</li>
-                            <li>✓ Regular compliance monitoring</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Contractual data protection clauses</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Adequacy decisions where available</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Additional security measures</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Regular compliance monitoring</li>
                         </ul>
                     </div>
                     <div>
                         <h4 class="font-semibold text-blue-800">Your Rights:</h4>
                         <ul class="text-sm text-blue-700 space-y-1">
-                            <li>✓ Request details about transfers</li>
-                            <li>✓ Object to specific transfers</li>
-                            <li>✓ Request local processing when possible</li>
-                            <li>✓ Contact our Privacy Officer with concerns</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Request details about transfers</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Object to specific transfers</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Request local processing when possible</li>
+                            <li><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg> Contact our Privacy Officer with concerns</li>
                         </ul>
                     </div>
                 </div>
@@ -630,13 +636,13 @@
             
             <div class="grid md:grid-cols-2 gap-6 text-left">
                 <div>
-                    <h3 class="text-lg font-semibold mb-2">📧 Privacy Officer</h3>
+                    <h3 class="text-lg font-semibold mb-2"> Privacy Officer</h3>
                     <p><a href="mailto:support@canadalawyers.app">support@canadalawyers.app</a></p>
                     <p>Arthur Kostaras</p>
                     <p class="text-sm opacity-75 mt-1">Response within 30 days</p>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-2">📞 Phone & Mail</h3>
+                    <h3 class="text-lg font-semibold mb-2"> Phone & Mail</h3>
                     <p><a href="tel:+16479567290">(647) 956-7290</a></p>
                     <p>CanadaLawyers</p>
                     <p class="text-sm opacity-75 mt-1">Toronto, Ontario, Canada</p>
@@ -644,7 +650,7 @@
             </div>
 
             <div class="mt-6 pt-4 border-t border-white border-opacity-20">
-                <h3 class="text-lg font-semibold mb-2">🏛️ Regulatory Contact</h3>
+                <h3 class="text-lg font-semibold mb-2"> Regulatory Contact</h3>
                 <p class="text-sm opacity-90">
                     If you're not satisfied with our response, you may contact the Office of the Privacy Commissioner of Canada at 
                     <a href="https://www.priv.gc.ca" class="text-yellow-300 hover:text-yellow-200">priv.gc.ca</a>

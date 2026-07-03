@@ -12,32 +12,36 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lawyer Dashboard - CanadaLawyers.app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <link rel="stylesheet" href="/tailwind-utilities.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --primary-navy: #1e3a8a;
-            --accent-green: #059669;
-            --card-bg: #ffffff;
-            --border-color: #e5e7eb;
-            --text-secondary: #6b7280;
+            --primary-blue: var(--gold);
+            --primary-navy: var(--gold-deep);
+            --accent-green: var(--success);
+            --card-bg: var(--bg-raised);
+            --border-color: var(--border);
+            --text-secondary: var(--text-2);
         }
         /* AI Tools */
         .ai-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
         .ai-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; position: relative; overflow: hidden; }
-        .ai-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--primary-blue), var(--accent-green)); }
+        .ai-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-bright)); }
         .ai-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         .ai-card p { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 16px; line-height: 1.5; }
-        .ai-btn { background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy)); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; width: 100%; }
-        .ai-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+        .ai-btn { background: var(--gold); color: var(--ink); border: none; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; width: 100%; }
+        .ai-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(201,168,106,0.3); }
         .ai-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .ai-result { margin-top: 16px; padding: 16px; background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.85rem; line-height: 1.6; display: none; white-space: pre-wrap; }
         .ai-result.visible { display: block; }
         .ai-actions { display: flex; gap: 8px; margin-top: 12px; }
         .ai-actions button { padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; font-family: inherit; }
-        .copy-btn { background: var(--accent-green); color: white; }
-        .save-bio-btn { background: var(--primary-blue); color: white; }
+        .copy-btn { background: var(--accent-green); color: var(--cream); }
+        .save-bio-btn { background: var(--primary-blue); color: var(--ink); }
         .seo-meter { margin-top: 16px; }
         .seo-bar-bg { height: 12px; background: rgba(0,0,0,0.06); border-radius: 6px; overflow: hidden; margin-bottom: 8px; }
         .seo-bar { height: 100%; border-radius: 6px; transition: width 0.8s ease; }
@@ -46,13 +50,15 @@
         .seo-recs { list-style: none; margin-top: 12px; }
         .seo-recs li { padding: 6px 0; font-size: 0.8rem; color: var(--text-secondary); border-bottom: 1px solid rgba(0,0,0,0.04); display: flex; align-items: center; gap: 8px; }
         .seo-recs li .impact { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
-        .impact-high { background: rgba(239,68,68,0.15); color: #ef4444; }
-        .impact-medium { background: rgba(245,158,11,0.15); color: #f59e0b; }
-        .impact-low { background: rgba(37,99,235,0.15); color: var(--primary-blue); }
+        .impact-high { background: rgba(168,86,56,0.15); color: var(--danger); }
+        .impact-medium { background: rgba(201,168,106,0.15); color: var(--gold-deep); }
+        .impact-low { background: rgba(201,168,106,0.15); color: var(--primary-blue); }
         @media (max-width: 768px) { .ai-tools { grid-template-columns: 1fr; } }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}</style>
 </head>
-<body class="bg-gray-100 min-h-screen">
+<body class="bg-gray-100 min-h-screen mode-light">
     <!-- Auth gate -->
     <script>
         (function() {
@@ -182,7 +188,7 @@
                     </div>
                 </div>
                 <div class="ai-card">
-                    <h3><i class="fas fa-envelope-open-text" style="color: #f59e0b;"></i> Outreach Template</h3>
+                    <h3><i class="fas fa-envelope-open-text" style="color: var(--gold-deep);"></i> Outreach Template</h3>
                     <p>Get a personalized email to announce your verified profile to clients and contacts.</p>
                     <button class="ai-btn" id="outreachBtn" onclick="generateOutreach()"><i class="fas fa-paper-plane"></i> Generate Email</button>
                     <div class="ai-result" id="outreachResult"></div>
@@ -196,17 +202,17 @@
         <!-- Refer a Client to Canada Business Exits -->
         <section class="mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-4">
-                <i class="fas fa-handshake" style="color:#B8956A;"></i> Refer a Client to Canada Business Exits
+                <i class="fas fa-handshake" style="color:var(--gold-deep);"></i> Refer a Client to Canada Business Exits
             </h2>
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                <div class="h-1" style="background:linear-gradient(90deg,#B8956A,#8F6F49);"></div>
+                <div class="h-1" style="background:linear-gradient(90deg,var(--gold-deep),var(--gold-deep));"></div>
                 <div class="p-6">
                     <p class="text-sm text-gray-600 mb-4 leading-relaxed">
                         Have a client considering an exit in the next 6-18 months? Refer them confidentially. They receive a welcome email naming you, then enter our matching pipeline at their own pace. <strong class="text-gray-900">No banker contact unless they opt in.</strong>
                     </p>
                     <button id="cbeToggleBtn" type="button" onclick="toggleCbeForm()"
                         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
-                        style="background:rgba(184,149,106,0.12);color:#8F6F49;border:1px solid rgba(184,149,106,0.35);">
+                        style="background:rgba(201,168,106,0.12);color:var(--gold-deep);border:1px solid rgba(201,168,106,0.35);">
                         <i id="cbeToggleIcon" class="fas fa-plus"></i>
                         <span id="cbeToggleLabel">Refer a client</span>
                     </button>
@@ -278,7 +284,7 @@
                         </div>
                         <div class="flex items-center gap-4 mt-5">
                             <button type="submit" id="cbeSubmitBtn" class="text-white px-6 py-2.5 rounded-lg font-semibold transition-all"
-                                style="background:linear-gradient(135deg,#B8956A,#8F6F49);">
+                                style="background:linear-gradient(135deg,var(--gold-deep),var(--gold-deep));">
                                 <i class="fas fa-paper-plane mr-1"></i> Send referral
                             </button>
                             <span id="cbeMsg" class="text-sm"></span>
@@ -563,7 +569,7 @@
                     document.getElementById('seoGrade').textContent = 'Grade: ' + data.grade;
                     const bar = document.getElementById('seoBar');
                     bar.style.width = data.score + '%';
-                    bar.style.background = data.score >= 70 ? 'var(--accent-green)' : data.score >= 50 ? '#f59e0b' : '#ef4444';
+                    bar.style.background = data.score >= 70 ? 'var(--accent-green)' : data.score >= 50 ? 'var(--gold-deep)' : 'var(--danger)';
                     document.getElementById('seoRecs').innerHTML = data.recommendations.slice(0, 5).map(r =>
                         `<li><span class="impact impact-${r.impact}">+${r.points}</span> ${r.action}</li>`
                     ).join('');

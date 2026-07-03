@@ -19,6 +19,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Matching Test - CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <style>
         * {
             margin: 0;
@@ -27,8 +31,8 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+            font-family: var(--font-body);
+            background: var(--bg);
             min-height: 100vh;
             padding: 20px;
         }
@@ -36,7 +40,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: var(--cream);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -49,7 +53,7 @@
         
         .header h1 {
             font-size: 3rem;
-            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            background: var(--gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
@@ -57,24 +61,24 @@
         
         .header p {
             font-size: 1.2rem;
-            color: #666;
+            color: var(--text-3);
         }
         
         .test-section {
-            background: #f8fafc;
+            background: var(--text);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
-            border-left: 5px solid #2563eb;
+            border-left: 5px solid var(--gold);
         }
         
         .business-card {
-            background: white;
+            background: var(--cream);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 4px solid #10b981;
+            border-left: 4px solid var(--success);
         }
         
         .business-info {
@@ -85,25 +89,25 @@
         }
         
         .info-item {
-            background: #f1f5f9;
+            background: var(--text);
             padding: 10px;
             border-radius: 8px;
         }
         
         .info-label {
             font-weight: 600;
-            color: #374151;
+            color: var(--bg-high);
             font-size: 0.9rem;
         }
         
         .info-value {
-            color: #6b7280;
+            color: var(--text-3);
             margin-top: 5px;
         }
         
         .match-button {
-            background: linear-gradient(135deg, #2563eb, #1e3a8a);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             border: none;
             padding: 15px 30px;
             border-radius: 10px;
@@ -116,7 +120,7 @@
         
         .match-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 20px rgba(201,168,106, 0.3);
         }
         
         .match-button:disabled {
@@ -126,15 +130,15 @@
         }
         
         .results-section {
-            background: #ecfdf5;
+            background: rgba(111,143,106,0.10);
             border-radius: 15px;
             padding: 30px;
             margin-top: 30px;
-            border-left: 5px solid #10b981;
+            border-left: 5px solid var(--success);
         }
         
         .match-result {
-            background: white;
+            background: var(--cream);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
@@ -144,13 +148,13 @@
         .match-score {
             font-size: 2rem;
             font-weight: bold;
-            color: #10b981;
+            color: var(--success);
             margin-right: 15px;
         }
         
-        .match-score.excellent { color: #10b981; }
-        .match-score.good { color: #f59e0b; }
-        .match-score.poor { color: #ef4444; }
+        .match-score.excellent { color: var(--success); }
+        .match-score.good { color: var(--gold); }
+        .match-score.poor { color: var(--danger); }
         
         .lawyer-details {
             display: grid;
@@ -162,12 +166,12 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: #2563eb;
+            color: var(--gold);
         }
         
         .spinner {
-            border: 4px solid #f3f4f6;
-            border-top: 4px solid #2563eb;
+            border: 4px solid var(--text);
+            border-top: 4px solid var(--gold);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -181,25 +185,27 @@
         }
         
         .error {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #dc2626;
+            background: rgba(168,86,56,0.08);
+            border: 1px solid rgba(168,86,56,0.3);
+            color: var(--danger);
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
         }
         
         .success {
-            background: #ecfdf5;
-            border: 1px solid #a7f3d0;
-            color: #065f46;
+            background: rgba(111,143,106,0.10);
+            border: 1px solid rgba(111,143,106,0.35);
+            color: var(--success);
             padding: 15px;
             border-radius: 8px;
             margin-top: 15px;
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}</style>
 </head>
-<body>
+<body class="mode-light">
     <script>
         (function() {
             const token = localStorage.getItem('lawyer_token');
@@ -211,12 +217,12 @@
     </script>
     <div class="container">
         <div class="header">
-            <h1>🧠 AI Matching Test</h1>
+            <h1> AI Matching Test</h1>
             <p>Test your AI-powered Lawyer matching engine with real business submissions</p>
         </div>
         
         <div class="test-section">
-            <h2>📊 Business Submissions Ready for Matching</h2>
+            <h2> Business Submissions Ready for Matching</h2>
             <div id="businessList">
                 <div class="loading">
                     <div class="spinner"></div>
@@ -226,7 +232,7 @@
         </div>
         
         <div id="resultsSection" class="results-section" style="display: none;">
-            <h2>🎯 AI Matching Results</h2>
+            <h2> AI Matching Results</h2>
             <div id="matchResults"></div>
         </div>
     </div>
@@ -333,7 +339,7 @@
                     </div>
                     
                     <button class="match-button" onclick="testAIMatching(${index})">
-                        🧠 Find AI Matches for This Business
+                        Find AI Matches for This Business
                     </button>
                 </div>
             `).join('');
@@ -358,7 +364,7 @@
             
             // Show loading state
             button.disabled = true;
-            button.innerHTML = '🔄 Running AI Matching...';
+            button.innerHTML = 'Running AI Matching...';
             // Add timing for performance tracking
 const startTime = Date.now();
             
@@ -435,13 +441,13 @@ const startTime = Date.now();
                 `;
             } finally {
                 button.disabled = false;
-                button.innerHTML = '🧠 Find AI Matches for This Business';
+                button.innerHTML = 'Find AI Matches for This Business';
             }
         }
         
         function displayMatchResults(business, matches) {
             const resultsHTML = `
-                <h3>🎯 AI Matches for ${business.contact_info.name} (${business.business_type})</h3>
+                <h3>AI Matches for ${business.contact_info.name} (${business.business_type})</h3>
                 <p><strong>Business Needs:</strong> ${business.services_needed.join(', ')} | <strong>Urgency:</strong> ${business.urgency_level}</p>
                 
                 <div style="margin-top: 20px;">
@@ -451,8 +457,8 @@ const startTime = Date.now();
                                 <span class="match-score ${getScoreClass(match.match_score)}">${match.match_score}%</span>
                                 <div>
                                     <h4>${match.lawyer_profile.first_name} ${match.lawyer_profile.last_name}</h4>
-                                    <p style="color: #6b7280;">${match.lawyer_profile.firm_name}</p>
-                                    <p style="color: #10b981; font-weight: 600;">${match.recommendation_level}</p>
+                                    <p style="color: var(--text-3);">${match.lawyer_profile.firm_name}</p>
+                                    <p style="color: var(--success); font-weight: 600;">${match.recommendation_level}</p>
                                 </div>
                             </div>
                             
@@ -475,8 +481,8 @@ const startTime = Date.now();
                                 </div>
                             </div>
                             
-                            <div style="margin-top: 15px; padding: 15px; background: #f8fafc; border-radius: 8px;">
-                                <h5>🧠 AI Reasoning:</h5>
+                            <div style="margin-top: 15px; padding: 15px; background: var(--text); border-radius: 8px;">
+                                <h5>AI Reasoning:</h5>
                                 <p><strong>Specialization Match:</strong> ${(match.match_factors.specialization_score * 100).toFixed(0)}%</p>
                                 <p><strong>Location Compatibility:</strong> ${(match.match_factors.location_score * 100).toFixed(0)}%</p>
                                 <p><strong>Budget Alignment:</strong> ${(match.match_factors.budget_score * 100).toFixed(0)}%</p>

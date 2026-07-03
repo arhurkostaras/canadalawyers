@@ -12,6 +12,10 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Our Lawyer Network - CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <style>
         * {
             margin: 0;
@@ -20,10 +24,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+            color: var(--border-strong);
+            background: var(--bg);
             min-height: 100vh;
         }
 
@@ -35,7 +39,7 @@
 
         .header {
             text-align: center;
-            color: white;
+            color: var(--cream);
             margin-bottom: 30px;
         }
 
@@ -54,7 +58,7 @@
         }
 
         .questionnaire-container {
-            background: white;
+            background: var(--cream);
             border-radius: 20px;
             padding: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -64,7 +68,7 @@
         .progress-bar {
             width: 100%;
             height: 8px;
-            background: #e0e7ff;
+            background: rgba(201,168,106,0.12);
             border-radius: 4px;
             margin-bottom: 30px;
             overflow: hidden;
@@ -72,7 +76,7 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #10b981, #059669);
+            background: linear-gradient(90deg, var(--success), var(--success));
             border-radius: 4px;
             transition: width 0.3s ease;
             width: 12.5%;
@@ -98,8 +102,8 @@
         }
 
         .step-number {
-            background: linear-gradient(135deg, #2563eb, #1e3a8a);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -112,13 +116,13 @@
         }
 
         .step h2 {
-            color: #1f2937;
+            color: var(--bg-raised);
             font-size: 1.8rem;
             margin-bottom: 10px;
         }
 
         .step p {
-            color: #6b7280;
+            color: var(--text-3);
             font-size: 1.1rem;
         }
 
@@ -130,32 +134,32 @@
         }
 
         .option-card {
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--text-2);
             border-radius: 12px;
             padding: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: white;
+            background: var(--cream);
         }
 
         .option-card:hover {
-            border-color: #2563eb;
+            border-color: var(--gold);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 4px 12px rgba(201,168,106, 0.15);
         }
 
         .option-card.selected {
-            border-color: #10b981;
-            background: #f0fdf4;
+            border-color: var(--success);
+            background: rgba(111,143,106,0.08);
         }
 
         .option-card.multi-select.selected {
-            border-color: #10b981;
-            background: #f0fdf4;
+            border-color: var(--success);
+            background: rgba(111,143,106,0.08);
         }
 
         .option-card h3 {
-            color: #1f2937;
+            color: var(--bg-raised);
             font-size: 1.2rem;
             margin-bottom: 8px;
             display: flex;
@@ -164,7 +168,7 @@
         }
 
         .option-card p {
-            color: #6b7280;
+            color: var(--text-3);
             font-size: 0.95rem;
         }
 
@@ -179,19 +183,19 @@
             display: flex;
             align-items: center;
             padding: 15px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--text-2);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .checkbox-item:hover {
-            border-color: #2563eb;
+            border-color: var(--gold);
         }
 
         .checkbox-item.selected {
-            border-color: #10b981;
-            background: #f0fdf4;
+            border-color: var(--success);
+            background: rgba(111,143,106,0.08);
         }
 
         .checkbox-item input[type="checkbox"] {
@@ -207,7 +211,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #374151;
+            color: var(--bg-high);
         }
 
         .form-group input,
@@ -215,7 +219,7 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--text-2);
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
@@ -225,7 +229,7 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #2563eb;
+            border-color: var(--gold);
         }
 
         .form-group textarea {
@@ -239,7 +243,7 @@
             align-items: center;
             margin-top: 40px;
             padding-top: 30px;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--text-2);
         }
 
         .btn {
@@ -253,22 +257,22 @@
         }
 
         .btn-secondary {
-            background: #f3f4f6;
-            color: #374151;
+            background: var(--text);
+            color: var(--bg-high);
         }
 
         .btn-secondary:hover {
-            background: #e5e7eb;
+            background: var(--text-2);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #2563eb, #1e3a8a);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 12px rgba(201,168,106, 0.3);
         }
 
         .btn:disabled {
@@ -277,15 +281,15 @@
         }
 
         .ai-insight {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            border-left: 4px solid #0ea5e9;
+            background: linear-gradient(135deg, rgba(201,168,106,0.08), rgba(201,168,106,0.12));
+            border-left: 4px solid var(--gold);
             padding: 15px;
             margin: 20px 0;
             border-radius: 8px;
         }
 
         .ai-insight h4 {
-            color: #0369a1;
+            color: var(--gold-deep);
             margin-bottom: 5px;
             display: flex;
             align-items: center;
@@ -293,13 +297,13 @@
         }
 
         .ai-insight p {
-            color: #0c4a6e;
+            color: var(--gold-deep);
             font-size: 0.9rem;
         }
 
         .step-indicator {
             text-align: center;
-            color: #6b7280;
+            color: var(--text-3);
             margin-bottom: 20px;
             font-size: 0.9rem;
         }
@@ -326,11 +330,13 @@
             }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}</style>
 </head>
-<body>
+<body class="mode-light">
     <div class="container">
         <div class="header">
-            <h1>🍁 Join as a Professional Lawyer</h1>
+            <h1> Join as a Professional Lawyer</h1>
             <p>Connect with quality businesses across Canada and grow your practice</p>
         </div>
 
@@ -395,7 +401,7 @@
                 </div>
 
                 <div class="ai-insight">
-                    <h4>🤖 AI Insight</h4>
+                    <h4> AI Insight</h4>
                     <p>We verify all lawyer credentials to ensure our clients connect with legitimate, qualified professionals.</p>
                 </div>
             </div>
@@ -410,19 +416,19 @@
 
                 <div class="options-grid">
                     <div class="option-card" data-value="solo">
-                        <h3>🏢 Solo Practice</h3>
+                        <h3> Solo Practice</h3>
                         <p>Independent Lawyer running your own practice</p>
                     </div>
                     <div class="option-card" data-value="small-firm">
-                        <h3>👥 Small Firm (2-10 Lawyers)</h3>
+                        <h3> Small Firm (2-10 Lawyers)</h3>
                         <p>Part of a small legal firm</p>
                     </div>
                     <div class="option-card" data-value="medium-firm">
-                        <h3>🏢 Medium Firm (11-50 Lawyers)</h3>
+                        <h3> Medium Firm (11-50 Lawyers)</h3>
                         <p>Regional legal firm</p>
                     </div>
                     <div class="option-card" data-value="large-firm">
-                        <h3>🏬 Large Firm (50+ Lawyers)</h3>
+                        <h3> Large Firm (50+ Lawyers)</h3>
                         <p>Major legal firm</p>
                     </div>
                 </div>
@@ -438,7 +444,7 @@
                 </div>
 
                 <div class="ai-insight">
-                    <h4>🎯 Matching Insight</h4>
+                    <h4> Matching Insight</h4>
                     <p>Practice size helps us match you with businesses that fit your capacity and service model.</p>
                 </div>
             </div>
@@ -454,48 +460,48 @@
                 <div class="checkbox-grid">
                     <div class="checkbox-item multi-select" data-value="technology">
                         <input type="checkbox" name="industries" value="technology">
-                        <span>💻 Technology & Software</span>
+                        <span> Technology & Software</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="healthcare">
                         <input type="checkbox" name="industries" value="healthcare">
-                        <span>🏥 Healthcare & Medical</span>
+                        <span> Healthcare & Medical</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="retail">
                         <input type="checkbox" name="industries" value="retail">
-                        <span>🛍️ Retail & E-commerce</span>
+                        <span> Retail & E-commerce</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="construction">
                         <input type="checkbox" name="industries" value="construction">
-                        <span>🏗️ Construction & Real Estate</span>
+                        <span> Construction & Real Estate</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="manufacturing">
                         <input type="checkbox" name="industries" value="manufacturing">
-                        <span>🏭 Manufacturing</span>
+                        <span> Manufacturing</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="professional-services">
                         <input type="checkbox" name="industries" value="professional-services">
-                        <span>💼 Professional Services</span>
+                        <span> Professional Services</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="hospitality">
                         <input type="checkbox" name="industries" value="hospitality">
-                        <span>🍽️ Hospitality & Food Service</span>
+                        <span> Hospitality & Food Service</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="nonprofit">
                         <input type="checkbox" name="industries" value="nonprofit">
-                        <span>🤝 Non-Profit Organizations</span>
+                        <span> Non-Profit Organizations</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="agriculture">
                         <input type="checkbox" name="industries" value="agriculture">
-                        <span>🌾 Agriculture & Farming</span>
+                        <span> Agriculture & Farming</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="general">
                         <input type="checkbox" name="industries" value="general">
-                        <span>📊 General Business (All Industries)</span>
+                        <span> General Business (All Industries)</span>
                     </div>
                 </div>
 
                 <div class="ai-insight">
-                    <h4>🎯 Smart Matching</h4>
+                    <h4> Smart Matching</h4>
                     <p>Industry expertise is our #1 matching factor. Businesses strongly prefer Lawyers with relevant industry experience.</p>
                 </div>
             </div>
@@ -511,56 +517,56 @@
                 <div class="checkbox-grid">
                     <div class="checkbox-item multi-select" data-value="litigation">
                         <input type="checkbox" name="services" value="litigation">
-                        <span>⚖️ Litigation</span>
+                        <span> Litigation</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="corporate-commercial">
                         <input type="checkbox" name="services" value="corporate-commercial">
-                        <span>🏢 Corporate/Commercial</span>
+                        <span> Corporate/Commercial</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="family-law">
                         <input type="checkbox" name="services" value="family-law">
-                        <span>👨‍👩‍👧 Family Law</span>
+                        <span> Family Law</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="real-estate">
                         <input type="checkbox" name="services" value="real-estate">
-                        <span>🏠 Real Estate</span>
+                        <span> Real Estate</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="immigration">
                         <input type="checkbox" name="services" value="immigration">
-                        <span>🌍 Immigration</span>
+                        <span> Immigration</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="criminal-defense">
                         <input type="checkbox" name="services" value="criminal-defense">
-                        <span>🛡️ Criminal Defense</span>
+                        <span> Criminal Defense</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="ip-technology">
                         <input type="checkbox" name="services" value="ip-technology">
-                        <span>💡 IP/Technology</span>
+                        <span> IP/Technology</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="employment-law">
                         <input type="checkbox" name="services" value="employment-law">
-                        <span>💼 Employment Law</span>
+                        <span> Employment Law</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="tax-law">
                         <input type="checkbox" name="services" value="tax-law">
-                        <span>📋 Tax Law</span>
+                        <span> Tax Law</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="estate-planning">
                         <input type="checkbox" name="services" value="estate-planning">
-                        <span>📜 Estate Planning</span>
+                        <span> Estate Planning</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="wills-trusts">
                         <input type="checkbox" name="services" value="wills-trusts">
-                        <span>📝 Wills & Trusts</span>
+                        <span> Wills & Trusts</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="personal-injury">
                         <input type="checkbox" name="services" value="personal-injury">
-                        <span>🏥 Personal Injury</span>
+                        <span> Personal Injury</span>
                     </div>
                 </div>
 
                 <div class="ai-insight">
-                    <h4>💡 Service Matching</h4>
+                    <h4> Service Matching</h4>
                     <p>Businesses often need multiple services. Offering comprehensive services increases your match opportunities.</p>
                 </div>
             </div>
@@ -576,51 +582,51 @@
                 <div class="checkbox-grid">
                     <div class="checkbox-item multi-select" data-value="startup">
                         <input type="checkbox" name="client-sizes" value="startup">
-                        <span>🚀 Startups & New Businesses (0-2 years)</span>
+                        <span> Startups & New Businesses (0-2 years)</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="micro">
                         <input type="checkbox" name="client-sizes" value="micro">
-                        <span>👤 Micro Businesses (1-4 employees)</span>
+                        <span> Micro Businesses (1-4 employees)</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="small">
                         <input type="checkbox" name="client-sizes" value="small">
-                        <span>🏪 Small Businesses (5-19 employees)</span>
+                        <span> Small Businesses (5-19 employees)</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="medium">
                         <input type="checkbox" name="client-sizes" value="medium">
-                        <span>🏢 Medium Businesses (20-99 employees)</span>
+                        <span> Medium Businesses (20-99 employees)</span>
                     </div>
                     <div class="checkbox-item multi-select" data-value="large">
                         <input type="checkbox" name="client-sizes" value="large">
-                        <span>🏬 Large Businesses (100+ employees)</span>
+                        <span> Large Businesses (100+ employees)</span>
                     </div>
                 </div>
 
                 <div class="options-grid">
                     <div class="option-card" data-value="under-100k">
-                        <h3>💰 Under $100K Revenue</h3>
+                        <h3> Under $100K Revenue</h3>
                         <p>Very small businesses and sole proprietors</p>
                     </div>
                     <div class="option-card" data-value="100k-500k">
-                        <h3>💰 $100K - $500K Revenue</h3>
+                        <h3> $100K - $500K Revenue</h3>
                         <p>Small growing businesses</p>
                     </div>
                     <div class="option-card" data-value="500k-2m">
-                        <h3>💰 $500K - $2M Revenue</h3>
+                        <h3> $500K - $2M Revenue</h3>
                         <p>Established small to medium businesses</p>
                     </div>
                     <div class="option-card" data-value="2m-10m">
-                        <h3>💰 $2M - $10M Revenue</h3>
+                        <h3> $2M - $10M Revenue</h3>
                         <p>Medium-sized enterprises</p>
                     </div>
                     <div class="option-card" data-value="10m-plus">
-                        <h3>💰 $10M+ Revenue</h3>
+                        <h3> $10M+ Revenue</h3>
                         <p>Large enterprises</p>
                     </div>
                 </div>
 
                 <div class="ai-insight">
-                    <h4>🎯 Size Matching</h4>
+                    <h4> Size Matching</h4>
                     <p>Client size preferences help us match you with businesses that fit your experience level and service capacity.</p>
                 </div>
             </div>
@@ -637,19 +643,19 @@
                     <label>Typical Hourly Rate Range *</label>
                     <div class="options-grid">
                         <div class="option-card" data-value="under-100">
-                            <h3>💰 Under $100/hour</h3>
+                            <h3> Under $100/hour</h3>
                             <p>Entry-level or volume pricing</p>
                         </div>
                         <div class="option-card" data-value="100-150">
-                            <h3>💰 $100-$150/hour</h3>
+                            <h3> $100-$150/hour</h3>
                             <p>Standard professional rates</p>
                         </div>
                         <div class="option-card" data-value="150-200">
-                            <h3>💰 $150-$200/hour</h3>
+                            <h3> $150-$200/hour</h3>
                             <p>Experienced professional rates</p>
                         </div>
                         <div class="option-card" data-value="200-plus">
-                            <h3>💰 $200+/hour</h3>
+                            <h3> $200+/hour</h3>
                             <p>Premium specialist rates</p>
                         </div>
                     </div>
@@ -659,26 +665,26 @@
                     <label>Current Capacity for New Clients *</label>
                     <div class="options-grid">
                         <div class="option-card" data-value="immediate">
-                            <h3>🚀 Immediate Availability</h3>
+                            <h3> Immediate Availability</h3>
                             <p>Can start new projects right away</p>
                         </div>
                         <div class="option-card" data-value="2-4-weeks">
-                            <h3>📅 2-4 Weeks</h3>
+                            <h3> 2-4 Weeks</h3>
                             <p>Available for new clients soon</p>
                         </div>
                         <div class="option-card" data-value="1-3-months">
-                            <h3>⏳ 1-3 Months</h3>
+                            <h3> 1-3 Months</h3>
                             <p>Limited availability, waitlist</p>
                         </div>
                         <div class="option-card" data-value="not-available">
-                            <h3>🔒 Not Currently Available</h3>
+                            <h3> Not Currently Available</h3>
                             <p>At capacity, future opportunities only</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="ai-insight">
-                    <h4>⚡ Availability Matching</h4>
+                    <h4> Availability Matching</h4>
                     <p>We prioritize Lawyers with immediate availability for businesses with urgent needs.</p>
                 </div>
             </div>
@@ -693,19 +699,19 @@
 
                 <div class="options-grid">
                     <div class="option-card" data-value="local-only">
-                        <h3>🏢 Local Only</h3>
+                        <h3> Local Only</h3>
                         <p>In-person meetings preferred, local clients only</p>
                     </div>
                     <div class="option-card" data-value="regional">
-                        <h3>🗺️ Regional</h3>
+                        <h3> Regional</h3>
                         <p>Serve clients within your province/territory</p>
                     </div>
                     <div class="option-card" data-value="canada-wide">
-                        <h3>🇨🇦 Canada-Wide</h3>
+                        <h3> Canada-Wide</h3>
                         <p>Serve clients across Canada remotely</p>
                     </div>
                     <div class="option-card" data-value="hybrid">
-                        <h3>🔄 Hybrid</h3>
+                        <h3> Hybrid</h3>
                         <p>Mix of local and remote clients</p>
                     </div>
                 </div>
@@ -716,7 +722,7 @@
                 </div>
 
                 <div class="ai-insight">
-                    <h4>🌍 Geographic Matching</h4>
+                    <h4> Geographic Matching</h4>
                     <p>Many businesses prefer local Lawyers, while others are comfortable with remote relationships. We match based on preferences.</p>
                 </div>
             </div>
@@ -762,7 +768,7 @@
                 </div>
 
                 <div class="ai-insight">
-                    <h4>✨ Profile Quality</h4>
+                    <h4> Profile Quality</h4>
                     <p>Complete profiles with professional bios receive 3x more client inquiries than basic profiles.</p>
                 </div>
             </div>
@@ -774,8 +780,8 @@
             </div>
         </div>
 
-        <div style="text-align: center; color: white; opacity: 0.8; margin-top: 20px;">
-            <p>🔒 Your information is secure and will only be shared with verified business clients</p>
+        <div style="text-align: center; color: var(--cream); opacity: 0.8; margin-top: 20px;">
+            <p> Your information is secure and will only be shared with verified business clients</p>
         </div>
     </div>
 

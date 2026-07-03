@@ -19,6 +19,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find the Right Lawyer in 24 Hours | CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
     <link rel="apple-touch-icon" href="/icon-512.png">
@@ -63,9 +67,7 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">
@@ -80,7 +82,7 @@
     </script>
 
     <style>
-        :root { --primary-blue: #2563eb; --primary-navy: #1e3a8a; --accent-green: #059669; --dark-bg: #0a0a0a; --card-bg: #1a1a1a; --border-color: #333333; }
+        :root { --primary-blue: var(--gold); --primary-navy: var(--gold-deep); --accent-green: var(--success); --dark-bg: var(--bg); --card-bg: var(--bg-raised); --border-color: var(--border); }
         * {
             margin: 0;
             padding: 0;
@@ -88,31 +90,31 @@
         }
 
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: #333;
+            color: var(--border-strong);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
         /* Navigation */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav{ position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(241,234,220,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
-        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--cream); font-weight: 700; font-size: 1.25rem; }
         .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a { color: rgba(241,234,220,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(201,168,106,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
-            color: white;
+            background: var(--bg);
+            color: var(--cream);
             padding: 80px 0;
             text-align: center;
             position: relative;
@@ -126,8 +128,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(220, 38, 38, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 30%, rgba(201,168,106, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(168,86,56, 0.1) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -143,14 +145,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #dc2626;
-            color: white;
+            background: var(--danger);
+            color: var(--cream);
             padding: 12px 24px;
             border-radius: 30px;
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+            box-shadow: 0 4px 15px rgba(168,86,56, 0.3);
             animation: pulse 2s infinite;
         }
 
@@ -164,7 +166,7 @@
             font-weight: 900;
             margin-bottom: 25px;
             line-height: 1.1;
-            color: #ffffff;
+            color: var(--text);
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
 
@@ -176,12 +178,12 @@
         }
 
         .pain-point-card {
-            background: rgba(37, 99, 235, 0.3);
+            background: rgba(201,168,106, 0.3);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(241,234,220,0.2);
         }
 
         .pain-icon {
@@ -193,11 +195,11 @@
             font-size: 1.8rem;
             font-weight: 800;
             margin-bottom: 10px;
-            color: white;
+            color: var(--cream);
         }
 
         .pain-description {
-            color: rgba(255,255,255,0.85);
+            color: rgba(241,234,220,0.85);
             font-size: 1.1rem;
             line-height: 1.5;
         }
@@ -206,13 +208,13 @@
             text-align: center;
             font-size: 3rem;
             margin: 40px 0;
-            color: #fbbf24;
+            color: var(--gold-bright);
         }
 
         .hero-subtitle {
             font-size: 1.8rem;
             margin-bottom: 40px;
-            color: #ffffff;
+            color: var(--text);
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
@@ -231,8 +233,8 @@
             text-align: center;
             padding: 25px;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(241,234,220,0.1);
+            border: 1px solid rgba(241,234,220,0.2);
             backdrop-filter: blur(10px);
         }
 
@@ -246,14 +248,14 @@
 
         .stat-label {
             font-size: 1.1rem;
-            color: white;
+            color: var(--cream);
             font-weight: 600;
             margin-bottom: 5px;
         }
 
         .stat-description {
             font-size: 0.9rem;
-            color: #cbd5e1;
+            color: var(--text-2);
         }
 
         .hero-cta {
@@ -264,26 +266,26 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             padding: 25px 50px;
             border-radius: 12px;
             font-size: 1.4rem;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 25px rgba(201,168,106, 0.3);
         }
 
         a.cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 15px 35px rgba(201,168,106, 0.4);
         }
 
         /* Quick Matcher Section */
         .quick-matcher {
             padding: 100px 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: var(--bg-high);
         }
 
         .container {
@@ -300,19 +302,19 @@
         .matcher-title {
             font-size: 3rem;
             font-weight: 800;
-            color: #1e293b;
+            color: var(--bg-raised);
             margin-bottom: 20px;
             line-height: 1.2;
         }
 
         .matcher-subtitle {
             font-size: 1.3rem;
-            color: #64748b;
+            color: var(--text-3);
             line-height: 1.6;
         }
 
         .progress-bar {
-            background: rgba(37, 99, 235, 0.1);
+            background: rgba(201,168,106, 0.1);
             height: 8px;
             border-radius: 4px;
             margin-bottom: 30px;
@@ -320,7 +322,7 @@
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, var(--primary-blue), var(--primary-navy));
+            background: linear-gradient(90deg, var(--gold), var(--gold-deep));
             height: 100%;
             width: 12.5%;
             transition: width 0.3s ease;
@@ -328,11 +330,11 @@
         }
 
         .question-card {
-            background: white;
+            background: var(--cream);
             backdrop-filter: blur(10px);
             padding: 40px;
             border-radius: 20px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--text-2);
             margin-bottom: 30px;
             display: none;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -351,12 +353,12 @@
         .question-title {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: #1e293b;
+            color: var(--bg-raised);
             font-weight: 700;
         }
 
         .question-subtitle {
-            color: #64748b;
+            color: var(--text-3);
             margin-bottom: 30px;
             line-height: 1.5;
             font-size: 1.1rem;
@@ -370,8 +372,8 @@
         }
 
         .option-card {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
+            background: var(--text);
+            border: 2px solid var(--text-2);
             border-radius: 12px;
             padding: 25px;
             cursor: pointer;
@@ -380,16 +382,16 @@
         }
 
         .option-card:hover {
-            background: #f1f5f9;
+            background: var(--text);
             border-color: var(--primary-blue);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 4px 12px rgba(201,168,106, 0.15);
         }
 
         .option-card.selected {
-            background: #eff6ff;
+            background: rgba(201,168,106,0.08);
             border-color: var(--primary-blue);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 12px rgba(201,168,106, 0.2);
         }
 
         .option-icon {
@@ -401,13 +403,13 @@
         .option-title {
             font-weight: 700;
             margin-bottom: 8px;
-            color: #1e293b;
+            color: var(--bg-raised);
             font-size: 1.1rem;
         }
 
         .option-description {
             font-size: 0.95rem;
-            color: #64748b;
+            color: var(--text-3);
             line-height: 1.4;
         }
 
@@ -419,27 +421,27 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #374151;
+            color: var(--bg-high);
         }
 
         .input-group input, .input-group select {
             width: 100%;
             padding: 15px 20px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid var(--text-2);
             border-radius: 10px;
             font-size: 1rem;
             transition: all 0.2s ease;
-            background: white;
+            background: var(--cream);
         }
 
         .input-group input:focus, .input-group select:focus {
             border-color: var(--primary-blue);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 3px rgba(201,168,106, 0.1);
         }
 
         .input-group input::placeholder {
-            color: #9ca3af;
+            color: var(--text-3);
         }
 
         .navigation-buttons {
@@ -448,7 +450,7 @@
             align-items: center;
             margin-top: 40px;
             padding-top: 30px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--text-2);
         }
 
         .btn {
@@ -462,24 +464,24 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            background: var(--gold);
+            color: var(--ink);
+            box-shadow: 0 4px 12px rgba(201,168,106, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 8px 20px rgba(201,168,106, 0.4);
         }
 
         .btn-secondary {
-            background: #f3f4f6;
-            color: #374151;
-            border: 2px solid #d1d5db;
+            background: var(--text);
+            color: var(--bg-high);
+            border: 2px solid var(--text-2);
         }
 
         .btn-secondary:hover {
-            background: #e5e7eb;
+            background: var(--text-2);
         }
 
         .btn:disabled {
@@ -490,13 +492,13 @@
         .step-indicator {
             text-align: center;
             font-size: 0.9rem;
-            color: #64748b;
+            color: var(--text-3);
             margin-bottom: 20px;
         }
 
         .ai-insight {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border: 2px solid #bfdbfe;
+            background: linear-gradient(135deg, rgba(201,168,106,0.08) 0%, rgba(201,168,106,0.15) 100%);
+            border: 2px solid rgba(201,168,106,0.4);
             border-radius: 12px;
             padding: 20px;
             margin-top: 20px;
@@ -504,7 +506,7 @@
 
         .ai-insight-title {
             font-weight: 700;
-            color: #1e40af;
+            color: var(--gold-deep);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -512,20 +514,20 @@
         }
 
         .ai-insight-text {
-            color: #1e3a8a;
+            color: var(--bg-raised);
             line-height: 1.5;
         }
 
         /* Footer */
         .footer {
-            background: #0f172a;
-            color: white;
+            background: var(--bg);
+            color: var(--cream);
             padding: 40px 0;
             text-align: center;
         }
 
         .footer-text {
-            color: #94a3b8;
+            color: var(--text-3);
             margin-bottom: 20px;
         }
 
@@ -537,7 +539,7 @@
         }
 
         .footer-link {
-            color: #cbd5e1;
+            color: var(--text-2);
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -553,13 +555,13 @@
                 display: none;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: var(--nav-bg); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(241,234,220,0.1);
             }
             .nav-links.active { display: flex; }
             .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
             .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        .nav-links a:hover { background: rgba(241,234,220,0.05); }
             .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
 
             .hero-title {
@@ -596,6 +598,8 @@
             }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
 </head>
 <body>
     <nav class="nav">
@@ -621,17 +625,17 @@
             <!-- Pain Points -->
             <div class="sme-pain-points">
                 <div class="pain-point-card">
-                    <div class="pain-icon">⏰</div>
+                    <div class="pain-icon"></div>
                     <h3 class="pain-title">Contract Bottlenecks</h3>
                     <p class="pain-description">Deals stalling for weeks because you can't get legal review fast enough</p>
                 </div>
                 <div class="pain-point-card">
-                    <div class="pain-icon">💔</div>
+                    <div class="pain-icon"></div>
                     <h3 class="pain-title">Endless Lawyer Search</h3>
                     <p class="pain-description">Weeks of calls, consultations, and dead ends trying to find the right fit</p>
                 </div>
                 <div class="pain-point-card">
-                    <div class="pain-icon">👨‍👩‍👧</div>
+                    <div class="pain-icon"></div>
                     <h3 class="pain-title">Family & Personal Legal Issues</h3>
                     <p class="pain-description">Divorce, custody, real estate, or immigration matters need the right specialist</p>
                 </div>
@@ -667,7 +671,7 @@
 
             <div class="hero-cta">
                 <a href="#quick-match" class="cta-button">
-                    🚀 Find My Perfect Lawyer Now
+                     Find My Perfect Lawyer Now
                 </a>
             </div>
         </div>
@@ -696,37 +700,37 @@
 
                 <div class="options-grid">
                     <div class="option-card" data-value="contract-bottleneck">
-                        <span class="option-icon">📝</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Contract Bottleneck</div>
                         <div class="option-description">Deals stalling because contracts need review or drafting</div>
                     </div>
                     <div class="option-card" data-value="legal-uncertainty">
-                        <span class="option-icon">😰</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Legal Uncertainty</div>
                         <div class="option-description">Unsure if your business is legally compliant</div>
                     </div>
                     <div class="option-card" data-value="lawyer-search">
-                        <span class="option-icon">🔍</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Lawyer Search Nightmare</div>
                         <div class="option-description">Can't find the right lawyer for your specific needs</div>
                     </div>
                     <div class="option-card" data-value="litigation-risk">
-                        <span class="option-icon">⚖️</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Litigation Risk</div>
                         <div class="option-description">Facing a dispute or potential lawsuit</div>
                     </div>
                     <div class="option-card" data-value="family-dispute">
-                        <span class="option-icon">👨‍👩‍👧</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Family Legal Issue</div>
                         <div class="option-description">Divorce, custody, support, or separation matters</div>
                     </div>
                     <div class="option-card" data-value="personal-legal">
-                        <span class="option-icon">🏠</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Property or Personal Matter</div>
                         <div class="option-description">Real estate, estate planning, personal injury</div>
                     </div>
                     <div class="option-card" data-value="criminal-immigration">
-                        <span class="option-icon">🛂</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Criminal or Immigration Issue</div>
                         <div class="option-description">Criminal charges, immigration, or citizenship</div>
                     </div>
@@ -734,7 +738,7 @@
 
                 <div class="ai-insight">
                     <div class="ai-insight-title">
-                        <span>🤖</span>
+                        <span></span>
                         <span>AI Insight</span>
                     </div>
                     <div class="ai-insight-text">68% of Canadian SMEs report that legal issues have directly impacted their business growth. The right lawyer can prevent costly mistakes before they happen.</div>
@@ -748,37 +752,37 @@
 
                 <div class="options-grid">
                     <div class="option-card" data-value="personal">
-                        <span class="option-icon">👤</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Individual / Personal</div>
                         <div class="option-description">Personal legal needs, not business-related</div>
                     </div>
                     <div class="option-card" data-value="tech">
-                        <span class="option-icon">💻</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Technology</div>
                         <div class="option-description">Software, SaaS, IT services</div>
                     </div>
                     <div class="option-card" data-value="retail">
-                        <span class="option-icon">🛍️</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Retail/E-commerce</div>
                         <div class="option-description">Physical or online stores</div>
                     </div>
                     <div class="option-card" data-value="professional">
-                        <span class="option-icon">💼</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Professional Services</div>
                         <div class="option-description">Consulting, legal, marketing</div>
                     </div>
                     <div class="option-card" data-value="manufacturing">
-                        <span class="option-icon">🏭</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Manufacturing</div>
                         <div class="option-description">Production, assembly, industrial</div>
                     </div>
                     <div class="option-card" data-value="healthcare">
-                        <span class="option-icon">🏥</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Healthcare</div>
                         <div class="option-description">Medical, dental, wellness</div>
                     </div>
                     <div class="option-card" data-value="other">
-                        <span class="option-icon">🏢</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Other</div>
                         <div class="option-description">Construction, food, real estate</div>
                     </div>
@@ -792,22 +796,22 @@
                 
                 <div class="options-grid">
                     <div class="option-card" data-value="startup">
-                        <span class="option-icon">🌱</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Startup</div>
                         <div class="option-description">Under $100K</div>
                     </div>
                     <div class="option-card" data-value="small">
-                        <span class="option-icon">🚀</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Small Business</div>
                         <div class="option-description">$100K - $1M</div>
                     </div>
                     <div class="option-card" data-value="medium">
-                        <span class="option-icon">📈</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Growing Business</div>
                         <div class="option-description">$1M - $10M</div>
                     </div>
                     <div class="option-card" data-value="large">
-                        <span class="option-icon">🏢</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Established Business</div>
                         <div class="option-description">$10M+</div>
                     </div>
@@ -815,7 +819,7 @@
 
                 <div class="ai-insight">
                     <div class="ai-insight-title">
-                        <span>🎯</span>
+                        <span></span>
                         <span>Matching Insight</span>
                     </div>
                     <div class="ai-insight-text">Businesses in your revenue range benefit most from lawyers who understand your scale -- from startup-friendly rates to enterprise-level expertise.</div>
@@ -829,67 +833,67 @@
 
                 <div class="options-grid">
                     <div class="option-card multi-select" data-value="contract-review">
-                        <span class="option-icon">📝</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Contract Review</div>
                         <div class="option-description">Draft or review business agreements</div>
                     </div>
                     <div class="option-card multi-select" data-value="business-incorporation">
-                        <span class="option-icon">🏢</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Business Incorporation</div>
                         <div class="option-description">Structuring and corporate setup</div>
                     </div>
                     <div class="option-card multi-select" data-value="litigation">
-                        <span class="option-icon">⚖️</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Litigation</div>
                         <div class="option-description">Dispute resolution and lawsuits</div>
                     </div>
                     <div class="option-card multi-select" data-value="compliance">
-                        <span class="option-icon">🛡️</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Compliance</div>
                         <div class="option-description">Regulatory and industry compliance</div>
                     </div>
                     <div class="option-card multi-select" data-value="employment-law">
-                        <span class="option-icon">👥</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Employment Law</div>
                         <div class="option-description">HR policies, hiring, terminations</div>
                     </div>
                     <div class="option-card multi-select" data-value="ip-protection">
-                        <span class="option-icon">💡</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">IP Protection</div>
                         <div class="option-description">Trademarks, patents, copyrights</div>
                     </div>
                     <div class="option-card multi-select" data-value="family-law">
-                        <span class="option-icon">👨‍👩‍👧</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Family Law</div>
                         <div class="option-description">Divorce, custody, child support, separation</div>
                     </div>
                     <div class="option-card multi-select" data-value="real-estate-law">
-                        <span class="option-icon">🏠</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Real Estate Law</div>
                         <div class="option-description">Property transactions, lease disputes, closings</div>
                     </div>
                     <div class="option-card multi-select" data-value="criminal-law">
-                        <span class="option-icon">🔒</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Criminal Law</div>
                         <div class="option-description">Criminal defense, DUI, impaired driving charges</div>
                     </div>
                     <div class="option-card multi-select" data-value="immigration-law">
-                        <span class="option-icon">🛂</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Immigration Law</div>
                         <div class="option-description">Visas, permanent residency, citizenship, work permits</div>
                     </div>
                     <div class="option-card multi-select" data-value="personal-injury">
-                        <span class="option-icon">🩹</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Personal Injury</div>
                         <div class="option-description">Accidents, medical malpractice, negligence claims</div>
                     </div>
                     <div class="option-card multi-select" data-value="wills-estates">
-                        <span class="option-icon">📜</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Wills & Estates</div>
                         <div class="option-description">Wills, trusts, probate, estate administration</div>
                     </div>
                     <div class="option-card multi-select" data-value="tax-law">
-                        <span class="option-icon">🧾</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Tax Law</div>
                         <div class="option-description">CRA disputes, tax planning, audit defense</div>
                     </div>
@@ -903,22 +907,22 @@
 
                 <div class="options-grid">
                     <div class="option-card" data-value="emergency">
-                        <span class="option-icon">🚨</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Emergency</div>
                         <div class="option-description">Legal crisis - need help immediately</div>
                     </div>
                     <div class="option-card" data-value="urgent">
-                        <span class="option-icon">⏰</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Very Urgent</div>
                         <div class="option-description">Need help this week</div>
                     </div>
                     <div class="option-card" data-value="soon">
-                        <span class="option-icon">📅</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Within 2 weeks</div>
                         <div class="option-description">Planning ahead to fix issues</div>
                     </div>
                     <div class="option-card" data-value="month">
-                        <span class="option-icon">🤔</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Within a month</div>
                         <div class="option-description">Exploring better options</div>
                     </div>
@@ -932,22 +936,22 @@
 
                 <div class="options-grid">
                     <div class="option-card" data-value="solo">
-                        <span class="option-icon">👤</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Just Me</div>
                         <div class="option-description">Sole proprietor or freelancer</div>
                     </div>
                     <div class="option-card" data-value="small-team">
-                        <span class="option-icon">👥</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">2-10 Employees</div>
                         <div class="option-description">Small but growing team</div>
                     </div>
                     <div class="option-card" data-value="medium-team">
-                        <span class="option-icon">🏢</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">11-50 Employees</div>
                         <div class="option-description">Mid-size organization</div>
                     </div>
                     <div class="option-card" data-value="large-team">
-                        <span class="option-icon">🏛️</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">50+ Employees</div>
                         <div class="option-description">Established enterprise</div>
                     </div>
@@ -955,7 +959,7 @@
 
                 <div class="ai-insight">
                     <div class="ai-insight-title">
-                        <span>⚡</span>
+                        <span></span>
                         <span>Legal Complexity</span>
                     </div>
                     <div class="ai-insight-text">Companies with employees have unique legal needs -- employment contracts, HR compliance, and workplace policies. We match you with specialists.</div>
@@ -969,22 +973,22 @@
 
                 <div class="options-grid">
                     <div class="option-card" data-value="budget-2500">
-                        <span class="option-icon">💵</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">Under $2,500</div>
                         <div class="option-description">Basic legal needs and consultations</div>
                     </div>
                     <div class="option-card" data-value="budget-5000">
-                        <span class="option-icon">💰</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">$2,500 - $5,000</div>
                         <div class="option-description">Contract work and ongoing counsel</div>
                     </div>
                     <div class="option-card" data-value="budget-10000">
-                        <span class="option-icon">💎</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">$5,000 - $10,000</div>
                         <div class="option-description">Comprehensive legal support</div>
                     </div>
                     <div class="option-card" data-value="budget-high">
-                        <span class="option-icon">🏆</span>
+                        <span class="option-icon"></span>
                         <div class="option-title">$10,000+</div>
                         <div class="option-description">Complex litigation or full-service counsel</div>
                     </div>
@@ -992,7 +996,7 @@
 
                 <div class="ai-insight">
                     <div class="ai-insight-title">
-                        <span>💡</span>
+                        <span></span>
                         <span>ROI Insight</span>
                     </div>
                     <div class="ai-insight-text">Proactive legal counsel prevents costly disputes. Businesses with ongoing legal support report 60% fewer contract disputes and faster deal closings.</div>
@@ -1031,7 +1035,7 @@
 
                 <div class="ai-insight">
                     <div class="ai-insight-title">
-                        <span>🎯</span>
+                        <span></span>
                         <span>What Happens Next</span>
                     </div>
                     <div class="ai-insight-text">Within 24 hours, you'll receive 2-3 perfect lawyer matches with their profiles, practice areas, and availability. Your legal search ends now.</div>
@@ -1042,17 +1046,17 @@
                 <button class="btn btn-secondary" id="prevBtn" onclick="changeQuestion(-1)" style="display: none;">Previous</button>
                 <button class="btn btn-primary" id="nextBtn" onclick="changeQuestion(1)">Next Question</button>
             </div>
-            <p style="margin:16px auto 0;max-width:560px;text-align:center;font-size:12px;color:#8a8f98;line-height:1.6;">By submitting, you agree to our <a href="/privacy-policy" style="color:var(--primary-blue,#2563eb);">Privacy Policy</a> and consent to being contacted by CanadaLawyers about your lawyer match. We use your details only to match you and follow up. You can reply "unsubscribe" at any time. This service is free for clients.</p>
+            <p style="margin:16px auto 0;max-width:560px;text-align:center;font-size:12px;color:var(--text-3);line-height:1.6;">By submitting, you agree to our <a href="/privacy-policy" style="color:var(--primary-blue,var(--gold));">Privacy Policy</a> and consent to being contacted by CanadaLawyers about your lawyer match. We use your details only to match you and follow up. You can reply "unsubscribe" at any time. This service is free for clients.</p>
         </div>
     </section>
 
-    <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
+    <footer style="background: var(--bg); padding: 60px 24px; border-top: 1px solid var(--border-color);">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; color: white;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; color: var(--cream);">
                 <i class="fas fa-maple-leaf" style="color: var(--primary-blue);"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </div>
-            <p style="color: #a0a0a0; margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
-            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
+            <p style="color: var(--text-2); margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: var(--text-3); font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
         </div>
     </footer>
 
@@ -1273,7 +1277,7 @@ gtag('event', 'questionnaire_submitted', {
         <div style="text-align: center; padding: 60px 20px;">
             <div style="font-size: 4rem; margin-bottom: 20px;">⏳</div>
             <h2 style="color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 15px;">Matching You With Perfect Lawyers...</h2>
-            <p style="font-size: 1.2rem; color: #64748b;">Our AI is analyzing your needs and finding your ideal matches</p>
+            <p style="font-size: 1.2rem; color: var(--text-3);">Our AI is analyzing your needs and finding your ideal matches</p>
         </div>
     `;
 
@@ -1329,15 +1333,15 @@ function showErrorMessage() {
     const container = document.querySelector('.container');
     container.innerHTML = `
         <div style="text-align: center; padding: 60px 20px;">
-            <div style="font-size: 4rem; margin-bottom: 20px;">⚠️</div>
-            <h2 style="color: #dc2626; font-size: 2.5rem; margin-bottom: 15px;">Connection Issue</h2>
-            <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 30px;">
+            <div style="font-size: 4rem; margin-bottom: 20px; color: var(--gold);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+            <h2 style="color: var(--danger); font-size: 2.5rem; margin-bottom: 15px;">Connection Issue</h2>
+            <p style="font-size: 1.2rem; color: var(--text-3); margin-bottom: 30px;">
                 We're having trouble connecting right now, but we've saved your information.
             </p>
-            <p style="font-size: 1rem; color: #64748b; margin-bottom: 30px;">
+            <p style="font-size: 1rem; color: var(--text-3); margin-bottom: 30px;">
                 Please call us directly at <strong>(647) 956-7290</strong> and we'll match you immediately!
             </p>
-            <a href="/" style="background: #2563eb; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
+            <a href="/" style="background: var(--gold); color: var(--cream); padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
                 Return to Homepage
             </a>
         </div>
@@ -1352,17 +1356,17 @@ function showErrorMessage() {
     const container = document.querySelector('.container');
     container.innerHTML = `
         <div style="text-align: center; padding: 60px 20px;">
-            <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+            <div style="font-size: 4rem; margin-bottom: 20px; color: var(--success);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></div>
             <h2 style="color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 15px; font-weight: 800;">AI Matching Complete!</h2>
-            <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 30px;">
+            <p style="font-size: 1.2rem; color: var(--text-3); margin-bottom: 30px;">
                 Your perfect lawyer matches are being prepared. Our team will follow up within 24 hours.
             </p>
 
-            <a href="${resultsUrl}" style="display: inline-block; background: #2563eb; color: white; padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.2rem; margin-top: 20px;">
+            <a href="${resultsUrl}" style="display: inline-block; background: var(--gold); color: var(--cream); padding: 20px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.2rem; margin-top: 20px;">
                 View My Lawyer Matches &rarr;
             </a>
 
-            <p style="margin-top: 20px; font-size: 0.9rem; color: #64748b;">
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-3);">
                 Reference: ${sessionId}
             </p>
         </div>

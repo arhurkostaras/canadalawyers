@@ -12,15 +12,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stop Wasting on Lawyer Marketing | CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
     <link rel="apple-touch-icon" href="/icon-512.png">
     <meta name="description" content="Stop wasting thousands on marketing. Join Canada's AI-powered lawyer network and get pre-qualified clients matched to your practice area in 24 hours.">
 
     <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Canonical URL -->
@@ -55,13 +58,13 @@
 
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --primary-navy: #1e3a8a;
-            --primary-navy: #1e3a8a;
-            --accent-green: #059669;
-            --dark-bg: #0a0a0a;
-            --card-bg: #1a1a1a;
-            --border-color: #333333;
+            --primary-blue: var(--gold);
+            --primary-navy: var(--gold-deep);
+            --primary-navy: var(--gold-deep);
+            --accent-green: var(--success);
+            --dark-bg: var(--bg);
+            --card-bg: var(--bg-raised);
+            --border-color: var(--border);
         }
 
         * {
@@ -71,31 +74,31 @@
         }
 
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: #e0e0e0;
+            color: var(--text-2);
             background: var(--dark-bg);
             overflow-x: hidden;
         }
 
         /* Navigation */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav{ position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(241,234,220,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
-        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--cream); font-weight: 700; font-size: 1.25rem; }
         .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a { color: rgba(241,234,220,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(201,168,106,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         /* Friction Alert Banner */
         .friction-alert {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--bg-raised) 0%, var(--bg) 100%);
+            color: var(--cream);
             padding: 20px 0;
             text-align: center;
             padding-top: 84px;
@@ -106,21 +109,21 @@
             font-size: 1.5rem;
             font-weight: 900;
             margin-bottom: 10px;
-            color: #e2e8f0;
+            color: var(--text-2);
         }
 
         .friction-alert p {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #94a3b8;
+            color: var(--text-3);
             margin: 0 auto;
             text-align: center;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
-            color: white;
+            background: var(--bg);
+            color: var(--cream);
             padding: 80px 0;
             text-align: center;
             position: relative;
@@ -134,8 +137,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(30, 58, 138, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 30%, rgba(201,168,106, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(201,168,106, 0.1) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -151,15 +154,15 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--bg-raised) 0%, var(--gold-deep) 100%);
+            color: var(--cream);
             padding: 12px 24px;
             border-radius: 30px;
             font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(241,234,220,0.15);
         }
 
         .hero-title {
@@ -167,7 +170,7 @@
             font-weight: 900;
             margin-bottom: 25px;
             line-height: 1.1;
-            color: #ffffff;
+            color: var(--text);
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
 
@@ -179,12 +182,12 @@
         }
 
         .pain-point-card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(11,14,18, 0.7);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(241,234,220,0.15);
         }
 
         .pain-icon {
@@ -196,11 +199,11 @@
             font-size: 1.8rem;
             font-weight: 800;
             margin-bottom: 10px;
-            color: white;
+            color: var(--cream);
         }
 
         .pain-description {
-            color: #cbd5e1;
+            color: var(--text-2);
             font-size: 1.1rem;
             line-height: 1.5;
         }
@@ -209,13 +212,13 @@
             text-align: center;
             font-size: 3rem;
             margin: 40px 0;
-            color: #fbbf24;
+            color: var(--gold-bright);
         }
 
         .hero-subtitle {
             font-size: 1.8rem;
             margin-bottom: 40px;
-            color: #ffffff;
+            color: var(--text);
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
@@ -234,8 +237,8 @@
             text-align: center;
             padding: 25px;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(241,234,220,0.1);
+            border: 1px solid rgba(241,234,220,0.2);
             backdrop-filter: blur(10px);
         }
 
@@ -249,14 +252,14 @@
 
         .stat-label {
             font-size: 1.1rem;
-            color: white;
+            color: var(--cream);
             font-weight: 600;
             margin-bottom: 5px;
         }
 
         .stat-description {
             font-size: 0.9rem;
-            color: #cbd5e1;
+            color: var(--text-2);
         }
 
         /* Revenue Reference Styles */
@@ -266,13 +269,13 @@
         }
 
         .revenue-card {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--success) 0%, var(--success) 100%);
+            color: var(--cream);
             border-radius: 20px;
             padding: 40px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(111,143,106, 0.3);
+            border: 2px solid rgba(241,234,220,0.2);
         }
 
         .revenue-header {
@@ -304,28 +307,28 @@
         }
 
         .revenue-stat {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(241,234,220,0.1);
             border-radius: 15px;
             padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(241,234,220,0.2);
         }
 
         .revenue-number {
             font-size: 2.2rem;
             font-weight: 900;
-            color: #fbbf24;
+            color: var(--gold-bright);
             margin-bottom: 8px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .revenue-label {
             font-size: 0.9rem;
-            color: white;
+            color: var(--cream);
             font-weight: 600;
         }
 
         .revenue-cta {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(241,234,220,0.1);
             border-radius: 15px;
             padding: 25px;
             margin-top: 30px;
@@ -343,12 +346,12 @@
         }
 
         .recommendation-card {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
-            color: white;
+            background: var(--bg-raised);
+            color: var(--cream);
             border-radius: 25px;
             padding: 40px;
-            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.4);
-            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(201,168,106, 0.4);
+            border: 3px solid rgba(241,234,220,0.2);
             position: relative;
             overflow: hidden;
         }
@@ -360,7 +363,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(241,234,220,0.1) 50%, transparent 100%);
             animation: shimmer 3s infinite;
         }
 
@@ -373,14 +376,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             padding: 10px 20px;
             border-radius: 25px;
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 4px 15px rgba(201,168,106, 0.3);
             animation: pulse-glow 2s infinite;
         }
 
@@ -410,26 +413,26 @@
         }
 
         .plan-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(241,234,220,0.1);
             border-radius: 20px;
             padding: 25px;
             text-align: center;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(241,234,220,0.2);
             transition: all 0.3s ease;
             position: relative;
         }
 
         .plan-card.recommended {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border: 3px solid #fbbf24;
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+            background: linear-gradient(135deg, var(--success) 0%, var(--success) 100%);
+            border: 3px solid var(--gold-bright);
+            box-shadow: 0 15px 35px rgba(111,143,106, 0.4);
             transform: scale(1.05);
         }
 
         .plan-card.alternative {
             opacity: 0.7;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(241,234,220,0.05);
+            border: 2px solid rgba(241,234,220,0.1);
         }
 
         .plan-badge {
@@ -437,8 +440,8 @@
             top: -10px;
             left: 50%;
             transform: translateX(-50%);
-            background: #fbbf24;
-            color: #1f2937;
+            background: var(--gold-bright);
+            color: var(--ink);
             padding: 6px 16px;
             border-radius: 15px;
             font-size: 0.75rem;
@@ -451,8 +454,8 @@
             top: -10px;
             left: 50%;
             transform: translateX(-50%);
-            background: #64748b;
-            color: white;
+            background: var(--text-3);
+            color: var(--cream);
             padding: 6px 16px;
             border-radius: 15px;
             font-size: 0.75rem;
@@ -474,7 +477,7 @@
         .plan-price {
             font-size: 2rem;
             font-weight: 900;
-            color: #fbbf24;
+            color: var(--gold-bright);
             margin-bottom: 8px;
         }
 
@@ -490,12 +493,12 @@
             margin: 15px 0;
             padding: 8px;
             border-radius: 8px;
-            background: rgba(16, 185, 129, 0.2);
+            background: rgba(111,143,106, 0.2);
         }
 
         .plan-capture.missed {
             background: rgba(100, 116, 139, 0.2);
-            color: #cbd5e1;
+            color: var(--text-2);
         }
 
         .select-plan-btn {
@@ -510,31 +513,31 @@
         }
 
         .recommended-btn {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            color: #1f2937;
+            background: var(--gold);
+            color: var(--ink);
             font-size: 1.1rem;
-            box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3);
+            box-shadow: 0 8px 20px rgba(201,168,106, 0.3);
         }
 
         .recommended-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 12px 25px rgba(201,168,106, 0.4);
         }
 
         .alternative-btn {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: rgba(241,234,220,0.1);
+            color: var(--cream);
             font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(241,234,220,0.2);
         }
 
         .alternative-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(241,234,220,0.2);
         }
 
         /* Impact Visualization */
         .impact-visualization {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(241,234,220,0.1);
             border-radius: 15px;
             padding: 25px;
             margin: 30px 0;
@@ -573,24 +576,24 @@
         }
 
         .recommended-bar {
-            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(90deg, var(--success) 0%, var(--success) 100%);
         }
 
         .premium-bar {
-            background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
+            background: linear-gradient(90deg, var(--gold), var(--gold-deep));
         }
 
         .basic-bar {
-            background: linear-gradient(90deg, #6b7280 0%, #4b5563 100%);
+            background: linear-gradient(90deg, var(--text-3) 0%, var(--text-3) 100%);
         }
 
         .opportunity-cost {
             text-align: center;
             margin-top: 20px;
             padding: 15px;
-            background: rgba(37, 99, 235, 0.1);
+            background: rgba(201,168,106, 0.1);
             border-radius: 10px;
-            border: 1px solid rgba(37, 99, 235, 0.3);
+            border: 1px solid rgba(201,168,106, 0.3);
         }
 
         /* Social Proof */
@@ -600,7 +603,7 @@
             gap: 30px;
             margin: 30px 0;
             padding: 25px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(241,234,220,0.1);
             border-radius: 15px;
         }
 
@@ -611,7 +614,7 @@
         .proof-number {
             font-size: 3rem;
             font-weight: 900;
-            color: #fbbf24;
+            color: var(--gold-bright);
             margin-bottom: 10px;
         }
 
@@ -621,7 +624,7 @@
         }
 
         .proof-testimonial {
-            border-left: 4px solid #fbbf24;
+            border-left: 4px solid var(--gold-bright);
             padding-left: 20px;
         }
 
@@ -633,8 +636,8 @@
 
         /* Urgency Section */
         .urgency-section {
-            background: rgba(37, 99, 235, 0.15);
-            border: 1px solid rgba(37, 99, 235, 0.3);
+            background: rgba(201,168,106, 0.15);
+            border: 1px solid rgba(201,168,106, 0.3);
             border-radius: 15px;
             padding: 20px;
             margin-top: 30px;
@@ -656,7 +659,7 @@
         .urgency-title {
             font-size: 1.2rem;
             font-weight: 700;
-            color: #fbbf24;
+            color: var(--gold-bright);
         }
 
         .urgency-subtitle {
@@ -676,8 +679,8 @@
         }
 
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
-            50% { box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6); }
+            0%, 100% { box-shadow: 0 4px 15px rgba(201,168,106, 0.3); }
+            50% { box-shadow: 0 8px 25px rgba(201,168,106, 0.6); }
         }
 
         @keyframes shimmer {
@@ -693,20 +696,20 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             padding: 25px 50px;
             border-radius: 12px;
             font-size: 1.4rem;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 25px rgba(201,168,106, 0.3);
         }
 
         a.cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 15px 35px rgba(201,168,106, 0.4);
         }
 
         /* How It Works Section */
@@ -729,14 +732,14 @@
         .section-title {
             font-size: 3.5rem;
             font-weight: 800;
-            color: #ffffff;
+            color: var(--text);
             margin-bottom: 20px;
             line-height: 1.2;
         }
 
         .section-subtitle {
             font-size: 1.3rem;
-            color: #a0a0a0;
+            color: var(--text-2);
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.6;
@@ -762,8 +765,8 @@
 
         .step-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
-            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: 0 20px 40px rgba(201,168,106, 0.15);
+            border-color: rgba(201,168,106, 0.3);
         }
 
         .step-number {
@@ -772,15 +775,15 @@
             right: -15px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
+            background: var(--gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             font-weight: 800;
-            color: white;
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            color: var(--ink);
+            box-shadow: 0 8px 20px rgba(201,168,106, 0.3);
         }
 
         .step-icon {
@@ -792,14 +795,14 @@
         .step-title {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #ffffff;
+            color: var(--text);
             margin-bottom: 15px;
             line-height: 1.3;
         }
 
         .step-description {
             font-size: 1.1rem;
-            color: #a0a0a0;
+            color: var(--text-2);
             line-height: 1.6;
             margin-bottom: 25px;
         }
@@ -815,7 +818,7 @@
             gap: 10px;
             margin-bottom: 10px;
             font-size: 0.95rem;
-            color: #c0c0c0;
+            color: var(--text-2);
         }
 
         .feature-check {
@@ -827,7 +830,7 @@
         .benefits {
             padding: 100px 0;
             background: var(--card-bg);
-            color: white;
+            color: var(--cream);
         }
 
         .benefits-grid {
@@ -838,8 +841,8 @@
         }
 
         .benefit-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(241,234,220,0.05);
+            border: 1px solid rgba(241,234,220,0.1);
             border-radius: 20px;
             padding: 40px;
             text-align: center;
@@ -849,7 +852,7 @@
 
         .benefit-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(37, 99, 235, 0.3);
+            border-color: rgba(201,168,106, 0.3);
         }
 
         .benefit-icon {
@@ -862,11 +865,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 15px;
-            color: white;
+            color: var(--cream);
         }
 
         .benefit-description {
-            color: #cbd5e1;
+            color: var(--text-2);
             line-height: 1.6;
         }
 
@@ -894,12 +897,12 @@
         .form-title {
             font-size: 2.5rem;
             font-weight: 800;
-            color: #ffffff;
+            color: var(--text);
             margin-bottom: 15px;
         }
 
         .form-subtitle {
-            color: #a0a0a0;
+            color: var(--text-2);
             font-size: 1.1rem;
             line-height: 1.6;
         }
@@ -912,7 +915,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #e0e0e0;
+            color: var(--text-2);
         }
 
         .form-input,
@@ -924,8 +927,8 @@
             border-radius: 10px;
             font-size: 1rem;
             transition: all 0.2s ease;
-            background: #222222;
-            color: #e0e0e0;
+            background: var(--bg-raised);
+            color: var(--text-2);
         }
 
         .form-input:focus,
@@ -933,7 +936,7 @@
         .form-textarea:focus {
             border-color: var(--primary-blue);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+            box-shadow: 0 0 0 3px rgba(201,168,106, 0.15);
         }
 
         .form-textarea {
@@ -943,8 +946,8 @@
 
         .submit-button {
             width: 100%;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             border: none;
             padding: 18px 30px;
             border-radius: 12px;
@@ -952,19 +955,19 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 25px rgba(201,168,106, 0.3);
         }
 
         .submit-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 12px 30px rgba(201,168,106, 0.4);
         }
 
         .form-note {
             text-align: center;
             margin-top: 20px;
             font-size: 0.9rem;
-            color: #888888;
+            color: var(--text-3);
         }
 
         /* Footer is inline-styled */
@@ -976,13 +979,13 @@
                 display: none;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: var(--nav-bg); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(241,234,220,0.1);
             }
             .nav-links.active { display: flex; }
             .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
             .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        .nav-links a:hover { background: rgba(241,234,220,0.05); }
             .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
 
             .hero-title {
@@ -1048,6 +1051,8 @@
             }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -1083,23 +1088,23 @@
             <!-- Lawyer Pain Points -->
             <div class="lawyer-pain-points">
                 <div class="pain-point-card">
-                    <div class="pain-icon">💸</div>
+                    <div class="pain-icon"></div>
                     <h3 class="pain-title">High Marketing Costs</h3>
                     <p class="pain-description">Traditional ads, directories, and networking events with unpredictable returns</p>
                 </div>
                 <div class="pain-point-card">
-                    <div class="pain-icon">📅</div>
+                    <div class="pain-icon"></div>
                     <h3 class="pain-title">Long Sales Cycles</h3>
                     <p class="pain-description">Months from first contact to signed engagement — time you could spend on billable work</p>
                 </div>
                 <div class="pain-point-card">
-                    <div class="pain-icon">📉</div>
+                    <div class="pain-icon"></div>
                     <h3 class="pain-title">Low Conversion Rates</h3>
                     <p class="pain-description">Industry-wide 25-35% close rates from unqualified prospects who aren't the right fit</p>
                 </div>
             </div>
 
-            <div class="solution-arrow">⬇️</div>
+            <div class="solution-arrow"></div>
 
             <p class="hero-subtitle">
                 Our AI matches pre-qualified business clients to your practice area and jurisdiction —
@@ -1133,7 +1138,7 @@
             <div class="revenue-reference" id="revenueReference" style="display: none;">
                 <div class="revenue-card">
                     <div class="revenue-header">
-                        <div class="revenue-icon">💰</div>
+                        <div class="revenue-icon"></div>
                         <h3>Your Revenue Projection is Ready!</h3>
                         <p>Based on your calculation, here's what you could achieve:</p>
                     </div>
@@ -1176,22 +1181,22 @@
                         <div class="comparison-grid">
                             <!-- Recommended Plan (Highlighted) -->
                             <div class="plan-card recommended" id="recommendedPlan">
-                                <div class="plan-badge">🎯 PERFECT FOR YOU</div>
-                                <div class="plan-icon">🏆</div>
+                                <div class="plan-badge"> PERFECT FOR YOU</div>
+                                <div class="plan-icon"></div>
                                 <h4 class="plan-name" id="recPlanName">Founding 500</h4>
                                 <div class="plan-price" id="recPlanPrice">$599/mo</div>
                                 <div class="plan-position" id="recPlanPosition">Positions #1-3</div>
                                 <div class="plan-leads" id="recPlanLeads">6-10 leads/month</div>
                                 <div class="plan-capture" id="recPlanCapture">Captures 85% of your potential</div>
                                 <button class="select-plan-btn recommended-btn" id="selectRecommended">
-                                    🚀 Secure My Position
+                                     Secure My Position
                                 </button>
                             </div>
                             
                             <!-- Alternative Plans (Dimmed) -->
                             <div class="plan-card alternative" id="alternativePlan1">
-                                <div class="plan-warning">⚠️ LIMITS YOUR POTENTIAL</div>
-                                <div class="plan-icon">🥈</div>
+                                <div class="plan-warning"> LIMITS YOUR POTENTIAL</div>
+                                <div class="plan-icon"></div>
                                 <h4 class="plan-name">Premium Position</h4>
                                 <div class="plan-price">$299/mo</div>
                                 <div class="plan-position">Positions #4-10</div>
@@ -1203,8 +1208,8 @@
                             </div>
                             
                             <div class="plan-card alternative" id="alternativePlan2">
-                                <div class="plan-warning">❌ MAJOR LIMITATION</div>
-                                <div class="plan-icon">🥉</div>
+                                <div class="plan-warning"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg> MAJOR LIMITATION</div>
+                                <div class="plan-icon"></div>
                                 <h4 class="plan-name">Basic Position</h4>
                                 <div class="plan-price">$199/mo</div>
                                 <div class="plan-position">Positions #11+</div>
@@ -1219,7 +1224,7 @@
                     
                     <!-- Impact Visualization -->
                     <div class="impact-visualization">
-                        <h4>💡 Revenue Impact Comparison</h4>
+                        <h4> Revenue Impact Comparison</h4>
                         <div class="impact-bars">
                             <div class="impact-bar">
                                 <div class="impact-label">Your Recommended Plan</div>
@@ -1260,7 +1265,7 @@
                     <!-- Urgency Elements -->
                     <div class="urgency-section">
                         <div class="urgency-timer">
-                            <div class="urgency-icon">⏰</div>
+                            <div class="urgency-icon"></div>
                             <div class="urgency-text">
                                 <div class="urgency-title" id="urgencyTitle">342 Founding 500 spots remaining</div>
                                 <div class="urgency-subtitle">Your calculated potential requires top positioning</div>
@@ -1292,26 +1297,26 @@
             <div class="steps-container">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <div class="step-icon">📋</div>
+                    <div class="step-icon"></div>
                     <h3 class="step-title">Build Your Profile</h3>
                     <p class="step-description">
                         Tell us about your practice areas, jurisdiction, and the clients you serve best. We verify your credentials with your law society.
                     </p>
                     <ul class="step-features">
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Verified credentials build trust</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Practice area specialization matching</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Jurisdiction-aware lead routing</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Professional trust profile</span>
                         </li>
                     </ul>
@@ -1319,26 +1324,26 @@
 
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <div class="step-icon">🎯</div>
+                    <div class="step-icon"></div>
                     <h3 class="step-title">Receive Pre-Qualified Clients</h3>
                     <p class="step-description">
                         Our AI identifies businesses actively seeking Lawyers and matches them to your expertise automatically.
                     </p>
                     <ul class="step-features">
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Pre-qualified business leads only</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Budget & timeline pre-screened</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Industry & expertise matching</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>24-hour response guarantee</span>
                         </li>
                     </ul>
@@ -1346,26 +1351,26 @@
 
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <div class="step-icon">💰</div>
+                    <div class="step-icon"></div>
                     <h3 class="step-title">Turn Waste Into Revenue</h3>
                     <p class="step-description">
                         Transform your marketing spend into revenue growth with significantly improved win rates.
                     </p>
                     <ul class="step-features">
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Significantly improved win rates</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>$7K → $1K client acquisition cost</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Predictable revenue growth</span>
                         </li>
                         <li class="step-feature">
-                            <span class="feature-check">✓</span>
+                            <span class="feature-check"><svg class="ph-ic" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></span>
                             <span>Premium client relationships</span>
                         </li>
                     </ul>
@@ -1386,7 +1391,7 @@
 
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-icon"></div>
                     <h3 class="benefit-title">Pre-Qualified Client Leads</h3>
                     <p class="benefit-description">
                         Every lead is matched to your practice area, jurisdiction, and expertise. No more unqualified inquiries or tire-kickers.
@@ -1394,7 +1399,7 @@
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-icon"></div>
                     <h3 class="benefit-title">24-Hour Turnaround</h3>
                     <p class="benefit-description">
                         Business clients submit their needs today, you receive matched leads tomorrow. Dramatically shorter path to new engagements.
@@ -1402,7 +1407,7 @@
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-icon"></div>
                     <h3 class="benefit-title">Higher Close Rates</h3>
                     <p class="benefit-description">
                         Pre-qualified, practice-area-matched leads convert at significantly higher rates than generic directories.
@@ -1410,7 +1415,7 @@
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-icon"></div>
                     <h3 class="benefit-title">Lower Acquisition Costs</h3>
                     <p class="benefit-description">
                         Replace expensive ads and cold outreach with a predictable, fixed-cost channel that delivers consistent results.
@@ -1418,7 +1423,7 @@
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon">🏛️</div>
+                    <div class="benefit-icon"></div>
                     <h3 class="benefit-title">Verified Professional Profile</h3>
                     <p class="benefit-description">
                         Your credentials are verified with your law society. Clients see a trust badge that sets you apart from unvetted directories.
@@ -1426,7 +1431,7 @@
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon">⏰</div>
+                    <div class="benefit-icon"></div>
                     <h3 class="benefit-title">More Billable Hours</h3>
                     <p class="benefit-description">
                         Spend your time practising law, not chasing business development. We handle client acquisition so you don't have to.
@@ -1526,52 +1531,52 @@
                     <div class="form-group">
                         <label class="form-label" for="practiceAreas">Practice Areas (select all that apply) *</label>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;">
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="family-law"> Family Law / Divorce
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="criminal-law"> Criminal Law / Defence
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="personal-injury"> Personal Injury
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="real-estate"> Real Estate
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="corporate-commercial"> Corporate / Commercial
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="wills-estates"> Wills & Estates / Probate
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="litigation"> Litigation / Dispute Resolution
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="employment-law"> Employment / Labour Law
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="immigration"> Immigration Law
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="ip-law"> Intellectual Property
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="tax-law"> Tax Law
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="insurance-law"> Insurance Law
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="administrative-law"> Administrative / Regulatory
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="mergers-acquisitions"> Mergers & Acquisitions
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="environmental-law"> Environmental Law
                             </label>
-                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: #c0c0c0;">
+                            <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; color: var(--text-2);">
                                 <input type="checkbox" name="practiceAreas" value="other"> Other
                             </label>
                         </div>
@@ -1599,7 +1604,7 @@
                     </button>
 
                     <p class="form-note">
-                        By submitting, you agree to our <a href="privacy-policy" style="color: #2563eb;">Privacy Policy</a> and consent to being contacted about your application and membership.
+                        By submitting, you agree to our <a href="privacy-policy" style="color: var(--gold);">Privacy Policy</a> and consent to being contacted about your application and membership.
                     </p>
                     <p class="form-note">
                         Accepted instantly. You'll be redirected to select your membership tier. Your bar standing will be independently verified and your profile goes live after payment.
@@ -1610,13 +1615,13 @@
     </section>
 
     <!-- Footer -->
-    <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
+    <footer style="background: var(--bg); padding: 60px 24px; border-top: 1px solid var(--border-color);">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
                 <i class="fas fa-maple-leaf" style="color: var(--primary-blue);"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </div>
-            <p style="color: #a0a0a0; margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
-            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
+            <p style="color: var(--text-2); margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: var(--text-3); font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
         </div>
     </footer>
 
@@ -1788,15 +1793,15 @@
             const modal = document.createElement('div');
             modal.innerHTML = `
                 <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;">
-                    <div style="background: #1a1a1a; padding: 40px; border-radius: 20px; max-width: 500px; text-align: center; color: #e0e0e0; border: 1px solid #333;">
-                        <div style="font-size: 3rem; margin-bottom: 20px;">&#9888;&#65039;</div>
-                        <h3 style="color: #ffffff; margin-bottom: 15px;">Consider your options</h3>
-                        <p style="margin-bottom: 25px; color: #a0a0a0;">This plan has fewer lead positions, which may limit your client volume. Would you like to proceed?</p>
+                    <div style="background: var(--bg-raised); padding: 40px; border-radius: 20px; max-width: 500px; text-align: center; color: var(--text-2); border: 1px solid var(--border-strong);">
+                        <div style="font-size: 3rem; margin-bottom: 20px; color: var(--gold);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
+                        <h3 style="color: var(--text); margin-bottom: 15px;">Consider your options</h3>
+                        <p style="margin-bottom: 25px; color: var(--text-2);">This plan has fewer lead positions, which may limit your client volume. Would you like to proceed?</p>
                         <div style="display: flex; gap: 15px; justify-content: center;">
-                            <button onclick="proceedWithAlternative('${plan}')" style="background: #444; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            <button onclick="proceedWithAlternative('${plan}')" style="background: var(--border-strong); color: var(--cream); padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                                 Proceed Anyway
                             </button>
-                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: #2563eb; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="background: var(--gold); color: var(--cream); padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
                                 Keep Recommended Plan
                             </button>
                         </div>
@@ -1882,39 +1887,39 @@
             const formContainer = document.querySelector('.form-container');
             formContainer.innerHTML = `
                 <div style="text-align: center; padding: 40px;">
-                    <div style="font-size: 4rem; margin-bottom: 20px; color: #059669;">&#10003;</div>
-                    <h2 style="color: #ffffff; font-size: 2.5rem; margin-bottom: 15px;">Application Received!</h2>
-                    <p style="font-size: 1.2rem; color: #a0a0a0; margin-bottom: 30px;">
+                    <div style="font-size: 4rem; margin-bottom: 20px; color: var(--success);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M20 6 9 17l-5-5"/></svg></div>
+                    <h2 style="color: var(--text); font-size: 2.5rem; margin-bottom: 15px;">Application Received!</h2>
+                    <p style="font-size: 1.2rem; color: var(--text-2); margin-bottom: 30px;">
                         Thank you for applying to the CanadaLawyers network. We're excited to review your application.
                     </p>
 
-                    <div style="background: rgba(37,99,235,0.1); border: 2px solid rgba(37,99,235,0.3); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: left;">
-                        <h3 style="color: #2563eb; margin-bottom: 20px;">What happens next:</h3>
+                    <div style="background: rgba(201,168,106,0.1); border: 2px solid rgba(201,168,106,0.3); border-radius: 15px; padding: 30px; margin: 30px 0; text-align: left;">
+                        <h3 style="color: var(--gold); margin-bottom: 20px;">What happens next:</h3>
                         <div style="display: grid; gap: 15px;">
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="color: #2563eb; font-weight: bold;">1.</span>
-                                <span style="color: #c0c0c0;">We verify your credentials with your law society (within 24 hours)</span>
+                                <span style="color: var(--gold); font-weight: bold;">1.</span>
+                                <span style="color: var(--text-2);">We verify your credentials with your law society (within 24 hours)</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="color: #2563eb; font-weight: bold;">2.</span>
-                                <span style="color: #c0c0c0;">A confirmation email will be sent to your inbox shortly</span>
+                                <span style="color: var(--gold); font-weight: bold;">2.</span>
+                                <span style="color: var(--text-2);">A confirmation email will be sent to your inbox shortly</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="color: #2563eb; font-weight: bold;">3.</span>
-                                <span style="color: #c0c0c0;">Our team contacts you to discuss onboarding and your practice profile</span>
+                                <span style="color: var(--gold); font-weight: bold;">3.</span>
+                                <span style="color: var(--text-2);">Our team contacts you to discuss onboarding and your practice profile</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 12px;">
-                                <span style="color: #2563eb; font-weight: bold;">4.</span>
-                                <span style="color: #c0c0c0;">Your profile goes live and you start receiving matched client leads</span>
+                                <span style="color: var(--gold); font-weight: bold;">4.</span>
+                                <span style="color: var(--text-2);">Your profile goes live and you start receiving matched client leads</span>
                             </div>
                         </div>
                     </div>
 
                     <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="pricing" style="display: inline-block; background: #2563eb; color: white; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
+                        <a href="pricing" style="display: inline-block; background: var(--gold); color: var(--cream); padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600;">
                             View Pricing Plans
                         </a>
-                        <a href="/" style="display: inline-block; background: transparent; color: #2563eb; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 2px solid #2563eb;">
+                        <a href="/" style="display: inline-block; background: transparent; color: var(--gold); padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; border: 2px solid var(--gold);">
                             Back to Home
                         </a>
                     </div>

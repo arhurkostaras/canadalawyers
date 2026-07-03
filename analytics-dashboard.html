@@ -12,6 +12,10 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SME Intelligence Analytics Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <style>
         * {
             margin: 0;
@@ -20,9 +24,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #e2e8f0;
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text-2);
             min-height: 100vh;
         }
 
@@ -36,16 +40,16 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 30px;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: linear-gradient(135deg, var(--bg-raised) 0%, var(--bg-high) 100%);
             border-radius: 20px;
-            border: 1px solid #475569;
+            border: 1px solid var(--text-3);
         }
 
         .dashboard-title {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 12px;
-            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+            background: var(--gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -53,7 +57,7 @@
 
         .dashboard-subtitle {
             font-size: 1.125rem;
-            color: #94a3b8;
+            color: var(--text-3);
             margin-bottom: 20px;
         }
 
@@ -65,23 +69,23 @@
         }
 
         .summary-card {
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            background: var(--gold);
             padding: 20px;
             border-radius: 12px;
             text-align: center;
-            border: 1px solid #991b1b;
+            border: 1px solid var(--danger);
         }
 
         .summary-number {
             font-size: 2.25rem;
             font-weight: 800;
-            color: white;
+            color: var(--cream);
             margin-bottom: 8px;
         }
 
         .summary-label {
             font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-2);
             font-weight: 600;
         }
 
@@ -93,17 +97,17 @@
         }
 
         .analytics-card {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: linear-gradient(135deg, var(--bg-raised) 0%, var(--bg-high) 100%);
             border-radius: 16px;
             padding: 24px;
-            border: 1px solid #475569;
+            border: 1px solid var(--text-3);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .card-title {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #f1f5f9;
+            color: var(--text);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -113,7 +117,7 @@
         .chart-container {
             position: relative;
             height: 300px;
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(11,14,18, 0.5);
             border-radius: 12px;
             padding: 20px;
             display: flex;
@@ -123,7 +127,7 @@
 
         .chart-placeholder {
             text-align: center;
-            color: #64748b;
+            color: var(--text-3);
         }
 
         .data-table {
@@ -136,25 +140,25 @@
         .data-table td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #374151;
+            border-bottom: 1px solid var(--bg-high);
         }
 
         .data-table th {
-            background: rgba(15, 23, 42, 0.5);
-            color: #f1f5f9;
+            background: rgba(11,14,18, 0.5);
+            color: var(--text);
             font-weight: 600;
             font-size: 0.875rem;
         }
 
         .data-table td {
-            color: #e2e8f0;
+            color: var(--text-2);
             font-size: 0.875rem;
         }
 
         .progress-bar {
             width: 100%;
             height: 8px;
-            background: #374151;
+            background: var(--bg-high);
             border-radius: 4px;
             overflow: hidden;
             margin: 8px 0;
@@ -162,21 +166,21 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #dc2626, #f97316, #eab308, #22c55e);
+            background: linear-gradient(90deg, var(--gold), var(--gold-bright));
             transition: width 0.3s ease;
         }
 
         .insight-card {
-            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+            background: linear-gradient(135deg, var(--success) 0%, var(--success) 100%);
             border-radius: 12px;
             padding: 20px;
             margin: 16px 0;
-            border: 1px solid #059669;
+            border: 1px solid var(--success);
         }
 
         .insight-title {
             font-weight: 700;
-            color: #d1fae5;
+            color: var(--cream);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -184,7 +188,7 @@
         }
 
         .insight-text {
-            color: #a7f3d0;
+            color: rgba(111,143,106,0.35);
             font-size: 0.875rem;
             line-height: 1.5;
         }
@@ -200,18 +204,18 @@
         }
 
         .trend-up {
-            background: rgba(34, 197, 94, 0.2);
-            color: #22c55e;
+            background: rgba(111,143,106, 0.2);
+            color: var(--success);
         }
 
         .trend-down {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
+            background: rgba(168,86,56, 0.2);
+            color: var(--danger);
         }
 
         .trend-stable {
             background: rgba(148, 163, 184, 0.2);
-            color: #94a3b8;
+            color: var(--text-3);
         }
 
         .filter-controls {
@@ -223,16 +227,16 @@
 
         .filter-select {
             padding: 8px 12px;
-            background: #374151;
-            border: 1px solid #4b5563;
+            background: var(--bg-high);
+            border: 1px solid var(--text-3);
             border-radius: 6px;
-            color: #f3f4f6;
+            color: var(--text);
             font-size: 0.875rem;
         }
 
         .export-button {
-            background: linear-gradient(135dc dc2626 0%, #b91c1c 100%);
-            color: white;
+            background: var(--gold);
+            color: var(--ink);
             border: none;
             padding: 10px 20px;
             border-radius: 8px;
@@ -243,7 +247,7 @@
 
         .export-button:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+            box-shadow: 0 4px 12px rgba(168,86,56, 0.3);
         }
 
         /* Mobile Responsive */
@@ -269,12 +273,14 @@
             }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}</style>
 </head>
-<body>
+<body class="mode-light">
     <div class="dashboard-container">
         <!-- Dashboard Header -->
         <div class="dashboard-header">
-            <h1 class="dashboard-title">🇨🇦 SME Intelligence Analytics</h1>
+            <h1 class="dashboard-title"> SME Intelligence Analytics</h1>
             <p class="dashboard-subtitle">Real-time insights from Canada's most comprehensive business intelligence database</p>
             
             <div class="data-summary">
@@ -322,14 +328,14 @@
                 <option value="all">All Time</option>
             </select>
             
-            <button class="export-button" onclick="exportData()">📊 Export Report</button>
+            <button class="export-button" onclick="exportData()"> Export Report</button>
         </div>
 
         <!-- Analytics Grid -->
         <div class="analytics-grid">
             <!-- Industry Distribution -->
             <div class="analytics-card">
-                <h3 class="card-title">🏭 Industry Distribution</h3>
+                <h3 class="card-title"> Industry Distribution</h3>
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -374,7 +380,7 @@
                 </table>
                 
                 <div class="insight-card">
-                    <div class="insight-title">💡 Key Insight</div>
+                    <div class="insight-title"> Key Insight</div>
                     <div class="insight-text">
                         Technology sector dominance increasing 15% month-over-month. Construction showing strong growth (+12%) indicating economic recovery.
                     </div>
@@ -383,7 +389,7 @@
 
             <!-- Regional Analysis -->
             <div class="analytics-card">
-                <h3 class="card-title">🗺️ Regional Distribution</h3>
+                <h3 class="card-title"> Regional Distribution</h3>
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -428,7 +434,7 @@
                 </table>
                 
                 <div class="insight-card">
-                    <div class="insight-title">🎯 Regional Insight</div>
+                    <div class="insight-title"> Regional Insight</div>
                     <div class="insight-text">
                         Ontario businesses struggle with cash flow management, while Quebec faces unique regulatory challenges. BC shows more strategic tax planning focus.
                     </div>
@@ -437,7 +443,7 @@
 
             <!-- Pain Points Analysis -->
             <div class="analytics-card">
-                <h3 class="card-title">🎯 Common Pain Points</h3>
+                <h3 class="card-title"> Common Pain Points</h3>
                 <div style="margin-bottom: 20px;">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                         <span>Cash Flow Management</span>
@@ -479,7 +485,7 @@
                 </div>
                 
                 <div class="insight-card">
-                    <div class="insight-title">⚡ Action Item</div>
+                    <div class="insight-title"> Action Item</div>
                     <div class="insight-text">
                         85% of businesses cite cash flow as top concern. Prioritize Lawyers with cash flow management expertise in matching algorithm.
                     </div>
@@ -488,7 +494,7 @@
 
             <!-- Seasonal Patterns -->
             <div class="analytics-card">
-                <h3 class="card-title">📅 Seasonal Demand Patterns</h3>
+                <h3 class="card-title"> Seasonal Demand Patterns</h3>
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -527,7 +533,7 @@
                 </table>
                 
                 <div class="insight-card">
-                    <div class="insight-title">📈 Seasonal Strategy</div>
+                    <div class="insight-title"> Seasonal Strategy</div>
                     <div class="insight-text">
                         Q1 shows 42% demand spike. Prepare Lawyer capacity management and premium pricing during busy season. Q3 is ideal for Lawyer recruitment.
                     </div>
@@ -536,7 +542,7 @@
 
             <!-- Technology Adoption -->
             <div class="analytics-card">
-                <h3 class="card-title">💻 Technology Stack Analysis</h3>
+                <h3 class="card-title"> Technology Stack Analysis</h3>
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -581,7 +587,7 @@
                 </table>
                 
                 <div class="insight-card">
-                    <div class="insight-title">🔧 Tech Insight</div>
+                    <div class="insight-title"> Tech Insight</div>
                     <div class="insight-text">
                         Legal tech adoption (47%) suggests Lawyer technology expertise is crucial. 23% still use manual processes, indicating digitization opportunity.
                     </div>
@@ -590,7 +596,7 @@
 
             <!-- Growth Stage Analysis -->
             <div class="analytics-card">
-                <h3 class="card-title">🚀 Business Growth Stages</h3>
+                <h3 class="card-title"> Business Growth Stages</h3>
                 <div class="chart-container">
                     <div style="width: 100%;">
                         <div style="margin-bottom: 20px;">
@@ -636,7 +642,7 @@
                 </div>
                 
                 <div class="insight-card">
-                    <div class="insight-title">📊 Growth Insight</div>
+                    <div class="insight-title"> Growth Insight</div>
                     <div class="insight-text">
                         34% of businesses are scaling - prime market for premium legal services. Focus recruitment on Lawyers experienced with growth-stage challenges.
                     </div>
@@ -646,19 +652,19 @@
 
         <!-- Real-time Intelligence Feed -->
         <div class="analytics-card" style="grid-column: 1 / -1;">
-            <h3 class="card-title">🔄 Live Intelligence Feed</h3>
+            <h3 class="card-title"> Live Intelligence Feed</h3>
             <div id="intelligenceFeed">
-                <div style="padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid #3b82f6;">
-                    <span style="color: #94a3b8; font-size: 0.75rem;">2 minutes ago</span><br>
-                    <span style="color: #e2e8f0;">Technology company in Toronto submitted: Primary challenge - Cash flow management during rapid scaling</span>
+                <div style="padding: 12px; background: rgba(11,14,18, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid var(--gold);">
+                    <span style="color: var(--text-3); font-size: 0.75rem;">2 minutes ago</span><br>
+                    <span style="color: var(--text-2);">Technology company in Toronto submitted: Primary challenge - Cash flow management during rapid scaling</span>
                 </div>
-                <div style="padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid #10b981;">
-                    <span style="color: #94a3b8; font-size: 0.75rem;">8 minutes ago</span><br>
-                    <span style="color: #e2e8f0;">Healthcare practice in Vancouver: Seeking compliance expertise for regulatory changes</span>
+                <div style="padding: 12px; background: rgba(11,14,18, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid var(--success);">
+                    <span style="color: var(--text-3); font-size: 0.75rem;">8 minutes ago</span><br>
+                    <span style="color: var(--text-2);">Healthcare practice in Vancouver: Seeking compliance expertise for regulatory changes</span>
                 </div>
-                <div style="padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid #f59e0b;">
-                    <span style="color: #94a3b8; font-size: 0.75rem;">15 minutes ago</span><br>
-                    <span style="color: #e2e8f0;">Manufacturing business in Calgary: Year-end preparation needs for Q4 planning</span>
+                <div style="padding: 12px; background: rgba(11,14,18, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid var(--gold);">
+                    <span style="color: var(--text-3); font-size: 0.75rem;">15 minutes ago</span><br>
+                    <span style="color: var(--text-2);">Manufacturing business in Calgary: Year-end preparation needs for Q4 planning</span>
                 </div>
             </div>
         </div>
@@ -683,7 +689,7 @@
                 thisWeek.textContent = currentWeek;
                 
                 // Add visual feedback
-                submissions.style.color = '#22c55e';
+                submissions.style.color = 'var(--success)';
                 setTimeout(() => submissions.style.color = 'white', 1000);
             }
         }
@@ -700,10 +706,10 @@
             
             const item = items[Math.floor(Math.random() * items.length)];
             const newItem = document.createElement('div');
-            newItem.style.cssText = 'padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid #dc2626; opacity: 0; transition: opacity 0.5s;';
+            newItem.style.cssText = 'padding: 12px; background: rgba(11,14,18, 0.5); border-radius: 8px; margin: 8px 0; border-left: 3px solid var(--danger); opacity: 0; transition: opacity 0.5s;';
             newItem.innerHTML = `
-                <span style="color: #94a3b8; font-size: 0.75rem;">Just now</span><br>
-                <span style="color: #e2e8f0;">${item}</span>
+                <span style="color: var(--text-3); font-size: 0.75rem;">Just now</span><br>
+                <span style="color: var(--text-2);">${item}</span>
             `;
             
             feed.insertBefore(newItem, feed.firstChild);
@@ -716,7 +722,7 @@
         }
 
         function exportData() {
-            alert('📊 Exporting SME Intelligence Report...\n\nThis would generate a comprehensive PDF report with:\n• Industry trend analysis\n• Regional business patterns\n• Seasonal demand forecasts\n• Technology adoption insights\n• Growth stage distribution\n• Market opportunities');
+            alert('Exporting SME Intelligence Report...\n\nThis would generate a comprehensive PDF report with:\n• Industry trend analysis\n• Regional business patterns\n• Seasonal demand forecasts\n• Technology adoption insights\n• Growth stage distribution\n• Market opportunities');
         }
 
         // Start real-time updates

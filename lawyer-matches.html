@@ -19,6 +19,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Perfect Lawyer Matches - CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">    <style>
         * {
             margin: 0;
@@ -27,16 +31,16 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+            font-family: var(--font-body);
+            background: var(--bg);
             min-height: 100vh;
-            color: white;
+            color: var(--cream);
         }
 
         /* Navigation */
-        nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+        nav{
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
@@ -57,7 +61,7 @@
             font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
-            color: white;
+            color: var(--cream);
         }
 
         .maple-leaf {
@@ -73,7 +77,7 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--cream);
             text-decoration: none;
             transition: opacity 0.3s;
         }
@@ -82,7 +86,7 @@
         .nav-links a:hover {
             opacity: 0.8;
         }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         .container {
@@ -99,9 +103,9 @@
         .loading-animation {
             width: 80px;
             height: 80px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid var(--border);
             border-radius: 50%;
-            border-top-color: #22c55e;
+            border-top-color: var(--success);
             animation: spin 1s ease-in-out infinite;
             margin: 0 auto 2rem;
         }
@@ -128,7 +132,7 @@
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: white;
+            color: var(--cream);
         }
 
         .header .subtitle {
@@ -138,8 +142,8 @@
         }
 
         .match-summary {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            background: rgba(111,143,106, 0.1);
+            border: 1px solid rgba(111,143,106, 0.3);
             border-radius: 1rem;
             padding: 2rem;
             margin-bottom: 3rem;
@@ -147,7 +151,7 @@
         }
 
         .match-summary h2 {
-            color: #22c55e;
+            color: var(--success);
             margin-bottom: 1rem;
             font-size: 1.5rem;
         }
@@ -166,7 +170,7 @@
         .stat-number {
             font-size: 2rem;
             font-weight: bold;
-            color: #22c55e;
+            color: var(--success);
             display: block;
         }
 
@@ -182,11 +186,11 @@
         }
 
         .match-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--border);
             backdrop-filter: blur(10px);
             border-radius: 1rem;
             padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -200,16 +204,16 @@
             position: absolute;
             top: -10px;
             left: 2rem;
-            background: #22c55e;
-            color: white;
+            background: var(--success);
+            color: var(--cream);
             padding: 0.5rem 1rem;
             border-radius: 1rem;
             font-weight: bold;
             font-size: 0.9rem;
         }
 
-        .match-rank.second { background: #f59e0b; }
-        .match-rank.third { background: #8b5cf6; }
+        .match-rank.second { background: var(--gold); }
+        .match-rank.third { background: var(--gold); }
 
         .match-header {
             display: grid;
@@ -222,7 +226,7 @@
         .lawyer-info h3 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            color: white;
+            color: var(--cream);
         }
 
         .lawyer-firm {
@@ -239,13 +243,13 @@
         }
 
         .lawyer-location::before {
-            content: "📍";
+            content: "";
             margin-right: 0.5rem;
         }
 
         .compatibility-score {
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--border);
             border-radius: 1rem;
             padding: 1rem;
             min-width: 120px;
@@ -255,7 +259,7 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: conic-gradient(#22c55e var(--score-percentage), rgba(255, 255, 255, 0.2) 0);
+            background: conic-gradient(var(--success) var(--score-percentage), var(--border) 0);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -267,7 +271,7 @@
             content: '';
             width: 60px;
             height: 60px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--border);
             border-radius: 50%;
             position: absolute;
         }
@@ -279,17 +283,17 @@
         }
 
         .confidence-badge {
-            background: #22c55e;
-            color: white;
+            background: var(--success);
+            color: var(--cream);
             padding: 0.25rem 0.75rem;
             border-radius: 1rem;
             font-size: 0.8rem;
             font-weight: 500;
         }
 
-        .confidence-badge.high { background: #22c55e; }
-        .confidence-badge.medium { background: #f59e0b; }
-        .confidence-badge.low { background: #ef4444; }
+        .confidence-badge.high { background: var(--success); }
+        .confidence-badge.medium { background: var(--gold); }
+        .confidence-badge.low { background: var(--danger); }
 
         .match-reasons {
             margin-bottom: 1.5rem;
@@ -298,7 +302,7 @@
         .match-reasons h4 {
             font-size: 1.1rem;
             margin-bottom: 1rem;
-            color: #22c55e;
+            color: var(--success);
         }
 
         .reasons-list {
@@ -308,8 +312,8 @@
         }
 
         .reason-item {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.2);
+            background: rgba(111,143,106, 0.1);
+            border: 1px solid rgba(111,143,106, 0.2);
             border-radius: 0.5rem;
             padding: 0.75rem;
             font-size: 0.9rem;
@@ -318,14 +322,14 @@
         }
 
         .reason-item::before {
-            content: "✓";
-            color: #22c55e;
+            content: "\2713";
+            color: var(--success);
             font-weight: bold;
             margin-right: 0.5rem;
         }
 
         .score-breakdown {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--bg-high);
             border-radius: 0.8rem;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
@@ -333,7 +337,7 @@
 
         .score-breakdown h4 {
             margin-bottom: 1rem;
-            color: white;
+            color: var(--cream);
         }
 
         .score-bars {
@@ -356,7 +360,7 @@
         .score-bar-track {
             flex: 1;
             height: 8px;
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--border);
             border-radius: 4px;
             margin: 0 1rem;
             overflow: hidden;
@@ -364,7 +368,7 @@
 
         .score-bar-fill {
             height: 100%;
-            background: #22c55e;
+            background: var(--success);
             border-radius: 4px;
             transition: width 0.8s ease;
         }
@@ -396,27 +400,27 @@
         }
 
         .btn-primary {
-            background: #22c55e;
-            color: white;
+            background: var(--success);
+            color: var(--cream);
         }
 
         .btn-primary:hover {
-            background: #16a34a;
+            background: var(--success);
             transform: translateY(-2px);
         }
 
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--cream);
+            border: 2px solid var(--border);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--border);
         }
 
         .next-steps {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--border);
             backdrop-filter: blur(10px);
             border-radius: 1rem;
             padding: 2rem;
@@ -425,7 +429,7 @@
 
         .next-steps h2 {
             margin-bottom: 1rem;
-            color: white;
+            color: var(--cream);
         }
 
         .next-steps p {
@@ -435,8 +439,8 @@
         }
 
         .guarantee-reminder {
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            background: rgba(111,143,106, 0.1);
+            border: 1px solid rgba(111,143,106, 0.3);
             border-radius: 0.8rem;
             padding: 1.5rem;
             margin-top: 2rem;
@@ -444,7 +448,7 @@
         }
 
         .guarantee-reminder h3 {
-            color: #22c55e;
+            color: var(--success);
             margin-bottom: 0.5rem;
         }
 
@@ -463,29 +467,31 @@
                 display: none;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: var(--nav-bg); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid var(--border);
             }
             .nav-links.active { display: flex; }
             .nav-links li { width: 100%; }
             .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
             .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        .nav-links a:hover { background: var(--bg-high); }
 
             .container {
                 padding: 1rem;
             }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}</style>
 </head>
-<body>
+<body class="mode-light">
     <nav>
         <div class="nav-container">
             <a href="/" class="logo">
-                <span class="maple-leaf">🍁</span>
+                <span class="maple-leaf"></span>
                 CanadaLawyers
             </a>
-            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu">&#9776;</button>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Menu"><svg class="ph-ic" width="1.4em" height="1.4em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.2em"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></button>
             <ul class="nav-links">
                 <li><a href="find-lawyer">Find Lawyer</a></li>
                 <li><a href="why-we-win">Why We Win</a></li>
@@ -500,19 +506,19 @@
     <!-- Loading Screen -->
     <div id="loadingScreen" class="loading-screen">
         <div class="loading-animation"></div>
-        <div class="loading-text">🤖 AI Analyzing Your Requirements...</div>
+        <div class="loading-text"> AI Analyzing Your Requirements...</div>
         <div class="loading-subtext">Evaluating 200+ Lawyers to find your perfect matches</div>
     </div>
 
     <!-- Results Content -->
     <div id="resultsContent" class="container hidden">
         <div class="header">
-            <h1>🍁 Your Perfect Lawyer Matches</h1>
+            <h1> Your Perfect Lawyer Matches</h1>
             <p class="subtitle" id="analysisSubtitle">Our AI analyzed your requirements and found your top matches</p>
         </div>
 
         <div class="match-summary">
-            <h2>🎯 AI Matching Complete</h2>
+            <h2> AI Matching Complete</h2>
             <p id="summaryText">We've identified exceptional Lawyers who are perfectly suited for your business needs.</p>
             
             <div class="summary-stats">
@@ -540,7 +546,7 @@
         </div>
 
         <div class="next-steps">
-            <h2>🚀 What Happens Next?</h2>
+            <h2> What Happens Next?</h2>
             <p>We've sent your requirements to all three Lawyers. You'll receive personalized proposals within 24 hours. Choose the lawyer that feels like the best fit and start your partnership!</p>
             
             <div class="cta-buttons">
@@ -549,7 +555,7 @@
             </div>
 
             <div class="guarantee-reminder">
-                <h3>🔍 Quality Match Promise</h3>
+                <h3> Quality Match Promise</h3>
                 <p>Our AI-powered matching connects you directly with pre-screened Lawyers who specialize in your industry and business size. No contracts, no fees - just quality introductions to legal professionals who fit your exact needs.</p>
             </div>
         </div>
@@ -861,7 +867,7 @@
 function showErrorState() {
     document.getElementById('loadingScreen').innerHTML = `
         <div style="text-align: center; padding: 4rem 2rem;">
-            <div style="font-size: 4rem; margin-bottom: 2rem;">⚠️</div>
+            <div style="font-size: 4rem; margin-bottom: 2rem; color: var(--gold);"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></div>
             <div style="font-size: 1.2rem; margin-bottom: 1rem;">Unable to load lawyer matches</div>
             <div style="opacity: 0.8;">Please try refreshing the page or contact support.</div>
         </div>
@@ -1072,7 +1078,7 @@ async function createMatchCard(match, index) {
     const successPrediction = aiPerformanceData?.successPrediction || generateSuccessPrediction(lawyer);
     const performanceMetrics = aiPerformanceData?.performanceMetrics || generatePerformanceMetrics(lawyer);
     
-    const rankLabels = ['🏆 Best Match', '⭐ Excellent Match', '👍 Strong Match'];
+    const rankLabels = ['Best Match', 'Excellent Match', 'Strong Match'];
     const rankClasses = ['', 'second', 'third'];
 
     const card = document.createElement('div');
@@ -1092,7 +1098,7 @@ async function createMatchCard(match, index) {
         <!-- AI Performance Dashboard -->
         <div class="ai-performance-dashboard">
             <div class="performance-header">
-                <h4>🤖 AI Performance Analysis</h4>
+                <h4>AI Performance Analysis</h4>
                 <div class="live-indicator">
                     <div class="live-dot"></div>
                     Live AI Scoring
@@ -1126,7 +1132,7 @@ async function createMatchCard(match, index) {
         <!-- Enhanced Compatibility Score -->
         <div class="compatibility-score enhanced">
             <div class="compatibility-header">
-                <h4>🎯 AI Compatibility Analysis</h4>
+                <h4>AI Compatibility Analysis</h4>
             </div>
             <div class="score-circle" style="--score-percentage: ${aiCompatibilityScore}%;">
                 <span class="score-number">${aiCompatibilityScore}%</span>
@@ -1136,7 +1142,7 @@ async function createMatchCard(match, index) {
 
         <!-- AI Match Insights -->
         <div class="match-reasons ai-enhanced">
-            <h4>🧠 AI Match Insights</h4>
+            <h4>AI Match Insights</h4>
             <div class="ai-insights">
                 ${generateAIInsights(lawyer, performanceScore, aiCompatibilityScore).map(insight =>
                     `<div class="insight-item">
@@ -1150,7 +1156,7 @@ async function createMatchCard(match, index) {
 
         <!-- Enhanced Score Breakdown -->
         <div class="score-breakdown ai-enhanced">
-            <h4>📊 AI Performance Breakdown</h4>
+            <h4>AI Performance Breakdown</h4>
             <div class="score-bars">
                 ${createAIScoreBars(performanceMetrics)}
             </div>
@@ -1222,7 +1228,7 @@ function generateAIInsights(lawyer, performanceScore, compatibilityScore) {
     
     if (performanceScore > 90) {
         insights.push({
-            icon: '🏆',
+            icon: '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
             text: 'Top-tier performance in client delivery',
             confidence: Math.floor(92 + Math.random() * 6)
         });
@@ -1230,7 +1236,7 @@ function generateAIInsights(lawyer, performanceScore, compatibilityScore) {
     
     if (compatibilityScore > 85) {
         insights.push({
-            icon: '🎯',
+            icon: '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
             text: 'Excellent match for your business needs',
             confidence: Math.floor(88 + Math.random() * 10)
         });
@@ -1238,14 +1244,14 @@ function generateAIInsights(lawyer, performanceScore, compatibilityScore) {
     
     if (lawyer.yearsExperience > 10) {
         insights.push({
-            icon: '📈',
+            icon: '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
             text: 'Proven track record with similar businesses',
             confidence: Math.floor(85 + Math.random() * 12)
         });
     }
     
     insights.push({
-        icon: '🤖',
+        icon: '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:inline-block;vertical-align:-0.125em"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>',
         text: 'AI recommends based on success patterns',
         confidence: Math.floor(90 + Math.random() * 8)
     });
@@ -1287,11 +1293,11 @@ function viewFullProfile(lawyerId) {
 const aiPerformanceStyles = `
 <style>
 .ai-performance-dashboard {
-    background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+    background: var(--bg);
     border-radius: 12px;
     padding: 20px;
     margin: 15px 0;
-    color: white;
+    color: var(--cream);
 }
 
 .performance-header {
@@ -1317,7 +1323,7 @@ const aiPerformanceStyles = `
 .live-dot {
     width: 8px;
     height: 8px;
-    background: #4ade80;
+    background: var(--success);
     border-radius: 50%;
     margin-right: 6px;
     animation: pulse 2s infinite;
@@ -1338,7 +1344,7 @@ const aiPerformanceStyles = `
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, #4ade80 0%, #4ade80 calc(var(--score-percentage) * 1%), rgba(255,255,255,0.2) calc(var(--score-percentage) * 1%), rgba(255,255,255,0.2) 100%);
+    background: conic-gradient(from 0deg, var(--success) 0%, var(--success) calc(var(--score-percentage) * 1%), var(--border) calc(var(--score-percentage) * 1%), var(--border) 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1351,7 +1357,7 @@ const aiPerformanceStyles = `
     position: absolute;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
+    background: var(--bg);
     border-radius: 50%;
 }
 
@@ -1392,15 +1398,15 @@ const aiPerformanceStyles = `
 }
 
 .success-prediction {
-    color: #4ade80;
+    color: var(--success);
 }
 
 .compatibility-score.enhanced {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 100%);
+    background: var(--gold);
     border-radius: 12px;
     padding: 15px;
     margin: 15px 0;
-    color: white;
+    color: var(--ink);
 }
 
 .compatibility-header h4 {
@@ -1409,7 +1415,7 @@ const aiPerformanceStyles = `
 }
 
 .match-reasons.ai-enhanced {
-    background: #f8fafc;
+    background: var(--text);
     border-radius: 8px;
     padding: 15px;
     margin: 15px 0;
@@ -1426,7 +1432,7 @@ const aiPerformanceStyles = `
     align-items: center;
     gap: 10px;
     padding: 8px;
-    background: white;
+    background: var(--cream);
     border-radius: 6px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
@@ -1443,11 +1449,11 @@ const aiPerformanceStyles = `
 .insight-confidence {
     font-size: 12px;
     font-weight: bold;
-    color: #10b981;
+    color: var(--success);
 }
 
 .score-breakdown.ai-enhanced {
-    background: #f1f5f9;
+    background: var(--text);
     border-radius: 8px;
     padding: 15px;
     margin: 15px 0;
@@ -1458,20 +1464,20 @@ const aiPerformanceStyles = `
 }
 
 .score-bar-fill.ai-fill {
-    background: linear-gradient(90deg, #10b981, #059669);
+    background: linear-gradient(90deg, var(--success), var(--success));
     border-radius: 4px;
     transition: width 1s ease-in-out;
 }
 
 .btn.ai-recommended {
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, var(--success), var(--success));
     border: none;
     position: relative;
     overflow: hidden;
 }
 
 .btn.ai-recommended::after {
-    content: '🤖';
+    content: 'AI';
     position: absolute;
     right: 10px;
     top: 50%;

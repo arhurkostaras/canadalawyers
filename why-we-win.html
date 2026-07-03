@@ -12,6 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why We Win - CanadaLawyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/phronisi-tokens.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/icon-512.png">
     <link rel="apple-touch-icon" href="/icon-512.png">
@@ -35,9 +39,7 @@
     <meta name="twitter:description" content="Discover why CanadaLawyers outperforms traditional lawyer search methods. AI-powered matching, 24-hour results, and verified professionals.">
     <meta name="twitter:image" content="https://canadalawyers.app/icon-512.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- BreadcrumbList Schema -->
     <script type="application/ld+json">
@@ -52,41 +54,41 @@
     </script>
 
     <style>
-        :root { --primary-blue: #2563eb; --primary-navy: #1e3a8a; --primary-navy: #1e3a8a; --accent-green: #059669; --dark-bg: #0a0a0a; --card-bg: #1a1a1a; --border-color: #333333; }
+        :root { --primary-blue: var(--gold); --primary-navy: var(--gold-deep); --primary-navy: var(--gold-deep); --accent-green: var(--success); --dark-bg: var(--bg); --card-bg: var(--bg-raised); --border-color: var(--border); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--dark-bg); min-height: 100vh; color: white; -webkit-font-smoothing: antialiased; }
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(0,0,0,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        body { font-family: var(--font-body); background: var(--dark-bg); min-height: 100vh; color: var(--cream); -webkit-font-smoothing: antialiased; }
+        .nav{ position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(241,234,220,0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 64px; }
-        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: white; font-weight: 700; font-size: 1.25rem; }
+        .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--cream); font-weight: 700; font-size: 1.25rem; }
         .nav-logo .maple { color: var(--primary-blue); font-size: 1.5rem; }
         .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
-        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a { color: rgba(241,234,220,0.8); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { color: white; }
-        .nav-cta { background: white !important; color: var(--primary-blue) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
-        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
-        .nav-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 4px; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 10px 24px; border-radius: 8px; font-weight: 700 !important; transition: transform 0.3s, box-shadow 0.3s; }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(201,168,106,0.3); }
+        .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; padding: 4px; }
         .nav-links.active { display: flex; }
 
         /* Hero */
-        .hero { background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%); padding: 140px 24px 80px; text-align: center; }
+        .hero { background: var(--bg); padding: 140px 24px 80px; text-align: center; }
         .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; }
         .hero p { font-size: 1.3rem; opacity: 0.9; max-width: 650px; margin: 0 auto; line-height: 1.6; }
 
         /* Comparison */
         .comparison { max-width: 1100px; margin: -40px auto 0; padding: 0 24px; position: relative; z-index: 2; }
         .comparison-card { background: var(--card-bg); border-radius: 1rem; border: 1px solid var(--border-color); overflow: hidden; }
-        .comparison-header { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; background: rgba(37,99,235,0.15); padding: 20px 24px; font-weight: 700; font-size: 0.95rem; }
-        .comparison-header .col-us { background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy)); color: white; border-radius: 8px; padding: 12px; text-align: center; }
-        .comparison-header .col { text-align: center; color: rgba(255,255,255,0.6); padding: 12px; }
-        .comparison-header .col-label { color: rgba(255,255,255,0.4); padding: 12px; text-align: left; }
-        .comparison-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center; }
+        .comparison-header { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; background: rgba(201,168,106,0.15); padding: 20px 24px; font-weight: 700; font-size: 0.95rem; }
+        .comparison-header .col-us { background: var(--gold); color: var(--ink); border-radius: 8px; padding: 12px; text-align: center; }
+        .comparison-header .col { text-align: center; color: rgba(241,234,220,0.6); padding: 12px; }
+        .comparison-header .col-label { color: rgba(241,234,220,0.4); padding: 12px; text-align: left; }
+        .comparison-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; padding: 16px 24px; border-bottom: 1px solid rgba(241,234,220,0.05); align-items: center; }
         .comparison-row:last-child { border-bottom: none; }
-        .comparison-row .feature { font-weight: 500; color: rgba(255,255,255,0.9); }
+        .comparison-row .feature { font-weight: 500; color: rgba(241,234,220,0.9); }
         .comparison-row .cell { text-align: center; padding: 8px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; }
-        .cell-bad { background: rgba(239,68,68,0.15); color: #fca5a5; }
-        .cell-ok { background: rgba(251,191,36,0.15); color: #fde68a; }
-        .cell-great { background: rgba(5,150,105,0.15); color: #6ee7b7; }
+        .cell-bad { background: rgba(168,86,56,0.15); color: rgba(168,86,56,0.45); }
+        .cell-ok { background: rgba(201,168,106,0.15); color: rgba(201,168,106,0.35); }
+        .cell-great { background: rgba(111,143,106,0.15); color: var(--success); }
 
         /* Differentiators */
         .differentiators { max-width: 1100px; margin: 80px auto; padding: 0 24px; }
@@ -94,19 +96,19 @@
         .diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
         .diff-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 1rem; padding: 2.5rem; transition: transform 0.3s, border-color 0.3s; }
         .diff-card:hover { transform: translateY(-4px); border-color: var(--primary-blue); }
-        .diff-icon { width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-blue), var(--primary-navy)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .diff-icon { width: 56px; height: 56px; background: var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
         .diff-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
-        .diff-card p { color: rgba(255,255,255,0.7); line-height: 1.6; }
+        .diff-card p { color: rgba(241,234,220,0.7); line-height: 1.6; }
 
         /* CTA */
-        .cta { background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%); padding: 80px 24px; text-align: center; }
+        .cta { background: var(--bg); padding: 80px 24px; text-align: center; }
         .cta h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
         .cta p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 2rem; }
         .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { background: white; color: var(--primary-blue); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-primary { background: var(--btn-primary-bg); color: var(--btn-primary-text); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: transform 0.3s, box-shadow 0.3s; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
-        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s; }
-        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+        .btn-outline { background: transparent; color: var(--cream); border: 2px solid rgba(241,234,220,0.4); padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+        .btn-outline:hover { border-color: var(--cream); background: rgba(241,234,220,0.1); }
 
         @media (max-width: 768px) {
             .nav-toggle { display: block; }
@@ -114,13 +116,13 @@
                 display: none;
                 position: absolute; top: 100%; left: 0; right: 0;
                 flex-direction: column; align-items: center; gap: 0;
-                background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-                padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: var(--nav-bg); backdrop-filter: blur(20px);
+                padding: 12px 0; border-bottom: 1px solid rgba(241,234,220,0.1);
             }
             .nav-links.active { display: flex; }
             .nav-links a { display: block; padding: 14px 24px; text-align: center; font-size: 15px; }
             .nav-links a.cta-button { color: var(--primary-blue); }
-        .nav-links a:hover { background: rgba(255,255,255,0.05); }
+        .nav-links a:hover { background: rgba(241,234,220,0.05); }
             .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
             .hero h1 { font-size: 2.2rem; }
             .hero { padding: 120px 16px 60px; }
@@ -132,6 +134,8 @@
             .cta-buttons { flex-direction: column; align-items: center; }
         }
     </style>
+
+<style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
 </head>
 <body>
     <nav class="nav">
@@ -262,13 +266,13 @@
         </div>
     </section>
 
-    <footer style="background: #111; padding: 60px 24px; border-top: 1px solid var(--border-color);">
+    <footer style="background: var(--bg); padding: 60px 24px; border-top: 1px solid var(--border-color);">
         <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
             <div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px;">
                 <i class="fas fa-maple-leaf" style="color: var(--primary-blue);"></i> CanadaLawyers<span style="color: var(--primary-blue)">.app</span>
             </div>
-            <p style="color: #a0a0a0; margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
-            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: #666; font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
+            <p style="color: var(--text-2); margin-bottom: 32px;">AI-powered lawyer marketplace built for Canadian legal professionals.</p>
+            <div style="border-top: 1px solid var(--border-color); padding-top: 24px; color: var(--text-3); font-size: 0.8rem;">&copy; 2026 CanadaLawyers.app. AI-powered lawyer marketplace for Canadian professionals.</div>
         </div>
     </footer>
 </body>
