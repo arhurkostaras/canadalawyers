@@ -292,8 +292,8 @@
         }
         
         .btn-primary {
-            background: var(--cream);
-            color: var(--primary-blue);
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
             padding: 16px 40px;
             border-radius: 8px;
             font-weight: 700;
@@ -346,7 +346,7 @@
             text-align: left;
         }
         
-        .value-card h3 {
+        .value-card h2 {
             font-size: 28px;
             margin-bottom: 16px;
             font-weight: 700;
@@ -427,13 +427,14 @@
         }
         
         .toggle-option.active {
-            background: var(--cream);
-            color: var(--primary-blue);
+            background: var(--gold);
+            color: var(--ink);
         }
         
         .savings-badge {
-            background: var(--accent-green);
-            color: var(--cream);
+            background: rgba(111,143,106,0.15);
+            border: 1px solid var(--success);
+            color: var(--text);
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 14px;
@@ -475,8 +476,9 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--success);
-            color: var(--cream);
+            background: rgba(111,143,106,0.15);
+            border: 1px solid var(--success);
+            color: var(--text);
             padding: 6px 20px;
             border-radius: 20px;
             font-size: 12px;
@@ -1176,7 +1178,7 @@
             <!-- Two-Sided Value Cards -->
             <div class="value-cards">
                 <div class="value-card">
-                    <h3> FOR LAWYERS</h3>
+                    <h2> FOR LAWYERS</h2>
                     <p>Build your practice with qualified, pre-screened clients who need your expertise.</p>
                     <ul>
                         <li>AI matches you with ideal clients</li>
@@ -1193,7 +1195,7 @@
                 </div>
                 
                 <div class="value-card">
-                    <h3> FOR BUSINESSES</h3>
+                    <h2> FOR BUSINESSES</h2>
                     <p>Stop wasting time searching. Get matched with the perfect lawyer for your needs.</p>
                     <ul>
                         <li>AI analyzes 6 key factors</li>

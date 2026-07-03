@@ -302,14 +302,14 @@
         .matcher-title {
             font-size: 3rem;
             font-weight: 800;
-            color: var(--bg-raised);
+            color: var(--text);
             margin-bottom: 20px;
             line-height: 1.2;
         }
 
         .matcher-subtitle {
             font-size: 1.3rem;
-            color: var(--text-3);
+            color: var(--text-2);
             line-height: 1.6;
         }
 
@@ -330,11 +330,11 @@
         }
 
         .question-card {
-            background: var(--cream);
+            background: var(--bg-raised);
             backdrop-filter: blur(10px);
             padding: 40px;
             border-radius: 20px;
-            border: 1px solid var(--text-2);
+            border: 1px solid var(--border-strong);
             margin-bottom: 30px;
             display: none;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -353,12 +353,12 @@
         .question-title {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            color: var(--bg-raised);
+            color: var(--text);
             font-weight: 700;
         }
 
         .question-subtitle {
-            color: var(--text-3);
+            color: var(--text-2);
             margin-bottom: 30px;
             line-height: 1.5;
             font-size: 1.1rem;
@@ -372,8 +372,8 @@
         }
 
         .option-card {
-            background: var(--text);
-            border: 2px solid var(--text-2);
+            background: var(--bg-high);
+            border: 2px solid var(--border-strong);
             border-radius: 12px;
             padding: 25px;
             cursor: pointer;
@@ -382,7 +382,7 @@
         }
 
         .option-card:hover {
-            background: var(--text);
+            background: var(--bg-high);
             border-color: var(--primary-blue);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(201,168,106, 0.15);
@@ -403,13 +403,13 @@
         .option-title {
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--bg-raised);
+            color: var(--text);
             font-size: 1.1rem;
         }
 
         .option-description {
             font-size: 0.95rem;
-            color: var(--text-3);
+            color: var(--text-2);
             line-height: 1.4;
         }
 
@@ -492,7 +492,7 @@
         .step-indicator {
             text-align: center;
             font-size: 0.9rem;
-            color: var(--text-3);
+            color: var(--text-2);
             margin-bottom: 20px;
         }
 
@@ -626,17 +626,17 @@
             <div class="sme-pain-points">
                 <div class="pain-point-card">
                     <div class="pain-icon"></div>
-                    <h3 class="pain-title">Contract Bottlenecks</h3>
+                    <h2 class="pain-title">Contract Bottlenecks</h2>
                     <p class="pain-description">Deals stalling for weeks because you can't get legal review fast enough</p>
                 </div>
                 <div class="pain-point-card">
                     <div class="pain-icon"></div>
-                    <h3 class="pain-title">Endless Lawyer Search</h3>
+                    <h2 class="pain-title">Endless Lawyer Search</h2>
                     <p class="pain-description">Weeks of calls, consultations, and dead ends trying to find the right fit</p>
                 </div>
                 <div class="pain-point-card">
                     <div class="pain-icon"></div>
-                    <h3 class="pain-title">Family & Personal Legal Issues</h3>
+                    <h2 class="pain-title">Family & Personal Legal Issues</h2>
                     <p class="pain-description">Divorce, custody, real estate, or immigration matters need the right specialist</p>
                 </div>
             </div>
@@ -1046,7 +1046,7 @@
                 <button class="btn btn-secondary" id="prevBtn" onclick="changeQuestion(-1)" style="display: none;">Previous</button>
                 <button class="btn btn-primary" id="nextBtn" onclick="changeQuestion(1)">Next Question</button>
             </div>
-            <p style="margin:16px auto 0;max-width:560px;text-align:center;font-size:12px;color:var(--text-3);line-height:1.6;">By submitting, you agree to our <a href="/privacy-policy" style="color:var(--primary-blue,var(--gold));">Privacy Policy</a> and consent to being contacted by CanadaLawyers about your lawyer match. We use your details only to match you and follow up. You can reply "unsubscribe" at any time. This service is free for clients.</p>
+            <p style="margin:16px auto 0;max-width:560px;text-align:center;font-size:12px;color:var(--text-2);line-height:1.6;">By submitting, you agree to our <a href="/privacy-policy" style="color:var(--primary-blue,var(--gold));">Privacy Policy</a> and consent to being contacted by CanadaLawyers about your lawyer match. We use your details only to match you and follow up. You can reply "unsubscribe" at any time. This service is free for clients.</p>
         </div>
     </section>
 

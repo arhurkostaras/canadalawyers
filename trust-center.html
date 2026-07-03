@@ -102,11 +102,11 @@
         }
 
         .compliance-card {
-            background: var(--cream);
+            background: var(--bg-raised);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border: 2px solid var(--text-2);
+            border: 2px solid var(--border-strong);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -172,13 +172,13 @@
 
         .metric-label {
             font-size: 0.9rem;
-            color: var(--text-3);
+            color: var(--text-2);
             font-weight: 500;
         }
 
         .data-flow {
-            background: var(--text);
-            border: 2px solid var(--text-2);
+            background: var(--bg-raised);
+            border: 2px solid var(--border-strong);
             border-radius: 15px;
             padding: 25px;
             margin: 20px 0;
@@ -218,6 +218,16 @@
         .nav-links a:hover { background: rgba(241,234,220,0.05); }
             .nav-links .nav-cta { margin: 8px 24px; padding: 12px 24px; border-radius: 6px; }
         }
+    
+        /* dark-card overrides: tailwind light-panel text tokens resolve for ink surfaces */
+        .compliance-card .bg-blue-50 { background: rgba(201,168,106,0.10); }
+        .compliance-card .bg-green-50 { background: rgba(111,143,106,0.12); }
+        .compliance-card .text-blue-800, .compliance-card .text-blue-700, .compliance-card .text-blue-600 { color: var(--gold-bright); }
+        .compliance-card .text-green-800, .compliance-card .text-green-700, .compliance-card .text-green-600 { color: var(--text); }
+        .compliance-card .bg-purple-50 { background: rgba(201,168,106,0.10); }
+        .compliance-card .text-purple-800, .compliance-card .text-purple-700, .compliance-card .text-purple-600 { color: var(--gold-bright); }
+        .status-compliant { color: var(--text); }
+        .status-progress, .status-planned { color: var(--gold-bright); }
     </style>
 
 <style id="phronisi-type">body{font-family:var(--font-body)}h1,h2,h3,.section-title{font-family:var(--font-display)}</style>
@@ -243,7 +253,7 @@
     <div style="height: 64px;"></div>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-16">
+    <section class="gradient-bg py-16" style="color: var(--cream);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="trust-badge mb-6">
                 <i class="fas fa-shield-check"></i>

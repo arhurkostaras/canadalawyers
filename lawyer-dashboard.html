@@ -40,7 +40,7 @@
         .ai-result.visible { display: block; }
         .ai-actions { display: flex; gap: 8px; margin-top: 12px; }
         .ai-actions button { padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; border: none; font-family: inherit; }
-        .copy-btn { background: var(--accent-green); color: var(--cream); }
+        .copy-btn { background: var(--gold); color: var(--ink); }
         .save-bio-btn { background: var(--primary-blue); color: var(--ink); }
         .seo-meter { margin-top: 16px; }
         .seo-bar-bg { height: 12px; background: rgba(0,0,0,0.06); border-radius: 6px; overflow: hidden; margin-bottom: 8px; }
@@ -87,7 +87,7 @@
                     <a href="find-lawyer" class="text-sm text-gray-600 hover:text-blue-800 font-medium transition-colors">Find a Lawyer</a>
                     <a href="contact" class="text-sm text-gray-600 hover:text-blue-800 font-medium transition-colors">Contact</a>
                     <span class="text-gray-300">|</span>
-                    <span id="userEmail" class="text-sm text-gray-500"></span>
+                    <span id="userEmail" class="text-sm text-gray-600"></span>
                     <button onclick="logout()" class="text-sm px-4 py-2 rounded-lg transition-colors" style="background: var(--gold); color: var(--ink);">
                         <i class="fas fa-sign-out-alt mr-1"></i> Logout
                     </button>
@@ -109,7 +109,7 @@
                             <span id="subTierDisplay">-</span>
                             <span id="subStatusBadge" class="ml-2 text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-800">Active</span>
                         </div>
-                        <div id="subRenewalDate" class="text-sm text-gray-500"></div>
+                        <div id="subRenewalDate" class="text-sm text-gray-600"></div>
                     </div>
                 </div>
                 <button onclick="openBillingPortal()" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-sm">
@@ -144,19 +144,19 @@
         <!-- Quick Stats Cards -->
         <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-                <p class="text-gray-500 text-sm">Total Leads</p>
+                <p class="text-gray-600 text-sm">Total Leads</p>
                 <p id="statTotalMatches" class="text-3xl font-bold text-gray-900 mt-1">--</p>
             </div>
             <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-                <p class="text-gray-500 text-sm">Contacted</p>
+                <p class="text-gray-600 text-sm">Contacted</p>
                 <p id="statContacted" class="text-3xl font-bold text-blue-600 mt-1">--</p>
             </div>
             <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-                <p class="text-gray-500 text-sm">Partnerships</p>
+                <p class="text-gray-600 text-sm">Partnerships</p>
                 <p id="statPartnerships" class="text-3xl font-bold text-green-600 mt-1">--</p>
             </div>
             <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-                <p class="text-gray-500 text-sm">Verification</p>
+                <p class="text-gray-600 text-sm">Verification</p>
                 <p id="statVerification" class="text-lg font-bold mt-1">--</p>
             </div>
         </section>
@@ -211,7 +211,7 @@
                     </p>
                     <button id="cbeToggleBtn" type="button" onclick="toggleCbeForm()"
                         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
-                        style="background:rgba(201,168,106,0.12);color:var(--gold-deep);border:1px solid rgba(201,168,106,0.35);">
+                        style="background:rgba(201,168,106,0.12);color:var(--text);border:1px solid var(--gold);">
                         <i id="cbeToggleIcon" class="fas fa-plus"></i>
                         <span id="cbeToggleLabel">Refer a client</span>
                     </button>
@@ -219,23 +219,23 @@
                     <form id="cbeReferralForm" class="hidden mt-5 pt-5 border-t border-gray-200" onsubmit="submitCbeReferral(event)">
                         <div class="grid md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Client first name <span class="text-red-500">*</span></label>
+                                <label for="cbeFirstName" class="block text-sm font-medium text-gray-700 mb-1">Client first name <span class="text-red-500">*</span></label>
                                 <input type="text" id="cbeFirstName" required maxlength="100" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-700 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Client last name</label>
+                                <label for="cbeLastName" class="block text-sm font-medium text-gray-700 mb-1">Client last name</label>
                                 <input type="text" id="cbeLastName" maxlength="100" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-700 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Client email <span class="text-red-500">*</span></label>
+                                <label for="cbeEmail" class="block text-sm font-medium text-gray-700 mb-1">Client email <span class="text-red-500">*</span></label>
                                 <input type="email" id="cbeEmail" required maxlength="255" placeholder="client@theircompany.com" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-700 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Company name</label>
+                                <label for="cbeCompany" class="block text-sm font-medium text-gray-700 mb-1">Company name</label>
                                 <input type="text" id="cbeCompany" maxlength="255" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-700 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+                                <label for="cbeIndustry" class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
                                 <select id="cbeIndustry" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-700 focus:border-transparent bg-white">
                                     <option value="">Select sector</option>
                                     <option value="manufacturing">Manufacturing</option>
@@ -250,7 +250,7 @@
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Province</label>
+                                <label for="cbeProvince" class="block text-sm font-medium text-gray-700 mb-1">Province</label>
                                 <select id="cbeProvince" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-700 focus:border-transparent bg-white">
                                     <option value="">Select province</option>
                                     <option value="ON">Ontario</option>
@@ -266,7 +266,7 @@
                                 </select>
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Estimated revenue band</label>
+                                <label for="cbeRevenue" class="block text-sm font-medium text-gray-700 mb-1">Estimated revenue band</label>
                                 <select id="cbeRevenue" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-700 focus:border-transparent bg-white">
                                     <option value="">Not sure / prefer not to say</option>
                                     <option value="$1M-$5M">$1M – $5M</option>
@@ -277,7 +277,7 @@
                                 </select>
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Note (optional, for our team)</label>
+                                <label for="cbeNote" class="block text-sm font-medium text-gray-700 mb-1">Note (optional, for our team)</label>
                                 <textarea id="cbeNote" rows="3" maxlength="800" placeholder="Anything specific about timeline, sector, or what you'd like us to know..." class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-700 focus:border-transparent resize-y"></textarea>
                             </div>
                         </div>
@@ -288,7 +288,7 @@
                             </button>
                             <span id="cbeMsg" class="text-sm"></span>
                         </div>
-                        <p class="text-xs text-gray-500 italic mt-3 leading-relaxed">By submitting, you confirm your client has expressed interest in exit advisory services and consents to receiving a welcome email from Canada Business Exits.</p>
+                        <p class="text-xs text-gray-600 italic mt-3 leading-relaxed">By submitting, you confirm your client has expressed interest in exit advisory services and consents to receiving a welcome email from Canada Business Exits.</p>
                     </form>
                 </div>
             </div>
@@ -299,7 +299,7 @@
             <h2 class="text-xl font-semibold text-gray-900 mb-4">My Leads</h2>
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-x-auto">
                 <table class="w-full text-sm">
-                    <thead class="text-gray-500 border-b border-gray-200 bg-gray-50">
+                    <thead class="text-gray-600 border-b border-gray-200 bg-gray-50">
                         <tr>
                             <th class="text-left px-4 py-3">Date</th>
                             <th class="text-left px-4 py-3">Business</th>
@@ -312,7 +312,7 @@
                     <tbody id="leadsTableBody" class="divide-y divide-gray-100"></tbody>
                 </table>
             </div>
-            <p id="noLeadsMsg" class="hidden text-gray-500 text-center py-8">No leads yet. Once SMEs are matched with your profile, they'll appear here.</p>
+            <p id="noLeadsMsg" class="hidden text-gray-600 text-center py-8">No leads yet. Once SMEs are matched with your profile, they'll appear here.</p>
         </section>
 
         <!-- My Profile Card -->
@@ -321,11 +321,11 @@
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <form id="profileForm" class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Firm Name</label>
+                        <label for="profileFirmName" class="block text-sm font-medium text-gray-700 mb-1">Firm Name</label>
                         <input type="text" id="profileFirmName" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Province</label>
+                        <label for="profileProvince" class="block text-sm font-medium text-gray-700 mb-1">Province</label>
                         <select id="profileProvince" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
                             <option value="">Select province</option>
                             <option value="ON">Ontario</option>
@@ -341,19 +341,19 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                        <label for="profileCity" class="block text-sm font-medium text-gray-700 mb-1">City</label>
                         <input type="text" id="profileCity" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                        <label for="profilePhone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
                         <input type="text" id="profilePhone" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Hourly Rate (CAD)</label>
+                        <label for="profileHourlyRate" class="block text-sm font-medium text-gray-700 mb-1">Hourly Rate (CAD)</label>
                         <input type="number" id="profileHourlyRate" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Specializations (comma-separated)</label>
+                        <label for="profileSpecializations" class="block text-sm font-medium text-gray-700 mb-1">Specializations (comma-separated)</label>
                         <input type="text" id="profileSpecializations" placeholder="e.g., Corporate Law, Litigation, Real Estate" class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
                     </div>
                     <div class="md:col-span-2 flex items-center gap-4">
@@ -371,7 +371,7 @@
     <footer class="bg-gray-900 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-gray-400 text-sm">&copy; 2026 CanadaLawyers.app. All rights reserved.</p>
-            <p class="text-gray-500 text-xs mt-2">Need help? Call us at <a href="tel:+16479567290" style="color: var(--gold-deep);">(647) 956-7290</a></p>
+            <p class="text-gray-400 text-xs mt-2">Need help? Call us at <a href="tel:+16479567290" style="color: var(--gold); text-decoration: underline;">(647) 956-7290</a></p>
         </div>
     </footer>
 
@@ -451,10 +451,10 @@
                     const statusColor = m.partnership_formed ? 'green' : (m.status === 'contacted' ? 'blue' : 'gray');
                     return `
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-3 text-gray-500">${fmtDate(m.created_at)}</td>
+                            <td class="px-4 py-3 text-gray-600">${fmtDate(m.created_at)}</td>
                             <td class="px-4 py-3">
                                 <div class="font-medium text-gray-900">${smeContact.company || smeContact.name || m.business_type || '--'}</div>
-                                <div class="text-xs text-gray-500">${m.business_type || ''} - ${m.business_size || ''}</div>
+                                <div class="text-xs text-gray-600">${m.business_type || ''} - ${m.business_size || ''}</div>
                             </td>
                             <td class="px-4 py-3">${badge(m.pain_point || m.friction_expertise || '--', 'yellow')}</td>
                             <td class="px-4 py-3">
@@ -462,8 +462,8 @@
                             </td>
                             <td class="px-4 py-3">
                                 <div class="text-sm">${smeContact.name || '--'}</div>
-                                ${smeContact.email ? `<div class="text-xs text-gray-500">${smeContact.email}</div>` : ''}
-                                ${smeContact.phone ? `<div class="text-xs text-gray-500">${smeContact.phone}</div>` : ''}
+                                ${smeContact.email ? `<div class="text-xs text-gray-600">${smeContact.email}</div>` : ''}
+                                ${smeContact.phone ? `<div class="text-xs text-gray-600">${smeContact.phone}</div>` : ''}
                             </td>
                             <td class="px-4 py-3">${badge(m.partnership_formed ? 'Partnership' : (m.status || 'presented'), statusColor)}</td>
                         </tr>
@@ -622,7 +622,7 @@
             const btn = document.getElementById('cbeSubmitBtn');
             const msg = document.getElementById('cbeMsg');
             btn.disabled = true;
-            msg.className = 'text-sm text-gray-500';
+            msg.className = 'text-sm text-gray-600';
             msg.textContent = 'Sending...';
 
             const payload = {
