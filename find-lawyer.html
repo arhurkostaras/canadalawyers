@@ -329,6 +329,11 @@
             border-radius: 4px;
         }
 
+        .step-hint {
+            color: var(--gold); font-size: 0.85rem; font-weight: 500;
+            flex: 1; text-align: right; min-height: 1.2em; align-self: center;
+        }
+        .question-card { scroll-margin-top: 84px; }
         .question-card {
             background: var(--bg-raised);
             backdrop-filter: blur(10px);
@@ -1010,22 +1015,22 @@
                 
                 <div class="input-group">
                     <label for="full-name">Full Name *</label>
-                    <input type="text" id="full-name" placeholder="Your full name" required>
+                    <input type="text" id="full-name" name="name" placeholder="Your full name" autocomplete="name" enterkeyhint="next" required>
                 </div>
 
                 <div class="input-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" placeholder="your@email.com" required>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="next" spellcheck="false" required>
                 </div>
 
                 <div class="input-group">
                     <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" placeholder="(555) 123-4567" required>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel" inputmode="tel" enterkeyhint="next" required>
                 </div>
 
                 <div class="input-group">
                     <label for="business-name">Business Name</label>
-                    <input type="text" id="business-name" placeholder="Your business name">
+                    <input type="text" id="business-name" name="organization" placeholder="Your business name" autocomplete="organization" enterkeyhint="next">
                 </div>
 
                 <div class="input-group">
@@ -1044,6 +1049,7 @@
 
             <div class="navigation-buttons">
                 <button class="btn btn-secondary" id="prevBtn" onclick="changeQuestion(-1)" style="display: none;">Previous</button>
+                <div class="step-hint" id="stepHint" role="status" aria-live="polite"></div>
                 <button class="btn btn-primary" id="nextBtn" onclick="changeQuestion(1)">Next Question</button>
             </div>
             <p style="margin:16px auto 0;max-width:560px;text-align:center;font-size:12px;color:var(--text-2);line-height:1.6;">By submitting, you agree to our <a href="/privacy-policy" style="color:var(--primary-blue,var(--gold));">Privacy Policy</a> and consent to being contacted by CanadaLawyers about your lawyer match. We use your details only to match you and follow up. You can reply "unsubscribe" at any time. This service is free for clients.</p>
@@ -1062,6 +1068,25 @@
 
     <script>
         let currentQuestion = 1;
+
+        // Wizard persistence: best-effort only. Storage can be unavailable
+        // (private browsing); the wizard must work identically without it,
+        // so these catches stay silent by design rather than logging noise.
+        const WIZARD_KEY = 'findlawyer-wizard-v1';
+        function persistWizard() {
+            try { sessionStorage.setItem(WIZARD_KEY, JSON.stringify({ answers, currentQuestion })); } catch (e) { /* optional */ }
+        }
+        function clearWizard() {
+            try { sessionStorage.removeItem(WIZARD_KEY); } catch (e) { /* ditto */ }
+        }
+
+        const QUESTION_HINTS = {
+            4: 'Select at least one service to continue.',
+        };
+        function setHint(msg) {
+            const el = document.getElementById('stepHint');
+            if (el) el.textContent = msg || '';
+        }
         const totalQuestions = 8;
         const answers = {};
 
@@ -1095,14 +1120,35 @@
             }
 
             // Show new question
-            document.querySelector(`.question-card[data-question="${currentQuestion}"]`).classList.add('active');
+            const shown = document.querySelector(`.question-card[data-question="${currentQuestion}"]`);
+            shown.classList.add('active');
 
             // Update UI
+            setHint('');
             updateProgress();
             updateButtons();
             
             // Load previous answers if going back
             loadPreviousAnswers();
+            persistWizard();
+            scrollQuestionIntoView(shown);
+        }
+
+        function scrollQuestionIntoView(card) {
+            const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+            // On narrow screens the question must land in view; desktop anchors
+            // the progress bar so context stays visible.
+            const anchor = window.matchMedia('(max-width: 768px)').matches
+                ? card : (document.getElementById('progressFill')?.closest('.progress-container') || card);
+            anchor.scrollIntoView({ behavior, block: 'start' });
+            if (behavior === 'smooth') {
+                // Some Chrome configs silently drop smooth programmatic scrolls
+                // (found on the ACC production walk); settle instantly if so.
+                setTimeout(() => {
+                    const r = anchor.getBoundingClientRect();
+                    if (r.top < -20 || r.top > 200) anchor.scrollIntoView({ behavior: 'auto', block: 'start' });
+                }, 450);
+            }
         }
 
         function updateButtons() {
@@ -1128,15 +1174,17 @@
                 const requiredInputs = currentCard.querySelectorAll('input[required]');
                 for (let input of requiredInputs) {
                     if (!input.value.trim()) {
-                        alert('Please complete all required fields before proceeding.');
+                        setHint('Complete the required fields to continue.');
+                        input.setAttribute('aria-invalid', 'true');
                         input.focus();
                         return false;
                     }
+                    input.removeAttribute('aria-invalid');
                 }
                 
                 // If no options and no required inputs, this might be an option-only question
                 if (requiredInputs.length === 0) {
-                    alert('Please select an option before proceeding.');
+                    setHint(QUESTION_HINTS[currentQuestion] || 'Choose an option to continue.');
                     return false;
                 }
             }
@@ -1275,7 +1323,6 @@ gtag('event', 'questionnaire_submitted', {
     const container = document.querySelector('.container');
     container.innerHTML = `
         <div style="text-align: center; padding: 60px 20px;">
-            <div style="font-size: 4rem; margin-bottom: 20px;">⏳</div>
             <h2 style="color: var(--primary-blue); font-size: 2.5rem; margin-bottom: 15px;">Matching You With Perfect Lawyers...</h2>
             <p style="font-size: 1.2rem; color: var(--text-3);">Our AI is analyzing your needs and finding your ideal matches</p>
         </div>
@@ -1292,6 +1339,7 @@ gtag('event', 'questionnaire_submitted', {
         });
         
         if (response.ok) {
+            clearWizard();
             const result = await response.json();
             // Track successful session creation
 gtag('event', 'session_created', {
@@ -1382,15 +1430,60 @@ function showErrorMessage() {
                 if (card.classList.contains('multi-select')) {
                     // Multiple selection allowed
                     card.classList.toggle('selected');
+                    card.setAttribute('aria-pressed', card.classList.contains('selected') ? 'true' : 'false');
                 } else {
                     // Single selection only
                     questionCard.querySelectorAll('.option-card.selected').forEach(selected => {
                         selected.classList.remove('selected');
+                        selected.setAttribute('aria-pressed', 'false');
                     });
                     card.classList.add('selected');
+                    card.setAttribute('aria-pressed', 'true');
                 }
+                setHint('');
+                saveCurrentAnswers();
+                persistWizard();
             }
         });
+
+        // Keyboard operability for option cards
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-pressed', card.classList.contains('selected') ? 'true' : 'false');
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+            });
+        });
+
+        // Persist contact fields as they type; restore any saved session
+        ['full-name', 'email', 'phone', 'business-name', 'location'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', () => { saveCurrentAnswers(); persistWizard(); });
+        });
+        (function restoreWizard() {
+            let saved = null;
+            try { saved = JSON.parse(sessionStorage.getItem(WIZARD_KEY) || 'null'); } catch (e) { /* optional */ }
+            if (!saved || !saved.answers) return;
+            Object.assign(answers, saved.answers);
+            // Refill contact inputs from saved answers
+            ['full-name', 'email', 'phone', 'business-name', 'location'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && saved.answers[id]) el.value = saved.answers[id];
+            });
+            const q = parseInt(saved.currentQuestion, 10);
+            if (q > 1 && q <= totalQuestions) {
+                document.querySelector(`.question-card[data-question="${currentQuestion}"]`).classList.remove('active');
+                currentQuestion = q;
+                document.querySelector(`.question-card[data-question="${currentQuestion}"]`).classList.add('active');
+                updateProgress();
+                updateButtons();
+            }
+            loadPreviousAnswers();
+            // Resync pressed state for selections re-applied after init
+            document.querySelectorAll('.option-card').forEach(c =>
+                c.setAttribute('aria-pressed', c.classList.contains('selected') ? 'true' : 'false'));
+        })();
 
         // Handle smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
