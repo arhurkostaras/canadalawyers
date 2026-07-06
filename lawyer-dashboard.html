@@ -156,7 +156,7 @@
                 <p id="statPartnerships" class="text-3xl font-bold text-green-600 mt-1">--</p>
             </div>
             <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-                <p class="text-gray-600 text-sm">Verification</p>
+                <p class="text-gray-600 text-sm">Registry Check</p>
                 <p id="statVerification" class="text-lg font-bold mt-1">--</p>
             </div>
         </section>
@@ -188,7 +188,7 @@
                 </div>
                 <div class="ai-card">
                     <h3><i class="fas fa-envelope-open-text" style="color: var(--gold-deep);"></i> Outreach Template</h3>
-                    <p>Get a personalized email to announce your verified profile to clients and contacts.</p>
+                    <p>Get a personalized email to announce your claimed profile to clients and contacts.</p>
                     <button class="ai-btn" id="outreachBtn" onclick="generateOutreach()"><i class="fas fa-paper-plane"></i> Generate Email</button>
                     <div class="ai-result" id="outreachResult"></div>
                     <div class="ai-actions" id="outreachActions" style="display: none;">
@@ -420,7 +420,7 @@
                 document.getElementById('statPartnerships').textContent = s.partnerships;
                 const verEl = document.getElementById('statVerification');
                 if (s.verificationStatus === 'verified') {
-                    verEl.innerHTML = '<span class="text-green-600"><i class="fas fa-check-circle mr-1"></i>Verified</span>';
+                    verEl.innerHTML = '<span class="text-green-600"><i class="fas fa-check-circle mr-1"></i>Registry-checked</span>';
                 } else {
                     verEl.innerHTML = '<span class="text-yellow-600"><i class="fas fa-clock mr-1"></i>Pending</span>';
                 }
@@ -679,9 +679,9 @@
         const email = localStorage.getItem('ca_checkout_email') || (JSON.parse(localStorage.getItem('lawyer_user') || '{}')).email;
 
         const TIER_NAMES = {
-            associate: 'Basic Position',
-            professional: 'Premium Position',
-            enterprise: 'Founding 500'
+            associate: 'Associate',
+            professional: 'Professional',
+            enterprise: 'Enterprise'
         };
 
         const STATUS_STYLES = {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" id="meta-description" content="Find verified lawyers and legal professionals across Canada. Browse by province and practice area.">
+    <meta name="description" id="meta-description" content="Find lawyers and legal professionals across Canada. Profiles sourced from provincial law society registries. Browse by province and practice area.">
     <meta name="keywords" content="lawyer directory, Canadian lawyers, barrister, solicitor, legal services, practice areas">
 
     <title id="page-title">Lawyer Directory | CanadaLawyers.app</title>
@@ -19,7 +19,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" id="og-url" content="https://canadalawyers.app/directory.html">
     <meta property="og:title" id="og-title" content="Lawyer Directory | CanadaLawyers.app">
-    <meta property="og:description" id="og-description" content="Find verified lawyers and legal professionals across Canada.">
+    <meta property="og:description" id="og-description" content="Find lawyers and legal professionals across Canada. Profiles sourced from provincial law society registries.">
     <meta property="og:image" content="https://canadalawyers.app/icon-512.png">
     <meta property="og:site_name" content="CanadaLawyers">
     <meta property="og:locale" content="en_CA">
@@ -220,7 +220,8 @@
 
     <header class="page-header">
         <h1 id="directory-title">Lawyer Directory</h1>
-        <p id="directory-subtitle">Browse verified lawyers and legal professionals across Canada</p>
+        <p id="directory-subtitle">Browse lawyer profiles sourced from provincial law society registries across Canada</p>
+        <p style="font-size: 0.85rem; opacity: 0.75;">Professionals subscribe to be listed; subscription tier is one of the ranking factors.</p>
     </header>
 
     <div class="breadcrumbs" id="breadcrumbs">
@@ -348,10 +349,10 @@
             var title, desc;
             if (desig) {
                 title = desig + ' ' + PROFESSIONAL_LABEL_PLURAL + ' in ' + provinceName;
-                desc = 'Browse ' + total + ' verified ' + desig.toLowerCase() + ' ' + PROFESSIONAL_LABEL_PLURAL.toLowerCase() + ' in ' + provinceName + '. Find qualified legal professionals on ' + SITE_NAME + '.';
+                desc = 'Browse ' + total + ' ' + desig.toLowerCase() + ' ' + PROFESSIONAL_LABEL_PLURAL.toLowerCase() + ' in ' + provinceName + '. Profiles sourced from provincial law society registries on ' + SITE_NAME + '.';
             } else {
                 title = PROFESSIONAL_LABEL_PLURAL + ' in ' + provinceName;
-                desc = 'Browse ' + total + ' verified ' + PROFESSIONAL_LABEL_PLURAL.toLowerCase() + ' in ' + provinceName + '. Find qualified legal professionals on ' + SITE_NAME + '.';
+                desc = 'Browse ' + total + ' ' + PROFESSIONAL_LABEL_PLURAL.toLowerCase() + ' in ' + provinceName + '. Profiles sourced from provincial law society registries on ' + SITE_NAME + '.';
             }
             document.title = title + ' | ' + SITE_NAME;
             document.getElementById('meta-description').setAttribute('content', desc);
@@ -400,7 +401,7 @@
             var badgeLabel = desig ? desig.toLowerCase() + ' ' + PROFESSIONAL_LABEL_PLURAL.toLowerCase() : PROFESSIONAL_LABEL_PLURAL.toLowerCase();
             document.getElementById('count-badge-container').innerHTML =
                 '<div class="count-badge"><i class="fas fa-check-circle"></i> ' +
-                data.total.toLocaleString() + ' verified ' + badgeLabel + ' in ' + provinceName + '</div>';
+                data.total.toLocaleString() + ' ' + badgeLabel + ' in ' + provinceName + ' — profiles sourced from law society registries</div>';
 
             if (data.designation_counts && data.designation_counts.length > 0) {
                 var pills = document.getElementById('designation-pills');

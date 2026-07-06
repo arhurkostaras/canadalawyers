@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="description" content="View lawyer profile on CanadaLawyers.app — AI-powered professional bio, credentials, and practice details.">
-    <meta name="keywords" content="lawyer profile, Canadian lawyer, law society verified, lawyer directory Canada">
+    <meta name="keywords" content="lawyer profile, Canadian lawyer, law society registry, lawyer directory Canada">
 
     <title>Lawyer Profile | CanadaLawyers.app</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -272,8 +272,8 @@
     <!-- SEO: pre-render meaningful content for Googlebot before JS loads profile data -->
     <div id="seoPrerender" style="max-width:800px;margin:40px auto;padding:0 20px;">
         <h1 id="seoTitle" style="color:var(--text);font-size:24px;">Lawyer Profile — CanadaLawyers.app</h1>
-        <p id="seoDesc" style="color:var(--text-2);font-size:15px;line-height:1.7;">This is a verified lawyer profile on CanadaLawyers.app, Canada's AI-powered lawyer-client matching platform. This profile includes the lawyer's credentials, practice areas, firm information, and an AI-generated professional bio based on their law society registration.</p>
-        <p id="seoBio" style="color:var(--text-3);font-size:14px;">CanadaLawyers connects businesses and individuals with qualified lawyers across Canada. Our directory includes over 127,000 lawyers across 8 provinces, verified against law society records.</p>
+        <p id="seoDesc" style="color:var(--text-2);font-size:15px;line-height:1.7;">This is a lawyer profile on CanadaLawyers.app, an AI-powered lawyer-client matching platform built for Canada. This profile includes the lawyer's credentials, practice areas, firm information, and an AI-generated professional bio based on their law society registration.</p>
+        <p id="seoBio" style="color:var(--text-3);font-size:14px;">CanadaLawyers connects businesses and individuals with qualified lawyers across Canada. Our directory includes 140,000+ lawyer profiles sourced from provincial law society registries across 10 provinces.</p>
         <noscript><p style="color:var(--text-2);">Enable JavaScript to view the full interactive profile with AI bio, practice details, and contact information.</p></noscript>
     </div>
     <script>
@@ -305,7 +305,7 @@
                         var metaDesc = p.name + (p.designation ? ' (' + p.designation + ')' : '') +
                             (p.firm_name ? ' at ' + p.firm_name : '') +
                             (p.city && p.province ? ' in ' + p.city + ', ' + p.province : p.province ? ' in ' + p.province : '') +
-                            '. Verified lawyer profile on CanadaLawyers.app.';
+                            '. Lawyer profile on CanadaLawyers.app, sourced from law society registry data.';
                         var metaEl = document.querySelector('meta[name="description"]');
                         if (metaEl) metaEl.setAttribute('content', metaDesc);
                         var ogTitle = document.querySelector('meta[property="og:title"]');
@@ -322,7 +322,7 @@
                             if (p.firm_name) parts.push(p.firm_name);
                             if (p.city && p.province) parts.push(p.city + ', ' + p.province);
                             else if (p.province) parts.push(p.province);
-                            seoDesc.textContent = p.name + ' is a verified lawyer' +
+                            seoDesc.textContent = p.name + ' is a lawyer' +
                                 (parts.length ? ' at ' + parts.join(' in ') : '') +
                                 ' listed on CanadaLawyers.app.';
                         }
@@ -397,13 +397,13 @@
             <!-- Client CTA -->
             <div class="cta-section" style="background:rgba(111,143,106,0.15); border:1px solid var(--success);">
                 <h2 style="color:var(--text);">Looking for a Lawyer Like This?</h2>
-                <p style="color:var(--cream);">Tell us what you need — we'll match you with a vetted lawyer in your area. Free, confidential, no obligation.</p>
+                <p style="color:var(--cream);">Tell us what you need — we'll match you with the right lawyer in your area. Free, confidential, no obligation.</p>
                 <a href="find-lawyer.html" class="cta-btn" style="background:var(--gold);color:var(--ink);"><i class="fas fa-search"></i> Get My Lawyer Match</a>
                 <div class="cta-benefits">
                     <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> Free for clients</span>
                     <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> AI-powered matching</span>
-                    <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> Verified credentials</span>
-                    <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> Response within 24hrs</span>
+                    <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> Registry-checked credentials</span>
+                    <span class="cta-benefit" style="color:var(--cream);"><i class="fas fa-check" style="color:var(--success);"></i> Response within 1 business day</span>
                 </div>
             </div>
 
@@ -627,7 +627,7 @@
                 }
                 var verifiedBadge = document.createElement('span');
                 verifiedBadge.className = 'hero-badge hero-badge-verified';
-                verifiedBadge.innerHTML = '<i class="fas fa-shield-halved"></i> Law Society Verified';
+                verifiedBadge.innerHTML = '<i class="fas fa-shield-halved"></i> Checked Against Law Society Registry';
                 badgesEl.appendChild(verifiedBadge);
                 if (p.claimed) {
                     var claimedBadge = document.createElement('span');

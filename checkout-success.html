@@ -156,9 +156,9 @@
 
                 if (data.subscription) {
                     const tierNames = {
-                        associate: 'Basic Position ($199/mo)',
-                        professional: 'Premium Position ($299/mo)',
-                        enterprise: 'Founding 500 ($599/mo)'
+                        associate: 'Associate ($199/mo)',
+                        professional: 'Professional ($299/mo)',
+                        enterprise: 'Enterprise ($599/mo)'
                     };
                     document.getElementById('planName').textContent = tierNames[data.subscription.tier] || data.subscription.tier;
                     document.getElementById('subscriptionDetails').style.display = 'block';

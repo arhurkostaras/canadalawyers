@@ -84,11 +84,12 @@
                 var info = document.getElementById('matchInfo');
                 info.style.display = 'block';
                 var specText = practiceArea ? practiceArea + ' ' : '';
-                info.innerHTML = '<p><strong>' + data.professionals.length + ' ' + specText + 'lawyers matched</strong> in ' + province + ' based on your search criteria</p>';
+                info.innerHTML = '<p><strong>' + data.professionals.length + ' ' + specText + 'lawyers matched</strong> in ' + province + ' based on your search criteria</p>' +
+                    '<p style="font-size:0.85rem;opacity:0.75;">Professionals subscribe to be listed; subscription tier is one of the ranking factors.</p>';
 
                 var container = document.getElementById('results');
                 data.professionals.forEach(function(p) {
-                    var verified = p.claimed ? '' : '<div class="unverified">Profile not yet verified</div>';
+                    var verified = p.claimed ? '' : '<div class="unverified">Profile not yet claimed</div>';
                     var badgeClass = p.claimed ? 'score-badge' : 'score-badge unclaimed';
                     var bio = p.bio_excerpt || 'This lawyer has not yet added a bio. Click to view their full profile.';
                     var designation = p.designation ? p.designation + ' &mdash; ' : '';

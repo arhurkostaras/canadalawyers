@@ -435,7 +435,8 @@
     <div class="container">
         <div class="header">
             <h1> Lawyer Revenue Calculator</h1>
-            <p>Discover your true earning potential with Canada's most advanced lawyer positioning platform. Get personalized projections based on your experience, location, and growth goals.</p>
+            <p>Explore hypothetical revenue scenarios based on your experience, location, and growth goals.</p>
+            <p style="font-size: 0.85rem; opacity: 0.75;">Hypothetical illustration based on your inputs. Not a prediction or guarantee of results.</p>
         </div>
 
         <div class="calculator-container">
@@ -493,8 +494,8 @@
                     <div class="form-group">
                         <label for="growthGoal">Revenue Growth Goal (%)</label>
                         <div class="slider-container">
-                            <input type="range" id="growthGoal" name="growthGoal" min="10" max="200" value="50" class="slider">
-                            <div class="slider-value" id="growthValue">50% growth</div>
+                            <input type="range" id="growthGoal" name="growthGoal" min="10" max="200" value="25" class="slider">
+                            <div class="slider-value" id="growthValue">25% growth</div>
                         </div>
                     </div>
 
@@ -516,7 +517,7 @@
         <div class="results-container" id="results">
             <div class="results-header">
                 <h2> Your Personalized Revenue Projection</h2>
-                <p>Based on your profile and our algorithm optimization</p>
+                <p>Based on your inputs. Hypothetical illustration; not a prediction or guarantee of results. Figures shown are for one year.</p>
             </div>
 
             <div class="results-grid">
@@ -540,7 +541,7 @@
 
                 <div class="result-card">
                     <div class="result-label">Win Rate</div>
-                    <div class="result-description">vs 25% industry avg</div>
+                    <div class="result-description">Modeled from your inputs</div>
                 </div>
             </div>
 
@@ -551,7 +552,7 @@
 
             <div class="cta-section">
                 <a href="javascript:void(0)" class="cta-btn" onclick="proceedToSignup()">
-                     Join Canada's Top Lawyer Network
+                     Apply to Join the Network
                 </a>
             </div>
 
@@ -579,7 +580,7 @@
                         opacity: 0.9;
                         max-width: 600px;
                         margin: 0 auto;
-                    ">See how small strategic changes could dramatically increase your revenue potential</p>
+                    ">See how strategic changes could affect the modeled numbers. Hypothetical illustration based on your inputs; not a prediction or guarantee of results.</p>
                 </div>
                 
                 <div style="
@@ -645,7 +646,7 @@
                     ">
                         <div style="font-size: 3rem; margin-bottom: 15px;"></div>
                         <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--cream);">Premium Positioning</h4>
-                        <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">Top 3 algorithm placement</p>
+                        <p style="font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px;">Highest ranking weight we offer</p>
                         <div id="premiumResult" style="
                             font-size: 1.4rem;
                             font-weight: 800;
@@ -969,14 +970,14 @@
                         title: '👑 Premium Algorithm Positioning',
                         newImpact: Math.round(currentImpact * 1.35),
                         newClients: Math.round(currentClients * 1.28),
-                        description: 'Top 3 algorithm placement gives you first access to the highest-value opportunities.',
+                        description: 'Enterprise carries the highest ranking weight we offer, ordering above other tiers when match factors are equal.',
                         benefits: [
                             '• First choice on premium leads',
                             '• Higher conversion rates (+40%)',
                             '• Larger average project values',
                             '• Priority customer support'
                         ],
-                        timeframe: 'Immediate implementation with Founding 500 membership'
+                        timeframe: 'Available with Enterprise membership'
                     };
                     break;
                 case 'major-city':

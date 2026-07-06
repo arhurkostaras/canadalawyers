@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Find a verified lawyer in Toronto, Ontario. Browse top-rated legal professionals, compare specializations, and get matched with the right Toronto lawyer in 90 seconds.">
+    <meta name="description" content="Find the right lawyer in Toronto, Ontario. Browse top-rated legal professionals, compare specializations, and get matched with the right Toronto lawyer — the form takes about 90 seconds.">
     <title>Find a Lawyer in Toronto | CanadaLawyers.app</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://canadalawyers.app/find-lawyer-toronto">
     <meta property="og:title" content="Find a Lawyer in Toronto | CanadaLawyers.app">
-    <meta property="og:description" content="Find a verified lawyer in Toronto. Browse profiles, compare specializations, and get matched in 90 seconds.">
+    <meta property="og:description" content="Find the right lawyer in Toronto. Browse profiles, compare specializations, and get matched — the form takes about 90 seconds.">
     <meta property="og:site_name" content="CanadaLawyers.app">
     <meta property="og:locale" content="en_CA">
     <meta name="theme-color" content="#0B0E12">
@@ -193,8 +193,8 @@
 
 <header class="page-header">
     <h1>Find a Lawyer in Toronto</h1>
-    <p>Browse verified lawyers across Toronto and the GTA. Compare profiles, specializations, and get matched in 90 seconds.</p>
-    <a href="/find-lawyer?province=ON" class="header-cta"><i class="fas fa-bolt"></i> Get Matched in 90 Seconds</a>
+    <p>Browse registry-sourced lawyer profiles across Toronto and the GTA. Compare profiles, specializations, and get matched — the form takes about 90 seconds.</p>
+    <a href="/find-lawyer?province=ON" class="header-cta"><i class="fas fa-bolt"></i> Get Matched — 90-Second Form</a>
 </header>
 
 <div class="breadcrumbs">
@@ -205,14 +205,14 @@
 
     <div class="seo-section">
         <h2>Finding the Right Lawyer in Toronto</h2>
-        <p>Toronto is Canada's largest legal market, home to thousands of lawyers across every area of practice from Bay Street corporate firms to independent practitioners in neighbourhoods like Scarborough, North York, and Etobicoke. Whether you need a litigation lawyer for a civil dispute, a real estate lawyer for a home purchase, or a family lawyer for a separation, Toronto has specialists in every field.</p>
+        <p>Toronto is the largest legal market in Canada, home to thousands of lawyers across every area of practice from Bay Street corporate firms to independent practitioners in neighbourhoods like Scarborough, North York, and Etobicoke. Whether you need a litigation lawyer for a civil dispute, a real estate lawyer for a home purchase, or a family lawyer for a separation, Toronto has specialists in every field.</p>
         <p>When searching for a Toronto lawyer, the most important factors are specialization match, fee transparency, and Law Society of Ontario standing. Lawyers in Ontario are regulated by the LSO and must maintain their licence in good standing. All profiles on CanadaLawyers are sourced directly from the LSO registry, so you can browse with confidence.</p>
         <p>Hourly rates in Toronto typically range from $250/hr for junior associates at smaller firms to $1,200/hr at top Bay Street firms. Many lawyers offer a free 30-minute consultation. For straightforward matters like wills or simple real estate, ask about fixed-fee arrangements which are increasingly common and easier to budget for.</p>
     </div>
 
     <div>
         <h2 class="section-title">Toronto Lawyers</h2>
-        <p class="section-subtitle">Verified legal professionals serving Toronto and the GTA</p>
+        <p class="section-subtitle">Legal professionals serving Toronto and the GTA</p>
         <div id="professionals-grid" class="professionals-grid">
             <div class="loading-state" style="grid-column:1/-1">
                 <i class="fas fa-spinner fa-spin"></i>
@@ -223,7 +223,7 @@
 
     <div class="cta-section">
         <h2>Get Matched with a Toronto Lawyer</h2>
-        <p>Tell us what you need and we'll connect you with the right lawyer in Toronto in 90 seconds.</p>
+        <p>Tell us what you need and we'll connect you with the right lawyer in Toronto. The form takes about 90 seconds.</p>
         <a href="/find-lawyer?province=ON" class="cta-button"><i class="fas fa-bolt"></i> Find My Lawyer</a>
     </div>
 
@@ -328,7 +328,7 @@ async function loadProfessionals() {
             const location = [p.city, p.province].filter(Boolean).join(', ');
             const claimed = p.claim_status === 'claimed';
             return `<a href="/profile?id=${p.id}" class="professional-card">
-                <div class="card-name">${escHtml(name)}${claimed ? '<span class="claimed-badge"><i class="fas fa-check-circle"></i> Verified</span>' : ''}</div>
+                <div class="card-name">${escHtml(name)}${claimed ? '<span class="claimed-badge"><i class="fas fa-check-circle"></i> Claimed</span>' : ''}</div>
                 ${p.firm_name ? `<div class="card-firm">${escHtml(p.firm_name)}</div>` : ''}
                 <div class="card-location"><i class="fas fa-map-marker-alt"></i>${escHtml(location)}</div>
                 ${p.designation ? `<span class="card-designation">${escHtml(p.designation)}</span>` : ''}
