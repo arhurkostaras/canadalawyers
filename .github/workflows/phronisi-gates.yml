@@ -39,6 +39,62 @@ jobs:
           fi
           echo "PASS: zero raw color hex outside the tokens file."
 
+  copy-ban:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No banned marketing claims in root pages
+        run: |
+          # Rule: adjudicated honest-copy pass (see
+          # ~/phronisi-ops/docs/ADJUDICATION-RULINGS-2026-07-05.md). Claims that
+          # promise rank, time, verification, scarcity, or superlatives the
+          # code and data do not back are banned. The guarantee page
+          # (/guarantee) is the single source of truth for guarantee terms;
+          # any other page states only the 90-day zero-match refund and links
+          # to /guarantee. Scope: root *.html only, so the generated province
+          # and directory subdirectories, public/, and node_modules/ are out
+          # of scope.
+          set -euo pipefail
+          banned=(
+            "guaranteed top"
+            "bank-level"
+            "Canada's Premier"
+            "Canada's Largest"
+            "verified lawyers"
+            "50,000+ SME"
+            "Live Data"
+            "in 24 Hours"
+            "24-Hour Turnaround"
+            "3 qualified leads"
+            "Founding 500"
+            "spots remaining"
+            "priority search placement"
+            "compounds over time"
+            "First AI-Powered"
+            "perfect match"
+            "Perfect Lawyer"
+            "% of your potential"
+            "Uptime Guarantee"
+          )
+          fail=0
+          for phrase in "${banned[@]}"; do
+            hits=$(grep -niF -e "$phrase" ./*.html 2>/dev/null | sed 's|^\./||' || true)
+            if [ -n "$hits" ]; then
+              echo "FAIL: banned phrase '$phrase' found:"
+              echo "$hits"
+              fail=1
+            fi
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo ""
+            echo "Fix: reword per the adjudicated rulings in"
+            echo "~/phronisi-ops/docs/ADJUDICATION-RULINGS-2026-07-05.md."
+            echo "Guarantee terms live only on /guarantee; every other page"
+            echo "states the 90-day zero-match refund and links there."
+            exit 1
+          fi
+          echo "PASS: zero banned phrases in root *.html."
+
   lighthouse-a11y:
     runs-on: ubuntu-latest
     steps:
