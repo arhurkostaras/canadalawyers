@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Find verified litigation lawyers across Canada. Compare profiles, specializations, and get matched with an experienced litigator in 90 seconds.">
+    <meta name="description" content="Find litigation lawyers across Canada. Compare profiles, specializations, and get matched with an experienced litigator — the form takes about 90 seconds.">
     <title>Litigation Lawyers in Canada | CanadaLawyers.app</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://canadalawyers.app/litigation-lawyer">
     <meta property="og:title" content="Litigation Lawyers in Canada | CanadaLawyers.app">
-    <meta property="og:description" content="Find verified litigation lawyers across Canada. Get matched with an experienced litigator in 90 seconds.">
+    <meta property="og:description" content="Find litigation lawyers across Canada. Get matched with an experienced litigator — the form takes about 90 seconds.">
     <meta property="og:site_name" content="CanadaLawyers.app">
     <meta property="og:locale" content="en_CA">
     <meta name="theme-color" content="#0B0E12">
@@ -172,8 +172,8 @@
 
 <header class="page-header">
     <h1>Litigation Lawyers in Canada</h1>
-    <p>Find experienced litigation lawyers across Canada. Browse verified profiles and get matched with the right litigator for your dispute in 90 seconds.</p>
-    <a href="/find-lawyer" class="header-cta"><i class="fas fa-bolt"></i> Get Matched in 90 Seconds</a>
+    <p>Find experienced litigation lawyers across Canada. Browse registry-sourced profiles and get matched with the right litigator for your dispute — the form takes about 90 seconds.</p>
+    <a href="/find-lawyer" class="header-cta"><i class="fas fa-bolt"></i> Get Matched — 90-Second Form</a>
 </header>
 
 <div class="breadcrumbs">
@@ -191,7 +191,7 @@
 
     <div>
         <h2 class="section-title">Litigation Lawyers</h2>
-        <p class="section-subtitle">Verified litigators and dispute resolution lawyers across Canada</p>
+        <p class="section-subtitle">Litigators and dispute resolution lawyers across Canada</p>
         <div id="professionals-grid" class="professionals-grid">
             <div class="loading-state" style="grid-column:1/-1">
                 <i class="fas fa-spinner fa-spin"></i>
@@ -202,7 +202,7 @@
 
     <div class="cta-section">
         <h2>Get Matched with a Litigation Lawyer</h2>
-        <p>Tell us about your dispute and we'll connect you with the right litigator in 90 seconds.</p>
+        <p>Tell us about your dispute and we'll connect you with the right litigator. The form takes about 90 seconds.</p>
         <a href="/find-lawyer" class="cta-button"><i class="fas fa-bolt"></i> Find My Litigator</a>
     </div>
 
@@ -307,7 +307,7 @@ async function loadProfessionals() {
             const location = [p.city, p.province].filter(Boolean).join(', ');
             const claimed = p.claim_status === 'claimed';
             return `<a href="/profile?id=${p.id}" class="professional-card">
-                <div class="card-name">${escHtml(name)}${claimed ? '<span class="claimed-badge"><i class="fas fa-check-circle"></i> Verified</span>' : ''}</div>
+                <div class="card-name">${escHtml(name)}${claimed ? '<span class="claimed-badge"><i class="fas fa-check-circle"></i> Claimed</span>' : ''}</div>
                 ${p.firm_name ? `<div class="card-firm">${escHtml(p.firm_name)}</div>` : ''}
                 <div class="card-location"><i class="fas fa-map-marker-alt"></i>${escHtml(location)}</div>
                 ${p.designation ? `<span class="card-designation">${escHtml(p.designation)}</span>` : ''}
