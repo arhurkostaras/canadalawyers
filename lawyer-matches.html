@@ -18,7 +18,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Perfect Lawyer Matches - CanadaLawyers</title>
+    <title>Your Lawyer Matches - CanadaLawyers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -507,19 +507,20 @@
     <div id="loadingScreen" class="loading-screen">
         <div class="loading-animation"></div>
         <div class="loading-text"> AI Analyzing Your Requirements...</div>
-        <div class="loading-subtext">Evaluating 200+ Lawyers to find your perfect matches</div>
+        <div class="loading-subtext">Evaluating lawyer profiles to find your strongest matches</div>
     </div>
 
     <!-- Results Content -->
     <div id="resultsContent" class="container hidden">
         <div class="header">
-            <h1> Your Perfect Lawyer Matches</h1>
+            <h1> Your Lawyer Matches</h1>
             <p class="subtitle" id="analysisSubtitle">Our AI analyzed your requirements and found your top matches</p>
+            <p style="font-size: 0.85rem; opacity: 0.75;">Professionals subscribe to be listed; subscription tier is one of the ranking factors.</p>
         </div>
 
         <div class="match-summary">
             <h2> AI Matching Complete</h2>
-            <p id="summaryText">We've identified exceptional Lawyers who are perfectly suited for your business needs.</p>
+            <p id="summaryText">We've identified Lawyers who are strongly suited for your business needs.</p>
             
             <div class="summary-stats">
                 <div class="stat-item">
@@ -528,14 +529,14 @@
                 </div>
                 <div class="stat-item">
                     <span class="stat-number">3</span>
-                    <span class="stat-label">Perfect Matches</span>
+                    <span class="stat-label">Strong Matches</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" id="topScore">--</span>
                     <span class="stat-label">Top Match Score</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">24hrs</span>
+                    <span class="stat-number">1 Business Day</span>
                     <span class="stat-label">Response Time</span>
                 </div>
             </div>
@@ -547,7 +548,7 @@
 
         <div class="next-steps">
             <h2> What Happens Next?</h2>
-            <p>We've sent your requirements to all three Lawyers. You'll receive personalized proposals within 24 hours. Choose the lawyer that feels like the best fit and start your partnership!</p>
+            <p>We've sent your requirements to all three Lawyers. You'll receive personalized proposals within 1 business day. Choose the lawyer that feels like the best fit and start your partnership!</p>
             
             <div class="cta-buttons">
                 <a href="contact" class="btn btn-primary">Questions? Contact Us</a>
@@ -556,7 +557,7 @@
 
             <div class="guarantee-reminder">
                 <h3> Quality Match Promise</h3>
-                <p>Our AI-powered matching connects you directly with pre-screened Lawyers who specialize in your industry and business size. No contracts, no fees - just quality introductions to legal professionals who fit your exact needs.</p>
+                <p>Our AI-powered matching connects you directly with registry-checked Lawyers who specialize in your industry and business size. No contracts, no fees - just quality introductions to legal professionals who fit your exact needs.</p>
             </div>
         </div>
     </div>
@@ -1026,7 +1027,7 @@ function mapRateRange(minRate, maxRate) {
 
             const businessType = industryText[businessData.industry || businessData.business_type] || 'legal';
             document.getElementById('summaryText').textContent =
-                `We've identified exceptional Lawyers who are perfectly suited for your ${businessType} needs.`;
+                `We've identified Lawyers who are strongly suited for your ${businessType} needs.`;
 
             // Generate match cards (createMatchCard is async)
             const container = document.getElementById('matchesContainer');
